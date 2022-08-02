@@ -14,6 +14,5 @@
 <title>Insert title here</title>
 </head>
 <body>
-SSDSDAS
 </body>
 </html>
