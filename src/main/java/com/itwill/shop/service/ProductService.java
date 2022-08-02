@@ -37,8 +37,15 @@ public class ProductService {
 		return productDao.insertProduct(product);
 	}
 	
+	//상품수정하기
+	public int updateProduct(Product product) throws Exception {
+		return productDao.updateProduct(product);
+	}
 	
-	
+	//상품삭제하기
+	public int deleteProduct(Product product) throws Exception {
+		return productDao.deleteProduct(product);
+	}
 	
 
 }//
