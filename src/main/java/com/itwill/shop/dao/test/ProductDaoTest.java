@@ -29,7 +29,7 @@ public class ProductDaoTest {
 		
 		
 		System.out.println(">>새상품추가");
-		productDao.InsertProduct(new Product(0,
+		productDao.insertProduct(new Product(0,
 											"우산",
 											5000,
 											"umbrella.jsp",
