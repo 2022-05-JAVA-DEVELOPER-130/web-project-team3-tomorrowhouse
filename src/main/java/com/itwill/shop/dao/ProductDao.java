@@ -102,7 +102,7 @@ public class ProductDao {
 	}
 
 		//InsertProduct - 새상품추가(관리자 전용)
-		public int InsertProduct(Product product) throws Exception {
+		public int insertProduct(Product product) throws Exception {
 			Connection con = dataSource.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_INSERT);
 			//"insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values (product_p_no_seq.nextval,?,?,?,?,?,?)";

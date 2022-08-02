@@ -25,6 +25,12 @@ public class ReviewSQL {
 	public static final String CREATE_REVIEW =
 			"insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, ?, ?, ?, ?)";
 	
+	//9.리뷰 작성시, 기존에 작성된 리뷰가 있는지 orderItem_no로 체크
+	 //-> u_id & p_no조합은, 고객이 상품을 여러번 샀을 수도있다.
+	//select count(*) from review where oi_no=11;
+	public static final String IS_EXISTED_REVIEW_BY_ORDER_ITEM_NO =
+			"select count(*) from review where oi_no=?";
+	
 	
 	/* ------ review select------ */
 	//1.(마이페이지-리뷰list) 로그인한 회원이 마이페이지?에서 리뷰를 모아서 볼 수 있음 -> u_id로 review 선택
