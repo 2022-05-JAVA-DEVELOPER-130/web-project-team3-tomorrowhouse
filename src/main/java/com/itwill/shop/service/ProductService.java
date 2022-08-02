@@ -14,7 +14,7 @@ public class ProductService {
 	}
 	
 	public List<Product> selectAll() throws Exception {
-		return productDao.selectAll();
+		return productDao.selectAll();  
 	}
 	
 	  
