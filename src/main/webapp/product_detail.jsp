@@ -10,7 +10,7 @@ String noStr = request.getParameter("p_no");
 
 ProductService productService = new ProductService();
 Product detailProduct = new Product();
-detailProduct = productService.selectByNo(1);
+detailProduct = productService.selectByNo(Integer.parseInt(noStr));
 
 %>
 
@@ -23,14 +23,16 @@ detailProduct = productService.selectByNo(1);
 </head>
 <body>
 <form>
+<h3>[<%=detailProduct.getP_name()%> 상세보기]</h1>
+<hr>
 
 상품번호 <input type ='text'name='상품번호' value='<%=detailProduct.getP_no()%>'><br>
 상품이름 <input type ='text'name='상품이름' value='<%=detailProduct.getP_name()%>'><br>
-상품가격 <input type ='text'name='상품가격' value=''><br>
-상품이미지 <input type ='text'name='상품이미지' value='<>'><br>
-상품설명 <input type ='text'name='상품번호' value=''><br>
-상품클릭수 <input type ='text'name='상품번호' value=''><br>
-상품카테고리 <input type ='text'name='상품번호' value=''><br>
+상품가격 <input type ='text'name='상품가격' value='<%=detailProduct.getP_price()%>'><br>
+상품이미지 <input type ='text'name='상품이미지' value='<%=detailProduct.getP_image()%>'><br>
+상품설명 <input type ='text'name='상품번호' value='<%=detailProduct.getP_desc()%>'><br>
+상품클릭수 <input type ='text'name='상품번호' value='<%=detailProduct.getP_click_count()%>'><br>
+상품카테고리 <input type ='text'name='상품번호' value='<%=detailProduct.getCategory().getCg_no()%>'><br>
 
 </form>
 </body>

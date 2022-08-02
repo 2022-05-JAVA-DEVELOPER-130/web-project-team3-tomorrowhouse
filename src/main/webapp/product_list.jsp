@@ -19,6 +19,10 @@ List<Product> productList = productService.selectAll();
 </head>
 <body>
 <form>
+
+<h3>[상품리스트]</h3>
+<hr>
+
 <%--
 <% for(Product product : productList) { %>
 상품번호 <input type ='text'name='상품번호' value='<%=product.getP_no()%>'><br>
@@ -32,15 +36,12 @@ List<Product> productList = productService.selectAll();
 <%}%>
  --%>
 
-<% for(Product product : productList) { %>
-상품이름 <input type ='text'name='상품이름' value='<%=product.getP_name()%>'><br>
-상품가격 <input type ='text'name='상품가격' value='<%=product.getP_price()%>'><br>
-상품이미지 <input type ='text'name='상품이미지' value='<%=product.getP_image()%>'><br>
-<hr>
-
-
-<%}%>
-
-</form>
+<div>
+	<ul>
+		<% for(Product product : productList) { %>
+		<li><a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>[<%=product.getP_name()%>] 가격:<%=product.getP_price()%>원</a></li>
+		<% } %>
+	</ul>
+</div>
 </body>
 </html>
