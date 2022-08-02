@@ -32,6 +32,7 @@ public class OrderDao {
 		dataSource = basicDataSource;
 	}
 	/*************************** 작성중입니다 *********************************************/
+	/* ------ order select------ */
 	/*
 	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
@@ -173,6 +174,7 @@ public class OrderDao {
 		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no";
 	 */
 
+	/* ------ order insert------ */
 	//카트 -> 주문으로 옮겨올때에 관해서는 service에서 작성한다.
 	/*<<단일주문건 생성에 해당 - 상품detail에서 주문시 사용>>
 	7-1. 주문 생성(insert - orders) -> [order_create_action]
