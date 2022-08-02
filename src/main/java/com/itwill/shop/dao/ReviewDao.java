@@ -13,6 +13,7 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import com.itwill.shop.dto.OrderItem;
 import com.itwill.shop.dto.Product;
 import com.itwill.shop.dto.Review;
+import com.itwill.shop.sql.CartSQL;
 import com.itwill.shop.sql.ReviewSQL;
 
 
@@ -258,5 +259,25 @@ public class ReviewDao {
 		
 		return rowCount;
 	}
+	
+	//9.리뷰 작성시, 기존에 작성된 리뷰가 있는지 orderItem_no로 체크
+	 //-> u_id & p_no조합은, 고객이 상품을 여러번 샀을 수도있다.
+	public int isExistedReviewByOrderitemNo(Review review) throws Exception {
+		 Connection con=dataSource.getConnection();
+		 /*
+		  	public static final String IS_EXISTED_REVIEW_BY_ORDER_ITEM_NO =
+			"select count(*) from review where oi_no=?";
+		  */
+		 PreparedStatement pstmt=con.prepareStatement(ReviewSQL.IS_EXISTED_REVIEW_BY_ORDER_ITEM_NO);
+		 pstmt.setInt(1, review.getOrderItem().getOi_no());
+		 ResultSet rs = pstmt.executeQuery();
+		 rs.next();
+		 int review_count = rs.getInt(1);
+		 con.close();
+		return review_count;
+	}
+	
+	
+	
 	
 }

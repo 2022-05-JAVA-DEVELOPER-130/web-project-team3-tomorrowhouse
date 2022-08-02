@@ -2,6 +2,7 @@ package com.itwill.shop.dto;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 /*
@@ -20,13 +21,13 @@ public class Order {
 	
 	private String u_id;	
 	
-	private ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
+	private List<OrderItem> orderItemList=new ArrayList<OrderItem>();
 	//private List<OrderItem> orderItemList=new List<OrderItem>();
 	
 	public Order() {
 
 	}
-	public Order(int o_no, String o_desc, Date o_date, int o_price, String u_id, ArrayList<OrderItem> orderItemList) {
+	public Order(int o_no, String o_desc, Date o_date, int o_price, String u_id, List<OrderItem> orderItemList) {
 		super();
 		this.o_no = o_no;
 		this.o_desc = o_desc;
@@ -68,10 +69,10 @@ public class Order {
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
-	public ArrayList<OrderItem> getOrderItemList() {
+	public List<OrderItem> getOrderItemList() {
 		return orderItemList;
 	}
-	public void setOrderItemList(ArrayList<OrderItem> orderItemList) {
+	public void setOrderItemList(List<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
 	@Override
