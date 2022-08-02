@@ -17,7 +17,9 @@ public class ProductService {
 		return productDao.selectAll();  
 	}
 	
-	  
+	public Product selectByNo(int p_no) throws Exception {
+		return productDao.selectByNo(p_no);
+	}
 	
 		
 
