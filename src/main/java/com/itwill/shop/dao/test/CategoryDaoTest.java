@@ -21,7 +21,7 @@ public class CategoryDaoTest {
 		System.out.println(categoryDao.categoryByNo(1));
 		
 		
-		/**************관리자 사용 ************************/
+		/**********관리자 사용 ************************/
 		//카테고리 추가<<insert>> -객체
 		System.out.println("카테고리추가");
 		categoryDao.insertCategory(new Category(27,"커튼"));
