@@ -1,7 +1,6 @@
 <%@page import="com.itwill.shop.dto.Product"%>
-<%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
-<%@page import="com.itwill.shop.service.CategoryService"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -18,10 +17,13 @@ List<Product> productList = productService.selectAll();
 <title>Insert title here</title>
 </head>
 <body>
-<form>
 
 <h3>[상품리스트]</h3>
 <hr>
+
+<div>
+	<a href='product_insert_form.jsp'>[상품등록하기]</a>
+</div>
 
 <%--
 <% for(Product product : productList) { %>
