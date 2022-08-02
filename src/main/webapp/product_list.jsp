@@ -3,8 +3,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	CategoryService categoryService = new CategoryService();
-	categoryService.categoryList();
+	
 %>
 
 
