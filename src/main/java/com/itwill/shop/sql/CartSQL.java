@@ -34,8 +34,8 @@ public class CartSQL {
 	public static final String CART_UPDATE_BY_USERID_P_NO =
 			"update cart c set c_qty=c_qty+2 where c.u_id=? and c.p_no=?";
 	public static final String CART_DELETE_BY_P_NO=
-			"delete from cart c where c.p_no=?";
+			"delete from cart where c_no=?";
 	public static final String CART_DELETE_BY_USERID =
-			"delete from cart c where c.u_id = ?";
+			"delete from cart where u_id = ?";
 	
 }
