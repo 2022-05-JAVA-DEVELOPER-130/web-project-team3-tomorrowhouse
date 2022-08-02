@@ -21,8 +21,10 @@ public class Order {
 	private String u_id;	
 	
 	private ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
+	//private List<OrderItem> orderItemList=new List<OrderItem>();
 	
 	public Order() {
+
 	}
 	public Order(int o_no, String o_desc, Date o_date, int o_price, String u_id, ArrayList<OrderItem> orderItemList) {
 		super();

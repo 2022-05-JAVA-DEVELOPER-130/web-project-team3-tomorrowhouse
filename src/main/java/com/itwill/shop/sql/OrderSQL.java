@@ -23,7 +23,7 @@ public class OrderSQL {
 		="select * from orders where o_no = ?";
 	
 	//5.멤버1명의 주문번호 3번의 모든 상세 정보(여러개) -> [order_detail.jsp]
-	//select * from orderitem where o_no = 3;
+	//select * from orderitem where o_no = 4;
 	public final static String SELECT_ORDERITEM_BY_ORDER_NO
 		="select * from orderitem where o_no = ?";
 

@@ -1,13 +1,11 @@
 package com.itwill.shop.dao.test;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import com.itwill.shop.dao.OrderDao;
 import com.itwill.shop.dto.Order;
 import com.itwill.shop.dto.OrderItem;
 import com.itwill.shop.dto.Product;
-
 
 
 public class OrderDaoTestMain {
@@ -70,6 +68,7 @@ public class OrderDaoTestMain {
 		System.out.println("\n7.상품detail에서 단일상품 주문");
 		Order newOrder = new Order(0, null, null, 345000, "test6", new ArrayList<OrderItem>());
 		newOrder.getOrderItemList().add(new OrderItem(0,7,0,new Product(11, null, 0, null, null, 0, null)));
+		newOrder.getOrderItemList().add(new OrderItem(0,99,0,new Product(10, null, 0, null, null, 0, null)));
 		
 		System.out.println(orderDao.create(newOrder));
 		
