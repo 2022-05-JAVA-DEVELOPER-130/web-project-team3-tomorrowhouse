@@ -13,12 +13,6 @@ Product detailProduct = new Product();
 String noStr = request.getParameter("p_no");
 detailProduct = productService.selectByNo(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
 
-
-/* 이름으로 1개 출력 */
-Product stringProduct = new Product();
-
-String nameStr = request.getParameter("p_name");
-stringProduct = productService.selectByName(new Product(0,nameStr,0,null,null,0,null));
 %>
 
 <!DOCTYPE html>
@@ -29,7 +23,7 @@ stringProduct = productService.selectByName(new Product(0,nameStr,0,null,null,0,
 </head>
 <body>
 <form>
-<h3>[<%=detailProduct.getP_no()%> 상세보기(상품번호)]</h1>
+<h3>[<%=detailProduct.getP_name()%> 상세보기(상품번호)]</h1>
 <hr>
 상품번호 <input type ='text'name='p_no' value='<%=detailProduct.getP_no()%>'><br>
 상품이름 <input type ='text'name='p_name' value='<%=detailProduct.getP_name()%>'><br>
@@ -38,18 +32,10 @@ stringProduct = productService.selectByName(new Product(0,nameStr,0,null,null,0,
 상품설명 <input type ='text'name='p_desc' value='<%=detailProduct.getP_desc()%>'><br>
 상품클릭수 <input type ='text'name='p_click_count' value='<%=detailProduct.getP_click_count()%>'><br>
 상품카테고리 <input type ='text'name='category' value='<%=detailProduct.getCategory().getCg_no()%>'><br>
-<br>
-<br>
-<h3>[<%=detailProduct.getP_name()%> 상세보기(상품이름)]</h1>
-<hr>
-번호: <%=detailProduct.getP_no()%><br>
-이름: <%=detailProduct.getP_name()%><br>
-가격: <%=detailProduct.getP_price()%><br>
-이미지: <%=detailProduct.getP_image()%><br>
-설명: <%=detailProduct.getP_desc()%><br>
-클릭수: <%=detailProduct.getP_click_count()%><br>
-카테고리: <%=detailProduct.getCategory().getCg_no()%><br>
 
+
+	<a href='product_update_form.jsp?p_no=<%=detailProduct.getP_no()%>'>[상품수정]</a>
+	<a href=''>[상품삭제]</a>
 </form>
 </body>
 </html>
