@@ -29,12 +29,15 @@ insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ
 
 select * from orders;
 
+select * from cart;
+select * from cart c join product p on c.p_no=p.p_no where c.u_id='user1';
+
+--insert시, 해당 oi_no로 작성된 후기가 있는지 체크
+select count(*) from review where oi_no=11;
+
 
 
 /* ------ review select------ */
-select * from review;
-
-
 -- ***리뷰 선택***
 
 -- (마이페이지-리뷰list) 로그인한 회원이 마이페이지?에서 리뷰를 모아서 볼 수 있음 -> u_id로 review 선택

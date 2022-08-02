@@ -74,6 +74,14 @@ public class ReviewDaoTestMain {
 				reviewDao.createReview(findReview);
 		System.out.println(result);
 		
+		System.out.println("9.리뷰 작성시, 기존에 작성된 리뷰가 있는지 orderItem_no로 체크");
+		findReview= new Review(0, null, null, null, new OrderItem(11, 0, 0, null));
+		result=
+		reviewDao.isExistedReviewByOrderitemNo(findReview);
+		System.out.println(result);
+		
+		
+		
 	}
 
 }
