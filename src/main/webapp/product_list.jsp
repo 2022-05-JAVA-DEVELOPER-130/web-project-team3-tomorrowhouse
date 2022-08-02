@@ -1,14 +1,15 @@
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
+<%@page import="com.itwill.shop.service.CategoryService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
+
 ProductService productService = new ProductService();
 List<Product> productList = productService.selectAll();
 %>    
-
 
 <!DOCTYPE html>
 <html>
