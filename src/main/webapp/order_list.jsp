@@ -13,6 +13,5 @@
 <title>Insert title here</title>
 </head>
 <body>
-sdfsdfsd
 </body>
 </html>
