@@ -53,7 +53,7 @@ public class ProductDaoTest {
 		System.out.println(productDao.deleteProduct(new Product(15, null, 0, null, null, 0, null)));
 		
 		//click_count
-		System.out.println(productDao.Click_Count(new Product(1, null, 0, null, null, 10, null)));
+		System.out.println(productDao.clickCount(new Product(1, null, 0, null, null, 10, null)));
 	
 		
 	}//
