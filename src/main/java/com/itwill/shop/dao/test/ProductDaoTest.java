@@ -19,12 +19,12 @@ public class ProductDaoTest {
 		
 				
 		System.out.println(">>상품번호(p_no)로 출력");
-		Product findProductNo = productDao.selectByNo(1);
+		Product findProductNo = productDao.selectByNo(new Product(19, null, 0, null, null, 0, null));
 		System.out.println(findProductNo);
 		
 				
 		System.out.println(">>상품이름(p_name)로 출력");
-		Product findProductName = productDao.selectByName("책상");
+		Product findProductName = productDao.selectByName(new Product(0, "의자", 0, null, null, 0, null));
 		System.out.println(findProductName);
 		
 		

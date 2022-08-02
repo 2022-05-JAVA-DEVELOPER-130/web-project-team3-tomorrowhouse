@@ -29,8 +29,8 @@ public class ProductServiceTest {
 		
 		/*********************<<관리자 전용>>**************************/
 		
-		System.out.println(">> 상품등록하기");
-		productService.insertProduct(new Product(0, "컴퓨터", 500000, "computer.jsp", "컴퓨터입니다", 0, new Category(3, null)));
+		//System.out.println(">> 상품등록하기");
+		//productService.insertProduct(new Product(0, "컴퓨터", 500000, "computer.jsp", "컴퓨터입니다", 0, new Category(3, null)));
 	}
 
 }
