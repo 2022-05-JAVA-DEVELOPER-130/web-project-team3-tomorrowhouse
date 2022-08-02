@@ -55,10 +55,10 @@ public class ProductDao {
 	
 	
 	//상품번호(p_no)로 1개 출력
-	public Product selectByNo(int p_no) throws Exception {
+	public Product selectByNo(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NO);
-		pstmt.setInt(1, p_no);
+		pstmt.setInt(1, product.getP_no());
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductNo = null;
 		if(rs.next()) {
@@ -79,10 +79,10 @@ public class ProductDao {
 	
 	
 	//상품이름(p_name)로 1개 출력
-	public Product selectByName(String p_name) throws Exception {
+	public Product selectByName(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
-		pstmt.setString(1, p_name);
+		pstmt.setString(1, product.getP_name());
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductName = null;
 		if(rs.next()) {
@@ -146,7 +146,7 @@ public class ProductDao {
 	
 		//Click_count "update product set p_click_count=p_click_count+? where p_no =?"
 		// 상품번호 기준 클릭수 증감(관리자 전용)
-		public int Click_Count(Product product) throws Exception{
+		public int clickCount(Product product) throws Exception{
 			Connection con = dataSource.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_CLICK_COUNT);
 			pstmt.setInt(1, product.getP_click_count());
