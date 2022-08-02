@@ -17,6 +17,11 @@ public class ProductService {
 	public List<Product> selectAll() throws Exception {
 		return productDao.selectAll();  
 	}
+	//카테고리번호로 해당상품 전체출력
+	public List<Product> selectAllByCgNo(int no) throws Exception{
+		return productDao.selectAllByCgNo(no);
+	}
+	
 	
 	//상품번호로 1개 출력
 	public Product selectByNo(Product product) throws Exception {

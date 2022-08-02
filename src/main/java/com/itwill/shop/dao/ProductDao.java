@@ -101,6 +101,30 @@ public class ProductDao {
 		return findProductName;
 	}
 
+	public List<Product> selectAllByCgNo(int cg_no)throws Exception{
+		List<Product> productList = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL_BY_CG_NO);
+		pstmt.setInt(1, cg_no);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productList.add(
+					new Product(rs.getInt("p_no"),
+								rs.getString("p_name"),
+								rs.getInt("p_price"),
+								rs.getString("p_image"),
+								rs.getString("p_desc"),
+								rs.getInt("p_click_count"),
+								new Category(rs.getInt("cg_no"),
+											 null)));
+		}
+		con.close();
+		return productList;
+	}
+	
+	
+	
+	
 		//InsertProduct - 새상품추가(관리자 전용)
 		public int insertProduct(Product product) throws Exception {
 			Connection con = dataSource.getConnection();
