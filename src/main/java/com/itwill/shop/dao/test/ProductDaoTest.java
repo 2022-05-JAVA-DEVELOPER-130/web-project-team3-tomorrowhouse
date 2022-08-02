@@ -17,14 +17,17 @@ public class ProductDaoTest {
 		List<Product> productList = productDao.selectAll();
 		System.out.println(productList);
 		
-				
+		System.out.println(">>카테고리번호(cg_no)로 상품전체출력");
+		List<Product> producList = productDao.selectAllByCgNo(2);	
+		System.out.println(producList);
+		
 		System.out.println(">>상품번호(p_no)로 출력");
-		Product findProductNo = productDao.selectByNo(1);
+		Product findProductNo = productDao.selectByNo(new Product(19, null, 0, null, null, 0, null));
 		System.out.println(findProductNo);
 		
 				
 		System.out.println(">>상품이름(p_name)로 출력");
-		Product findProductName = productDao.selectByName("책상");
+		Product findProductName = productDao.selectByName(new Product(0, "의자", 0, null, null, 0, null));
 		System.out.println(findProductName);
 		
 		
@@ -53,7 +56,7 @@ public class ProductDaoTest {
 		System.out.println(productDao.deleteProduct(new Product(15, null, 0, null, null, 0, null)));
 		
 		//click_count
-		System.out.println(productDao.Click_Count(new Product(1, null, 0, null, null, 10, null)));
+		System.out.println(productDao.clickCount(new Product(1, null, 0, null, null, 10, null)));
 	
 		
 	}//

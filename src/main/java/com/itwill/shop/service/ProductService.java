@@ -17,15 +17,20 @@ public class ProductService {
 	public List<Product> selectAll() throws Exception {
 		return productDao.selectAll();  
 	}
+	//카테고리번호로 해당상품 전체출력
+	public List<Product> selectAllByCgNo(int no) throws Exception{
+		return productDao.selectAllByCgNo(no);
+	}
+	
 	
 	//상품번호로 1개 출력
-	public Product selectByNo(int p_no) throws Exception {
-		return productDao.selectByNo(p_no);
+	public Product selectByNo(Product product) throws Exception {
+		return productDao.selectByNo(product);
 	}
 	
 	//상품이름으로 1개 출력
-	public Product selectByName(String p_name) throws Exception {
-		return productDao.selectByName(p_name);
+	public Product selectByName(Product product) throws Exception {
+		return productDao.selectByName(product);
 	}
 	
 	
@@ -37,8 +42,15 @@ public class ProductService {
 		return productDao.insertProduct(product);
 	}
 	
+	//상품수정하기
+	public int updateProduct(Product product) throws Exception {
+		return productDao.updateProduct(product);
+	}
 	
-	
+	//상품삭제하기
+	public int deleteProduct(Product product) throws Exception {
+		return productDao.deleteProduct(product);
+	}
 	
 
 }//
