@@ -16,6 +16,10 @@ public class ProductSQL {
  public final static String PRODUCT_SELECT_BY_NAME
  				= "select * from product where p_name = ?";
  
+ //product 카테고리번호(cg_no)로 상품리스트 보기
+ public final static String PRODUCT_SELECT_ALL_BY_CG_NO
+ 				= "select * from product where cg_no = ?";
+ 
  
  /* Update문 (관리자전용) */
 

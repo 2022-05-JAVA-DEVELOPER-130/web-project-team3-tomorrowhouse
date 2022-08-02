@@ -17,7 +17,10 @@ public class ProductDaoTest {
 		List<Product> productList = productDao.selectAll();
 		System.out.println(productList);
 		
-				
+		System.out.println(">>카테고리번호(cg_no)로 상품전체출력");
+		List<Product> producList = productDao.selectAllByCgNo(2);	
+		System.out.println(producList);
+		
 		System.out.println(">>상품번호(p_no)로 출력");
 		Product findProductNo = productDao.selectByNo(new Product(19, null, 0, null, null, 0, null));
 		System.out.println(findProductNo);
