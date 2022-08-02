@@ -78,8 +78,9 @@ public class OrderDaoTestMain {
 		System.out.println("7-1.상품detail에서 단일상품 주문");
 		int p_no=11;
 		int p_qty=7;
+		Product product = new Product(11, null, p_no, null, null, p_qty, null);
 		List<OrderItem> newOrderItemList=new ArrayList<OrderItem>();
-		Product product = productDao.selectByNo(p_no);
+		product = productDao.selectByNo(product);
 		newOrderItemList.add(new OrderItem(0, p_qty, 0, product));
 		/*
 			private int o_no;
