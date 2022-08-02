@@ -16,4 +16,7 @@ public class UserInfoSQL {
 	//모든 회원 찾기 <USER_SELECT_ALL>
 	public final static String USER_SELECT_ALL=
 	"select u_id,u_pw,u_name,u_email,u_address,u_phone from userinfo";
+	//ID로 중복 체크 <USER_SELECT_BY_ID_COUNT>
+	public final static String USER_SELECT_BY_ID_COUNT=
+	"select count(*) cnt from userinfo where u_id=?";
 }
