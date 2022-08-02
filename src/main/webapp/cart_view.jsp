@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>     
+
 <%
 	
 	
@@ -14,5 +14,6 @@
 <title>Insert title here</title>
 </head>
 <body>
+SSDSDAS
 </body>
 </html>
