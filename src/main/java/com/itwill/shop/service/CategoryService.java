@@ -22,12 +22,27 @@ public class CategoryService {
 		return categoryDao.CategoryByName(name);
 	}
 	
-	
-	
-	
-	//카테고리스트 
+	/*****************관리자용*********************************/
+	//카테고리 리스트 
 	public List<Category> categoryList ()throws Exception{
 		return categoryDao.selectAll();
 	}
+	
+	//카테고리 추가
+	public int categoryInsert(Category category)throws Exception {
+		return categoryDao.insertCategory(category);
+	}
+	//카테고리 변경
+	public int  categoryUpdate(Category category)throws Exception {
+		return categoryDao.categoryUpdate(category);
+	}
+	//카테고리 삭제
+	public int categoryDelete(Category category)throws Exception {
+		return categoryDao.categoryDelete(category);
+	}
+	
+	
+	
+	
 	
 }
