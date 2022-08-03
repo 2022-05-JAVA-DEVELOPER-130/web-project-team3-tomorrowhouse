@@ -1,22 +1,22 @@
 ----------------------------------------------------------userinfo---------------------------------------------------------
 --select
---IDë¡œ íšŒì› ì°¾ê¸°
+--ID·Î È¸¿ø Ã£±â
 select u_id,u_pw,u_name,u_email,u_address,u_phone from userinfo where u_id='test2';
 
---ëª¨ë“  íšŒì› ì°¾ê¸°
+--¸ğµç È¸¿ø Ã£±â
 select u_id,u_pw,u_name,u_email,u_address,u_phone from userinfo;
 
---ID ì¤‘ë³µ ì²´í¬
+--ID Áßº¹ Ã¼Å©
 select count(*) cnt from userinfo where u_id='test3';
 
 
 --update
---íšŒì› ì •ë³´ ìˆ˜ì •
-update  userinfo set u_pw='pw100' ,u_name='ì´ë¦„ìˆ˜ì •',u_email='test100@test.com',u_address='ì£¼ì†Œìˆ˜ì •',u_phone='999-9999-9999' where u_id='test1';
+--È¸¿ø Á¤º¸ ¼öÁ¤
+update  userinfo set u_pw='pw100' ,u_name='ÀÌ¸§¼öÁ¤',u_email='test100@test.com',u_address='ÁÖ¼Ò¼öÁ¤',u_phone='999-9999-9999' where u_id='test1';
 
 
 --delete
---íšŒì› ì‚­ì œ
+--È¸¿ø »èÁ¦
 delete userinfo where u_id='test4';
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -24,28 +24,28 @@ delete userinfo where u_id='test4';
 
 ----------------------------------------------------------product---------------------------------------------------------
 --select
--- product ì „ì²´ë³´ê¸°
+-- product ÀüÃ¼º¸±â
 select * from product;
 
--- product ìƒí’ˆë²ˆí˜¸(p_no)ë¡œ 1ê°œ ë³´ê¸°
+-- product »óÇ°¹øÈ£(p_no)·Î 1°³ º¸±â
 select * from product where p_no = 1 ;
 
--- product ìƒí’ˆì´ë¦„(p_name)ë¡œ 1ê°œ ë³´ê¸°
-select * from product where p_name = 'ì±…ìƒ';
+-- product »óÇ°ÀÌ¸§(p_name)·Î 1°³ º¸±â
+select * from product where p_name = 'Ã¥»ó';
 
 
 
 --update
--- product ìƒí’ˆë²ˆí˜¸(p_no)ë¡œ ë¶ˆëŸ¬ì„œ ìˆ˜ì •( ì´ë¦„(p_no), ê°€ê²©(p_price), ì´ë¯¸ì§€(p_image), ìƒí’ˆì„¤ëª…(p_desc), ì¹´í…Œê³ ë¦¬(cg_no)
-update product set p_name='ì±…ìƒ' ,p_price =100000 , p_image = 'desk.jpg' ,p_desc = 'ì±…ìƒì…ë‹ˆë‹¤' , cg_no =1  where p_no = 1 ;
+-- product »óÇ°¹øÈ£(p_no)·Î ºÒ·¯¼­ ¼öÁ¤( ÀÌ¸§(p_no), °¡°İ(p_price), ÀÌ¹ÌÁö(p_image), »óÇ°¼³¸í(p_desc), Ä«Å×°í¸®(cg_no)
+update product set p_name='Ã¥»ó' ,p_price =100000 , p_image = 'desk.jpg' ,p_desc = 'Ã¥»óÀÔ´Ï´Ù' , cg_no =1  where p_no = 1 ;
 
--- ìƒí’ˆë²ˆí˜¸(p_no)ë¡œ í´ë¦­ìˆ˜(p_click_count) ì¦ê°€
+-- »óÇ°¹øÈ£(p_no)·Î Å¬¸¯¼ö(p_click_count) Áõ°¡
 update product set p_click_count=p_click_count+1 where p_no =1;
 
 
 
 --delete
--- product ìƒí’ˆë²ˆí˜¸(p_no)ë¡œ ì‚­ì œ
+-- product »óÇ°¹øÈ£(p_no)·Î »èÁ¦
 delete from product where p_no = 16;
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -53,24 +53,24 @@ delete from product where p_no = 16;
 
 ----------------------------------------------------------category---------------------------------------------------------
 --select
---ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸ë¡œ ì°¾ê¸° 
+--Ä«Å×°í¸® ¹øÈ£·Î Ã£±â 
 select * from product p join categorys c on p.cg_no = c.cg_no where c.cg_no = 1;
 
---ì¹´í…Œê³ ë¦¬ ì´ë¦„ìœ¼ë¡œ ì°¾ê¸°
-select * from product p join categorys c on p.cg_no = c.cg_no where c.cg_name='ìˆ˜ë‚©';
+--Ä«Å×°í¸® ÀÌ¸§À¸·Î Ã£±â
+select * from product p join categorys c on p.cg_no = c.cg_no where c.cg_name='¼ö³³';
 
---selectAll ì¹´í…Œê³ ë¦¬ ì „ì²´ì°¾ê¸°
+--selectAll Ä«Å×°í¸® ÀüÃ¼Ã£±â
 select * from categorys;
 
 
 --update
---update ì¹´í…Œê³ ë¦¬ ì„¤ì •ë³€ê²½
-update categorys set cg_no = 4, cg_name='ë°ì½”,ì¥ì‹' where cg_no= 3;
+--update Ä«Å×°í¸® ¼³Á¤º¯°æ
+update categorys set cg_no = 4,cg_name='µ¥ÄÚ,Àå½Ä' where cg_no= 3;
 
 
 
 --delete
---delete ì¹´í…Œê³ ë¦¬ ì‚­ì œ
+--delete Ä«Å×°í¸® »èÁ¦
 delete  from categorys where cg_no=4;
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -79,25 +79,25 @@ delete  from categorys where cg_no=4;
 
 ------------------------------------------------------------cart-----------------------------------------------------------
 --select
---ë¡œê·¸ì¸í•œ test1ë‹˜ì˜ ì¹´íŠ¸ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
-select * from cart c join product p on c.p_no=p.p_no where c.u_id='test';
+--·Î±×ÀÎÇÑ test1´ÔÀÇ Ä«Æ® ¸®½ºÆ® ºÒ·¯¿À±â
+select * from cart c join product p on c.p_no=p.p_no where c.u_id='test1';
 
---ë¡œê·¸ì¸í•œ test1ë‹˜ì˜ ì¹´íŠ¸ ë¦¬ìŠ¤íŠ¸ì— ì œí’ˆë„˜ë²„ 1ë²ˆì˜ ì¡´ì¬ì—¬ë¶€ í™•ì¸(0ì¼ ê²½ìš° insert,1ì´ìƒì¼ ê²½ìš° update)
+--·Î±×ÀÎÇÑ test1´ÔÀÇ Ä«Æ® ¸®½ºÆ®¿¡ Á¦Ç°³Ñ¹ö 1¹øÀÇ Á¸Àç¿©ºÎ È®ÀÎ(0ÀÏ °æ¿ì insert,1ÀÌ»óÀÏ °æ¿ì update)
 select count(*) product_count from cart c where c.u_id='test1' and c.p_no=1;
 
 
 
 --update
---test1ë‹˜ì˜ ì¹´íŠ¸ë¦¬ìŠ¤íŠ¸ì— ìˆëŠ” ì œí’ˆ1ë²ˆì˜ ìˆ˜ëŸ‰ 2ê°œ ì¦ê°€
+--test1´ÔÀÇ Ä«Æ®¸®½ºÆ®¿¡ ÀÖ´Â Á¦Ç°1¹øÀÇ ¼ö·® 2°³ Áõ°¡
 update cart c set c_qty=c_qty+2 where c.u_id='test1' and c.p_no=1;
 
 
 
 --delete
---test1ë‹˜ì˜ ì¹´íŠ¸ë¦¬ìŠ¤íŠ¸ì— ìˆëŠ” ì œí’ˆ1ë²ˆ ì‚­ì œ
+--test1´ÔÀÇ Ä«Æ®¸®½ºÆ®¿¡ ÀÖ´Â Á¦Ç°1¹ø »èÁ¦
 delete from cart c where c.p_no=1;
 
---test1ë‹˜ì˜ ì¹´íŠ¸ë¦¬ìŠ¤íŠ¸ ì „ì²´ì‚­ì œ
+--test1´ÔÀÇ Ä«Æ®¸®½ºÆ® ÀüÃ¼»èÁ¦
 delete from cart c where c.u_id = 'test1';
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -106,28 +106,28 @@ delete from cart c where c.u_id = 'test1';
 --------------------------------------------------------order-------------------------------------------------------------
 /**************** orders_orderitem***************/
 --select
--- ì£¼ë¬¸ & ì£¼ë¬¸ ìƒì„¸ ì „ì²´ ëª©ë¡ (ê´€ë¦¬ì)
+-- ÁÖ¹® & ÁÖ¹® »ó¼¼ ÀüÃ¼ ¸ñ·Ï (°ü¸®ÀÚ)
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no;
 
--- test2ì˜ ì£¼ë¬¸ í•œê°œ(o_no=4) & ì£¼ë¬¸ìƒì„¸, ìƒí’ˆ ì •ë³´ ëª¨ë‘ ë³´ê¸°
+-- test2ÀÇ ÁÖ¹® ÇÑ°³(o_no=4) & ÁÖ¹®»ó¼¼, »óÇ° Á¤º¸ ¸ğµÎ º¸±â
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = 'test2' and o.o_no=4;
 
--- test2 ê³ ê°ì˜ ì£¼ë¬¸ ì „ì²´ ëª©ë¡
+-- test2 °í°´ÀÇ ÁÖ¹® ÀüÃ¼ ¸ñ·Ï
 select * from orders where u_id = 'test2';
 
--- test3 ê³ ê° ì£¼ë¬¸ & ì£¼ë¬¸ ìƒì„¸ ì „ì²´ ëª©ë¡
+-- test3 °í°´ ÁÖ¹® & ÁÖ¹® »ó¼¼ ÀüÃ¼ ¸ñ·Ï
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id='test3';
 
--- ë©¤ë²„1ëª…ì˜ ì£¼ë¬¸ë²ˆí˜¸ 4ë²ˆì˜ ì£¼ë¬¸ ì •ë³´
+-- ¸â¹ö1¸íÀÇ ÁÖ¹®¹øÈ£ 4¹øÀÇ ÁÖ¹® Á¤º¸
 select * from orders where o_no = 4;
 
--- ë©¤ë²„1ëª…ì˜ ì£¼ë¬¸ë²ˆí˜¸ 3ë²ˆì˜ ëª¨ë“  ìƒì„¸ ì •ë³´(ì—¬ëŸ¬ê°œ)
+-- ¸â¹ö1¸íÀÇ ÁÖ¹®¹øÈ£ 3¹øÀÇ ¸ğµç »ó¼¼ Á¤º¸(¿©·¯°³)
 select * from orderitem where o_no = 3;
 
 
 
 --delete
---ì£¼ë¬¸ë²ˆí˜¸ 3ë²ˆ ì‚­ì œ(ì£¼ë¬¸1ê°œì‚­ì œ,ì£¼ë¬¸ìƒì„¸ì‚­ì œ
+--ÁÖ¹®¹øÈ£ 3¹ø »èÁ¦(ÁÖ¹®1°³»èÁ¦,ÁÖ¹®»ó¼¼»èÁ¦
 --on delete cascade
 delete from orderitem where o_no=3;
 delete from orders where o_no=3;
@@ -135,7 +135,7 @@ delete from orders where o_no=3;
 
 
 
--- test3 ê³ ê°ì˜ ì£¼ë¬¸ ë‚´ì—­ ì „ì²´ ì‚­ì œ
+-- test3 °í°´ÀÇ ÁÖ¹® ³»¿ª ÀüÃ¼ »èÁ¦
 --select
 select * from orders;
 select * from orderitem;
