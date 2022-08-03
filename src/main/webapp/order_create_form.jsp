@@ -2,9 +2,10 @@
 <%@page import="com.itwill.shop.service.OrderService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>
 <%
 
-String sUserId = null;
+sUserId = null;
 
 //OrderService orderService = new OrderService();
 CartService cartService = new CartService();
