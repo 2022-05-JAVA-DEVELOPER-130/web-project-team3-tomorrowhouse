@@ -49,6 +49,7 @@ DROP SEQUENCE cart_c_no_SEQ;
 
 CREATE SEQUENCE cart_c_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+
 CREATE TABLE orders(
 		o_no                          		NUMBER(10)		 NULL ,
 		o_desc                        		VARCHAR2(100)		 NULL ,
@@ -61,6 +62,7 @@ DROP SEQUENCE orders_o_no_SEQ;
 
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+
 CREATE TABLE orderitem(
 		oi_no                         		NUMBER(10)		 NULL ,
 		oi_qty                        		NUMBER(10)		 NULL ,
@@ -72,22 +74,24 @@ DROP SEQUENCE orderitem_oi_no_SEQ;
 
 CREATE SEQUENCE orderitem_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+
 CREATE TABLE qna(
 		q_no                          		NUMBER(10)		 NULL ,
 		q_title                       		VARCHAR2(200)		 NULL ,
 		q_content                     		VARCHAR2(3000)		 NULL ,
-		q_date                        		DATE		 NULL ,
+		q_date                        		DATE		 DEFAULT sysdate		 NULL ,
 		q_category                    		VARCHAR2(100)		 NULL ,
-		q_readcount                   		NUMBER(10)		 NULL ,
+		q_readcount                   		NUMBER(10)		 DEFAULT 0		 NULL ,
 		q_groupno                     		NUMBER(10)		 NULL ,
-		q_step                        		NUMBER(10)		 NULL ,
-		q_depth                       		NUMBER(10)		 NULL ,
+		q_step                        		NUMBER(10)		 DEFAULT 0		 NULL ,
+		q_depth                       		NUMBER(10)		 DEFAULT 0		 NULL ,
 		u_id                          		VARCHAR2(50)		 NULL 
 );
 
 DROP SEQUENCE qna_q_no_SEQ;
 
 CREATE SEQUENCE qna_q_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 CREATE TABLE review(
 		r_no                          		NUMBER(10)		 NULL ,
@@ -100,6 +104,7 @@ CREATE TABLE review(
 DROP SEQUENCE review_r_no_SEQ;
 
 CREATE SEQUENCE review_r_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 CREATE TABLE notice(
 		n_no                          		NUMBER(10)		 NULL ,
@@ -140,4 +145,3 @@ ALTER TABLE review ADD CONSTRAINT IDX_review_FK1 FOREIGN KEY (oi_no) REFERENCES 
 
 ALTER TABLE notice ADD CONSTRAINT IDX_notice_PK PRIMARY KEY (n_no);
 
-commit;

@@ -2,7 +2,7 @@ package com.itwill.shop.sql;
 
 public class QnaSQL {
 	public static final String QNA_INSERT =
-			"insert into qna values(qna_q_no_seq.nextval, ?, ?, null, ?, ?); ";
+			"insert into qna(q_no, q_title, q_content, q_groupno, q_step, u_id) values(qna_q_no_seq.nextval, ?, ?, qna_q_no_seq.currval, 1, ?)";
 	
 	public static final String QNA_SELECT_ALL = 
 			"select * from qna;";
@@ -23,6 +23,6 @@ public class QnaSQL {
 	// test2의 문의 1개 pk로 변경
 	
 	public static final String QNA_DELETE_BY_NO_AND_ID = 
-			"delete from qna where u_id = ? and q_no = ?;";
+			"delete from qna where u_id=? and q_no = ?;";
 	// test1의 문의 pk로 1개 삭제
 }

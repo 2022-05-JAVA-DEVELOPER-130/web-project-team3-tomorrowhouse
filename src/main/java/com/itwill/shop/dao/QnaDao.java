@@ -33,14 +33,11 @@ public class QnaDao {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		con = dataSource.getConnection();
 		pstmt = con.prepareStatement(QnaSQL.QNA_INSERT);
 		pstmt.setString(1, qna.getQ_title());
 		pstmt.setString(2, qna.getQ_content());
-		pstmt.setDate(3, (Date)qna.getQ_date());
-		pstmt.setString(4, qna.getQ_category());
-		pstmt.setString(5, qna.getUserInfo().getU_id());
+		pstmt.setString(3, qna.getU_id());
 				
 		int createRowCount = pstmt.executeUpdate();
 		
@@ -53,13 +50,26 @@ public class QnaDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int deleteRowCount = 0;
+		try {
 		con = dataSource.getConnection();
-		pstmt.setString(1, qna.getUserInfo().getU_id());
-		pstmt.setInt(2, qna.getQ_no());
+		pstmt.setInt(1, qna.getQ_no());
+		pstmt.setString(2, qna.getU_id());
 		
-		int deleteRowCount = pstmt.executeUpdate(); 
+		deleteRowCount = pstmt.executeUpdate(); 
 		
-		con.close();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception ex) {
+		}
+		try {
+			if (con != null)
+				con.close();;
+			} catch (Exception ex) {
+			}
+		}
 		return deleteRowCount;
 	}
 	
