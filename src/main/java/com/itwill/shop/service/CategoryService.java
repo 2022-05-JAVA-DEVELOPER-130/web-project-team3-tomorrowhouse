@@ -17,11 +17,12 @@ public class CategoryService {
 	public Category categoryListByNo(int no)throws Exception {
 		return categoryDao.categoryByNo(no);
 	}
+	/* 이름을 이용하여 찾을 상황이 없어서 주석처리
 	//카테고리 이름으로 찾기
 	public Category categoryListByName(String name)throws Exception{
 		return categoryDao.CategoryByName(name);
 	}
-	
+	*/
 	/*****************관리자용*********************************/
 	//카테고리 리스트 
 	public List<Category> categoryList ()throws Exception{
