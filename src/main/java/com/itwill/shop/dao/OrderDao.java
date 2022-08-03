@@ -38,88 +38,87 @@ public class OrderDao {
 	 *********************************************/
 	/* ------ order select------ */
 	/*
-	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
+	 * 1-1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
-		public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
-			/*
-			 * select * from orders o join orderitem oi on o.o_no = oi.o_no join product p
-			 * on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?
-			 */
-			Order findOrder = null;
-	
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_USERID_ORDERNO);
-			pstmt.setString(1, order.getU_id());
-			pstmt.setInt(2, order.getO_no());
-			rs = pstmt.executeQuery();
-	
-			if (rs.next()) {
-				findOrder = new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"), rs.getInt("o_price"),
-						rs.getString("u_id"), new ArrayList<OrderItem>());
-				do {
-					findOrder.getOrderItemList()
-							.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
-									new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-											rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
-											new Category(rs.getInt("cg_no"), null))));
-				} while (rs.next());
-			}
-			con.close();
-			return findOrder;
-		}
-		
+	public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
 		/*
-		 * 주문상세리스트(특정사용자)
+		 * select * from orders o join orderitem oi on o.o_no = oi.o_no join product p
+		 * on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?
 		 */
-		public List<Order> list_detail(Order order) throws Exception{
-			
-			List<Order> orderList = new ArrayList<Order>();
+		Order findOrder = null;
 
-			Connection con = dataSource.getConnection();
-			
-			PreparedStatement pstmt1= con.prepareStatement(OrderSQL.ORDER_O_NO_LIST);
-			PreparedStatement pstmt2= con.prepareStatement(OrderSQL.ORDER_LIST_BY_ORDER_NO_USERID);
-			
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		con = dataSource.getConnection();
+		pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_USERID_ORDERNO);
+		pstmt.setString(1, order.getU_id());
+		pstmt.setInt(2, order.getO_no());
+		rs = pstmt.executeQuery();
+
+		if (rs.next()) {
+			findOrder = new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"), rs.getInt("o_price"),
+					rs.getString("u_id"), new ArrayList<OrderItem>());
+			do {
+				findOrder.getOrderItemList()
+						.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
+								new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
+										rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
+										new Category(rs.getInt("cg_no"), null))));
+			} while (rs.next());
+		}
+		con.close();
+		return findOrder;
+	}
+
+	/*
+	 * 1-2.주문상세리스트(특정사용자) - 
+	 */
+	public List<Order> list_detail(Order order) throws Exception {
+
+		List<Order> orderList = new ArrayList<Order>();
+
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		/*
+		   public static final String ORDER_LIST_BY_ORDER_NO_USERID
+		   ="select * from orders o join order_item oi on o.o_no=oi.o_no"
+		   		+ "join  product p on oi.p_no=p.p_no"
+		   		+ "where o.u_id=? and o.o_no = ?";
+		 */
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt1 = con.prepareStatement(OrderSQL.ORDER_O_NO_LIST);
+			pstmt2 = con.prepareStatement(OrderSQL.ORDER_LIST_BY_ORDER_NO_USERID);
+
 			pstmt1.setString(1, order.getU_id());
 			ResultSet rs1 = pstmt1.executeQuery();
-			
-			
-			while(rs1.next()) {
-				
-				int temp_o_no=rs1.getInt("o_no");
-				
+
+			while (rs1.next()) {
+
+				int temp_o_no = rs1.getInt("o_no");
+
 				pstmt2.clearParameters();
 				pstmt2.setString(1, order.getU_id());
 				pstmt2.setInt(2, temp_o_no);
-				
+
 				ResultSet rs2 = pstmt2.executeQuery();
-				
+
 				Order findOrder = null;
-				
-				if(rs2.next()) {
-					findOrder = new Order(rs2.getInt("o_no"),
-							rs2.getString("o_desc"),
-							rs2.getDate("o_date"),
-							rs2.getInt("o_price"),
-							rs2.getString("userId"),
-							new ArrayList<OrderItem>());
+
+				if (rs2.next()) {
+					findOrder = new Order(rs2.getInt("o_no"), rs2.getString("o_desc"), rs2.getDate("o_date"),
+							rs2.getInt("o_price"), rs2.getString("userId"), new ArrayList<OrderItem>());
 					do {
-						findOrder.getOrderItemList().add(new OrderItem(rs2.getInt("oi_no"),
-																	rs2.getInt("oi_qty"),
-																	rs2.getInt("o_no"),
-																	new Product(rs2.getInt("p_no"),
-																				rs2.getString("p_name"),
-																				rs2.getInt("p_price"),
-																				rs2.getString("p_image"),
-																				rs2.getString("p_desc"),
-																				rs2.getInt("p_click_cout"),
-																				new Category(rs2.getInt("cg_no"), null) )
-													));
-					}while(rs2.next());
-					
+						findOrder.getOrderItemList()
+								.add(new OrderItem(rs2.getInt("oi_no"), rs2.getInt("oi_qty"), rs2.getInt("o_no"),
+										new Product(rs2.getInt("p_no"), rs2.getString("p_name"), rs2.getInt("p_price"),
+												rs2.getString("p_image"), rs2.getString("p_desc"),
+												rs2.getInt("p_click_cout"), new Category(rs2.getInt("cg_no"), null))));
+					} while (rs2.next());
+
 					/*
 					 * orderItem리스트는 
 					 * Order객체 내부에 null
@@ -128,19 +127,35 @@ public class OrderDao {
 					 * order.setOrderItemList(orderItemList) 해도 됨.
 					 * 
 					 */
-				}// end if
+				} // end if
 				orderList.add(order);
-			}// end while
-			return orderList;
+			} // end while
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			con.rollback();
 		}
-		
-		
-		
+		con.close();
+		return orderList;
+	}
 	
-	
-	
-	
-	
+	public ArrayList<Order> orderNoListByUserId(Order order) throws Exception{
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		con = dataSource.getConnection();
+		pstmt = con.prepareStatement(OrderSQL.ORDER_O_NO_LIST);
+		pstmt.setString(1, order.getU_id());
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			orderList.add(new Order(rs.getInt("o_no"), null, null,
+					0, null, null));
+		}
+		con.close();
+		return orderList;
+	}
+
 	/*
 	 * 2. 고객1명(특정사용자)의 주문 전체 목록
 	 */
