@@ -5,12 +5,16 @@ import java.util.Date;
 /*
 이름         널?       유형            
 ---------- -------- ------------- 
-Q_NO       NOT NULL NUMBER(10)    
-Q_TITLE             VARCHAR2(100) 
-Q_CONTENT           VARCHAR2(10)  
-Q_DATE              DATE          
-Q_CATEGORY          VARCHAR2(10)  
-U_ID                VARCHAR2(50)  
+Q_NO        NOT NULL NUMBER(10)     
+Q_TITLE              VARCHAR2(200)  
+Q_CONTENT            VARCHAR2(3000) 
+Q_DATE               DATE           
+Q_CATEGORY           VARCHAR2(100)  
+Q_READCOUNT          NUMBER(10)     
+Q_GROUPNO            NUMBER(10)     
+Q_STEP               NUMBER(10)     
+Q_DEPTH              NUMBER(10)     
+U_ID                 VARCHAR2(50)   
  */
 public class Qna {
 	private int q_no;
@@ -18,20 +22,29 @@ public class Qna {
 	private String q_content;
 	private Date q_date;
 	private String q_category;
-	private UserInfo userInfo;
+	private int q_readcount;
+	private int q_groupno;
+	private int q_step;
+	private int q_depth;
+	private String u_id;
 	
 	public Qna() {
 		
 	}
 
-	public Qna(int q_no, String q_title, String q_content, Date q_date, String q_category, UserInfo userInfo) {
+	public Qna(int q_no, String q_title, String q_content, Date q_date, String q_category, int q_readcount,
+			int q_groupno, int q_step, int q_depth, String u_id) {
 		super();
 		this.q_no = q_no;
 		this.q_title = q_title;
 		this.q_content = q_content;
 		this.q_date = q_date;
 		this.q_category = q_category;
-		this.userInfo = userInfo;
+		this.q_readcount = q_readcount;
+		this.q_groupno = q_groupno;
+		this.q_step = q_step;
+		this.q_depth = q_depth;
+		this.u_id = u_id;
 	}
 
 	public int getQ_no() {
@@ -74,19 +87,46 @@ public class Qna {
 		this.q_category = q_category;
 	}
 
-	public UserInfo getUserInfo() {
-		return userInfo;
+	public int getQ_readcount() {
+		return q_readcount;
 	}
 
-	public void setU_id(UserInfo userInfo) {
-		this.userInfo = userInfo;
+	public void setQ_readcount(int q_readcount) {
+		this.q_readcount = q_readcount;
 	}
 
-	@Override
-	public String toString() {
-		return "qna [q_no=" + q_no + ", q_title=" + q_title + ", q_content=" + q_content + ", q_date=" + q_date
-				+ ", q_category=" + q_category + ", u_id=" + userInfo + "]";
+	public int getQ_groupno() {
+		return q_groupno;
 	}
+
+	public void setQ_groupno(int q_groupno) {
+		this.q_groupno = q_groupno;
+	}
+
+	public int getQ_step() {
+		return q_step;
+	}
+
+	public void setQ_step(int q_step) {
+		this.q_step = q_step;
+	}
+
+	public int getQ_depth() {
+		return q_depth;
+	}
+
+	public void setQ_depth(int q_depth) {
+		this.q_depth = q_depth;
+	}
+
+	public String getU_id() {
+		return u_id;
+	}
+
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
+	}
+	
 	
 	
 }

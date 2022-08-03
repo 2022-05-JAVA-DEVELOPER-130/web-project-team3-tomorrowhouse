@@ -38,8 +38,6 @@ DROP SEQUENCE product_p_no_SEQ;
 
 CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-
-
 CREATE TABLE cart(
 		c_no                          		NUMBER(10)		 NULL ,
 		c_qty                         		NUMBER(10)		 NULL ,
@@ -50,7 +48,6 @@ CREATE TABLE cart(
 DROP SEQUENCE cart_c_no_SEQ;
 
 CREATE SEQUENCE cart_c_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 CREATE TABLE orders(
@@ -66,7 +63,6 @@ DROP SEQUENCE orders_o_no_SEQ;
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
-
 CREATE TABLE orderitem(
 		oi_no                         		NUMBER(10)		 NULL ,
 		oi_qty                        		NUMBER(10)		 NULL ,
@@ -79,20 +75,22 @@ DROP SEQUENCE orderitem_oi_no_SEQ;
 CREATE SEQUENCE orderitem_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
-
 CREATE TABLE qna(
 		q_no                          		NUMBER(10)		 NULL ,
-		q_title                       		VARCHAR2(100)		 NULL ,
-		q_content                     		VARCHAR2(100)		 NULL ,
-		q_date                        		DATE		 NULL ,
+		q_title                       		VARCHAR2(200)		 NULL ,
+		q_content                     		VARCHAR2(3000)		 NULL ,
+		q_date                        		DATE		 DEFAULT sysdate		 NULL ,
 		q_category                    		VARCHAR2(100)		 NULL ,
+		q_readcount                   		NUMBER(10)		 DEFAULT 0		 NULL ,
+		q_groupno                     		NUMBER(10)		 NULL ,
+		q_step                        		NUMBER(10)		 DEFAULT 0		 NULL ,
+		q_depth                       		NUMBER(10)		 DEFAULT 0		 NULL ,
 		u_id                          		VARCHAR2(50)		 NULL 
 );
 
 DROP SEQUENCE qna_q_no_SEQ;
 
 CREATE SEQUENCE qna_q_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 CREATE TABLE review(
@@ -108,7 +106,6 @@ DROP SEQUENCE review_r_no_SEQ;
 CREATE SEQUENCE review_r_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
-
 CREATE TABLE notice(
 		n_no                          		NUMBER(10)		 NULL ,
 		n_title                       		VARCHAR2(100)		 NULL ,
@@ -119,7 +116,6 @@ CREATE TABLE notice(
 DROP SEQUENCE notice_n_no_SEQ;
 
 CREATE SEQUENCE notice_n_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 ALTER TABLE userinfo ADD CONSTRAINT IDX_userinfo_PK PRIMARY KEY (u_id);
@@ -134,21 +130,18 @@ ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK0 FOREIGN KEY (u_id) REFERENCES useri
 ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK1 FOREIGN KEY (p_no) REFERENCES product (p_no);
 
 ALTER TABLE orders ADD CONSTRAINT IDX_orders_PK PRIMARY KEY (o_no);
-ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (u_id) REFERENCES userinfo (u_id) ON DELETE CASCADE;
+ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (u_id) REFERENCES userinfo (u_id) ON DELETE set null;
 
 ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_PK PRIMARY KEY (oi_no);
 ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_FK0 FOREIGN KEY (p_no) REFERENCES product (p_no);
-
---ALTER TABLE orderitem drop CONSTRAINT IDX_orderitem_FK1;
 ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_FK1 FOREIGN KEY (o_no) REFERENCES orders (o_no) ON DELETE CASCADE;
 
 ALTER TABLE qna ADD CONSTRAINT IDX_qna_PK PRIMARY KEY (q_no);
 ALTER TABLE qna ADD CONSTRAINT IDX_qna_FK0 FOREIGN KEY (u_id) REFERENCES userinfo (u_id) ON DELETE CASCADE;
 
 ALTER TABLE review ADD CONSTRAINT IDX_review_PK PRIMARY KEY (r_no);
-ALTER TABLE review ADD CONSTRAINT IDX_review_FK0 FOREIGN KEY (u_id) REFERENCES userinfo (u_id) ON DELETE CASCADE;
+ALTER TABLE review ADD CONSTRAINT IDX_review_FK0 FOREIGN KEY (u_id) REFERENCES userinfo (u_id) ON DELETE set null;
 ALTER TABLE review ADD CONSTRAINT IDX_review_FK1 FOREIGN KEY (oi_no) REFERENCES orderitem (oi_no) ON DELETE CASCADE;
 
 ALTER TABLE notice ADD CONSTRAINT IDX_notice_PK PRIMARY KEY (n_no);
 
-commit;

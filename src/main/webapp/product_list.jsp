@@ -3,16 +3,16 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
 
+<%
 ProductService productService = new ProductService();
-List<Product> productList = productService.selectAll();
+List<Product> productList = productService.productSelectAll();
 %>    
 
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -25,22 +25,16 @@ List<Product> productList = productService.selectAll();
 	<a href='product_insert_form.jsp'>[상품등록하기]</a>
 </div>
 
-<%--
-<% for(Product product : productList) { %>
-상품번호 <input type ='text'name='상품번호' value='<%=product.getP_no()%>'><br>
-상품이름 <input type ='text'name='상품이름' value='<%=product.getP_name()%>'><br>
-상품가격 <input type ='text'name='상품가격' value='<%=product.getP_price()%>'><br>
-상품이미지 <input type ='text'name='상품이미지' value='<%=product.getP_image()%>'><br>
-상품설명 <input type ='text'name='상품번호' value='<%=product.getP_desc()%>'><br>
-상품클릭수 <input type ='text'name='상품번호' value='<%=product.getP_click_count()%>'><br>
-상품카테고리 <input type ='text'name='상품번호' value='<%=product.getCategory().getCg_no()%>'><br>
-<hr>
-<%}%>
- --%>
+<!-- include left<<카테고리>>Start -->
+<div id="categoryList">
+<jsp:include page="include_common_left.jsp"></jsp:include>
+</div>
+<!-- include left<<카테고리>>End -->
 
 <div>
 	<ul>
 		<% for(Product product : productList) { %>
+		<img src="image/product/<%=product.getP_image()%>" width="40px" height="40px">
 		<li><a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>[<%=product.getP_name()%>] 가격:<%=product.getP_price()%>원</a></li>
 		<% } %>
 	</ul>

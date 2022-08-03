@@ -31,7 +31,7 @@ public class ProductDao {
 			dataSource = basicDataSource;
 		}
 	//상품전체리스트출력
-	public List<Product> selectAll() throws Exception {
+	public List<Product> productSelectAll() throws Exception {
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL);
@@ -55,10 +55,10 @@ public class ProductDao {
 	
 	
 	//상품번호(p_no)로 1개 출력
-	public Product selectByNo(int p_no) throws Exception {
+	public Product productSelectByNo(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NO);
-		pstmt.setInt(1, p_no);
+		pstmt.setInt(1, product.getP_no());
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductNo = null;
 		if(rs.next()) {
@@ -79,10 +79,10 @@ public class ProductDao {
 	
 	
 	//상품이름(p_name)로 1개 출력
-	public Product selectByName(String p_name) throws Exception {
+	public Product productSelectByName(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
-		pstmt.setString(1, p_name);
+		pstmt.setString(1, product.getP_name());
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductName = null;
 		if(rs.next()) {
@@ -101,6 +101,30 @@ public class ProductDao {
 		return findProductName;
 	}
 
+	public List<Product> selectAllByCgNo(int cg_no)throws Exception{
+		List<Product> productList = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL_BY_CG_NO);
+		pstmt.setInt(1, cg_no);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productList.add(
+					new Product(rs.getInt("p_no"),
+								rs.getString("p_name"),
+								rs.getInt("p_price"),
+								rs.getString("p_image"),
+								rs.getString("p_desc"),
+								rs.getInt("p_click_count"),
+								new Category(rs.getInt("cg_no"),
+											 null)));
+		}
+		con.close();
+		return productList;
+	}
+	
+	
+	
+	
 		//InsertProduct - 새상품추가(관리자 전용)
 		public int insertProduct(Product product) throws Exception {
 			Connection con = dataSource.getConnection();
@@ -146,7 +170,7 @@ public class ProductDao {
 	
 		//Click_count "update product set p_click_count=p_click_count+? where p_no =?"
 		// 상품번호 기준 클릭수 증감(관리자 전용)
-		public int Click_Count(Product product) throws Exception{
+		public int clickCount(Product product) throws Exception{
 			Connection con = dataSource.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_CLICK_COUNT);
 			pstmt.setInt(1, product.getP_click_count());
@@ -155,5 +179,23 @@ public class ProductDao {
 			con.close();
 			return rowCount;
 		}
+		
+		
+		
+		 //product 검색기능
+		 //public final static String PRODUCT_SERCH = "select * from product where p_name like '%?%'";
+		
+		public String ProductSerch(Product product) throws Exception { 
+			Connection con = dataSource.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SERCH);
+						
+			
+			con.close();
+			return null;
+		}
+		 
+		
+		
+		
 		
 }//

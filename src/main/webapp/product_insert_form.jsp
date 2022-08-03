@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
 <br>
 
 <form method='post' action='product_insert_action.jsp'>
+<input type ='hidden'name='p_no'>
 상품이름 <input type ='text'name='p_name'><br>
 상품가격 <input type ='text'name='p_price'><br>
 상품이미지 <input type ='text'name='p_image'><br>

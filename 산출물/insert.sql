@@ -1,81 +1,148 @@
-------È¸¿ø µ¥ÀÌÅÍ------
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test1', 'pw1', 'Å×½ºÆ®1', 'test1@test.com', '¼­¿ï½Ã', '010-0000-0000');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test2', 'pw2', 'Å×½ºÆ®2', 'test2@test.com', 'ÀÎÃµ½Ã', '010-1111-1111');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test3', 'pw3', 'Å×½ºÆ®3', 'test3@test.com', '´ë±¸½Ã', '010-2222-2222');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test4', 'pw4', 'Å×½ºÆ®4', 'test4@test.com', 'ºÎ»ê½Ã', '010-3333-3333');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test5', 'pw5', 'Å×½ºÆ®5', 'test5@test.com', '¾È»ê½Ã', '010-4444-4444');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test6', 'pw6', 'Å×½ºÆ®6', 'test6@test.com', '¾È¾ç½Ã', '010-5555-5555');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test7', 'pw7', 'Å×½ºÆ®7', 'test7@test.com', '±¤ÁÖ½Ã', '010-6666-6666');
-insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test8', 'pw8', 'Å×½ºÆ®8', 'test8@test.com', '¿ï»ê½Ã', '010-7777-7777');
+------íšŒì› ë°ì´í„°------
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test1', 'pw1', 'í…ŒìŠ¤íŠ¸1', 'test1@test.com', 'ì„œìš¸ì‹œ', '010-0000-0000');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test2', 'pw2', 'í…ŒìŠ¤íŠ¸2', 'test2@test.com', 'ì¸ì²œì‹œ', '010-1111-1111');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test3', 'pw3', 'í…ŒìŠ¤íŠ¸3', 'test3@test.com', 'ëŒ€êµ¬ì‹œ', '010-2222-2222');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test4', 'pw4', 'í…ŒìŠ¤íŠ¸4', 'test4@test.com', 'ë¶€ì‚°ì‹œ', '010-3333-3333');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test5', 'pw5', 'í…ŒìŠ¤íŠ¸5', 'test5@test.com', 'ì•ˆì‚°ì‹œ', '010-4444-4444');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test6', 'pw6', 'í…ŒìŠ¤íŠ¸6', 'test6@test.com', 'ì•ˆì–‘ì‹œ', '010-5555-5555');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test7', 'pw7', 'í…ŒìŠ¤íŠ¸7', 'test7@test.com', 'ê´‘ì£¼ì‹œ', '010-6666-6666');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('test8', 'pw8', 'í…ŒìŠ¤íŠ¸8', 'test8@test.com', 'ìš¸ì‚°ì‹œ', '010-7777-7777');
+insert into userinfo(u_id, u_pw, u_name, u_email, u_address, u_phone) values('admin', '1111', 'ê´€ë¦¬ì', 'admin@admin.com', 'ê´€ë¦¬ë¶€ì„œ', '010-1234-5678');
+-----ì¹´í…Œê³ ë¦¬ ë°ì´í„°----
+insert into categorys(cg_no, cg_name) values(1, 'ìˆ˜ë‚©');
+insert into categorys(cg_no, cg_name) values(2, 'ê°€êµ¬');
+insert into categorys(cg_no, cg_name) values(3, 'ê°€ì „ì œí’ˆ');
+insert into categorys(cg_no, cg_name) values(4, 'ì¡°ëª…');
+insert into categorys(cg_no, cg_name) values(5, 'ì£¼ë°©ìš©í’ˆ');
 
------Ä«Å×°í¸® µ¥ÀÌÅÍ----
-insert into categorys(cg_no, cg_name) values(1, '¼ö³³');
-insert into categorys(cg_no, cg_name) values(2, '°¡±¸');
-insert into categorys(cg_no, cg_name) values(3, '°¡ÀüÁ¦Ç°');
-insert into categorys(cg_no, cg_name) values(4, 'Á¶¸í');
-insert into categorys(cg_no, cg_name) values(5, 'ÁÖ¹æ¿ëÇ°');
+------ìƒí’ˆ ë°ì´í„°------
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '2ì¸µì„ ë°˜', 200000, 'shelf1.jpg', '2ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë‹¤ìš©ë„ì„ ë°˜', 150000, 'shelf2.jpg', 'ë‹¤ìš©ë„ì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 300000, 'shelf3.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '2ì¸µì„ ë°˜', 500000, 'shelf4.jpg', '2ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 120000, 'shelf5.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 700000, 'shelf6.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 200000, 'shelf7.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 500000, 'shelf8.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 200000, 'shelf9.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì„ ë°˜', 150000, 'shelf10.jpg', '3ì¸µì„ ë°˜ì…ë‹ˆë‹¤', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë†’ì€ì±…ìƒ', 320000, 'table1.jpg', 'ì±…ìƒì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë„“ì€ì±…ìƒ',100000, 'table2.jpg', 'ì±…ìƒ2ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì±…ìƒë‹¤ë¦¬',20000, 'table3.jpg', 'ì±…ìƒ3ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3ì¸µì±…ìƒ', 50000, 'table4.jpg', 'ì˜ìì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ìˆ˜ë‚©ì¹¨ëŒ€',30000, 'bed1.jpg', 'ì¹¨ëŒ€ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë‚®ì€ì¹¨ëŒ€',250000, 'bed2.jpg', 'ì¹¨ëŒ€ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë†’ì€ì¹¨ëŒ€',250000, 'bed3.jpg', 'ì¹¨ëŒ€ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì˜ì1',250000, 'chair1.jpg', 'ì˜ì1ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì˜ì2',350000, 'chair2.jpg', 'ì˜ì2ì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ìƒ‰ìƒì˜ì',550000, 'chair3.jpg', 'ìƒ‰ìƒì˜ìì…ë‹ˆë‹¤', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì—ì–´ì»¨', 250000, 'homeappliances1.jpg', 'ë¼ë””ì˜¤ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì—ì–´ì»¨2',340000, 'homeappliances2.jpg', 'ìŠ¤í”¼ì»¤ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ëª¨ë‹ˆí„°', 430000, 'homeappliances3.jpg', 'ë©€í‹°íƒ­ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ëª¨ë‹ˆí„°2',350000, 'homeappliances4.jpg', 'ì „ìë ˆì¸ì§€ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë°¥ì†¥', 550000, 'homeappliances7.jpg', 'ì „ìë ˆì¸ì§€ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì „ìë ˆì¸ì§€',250000, 'homeappliances8.jpg', 'ì „ìë ˆì¸ì§€ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì²­ì†Œê¸°', 550000, 'homeappliances9.jpg', 'ì „ìë ˆì¸ì§€ì…ë‹ˆë‹¤', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ë°ì€ì¡°ëª…', 520000, 'light1.jpg', 'ì¡°ëª…1ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ìŠ¤íƒ ë“œì¡°ëª…',210000, 'light2.jpg','ì¡°ëª…2ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì¡°ëª…ì „êµ¬', 270000, 'light3.jpg', 'ì¡°ëª…3ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì¡°ëª…ì „êµ¬', 570000, 'light4.jpg', 'ì¡°ëª…4ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì¡°ëª…ì „êµ¬', 370000, 'light5.jpg', 'ì¡°ëª…5ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì¡°ëª…ì „êµ¬', 150000, 'light6.jpg', 'ì¡°ëª…6ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì¡°ëª…ì „êµ¬', 120000, 'light7.jpg', 'ì¡°ëª…7ì…ë‹ˆë‹¤', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì–‘ì€ëƒ„ë¹„', 1000, 'pot1.jpg', 'ëƒ„ë¹„1ì…ë‹ˆë‹¤', 0, 5);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ìˆŸê°€ë½1', 2000, 'spoon1.jpg', 'ìˆŸê°€ë½1ì…ë‹ˆë‹¤', 0, 5);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ìˆŸê°€ë½2', 3000, 'spoon2.jpg', 'ìˆŸê°€ë½2ì…ë‹ˆë‹¤', 0, 5);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ì “ê°€ë½1', 3000, 'chopstick1.jpg', 'ì “ê°€ë½1ì…ë‹ˆë‹¤', 0, 5);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'í”„ë¼ì´íŒ¬1', 5000, 'pan1.jpg', 'í”„ë¼ì´íŒ¬1ì…ë‹ˆë‹¤', 0, 5);
 
-------»óÇ° µ¥ÀÌÅÍ------
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'Ã¥»ó', 100000, 'desk.jpg', 'Ã¥»óÀÔ´Ï´Ù', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'ÀÇÀÚ', 50000, 'chair.jpg', 'ÀÇÀÚÀÔ´Ï´Ù', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '¼±¹İ', 200000, 'rack.jpg', '¼±¹İÀÔ´Ï´Ù', 0, 1);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, 'Ä§´ë', 250000, 'bed.jpg', 'Ä§´ëÀÔ´Ï´Ù', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '½Å¹ßÀå', 150000, 'shoe_rack.jpg', '½Å¹ßÀåÀÔ´Ï´Ù', 0, 1);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '¼ö³³Àå', 100000, 'storage_closet.jpg', '¼ö³³ÀåÀÔ´Ï´Ù', 0, 1);
+/*
+    cg_no =1  =>ì„ ë°˜,ìˆ˜ë‚© shelf
+    cg_no =2  =>ê°€êµ¬      table,bed,chair   
+    cg_no =3  =>ê°€ì „ì œí’ˆ  homeappliances   
+    cg_no =4  =>ì¡°ëª…      lighting   
+    cg_no =5  =>      
+*/
 
-------ÁÖ¹®&ÁÖ¹®»ó¼¼-----
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'Ã¥»ó ¿Ü 2Á¾', sysdate, 200000, 'test1');
+------ì£¼ë¬¸&ì£¼ë¬¸ìƒì„¸-----
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ì„ ë°˜ ì™¸ 2ì¢…', sysdate, 200000, 'test1');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 1);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 2);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 5);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 10);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '¼±¹İ ¿Ü 1Á¾', sysdate, 450000, 'test1');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 3);
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ì±…ìƒ ì™¸ 1ì¢…', sysdate, 450000, 'test1');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 4);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 4, orders_o_no_seq.currval, 7);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '¼±¹İ ¿Ü 1Á¾', sysdate, 450000, 'test3');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 3);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 4);
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ë¼ë””ì˜¤ ì™¸ 3ì¢…', sysdate, 450000, 'test2');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 10);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 14);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 19);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '½Å¹ßÀå ¿Ü 1Á¾', sysdate, 350000, 'test2');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 5);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 3);
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ì¡°ëª… ì™¸ 2ì¢…', sysdate, 350000, 'test2');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 14);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 1);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 5);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '¼ö³³Àå ¿Ü 0Á¾', sysdate, 100000, 'test4');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 6);
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ì¹¨ëŒ€ ì™¸ 0ì¢…', sysdate, 100000, 'test3');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 9);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'Ã¥»ó ¿Ü 2Á¾', sysdate, 200000, 'test1');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 1);
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ì¹¨ëŒ€ ì™¸ 1ì¢…', sysdate, 100000, 'test3');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 9);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 1);
 
-------Ä«Æ® µ¥ÀÌÅÍ------
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, 'ìˆŸê°€ë½ ì™¸ 2ì¢…', sysdate, 200000, 'test4');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 4, orders_o_no_seq.currval, 18);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 19);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 20);
+
+------ì¹´íŠ¸ ë°ì´í„°------
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test1', 1);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 2, 'test1', 2);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 3, 'test1', 3);
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 4, 'test2', 5);
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 2, 'test2', 6);
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 3, 'test3', 3);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 3, 'test3', 8);
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 5, 'test4', 2);
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 5, 'test4', 3);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 2, 'test5', 1);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 3, 'test5', 2);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 4, 'test5', 3);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test6', 9);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test6', 10);
+insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test6', 11);
 
-------°øÁö µ¥ÀÌÅÍ------
-insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '°øÁö1', '°øÁö1 ³»¿ë', sysdate);
-insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '°øÁö2', '°øÁö2 ³»¿ë', sysdate);
-insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '°øÁö3', '°øÁö3 ³»¿ë', sysdate);
-insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '°øÁö4', '°øÁö4 ³»¿ë', sysdate);
-insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '°øÁö5', '°øÁö5 ³»¿ë', sysdate);
-insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '°øÁö6', '°øÁö6 ³»¿ë', sysdate);
-------¸®ºä µ¥ÀÌÅÍ------
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '¸®ºä1', '¸®ºä1 ³»¿ë', 'test1', 1);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '¸®ºä2', '¸®ºä2 ³»¿ë', 'test2', 2);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '¸®ºä3', '¸®ºä3 ³»¿ë', 'test3', 3);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '¸®ºä4', '¸®ºä4 ³»¿ë', 'test4', 4);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '¸®ºä5', '¸®ºä5 ³»¿ë', 'test5', 5);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '¸®ºä6', '¸®ºä6 ³»¿ë', 'test6', 6);
+------ê³µì§€ ë°ì´í„°------
+insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, 'ê³µì§€1', 'ê³µì§€1 ë‚´ìš©', sysdate);
+insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, 'ê³µì§€2', 'ê³µì§€2 ë‚´ìš©', sysdate);
+insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, 'ê³µì§€3', 'ê³µì§€3 ë‚´ìš©', sysdate);
+insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, 'ê³µì§€4', 'ê³µì§€4 ë‚´ìš©', sysdate);
+insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, 'ê³µì§€5', 'ê³µì§€5 ë‚´ìš©', sysdate);
+insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, 'ê³µì§€6', 'ê³µì§€6 ë‚´ìš©', sysdate);
 
-------qna µ¥ÀÌÅÍ------
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '¹®ÀÇ1', '¹®ÀÇ1 ³»¿ë', sysdate, 'Ä«Å×°í¸®1', 'test1');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '¹®ÀÇ2', '¹®ÀÇ2 ³»¿ë', sysdate, 'Ä«Å×°í¸®2', 'test2');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '¹®ÀÇ3', '¹®ÀÇ3 ³»¿ë', sysdate, 'Ä«Å×°í¸®3', 'test3');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '¹®ÀÇ4', '¹®ÀÇ4 ³»¿ë', sysdate, 'Ä«Å×°í¸®4', 'test4');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '¹®ÀÇ5', '¹®ÀÇ5 ³»¿ë', sysdate, 'Ä«Å×°í¸®5', 'test5');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '¹®ÀÇ6', '¹®ÀÇ6 ³»¿ë', sysdate, 'Ä«Å×°í¸®6', 'test6');
+------ë¦¬ë·° ë°ì´í„°------
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·°ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test1', 1);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test1', 2);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test1', 3);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test1', 4);
 
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test2', 6);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test2', 7);
+
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test2', 9);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test2', 10);
+
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test3', 13);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test3', 14);
+
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test4', 15);
+insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, 'ë¦¬ë·°'||REVIEW_R_NO_SEQ.currval, 'ë¦¬ë·° ë‚´ìš©'||REVIEW_R_NO_SEQ.currval, 'test4', 16);
+
+
+------qna ë°ì´í„°------
+insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, 'ë¬¸ì˜ ì œëª©'||qna_q_no_seq.currval, 'ë¬¸ì˜ ë‚´ìš©'||qna_q_no_seq.currval, qna_q_no_seq.currval, 1, 0, 'test1');
+insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, 'ë¬¸ì˜ ì œëª©'||qna_q_no_seq.currval, 'ë¬¸ì˜ ë‚´ìš©'||qna_q_no_seq.currval, qna_q_no_seq.currval, 1, 0, 'test1');
+insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, 'ë¬¸ì˜ ì œëª©'||qna_q_no_seq.currval, 'ë¬¸ì˜ ë‚´ìš©'||qna_q_no_seq.currval, qna_q_no_seq.currval, 1, 0, 'test1');
 
 commit;
