@@ -137,7 +137,9 @@ ALTER TABLE orders ADD CONSTRAINT IDX_orders_PK PRIMARY KEY (o_no);
 ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (u_id) REFERENCES userinfo (u_id) ON DELETE set null;
 
 ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_PK PRIMARY KEY (oi_no);
-ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_FK0 FOREIGN KEY (p_no) REFERENCES product (p_no); --productï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È´Ù¸ï¿½..?
+
+ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_FK0 FOREIGN KEY (p_no) REFERENCES product (p_no); --product°¡ »èÁ¦µÈ´Ù¸é..?
+
 
 ALTER TABLE orderitem ADD CONSTRAINT IDX_orderitem_FK1 FOREIGN KEY (o_no) REFERENCES orders (o_no) ON DELETE CASCADE;
 
