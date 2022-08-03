@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.dto.CartItem"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.CartService"%>
@@ -26,7 +27,7 @@ List<CartItem> cartList = cartService.getCartList(sU_Id);
 	<ul>
 		<% for(CartItem cartItem : cartList) { %>
 		<li>
-			<img src="iamge/product/<%=cartItem.getProduct().getP_image()%>" width="40px" height="40px">
+			<img src="image/product/<%=cartItem.getProduct().getP_image()%>" width="40px" height="40px">
 			[<%=cartItem.getProduct().getP_name()%>] 
 			수량:<%=cartItem.getC_qty()%>개
 			가격:<%=cartItem.getProduct().getP_price() * cartItem.getC_qty() %> 원
@@ -35,5 +36,6 @@ List<CartItem> cartList = cartService.getCartList(sU_Id);
 	</ul>
 </div>
 
+							
 </body>
 </html>
