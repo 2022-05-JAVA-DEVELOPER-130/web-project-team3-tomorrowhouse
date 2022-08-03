@@ -51,3 +51,13 @@ delete from orders where u_id = 'test3';
 
 --update(X)
 --주문내역을 수정하는 일은 발생하지 않아 작성하지 않았습니다.
+
+
+
+
+
+
+
+
+----serviceTest
+select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id ='test4' and o.o_no=7;
