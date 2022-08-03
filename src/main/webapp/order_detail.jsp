@@ -1,3 +1,5 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="com.itwill.shop.dto.OrderItem"%>
 <%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,22 +9,13 @@
 	/*	<< select by u_id and o_id>>
 	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
-	sUserId = null;
-	String o_no = null;
-	/*
-	private int o_no;
-	private String o_desc;	// orderItemList.get(1).getProduct.getP_name();
-	private Date o_date;
-	private int o_price;
-	
-	private String u_id;	
-	
-	private List<OrderItem> orderItemList=new ArrayList<OrderItem>();
-	*/
+	sUserId = "test4";
+	String o_no = "7";
 	Order order = new Order(Integer.parseInt(o_no),null,null,0,sUserId,null);
 		
 	OrderService orderService = new OrderService();
 	//orderService.detail(order);
+	order = orderService.oneOfOrderProductdetailByUserId(order);
 %>
 
 
@@ -34,19 +27,22 @@
 </head>
 <body>
 
-<h3>[<%=%> 상세보기]</h1>
+<h3>[ <%=order.getU_id() %>님의 주문번호<%=order.getO_no()%> 주문상세]</h1>
 <hr>
-상품번호 <input type ='text'name='p_no' value='<%=%>'><br>
-상품이름 <input type ='text'name='p_name' value='<%=%>'><br>
-상품가격 <input type ='text'name='p_price' value='<%=%>'><br>
-상품이미지 <input type ='text'name='p_image' value='<%=%>'><br>
-상품설명 <input type ='text'name='p_desc' value='<%=%>'><br>
-상품클릭수 <input type ='text'name='p_click_count' value='<%=%>'><br>
-상품카테고리 <input type ='text'name='category' value='<%= %>'><br>
+주문일자 <input type ='text'name='o_date' value='<%=order.getO_date()%>'><br>
+<hr>
+주문설명 <input type ='text'name='o_desc' value='<%=order.getO_desc() %>'><br>
 
-
-	<a href='product_update_form.jsp?p_no=<%=%>'>[상품수정]</a>
-	<a href='product_delete_action.jsp?no=<%=%>'>[상품삭제]</a>
+<% for(OrderItem orderItem : order.getOrderItemList()) { %>
+상품이름 <input type ='text' name='p_name' value='<%=orderItem.getProduct().getP_name() %>'><br>
+상품수량 <input type ='text' name='oi_qty' value='<%=orderItem.getOi_qty() %>'><br>
+상품 단일가격 <input type ='text' name='p_name' value='<%=new DecimalFormat("#,##0").format(orderItem.getProduct().getP_price()) %>'><br>
+상품이미지<img src="image/product/<%=orderItem.getProduct().getP_image()%>" width="40px" height="40px"><br>
+<br>
+상품 총 주문가격 <input type =' text'name='p_total_price' value='<%=new DecimalFormat("#,##0").format(orderItem.getProduct().getP_price()*orderItem.getOi_qty()) %>'><br>
+<hr>
+<% }%>
+최종 주문가격 <input type ='text'name='o_price' value='<%=new DecimalFormat("#,##0").format(order.getO_price())%>'><br>
 
 </body>
 </html>

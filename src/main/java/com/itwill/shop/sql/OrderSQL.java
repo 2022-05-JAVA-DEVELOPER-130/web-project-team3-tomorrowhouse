@@ -17,11 +17,13 @@ public class OrderSQL {
 	public final static String SELECT_ORDER_ORDERITEM_PRODUCT_LIST_BY_USERID
 		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id=?";
 	
+	
+	
 	public static final String ORDER_O_NO_LIST
 	="select o_no from orders where u_id=?";
 	
    public static final String ORDER_LIST_BY_ORDER_NO_USERID
-		       ="select * from orders o join order_item oi on o.o_no=oi.o_no"
+		       ="select * from orders o join orderitem oi on o.o_no=oi.o_no"
 		       		+ "join  product p on oi.p_no=p.p_no"
 		       		+ "where o.u_id=? and o.o_no = ?";
 	

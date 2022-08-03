@@ -29,11 +29,10 @@ public class OrderDaoTestMain {
 			System.out.println(orderItem);
 		}
 		
-		
-
 		/*
 		 * 2. 고객1명(특정사용자)의 주문 전체 목록
 		 */
+		System.out.println("고객1명(특정사용자)의 주문 전체 목록");
 		List<Order> orderList = orderDao.orderListByUserId(new Order(0, null, null, 0, "test1", null));
 		for (Order order : orderList) {
 			System.out.println(order);

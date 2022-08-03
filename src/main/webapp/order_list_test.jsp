@@ -18,10 +18,9 @@
 	 */
 	OrderService orderService = new OrderService();
 	Order findOrder = new Order(0, null, null, 0, "test1",null);
-	ArrayList<Order> orderList = 
-	(ArrayList)orderService.list_detail(new Order(0,null,null,0,sUserId,null));
-	//ArrayList<Order> orderNoList = orderService.orderNoListByUserId(findOrder);
-	//ArrayList<Order> orderList = orderService.orderListByUserId(findOrder);
+	//(ArrayList)orderService.list_detail(new Order(0,null,null,0,sUserId,null));
+	ArrayList<Order> orderNoList = orderService.orderNoListByUserId(findOrder);
+	ArrayList<Order> orderList = orderService.orderListByUserId(findOrder);
 %>
 
 
@@ -35,18 +34,23 @@
 
 <h3>주문 내역</h3>
 <%
+for(Order orderNo : orderNoList){
 
+	int o_no = orderNo.getO_no();
 	for(Order order: orderList){
+		if(o_no==order.getO_no()){
+	
 
 
 %>
 
  주문번호<input type ='text' name='o_no' value='<%= order.getO_no()%>'><br>
- 상품이름<input type ='text' name='p_name' value='<%= order.getOrderItemList().get(0).getProduct().getP_name()%>'><br>
-
+ 상품 데이터가 없음....
 
 <hr>
 <%
+		}
+	}
 } %>
 
 

@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
+sUserId = "test5";
+
+
 
 %>
 
@@ -13,6 +16,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 
 </body>
 </html>
