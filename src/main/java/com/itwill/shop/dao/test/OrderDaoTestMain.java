@@ -80,7 +80,7 @@ public class OrderDaoTestMain {
 		int p_qty=7;
 		Product product = new Product(11, null, p_no, null, null, p_qty, null);
 		List<OrderItem> newOrderItemList=new ArrayList<OrderItem>();
-		product = productDao.selectByNo(product);
+		product = productDao.productSelectByNo(product);
 		newOrderItemList.add(new OrderItem(0, p_qty, 0, product));
 		/*
 			private int o_no;
