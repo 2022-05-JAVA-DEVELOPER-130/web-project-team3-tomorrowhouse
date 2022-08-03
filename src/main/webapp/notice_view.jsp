@@ -27,7 +27,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 <title>Insert title here</title>
 </head>
 <body>
-<form>
+<form name ='q' method="post">
 <h3>[<%=noticeDetail.getN_title()%> 상세보기]</h3>
 <hr>
 <input type ='hidden'name='n_no' value='<%=noticeDetail.getN_no()%>'>
@@ -37,7 +37,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 
 	<a href='notice_list.jsp'>[공지사항리스트]</a>
 	<a href='notice_modify_form?n_no=<%=noticeDetail.getN_no()%>'>[공지사항수정]</a>
-	<a href='notice_delete_action.jsp'>'>[공지사항삭제]</a>
+	<a href='notice_delete_action.jsp?n_no=<%=noticeDetail.getN_no()%>'>[공지사항삭제]</a>
 </form>
 </body>
 </html>
