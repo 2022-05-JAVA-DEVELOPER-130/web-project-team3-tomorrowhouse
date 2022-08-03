@@ -2,11 +2,12 @@
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>
 <%
 	/*	<< select by u_id and o_id>>
 	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
-	String sUserId = null;
+	sUserId = null;
 	String o_no = null;
 	/*
 	private int o_no;

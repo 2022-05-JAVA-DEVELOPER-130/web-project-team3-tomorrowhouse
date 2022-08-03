@@ -3,7 +3,6 @@
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
 	/*  if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("product_list.jsp");
