@@ -10,7 +10,7 @@
 <%
 
 	NoticeService noticeService = new NoticeService();
-	List<Notice> notices = noticeService.selectAll();
+	List<Notice> notices = noticeService.selectAllNotice();
 
 %>
 

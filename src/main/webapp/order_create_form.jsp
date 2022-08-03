@@ -15,6 +15,8 @@ sUserId = "test5";
 //OrderService orderService = new OrderService();
 CartService cartService = new CartService();
 
+/* cart에서 직접주문 */
+
 ArrayList<CartItem> cartItemList = (ArrayList)cartService.getCartList(sUserId);
 
 UserInfoService userInfoService = new UserInfoService();

@@ -45,7 +45,10 @@ public class OrderServiceTestMain {
 		
 		/* ------ order insert------ */
 		//작성중
-		orderService.create(order);
+		/*
+		 * cart에서 전체주문
+		 */
+		System.out.println(orderService.createOrderByCart("test5"));
 		
 
 	}
