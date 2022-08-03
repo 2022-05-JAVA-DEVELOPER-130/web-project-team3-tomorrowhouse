@@ -22,7 +22,7 @@
 	Order order = new Order(Integer.parseInt(o_no),null,null,0,sUserId,null);
 		
 	OrderService orderService = new OrderService();
-	orderService.detail(order);
+	//orderService.detail(order);
 %>
 
 

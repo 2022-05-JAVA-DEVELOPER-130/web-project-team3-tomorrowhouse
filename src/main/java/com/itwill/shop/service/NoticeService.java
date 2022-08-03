@@ -9,7 +9,7 @@ public class NoticeService {
 	private NoticeDao noticeDao;
 	
 	//공지사항 전체출력
-	public List<Notice> selectAll()throws Exception {
+	public List<Notice> selectAll() throws Exception {
 		return noticeDao.selectAll();
 	}
 	//공지사항 한개출력
