@@ -6,9 +6,9 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-String sU_Id = "test6";
+
 CartService cartService = new CartService();
-List<CartItem> cartList = cartService.getCartList(sU_Id);	
+List<CartItem> cartList = cartService.getCartList(sUserId);	
 %>
 
 
@@ -36,7 +36,7 @@ List<CartItem> cartList = cartService.getCartList(sU_Id);
 		<% } %>
 	</ul>
 </div>
-<a href= 'cart_delete_action.jsp?u_id=<%=sU_Id%>'>[상품전체삭제]</a>
+<a href= 'cart_delete_action.jsp?u_id=<%=sUserId%>'>[상품전체삭제]</a>
 
 							
 </body>
