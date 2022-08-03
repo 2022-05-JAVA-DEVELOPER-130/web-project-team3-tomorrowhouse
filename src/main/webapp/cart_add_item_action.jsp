@@ -14,6 +14,9 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 		return;
 	}
 */
+/*
+해결할거:Integer.parseInt(p_noStr) 가 안먹는거 and GET방식으로 전송되는거
+*/
 
 	int cart_qty= 2;
 	//String p_noStr=request.getParameter("p_no");
