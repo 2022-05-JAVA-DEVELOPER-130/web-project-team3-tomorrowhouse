@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.dto.Category"%>
+<%@page import="com.itwill.shop.service.CategoryService"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
@@ -12,8 +14,6 @@
 	}
 	ProductService productService = new ProductService();
 	List<Product> productTableList = productService.selectAllByCgNo(Integer.parseInt(cgNoStr));
-	
-	
 %>
 
 
@@ -25,7 +25,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>책상목록</title>
+<title>카테고리목록</title>
 </head>
 <body>
 	<br>

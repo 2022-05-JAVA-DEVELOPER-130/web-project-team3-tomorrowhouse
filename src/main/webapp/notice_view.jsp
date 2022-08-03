@@ -13,6 +13,6 @@
 <title>공지사항</title>
 </head>
 <body>
-	<jsp includ >
+	<jsp:includ page ="include_common_left.jsp"></jsp:includ>
 </body>
 </html>
