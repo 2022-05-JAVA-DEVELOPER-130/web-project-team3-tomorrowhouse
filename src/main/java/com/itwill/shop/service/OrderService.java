@@ -6,20 +6,23 @@ import java.util.List;
 import com.itwill.shop.dao.CartDao;
 import com.itwill.shop.dao.OrderDao;
 import com.itwill.shop.dao.ProductDao;
+import com.itwill.shop.dto.CartItem;
 import com.itwill.shop.dto.Order;
+import com.itwill.shop.dto.OrderItem;
+import com.itwill.shop.dto.Product;
 
 public class OrderService {
-	
+
 	private OrderDao orderDao;
 	private CartDao cartDao;
 	private ProductDao productDao;
-	
+
 	public OrderService() throws Exception {
 		orderDao = new OrderDao();
 		cartDao = new CartDao();
 		productDao = new ProductDao();
 	}
-	
+
 	/* ------ order select------ */
 	/*
 	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
@@ -27,46 +30,73 @@ public class OrderService {
 	public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
 		return orderDao.oneOfOrderProductdetailByUserId(order);
 	}
-	
+
 	/*
 	 * 주문상세리스트(특정사용자) --- JSP에서 실행안됨...
 	 */
-	public List<Order> list_detail(Order order) throws Exception{
+	public List<Order> list_detail(Order order) throws Exception {
 		return orderDao.list_detail(order);
 	}
-	
-	public ArrayList<Order> orderNoListByUserId(Order order) throws Exception{
+
+	public ArrayList<Order> orderNoListByUserId(Order order) throws Exception {
 		return orderDao.orderNoListByUserId(order);
 	}
+
 	/*
 	 * 2. 고객1명(특정사용자)의 주문 전체 목록
 	 */
 	public ArrayList<Order> orderListByUserId(Order order) throws Exception {
 		return orderDao.orderListByUserId(order);
 	}
-	
+
 	/* ------ order insert------ */
-	
-	public int create(Order order) throws Exception {
-		return orderDao.create(order);
+	/*
+	 * 상품detail에서 직접주문
+	 */
+	public int create(String u_id, int p_no, int oi_qty) throws Exception {
+		// int p_no=order.getOrderItemList().get(0).getProduct().getP_no();
+		// int oi_qty=order.getOrderItemList().get(0).getOi_qty();
+		// String u_id=order.getU_id();
+		Product product = new Product(p_no, null, 0, null, null, oi_qty, null);
+
+		product = productDao.productSelectByNo(product);
+
+		List<OrderItem> newOrderItemList = new ArrayList<OrderItem>();
+		newOrderItemList.add(new OrderItem(0, oi_qty, 0, product));
+
+		Order newOrder = new Order(0, newOrderItemList.get(0).getProduct().getP_name() + "외 " + (oi_qty - 1) + "종",
+				null, product.getP_price() * oi_qty, u_id, newOrderItemList);
+		return orderDao.create(newOrder);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	/*
+	 * cart에서 주문
+	 */
+	public int createOrderByCart(String u_id) throws Exception {
+		ArrayList<CartItem> cartList = (ArrayList)cartDao.getCartItem(u_id);
+		
+		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
+		
+		int o_total_price = 0;
+		int oi_total_count = 0;
+		
+		for (CartItem cartItem : cartList) {
+			OrderItem orderItem = new OrderItem(0, cartItem.getC_qty(), 0, cartItem.getProduct());
+			orderItemList.add(orderItem);
+			
+			o_total_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
+			oi_total_count += orderItem.getOi_qty();
+		}
+		
+		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 종";
+		Order newOrder = new Order(0, o_desc, null, o_total_price, u_id, orderItemList);
+		// order생성-> cart삭제
+		orderDao.create(newOrder);
+		cartDao.deleteCart(u_id);
+
+		return 0;
+	}
+
 	/************** 소진이 자리 ********************************************************/
-	
-	
-	
+
 }
