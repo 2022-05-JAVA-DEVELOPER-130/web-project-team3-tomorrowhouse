@@ -34,7 +34,6 @@ List<Product> productList = productService.productSelectAll();
 <div>
 	<ul>
 		<% for(Product product : productList) { %>
-		 
 		<img src="image/product/<%=product.getP_image()%>" width="40px" height="40px">
 		<li><a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>[<%=product.getP_name()%>] 가격:<%=product.getP_price()%>원</a></li>
 		<% } %>
