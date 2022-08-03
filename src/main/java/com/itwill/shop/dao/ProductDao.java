@@ -185,13 +185,27 @@ public class ProductDao {
 		 //product 검색기능
 		 //public final static String PRODUCT_SERCH = "select * from product where p_name like '%?%'";
 		
-		public String ProductSerch(Product product) throws Exception { 
+		public List<Product> ProductSerch(Product product) throws Exception {
+			List<Product> productList = new ArrayList<Product>();
+			
 			Connection con = dataSource.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SERCH);
-						
+			ResultSet rs = pstmt.executeQuery();
 			
+			
+			pstmt.setString(1, product.getP_name());
+			
+			while(rs.next()) {
+				productList.add(new Product(rs.getInt("p_no"),
+							                rs.getString("p_name"),
+							                rs.getInt("p_price"),
+							                rs.getString("p_image"),
+							                rs.getString("p_desc"),
+							                rs.getInt("p_click_count"),
+							                new Category(rs.getInt("cg_no"), null)));
+			}
 			con.close();
-			return null;
+			return productList;
 		}
 		 
 		
