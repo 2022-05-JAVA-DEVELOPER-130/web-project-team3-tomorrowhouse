@@ -5,7 +5,7 @@
 <%@include file="login_check.jspf" %>
 <%
 
-String sUserId = null;
+sUserId = null;
 
 //OrderService orderService = new OrderService();
 CartService cartService = new CartService();
