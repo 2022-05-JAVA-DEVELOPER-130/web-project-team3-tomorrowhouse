@@ -46,10 +46,10 @@ insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '밝은조명', 520000, 'light1.jpg', '조명1입니다', 0, 4);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '스탠드조명',210000, 'light2.jpg','조명2입니다', 0, 4);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 270000, 'light3.jpg', '조명3입니다', 0, 4);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 570000, 'light3.jpg', '조명4입니다', 0, 4);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 370000, 'light3.jpg', '조명5입니다', 0, 4);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 150000, 'light3.jpg', '조명6입니다', 0, 4);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 120000, 'light3.jpg', '조명7입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 570000, 'light4.jpg', '조명4입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 370000, 'light5.jpg', '조명5입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 150000, 'light6.jpg', '조명6입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 120000, 'light7.jpg', '조명7입니다', 0, 4);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '양은냄비', 1000, 'pot1.jpg', '냄비1입니다', 0, 5);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '숟가락1', 2000, 'spoon1.jpg', '숟가락1입니다', 0, 5);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '숟가락2', 3000, 'spoon2.jpg', '숟가락2입니다', 0, 5);
