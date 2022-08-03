@@ -1,9 +1,9 @@
 package com.itwill.shop.sql;
 /*
---test1의 모든 질문 리스트
+--test1의 모든 질문 리스트 >> qna_list.jsp 출력
 select * from qna where u_id = 'test1';
 
---test1의 질문 pk로 1개 출력
+--test1의 질문 pk로 1개 출력 >> MyPage에서 출력
 select * from qna where u_id = 'test1' and q_no=1;
 
 --test2의 질문 1개 pk로 변경
@@ -13,6 +13,8 @@ update qna set q_title = '문의 제목 변경', q_content = '문의 내용 변�
 delete from qna where u_id = 'test1' and q_no=1;
  */
 public class QnaSQL {
+	public static final String QNA_INSERT_USER_BY_ID =
+			"insert into qna values(qna_q_no_seq.nextval, ?, ?, null, ?, ?); ";
 	
 	public static final String QNA_SELECT_ALL_USER_BY_ID = 
 			"select * from qna where u_id = ?;";
