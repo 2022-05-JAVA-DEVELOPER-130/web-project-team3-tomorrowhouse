@@ -13,7 +13,7 @@
 <br>
 
 <form method='post' action='product_insert_action.jsp'>
-<input type ='text'name='p_name'><br>
+<input type ='hidden'name='p_no'>
 상품이름 <input type ='text'name='p_name'><br>
 상품가격 <input type ='text'name='p_price'><br>
 상품이미지 <input type ='text'name='p_image'><br>
