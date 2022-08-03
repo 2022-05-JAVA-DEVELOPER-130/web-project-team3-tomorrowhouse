@@ -16,8 +16,16 @@ select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on 
 select * from orders where u_id = 'test2';
 
 
--- 3. test3 고객 주문 & 주문 상세 전체 목록
+-- 3-1. test3 고객 주문 & 주문 상세 전체 목록
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id='test3';
+
+-- 3-2. 
+select * from orders o
+join orderitem oi on  o.o_no = oi.o_no
+join product p on oi.p_no = p.p_no 
+where o.u_id='test3';
+
+
 
 -- 4.멤버1명의 주문번호 4번의 주문 정보
 select * from orders where o_no = 4;

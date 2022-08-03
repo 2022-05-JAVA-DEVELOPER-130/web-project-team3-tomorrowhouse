@@ -16,28 +16,53 @@ insert into categorys(cg_no, cg_name) values(4, '조명');
 insert into categorys(cg_no, cg_name) values(5, '주방용품');
 
 ------상품 데이터------
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '선반', 200000, 'rack.jpg', '선반입니다', 0, 1);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '신발장', 150000, 'shoe_rack.jpg', '신발장입니다', 0, 1);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '수납장', 100000, 'storage_closet.jpg', '수납장입니다', 0, 1);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '책상', 100000, 'desk.jpg', '책상입니다', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '넓은책상', 100000, 'desk2.jpg', '책상2입니다', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '책상다리', 20000, 'desk3.jpg', '책상3입니다', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '의자', 50000, 'chair.jpg', '의자입니다', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '책상의자', 30000, 'chiar2.jpg', '의자2입니다', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '침대', 250000, 'bed.jpg', '침대입니다', 0, 2);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '라디오', 250000, 'radio.jpg', '라디오입니다', 0, 3);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '스피커', 340000, 'speaker.jpg', '스피커입니다', 0, 3);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '멀티탭', 430000, 'extension.jpg', '멀티탭입니다', 0, 3);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '전자레인지', 550000, 'microwave.jpg', '전자레인지입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '2층선반', 200000, 'shelf1.jpg', '2층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '다용도선반', 150000, 'shelf2.jpg', '다용도선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 300000, 'shelf3.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '2층선반', 500000, 'shelf4.jpg', '2층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 120000, 'shelf5.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 700000, 'shelf6.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 200000, 'shelf7.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 500000, 'shelf8.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 200000, 'shelf9.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층선반', 150000, 'shelf10.jpg', '3층선반입니다', 0, 1);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '높은책상', 320000, 'table1.jpg', '책상입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '넓은책상',100000, 'table2.jpg', '책상2입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '책상다리',20000, 'table3.jpg', '책상3입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '3층책상', 50000, 'table4.jpg', '의자입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '수납침대',30000, 'bed1.jpg', '침대입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '낮은침대',250000, 'bed2.jpg', '침대입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '높은침대',250000, 'bed3.jpg', '침대입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '의자1',250000, 'chair1.jpg', '의자1입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '의자2',350000, 'chair2.jpg', '의자2입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '색상의자',550000, 'chair3.jpg', '색상의자입니다', 0, 2);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '에어컨', 250000, 'homeappliances1.jpg', '라디오입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '에어컨2',340000, 'homeappliances2.jpg', '스피커입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '모니터', 430000, 'homeappliances3.jpg', '멀티탭입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '모니터2',350000, 'homeappliances4.jpg', '전자레인지입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '밥솥', 550000, 'homeappliances7.jpg', '전자레인지입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '전자레인지',250000, 'homeappliances8.jpg', '전자레인지입니다', 0, 3);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '청소기', 550000, 'homeappliances9.jpg', '전자레인지입니다', 0, 3);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '밝은조명', 520000, 'light1.jpg', '조명1입니다', 0, 4);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '스탠드조명', 210000, 'light2.jpg', '조명2입니다', 0, 4);
-insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 170000, 'light3.jpg', '조명3입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '스탠드조명',210000, 'light2.jpg','조명2입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 270000, 'light3.jpg', '조명3입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 570000, 'light4.jpg', '조명4입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 370000, 'light5.jpg', '조명5입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 150000, 'light6.jpg', '조명6입니다', 0, 4);
+insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '조명전구', 120000, 'light7.jpg', '조명7입니다', 0, 4);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '양은냄비', 1000, 'pot1.jpg', '냄비1입니다', 0, 5);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '숟가락1', 2000, 'spoon1.jpg', '숟가락1입니다', 0, 5);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '숟가락2', 3000, 'spoon2.jpg', '숟가락2입니다', 0, 5);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '젓가락1', 3000, 'chopstick1.jpg', '젓가락1입니다', 0, 5);
 insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values(product_p_no_seq.nextval, '프라이팬1', 5000, 'pan1.jpg', '프라이팬1입니다', 0, 5);
 
+/*
+    cg_no =1  =>선반,수납 shelf
+    cg_no =2  =>가구      table,bed,chair   
+    cg_no =3  =>가전제품  homeappliances   
+    cg_no =4  =>조명      lighting   
+    cg_no =5  =>      
+*/
 
 ------주문&주문상세-----
 insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '선반 외 2종', sysdate, 200000, 'test1');
