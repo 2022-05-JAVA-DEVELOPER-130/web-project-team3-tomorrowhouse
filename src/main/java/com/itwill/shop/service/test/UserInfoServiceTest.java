@@ -23,10 +23,10 @@ public class UserInfoServiceTest {
 		System.out.println(userInfoService.findUser("test1"));
 		
 		System.out.println(">>>>> 회원 정보 수정");
-		System.out.println(userInfoService.update(new UserInfo(null, null, null, null, null, null)));
+		System.out.println(userInfoService.update(new UserInfo("kim", "1111","변경이름","@test.com","평양","010-1111-1111")));
 		
 		System.out.println(">>>>> 회원 탈퇴");
-		System.out.println(userInfoService.remove("test3"));
+		System.out.println(userInfoService.remove("kim"));
 		
 		System.out.println(">>>>> 아이디 중복 체크");
 		System.out.println(userInfoService.isDuplicateId("test1"));
