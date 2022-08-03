@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-String sU_Id = "test2";
+String sU_Id = "test6";
 CartService cartService = new CartService();
 List<CartItem> cartList = cartService.getCartList(sU_Id);	
 %>
@@ -31,10 +31,12 @@ List<CartItem> cartList = cartService.getCartList(sU_Id);
 			[<%=cartItem.getProduct().getP_name()%>] 
 			수량:<%=cartItem.getC_qty()%>개
 			가격:<%=cartItem.getProduct().getP_price() * cartItem.getC_qty() %> 원
+			<a href='cart_delete_item_action.jsp?c_no=<%=cartItem.getC_no()%>'>[상품삭제]</a>
 			</li>
 		<% } %>
 	</ul>
 </div>
+<a href= 'cart_delete_action.jsp?u_id=<%=sU_Id%>'>[상품전체삭제]</a>
 
 							
 </body>
