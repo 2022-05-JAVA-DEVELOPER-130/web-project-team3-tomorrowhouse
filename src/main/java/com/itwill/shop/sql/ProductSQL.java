@@ -12,6 +12,7 @@ public class ProductSQL {
  //product 상품번호(p_no)로 1개 보기
  public final static String PRODUCT_SELECT_BY_NO 
  				= "select * from product where p_no = ? ";
+ 
  //product 상품이름(p_name)로 1개 보기
  public final static String PRODUCT_SELECT_BY_NAME
  				= "select * from product where p_name = ?";
@@ -19,6 +20,10 @@ public class ProductSQL {
  //product 카테고리번호(cg_no)로 상품리스트 보기
  public final static String PRODUCT_SELECT_ALL_BY_CG_NO
  				= "select * from product where cg_no = ?";
+ 
+ //product 검색기능
+ public final static String PRODUCT_SERCH
+	= "select * from product where p_name like '%?%'";
  
  
  /* Update문 (관리자전용) */
@@ -49,8 +54,5 @@ public class ProductSQL {
 	select * from product where p_name like '%?%';
 	-- ProdcutSQL = "select * from product where p_name like '%" + ? + "%'"
 	*/
- 
- 
- 
  
 }
