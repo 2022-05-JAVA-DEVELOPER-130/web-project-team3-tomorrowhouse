@@ -2,7 +2,6 @@
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -33,9 +32,10 @@ detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(no
 상품클릭수 <input type ='text'name='p_click_count' value='<%=detailProduct.getP_click_count()%>'><br>
 상품카테고리 <input type ='text'name='category' value='<%=detailProduct.getCategory().getCg_no()%>'><br>
 
-	<a href='product_list.jsp'>[상품스트]</a>
+	<a href='product_list.jsp'>[상품리스트]</a>
 	<a href='product_update_form.jsp?p_no=<%=detailProduct.getP_no()%>'>[상품수정]</a>
 	<a href='product_delete_action.jsp?p_no=<%=detailProduct.getP_no()%>'>[상품삭제]</a>
+		<a href='cart_add_item_action.jsp'>[장바구니추가]</a>
 </form>
 </body>
 </html>

@@ -141,12 +141,8 @@ insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ
 
 
 ------qna 데이터------
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '문의1', '문의1 내용', sysdate, '카테고리1', 'test1');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '문의2', '문의2 내용', sysdate, '카테고리2', 'test2');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '문의3', '문의3 내용', sysdate, '카테고리3', 'test3');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '문의4', '문의4 내용', sysdate, '카테고리4', 'test4');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '문의5', '문의5 내용', sysdate, '카테고리5', 'test5');
-insert into qna(q_no, q_title, q_content, q_date, q_category, u_id) values(qna_q_no_seq.nextval, '문의6', '문의6 내용', sysdate, '카테고리6', 'test6');
-
+insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, '문의 제목'||qna_q_no_seq.currval, '문의 내용'||qna_q_no_seq.currval, qna_q_no_seq.currval, 1, 0, 'test1');
+insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, '문의 제목'||qna_q_no_seq.currval, '문의 내용'||qna_q_no_seq.currval, qna_q_no_seq.currval, 1, 0, 'test1');
+insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, '문의 제목'||qna_q_no_seq.currval, '문의 내용'||qna_q_no_seq.currval, qna_q_no_seq.currval, 1, 0, 'test1');
 
 commit;
