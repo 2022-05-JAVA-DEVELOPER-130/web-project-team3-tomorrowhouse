@@ -14,5 +14,8 @@
 </head>
 <body>
 	<jsp:includ page ="include_common_left.jsp"></jsp:includ>
+	
+	
+	
 </body>
 </html>
