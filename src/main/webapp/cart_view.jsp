@@ -19,5 +19,21 @@ List<CartItem> cartList = cartService.getCartList(sU_Id);
 </head>
 <body>
 
+<h3>[장바구니리스트]</h3>
+<hr>
+
+<div>
+	<ul>
+		<% for(CartItem cartItem : cartList) { %>
+		<li>
+			<img src="iamge/product/<%=cartItem.getProduct().getP_image()%>" width="40px" height="40px">
+			[<%=cartItem.getProduct().getP_name()%>] 
+			수량:<%=cartItem.getC_qty()%>개
+			가격:<%=cartItem.getProduct().getP_price() * cartItem.getC_qty() %> 원
+			</li>
+		<% } %>
+	</ul>
+</div>
+
 </body>
 </html>
