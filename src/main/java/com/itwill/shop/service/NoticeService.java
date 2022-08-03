@@ -7,13 +7,15 @@ import com.itwill.shop.dto.Notice;
 
 public class NoticeService {
 	private NoticeDao noticeDao;
-	
+	public NoticeService() throws Exception {
+		noticeDao = new NoticeDao();
+	}
 	//공지사항 전체출력
-	public List<Notice> selectAll()throws Exception {
+	public List<Notice> selectAllNotice()throws Exception {
 		return noticeDao.selectAll();
 	}
 	//공지사항 한개출력
-	public Notice selectByNo(int no)throws Exception {
+	public Notice selectByNoNotice(int no)throws Exception {
 		return noticeDao.selectByNNo(no);
 	}
 	//공지사항 추가
