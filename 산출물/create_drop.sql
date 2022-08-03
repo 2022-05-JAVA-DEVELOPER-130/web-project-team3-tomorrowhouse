@@ -83,7 +83,7 @@ CREATE SEQUENCE orderitem_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 CREATE TABLE qna(
 		q_no                          		NUMBER(10)		 NULL ,
 		q_title                       		VARCHAR2(100)		 NULL ,
-		q_content                     		VARCHAR2(100)		 NULL ,
+		q_content                     		VARCHAR2(3000)		 NULL ,
 		q_date                        		DATE		 NULL ,
 		q_category                    		VARCHAR2(100)		 NULL ,
 		u_id                          		VARCHAR2(50)		 NULL 
