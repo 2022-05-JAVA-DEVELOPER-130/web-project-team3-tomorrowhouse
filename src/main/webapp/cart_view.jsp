@@ -1,9 +1,12 @@
+<%@page import="com.itwill.shop.dto.CartItem"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.service.CartService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
-	
-	
+CartService cartService = new CartService();
+//List<CartItem> cartList = cartService.getCartList(sU_Id);	
 %>
 
 

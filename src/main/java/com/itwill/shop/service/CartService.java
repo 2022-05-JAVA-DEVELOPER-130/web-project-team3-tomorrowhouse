@@ -13,31 +13,32 @@ public class CartService {
 
 	//카트리스트 insert(이미 리스트에 있을 경우 update)
 	public int addCart(CartItem cartItem)throws Exception{
-		
+		int product_count = cartDao.cartProductCount(cartItem);
+		if(product_count==0) {
+			cartDao.add(cartItem);
+		}else if(product_count==1) {
+			cartDao.update(cartItem);
+		}
 		return 0;
 	}
 	
 	//카트리스트 update
 	public int updateCart(CartItem cartItem)throws Exception{
-		
-		return 0;
+		return cartDao.update(cartItem);
 	}
 	
 	//카트리스트 delete all
 	public int deleteCartAll(String sU_Id) throws Exception{
-		
-		return 0;
+		return cartDao.deleteCart(sU_Id);
 	}
 	
 	//카트리스트 하나 삭제
 	public int deleteCartOne(int c_no) throws Exception{
-		
-		return 0;
+		return cartDao.deleteCartByNo(c_no);
 	}
 	
 	//카트리스트 보기
 	public List<CartItem> getCartList(String sU_Id) throws Exception{
-		
-		return null;
+		return cartDao.getCartItem(sU_Id);
 	}
 }
