@@ -10,7 +10,7 @@
 <%
 
 	NoticeService noticeService = new NoticeService();
-	List<Notice> notices = noticeService.selectAll();
+	List<Notice> notices = noticeService.selectAllNotice();
 
 %>
 
@@ -26,11 +26,8 @@
 <body>
 <h1>[공지리스트]</h1><hr>
 <div>
-<<<<<<< HEAD
-	<a href=''>[메인]</a>
-	<a href=''>[주소록쓰기폼]</a>
-   <a href=''>[메인]</a>
-   <a href=''>[주소록쓰기폼]</a>
+	<a href='notice_list.jsp'>[메인]</a>
+	<a href='notice_write_form.jsp'>[공지쓰기폼]</a>
 </div>
 <div>
    <ul>
