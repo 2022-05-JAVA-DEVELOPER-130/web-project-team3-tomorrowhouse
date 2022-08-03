@@ -37,7 +37,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 
 	<a href='notice_list.jsp'>[공지사항리스트]</a>
 	<a href='notice_modify_form?n_no=<%=noticeDetail.getN_no()%>'>[공지사항수정]</a>
-	<a href='notice_delete_action.jsp?n_no=<%=noticeDetail.getN_no()%>'>[공지사항삭제]</a>
+	<a href='notice_delete_action.jsp'>'>[공지사항삭제]</a>
 </form>
 </body>
 </html>
