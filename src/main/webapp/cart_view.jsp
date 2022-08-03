@@ -5,8 +5,9 @@
     pageEncoding="UTF-8"%>
 
 <%
+String sU_Id = "test2";
 CartService cartService = new CartService();
-//List<CartItem> cartList = cartService.getCartList(sU_Id);	
+List<CartItem> cartList = cartService.getCartList(sU_Id);	
 %>
 
 
@@ -17,5 +18,6 @@ CartService cartService = new CartService();
 <title>Insert title here</title>
 </head>
 <body>
+
 </body>
 </html>
