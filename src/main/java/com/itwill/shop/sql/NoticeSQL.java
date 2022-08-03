@@ -12,11 +12,14 @@ delete from notice where n_no=2;
 public class NoticeSQL {
 	
 	public static final String NOTICE_SELECT_All = 
-			"select * from notice;";
-	
+			"select * from notice";
+	public static final String NOTICE_SELECT_BY_NO=
+			"select * from notice where n_no =?";
 	public static final String NOTICE_UPDATE_BY_NO = 
-			"update notice set n_title=?, n_content=? where n_no = ?;";
+			"update notice set n_title=?, n_content=? where n_no = ?";
 	
 	public static final String NOTICE_DELETE_BY_NO= 
-			"delete from notice where n_no=?;";
+			"delete from notice where n_no=?";
+	public static final String NOTICE_INSERT=
+			"insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, ?, ?, sysdate)";
 }
