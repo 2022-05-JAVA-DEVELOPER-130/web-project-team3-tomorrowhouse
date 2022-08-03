@@ -5,16 +5,14 @@
     pageEncoding="UTF-8"%>
 
 <%
-	/*  if(request.getMethod().equalsIgnoreCase("GET")){
+	String cgNoStr= request.getParameter("cg_no");
+	if(cgNoStr==null || cgNoStr.equals("")){
 		response.sendRedirect("product_list.jsp");
 		return;
-	*/
-	
-	
-	String cgNoStr= request.getParameter("cg_no");
+	}
 	ProductService productService = new ProductService();
 	List<Product> productTableList = productService.selectAllByCgNo(Integer.parseInt(cgNoStr));
-
+	
 	
 %>
 

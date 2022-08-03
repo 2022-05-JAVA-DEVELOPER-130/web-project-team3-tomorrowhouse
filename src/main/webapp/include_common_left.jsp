@@ -8,7 +8,6 @@
 
 
 
-    	<li><a href= "product_insert_form.jsp">[상품등록하기]</a></li>
 		<div>
 	    <li><a href= "category_list.jsp?cg_no=1">선반</a></li><tr>
 	    <li><a href= "category_list.jsp?cg_no=2">가구</a></li><tr>
