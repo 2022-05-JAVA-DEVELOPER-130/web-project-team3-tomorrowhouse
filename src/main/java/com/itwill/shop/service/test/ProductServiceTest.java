@@ -12,16 +12,16 @@ public class ProductServiceTest {
 		
 	
 		System.out.println(">> 전체출력");
-		System.out.println(productService.selectAll());
+		System.out.println(productService.productSelectAll());
 	
 		System.out.println(">> 카테고리번호로 해당상품전체출력");
 		System.out.println(productService.selectAllByCgNo(2));
 	
 		System.out.println(">> 상품번호로 1개 출력");		
-		System.out.println(productService.selectByNo(new Product(21, null, 0, null, null, 0, null)));
+		System.out.println(productService.productSelectByNo(new Product(21, null, 0, null, null, 0, null)));
 		
 		System.out.println(">> 상품이름으로 1개 출력");
-		System.out.println(productService.selectByName(new Product(0, "신발장", 0, null, null, 0, null)));
+		System.out.println(productService.productSelectByName(new Product(0, "신발장", 0, null, null, 0, null)));
 				
 		
 		

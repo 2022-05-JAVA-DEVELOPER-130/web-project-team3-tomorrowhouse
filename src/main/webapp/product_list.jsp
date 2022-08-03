@@ -7,7 +7,7 @@
 <%
 
 ProductService productService = new ProductService();
-List<Product> productList = productService.selectAll();
+List<Product> productList = productService.productSelectAll();
 %>    
 
 <!DOCTYPE html>

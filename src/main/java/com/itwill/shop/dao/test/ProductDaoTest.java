@@ -14,7 +14,7 @@ public class ProductDaoTest {
 
 		
 		System.out.println(">>상품 전체 출력");
-		List<Product> productList = productDao.selectAll();
+		List<Product> productList = productDao.productSelectAll();
 		System.out.println(productList);
 		
 		System.out.println(">>카테고리번호(cg_no)로 상품전체출력");
@@ -22,12 +22,12 @@ public class ProductDaoTest {
 		System.out.println(producList);
 		
 		System.out.println(">>상품번호(p_no)로 출력");
-		Product findProductNo = productDao.selectByNo(new Product(19, null, 0, null, null, 0, null));
+		Product findProductNo = productDao.productSelectByNo(new Product(19, null, 0, null, null, 0, null));
 		System.out.println(findProductNo);
 		
 				
 		System.out.println(">>상품이름(p_name)로 출력");
-		Product findProductName = productDao.selectByName(new Product(0, "의자", 0, null, null, 0, null));
+		Product findProductName = productDao.productSelectByName(new Product(0, "의자", 0, null, null, 0, null));
 		System.out.println(findProductName);
 		
 		

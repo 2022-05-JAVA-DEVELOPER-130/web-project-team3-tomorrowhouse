@@ -14,8 +14,8 @@ public class ProductService {
 	}
 	
 	//상품전체출력
-	public List<Product> selectAll() throws Exception {
-		return productDao.selectAll();  
+	public List<Product> productSelectAll() throws Exception {
+		return productDao.productSelectAll();  
 	}
 	//카테고리번호로 해당상품 전체출력
 	public List<Product> selectAllByCgNo(int no) throws Exception{
@@ -24,13 +24,13 @@ public class ProductService {
 	
 	
 	//상품번호로 1개 출력
-	public Product selectByNo(Product product) throws Exception {
-		return productDao.selectByNo(product);
+	public Product productSelectByNo(Product product) throws Exception {
+		return productDao.productSelectByNo(product);
 	}
 	
 	//상품이름으로 1개 출력
-	public Product selectByName(Product product) throws Exception {
-		return productDao.selectByName(product);
+	public Product productSelectByName(Product product) throws Exception {
+		return productDao.productSelectByName(product);
 	}
 	
 	

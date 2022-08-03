@@ -9,7 +9,7 @@ request.setCharacterEncoding("UTF-8");
 
 String noStr = request.getParameter("p_no");
 String nameStr = request.getParameter("p_name");
-String priceStr = request.getParameter("p_price]");
+String priceStr = request.getParameter("p_price");
 String imageStr = request.getParameter("p_image");
 String descStr = request.getParameter("p_desc");
 String categoryStr = request.getParameter("category");

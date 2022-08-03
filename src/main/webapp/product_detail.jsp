@@ -11,11 +11,11 @@ Product detailProduct = new Product();
 
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
-detailProduct = productService.selectByNo(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
+detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
 
 %>
 
-<!DOCTYPE html>
+<!DOCTYPE htm
 <html>
 <head>
 <meta charset="UTF-8">

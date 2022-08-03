@@ -31,7 +31,7 @@ public class ProductDao {
 			dataSource = basicDataSource;
 		}
 	//상품전체리스트출력
-	public List<Product> selectAll() throws Exception {
+	public List<Product> productSelectAll() throws Exception {
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL);
@@ -55,7 +55,7 @@ public class ProductDao {
 	
 	
 	//상품번호(p_no)로 1개 출력
-	public Product selectByNo(Product product) throws Exception {
+	public Product productSelectByNo(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NO);
 		pstmt.setInt(1, product.getP_no());
@@ -79,7 +79,7 @@ public class ProductDao {
 	
 	
 	//상품이름(p_name)로 1개 출력
-	public Product selectByName(Product product) throws Exception {
+	public Product productSelectByName(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
 		pstmt.setString(1, product.getP_name());
