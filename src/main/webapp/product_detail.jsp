@@ -35,7 +35,7 @@ detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(no
 
 
 	<a href='product_update_form.jsp?p_no=<%=detailProduct.getP_no()%>'>[상품수정]</a>
-	<a href=''>[상품삭제]</a>
+	<a href='product_delete_action.jsp?no=<%=detailProduct.getP_no()%>'>[상품삭제]</a>
 </form>
 </body>
 </html>
