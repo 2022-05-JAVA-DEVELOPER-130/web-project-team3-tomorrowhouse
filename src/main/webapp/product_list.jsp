@@ -25,6 +25,11 @@ List<Product> productList = productService.productSelectAll();
 	<a href='product_insert_form.jsp'>[상품등록하기]</a>
 </div>
 
+<!-- include left<<카테고리>>Start -->
+<div id="categoryList">
+<jsp:include page="include_common_left.jsp"></jsp:include>
+</div>
+<!-- include left<<카테고리>>End -->
 
 <div>
 	<ul>
