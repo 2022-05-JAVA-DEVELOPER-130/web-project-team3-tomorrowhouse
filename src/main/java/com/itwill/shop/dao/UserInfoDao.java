@@ -1,6 +1,7 @@
 package com.itwill.shop.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,15 +26,16 @@ public class UserInfoDao {
 
 	public UserInfoDao() throws Exception {
 		/******Apache BasicDataSource*****/
-		BasicDataSource basicDataSource=new BasicDataSource();
 		
-		Properties properties=new Properties();
-		properties.load(UserInfoDao.class.getResourceAsStream("jdbc.properties"));
+		Properties properties = new Properties();
+		properties.load(this.getClass().getResourceAsStream("/com/itwill/shop/common/jdbc.properties"));
+		/*** Apache DataSource ***/
+		BasicDataSource basicDataSource = new BasicDataSource();
 		basicDataSource.setDriverClassName(properties.getProperty("driverClassName"));
 		basicDataSource.setUrl(properties.getProperty("url"));
-		basicDataSource.setUsername(properties.getProperty("username"));
+		basicDataSource.setUsername(properties.getProperty("user"));
 		basicDataSource.setPassword(properties.getProperty("password"));
-		this.dataSource = basicDataSource;
+		dataSource = basicDataSource;
 		
 	}
 
@@ -44,7 +46,6 @@ public class UserInfoDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int insertRowCount = 0;
-		try {
 			/*
 			 * 예외발생 예상코드
 			 */
@@ -57,18 +58,8 @@ public class UserInfoDao {
 			pstmt.setString(5, userinfo.getU_address());
 			pstmt.setString(6, userinfo.getU_phone());
 			insertRowCount = pstmt.executeUpdate();
-		} finally {
-			/*
-			 * 예외발생과 관계없이 반드시 실행되는 코드
-			 */
-			if (pstmt != null) {
-				pstmt.close();
-			}
-			if (con != null) {
-				con.close();
-			}
-		}
-		return insertRowCount;
+			con.close();
+			return insertRowCount;
 	}
 
 	/*
@@ -87,9 +78,9 @@ public class UserInfoDao {
 			pstmt.setString(1, userinfo.getU_pw());
 			pstmt.setString(2, userinfo.getU_name());
 			pstmt.setString(3, userinfo.getU_email());
-			pstmt.setString(4, userinfo.getU_id());
-			pstmt.setString(5, userinfo.getU_address());
-			pstmt.setString(6, userinfo.getU_phone());
+			pstmt.setString(4, userinfo.getU_address());
+			pstmt.setString(5, userinfo.getU_phone());
+			pstmt.setString(6, userinfo.getU_id());
 			updateRowCount = pstmt.executeUpdate();
 		} finally {
 			/*

@@ -180,4 +180,22 @@ public class ProductDao {
 			return rowCount;
 		}
 		
+		
+		
+		 //product 검색기능
+		 //public final static String PRODUCT_SERCH = "select * from product where p_name like '%?%'";
+		
+		public String ProductSerch(Product product) throws Exception { 
+			Connection con = dataSource.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SERCH);
+						
+			
+			con.close();
+			return null;
+		}
+		 
+		
+		
+		
+		
 }//
