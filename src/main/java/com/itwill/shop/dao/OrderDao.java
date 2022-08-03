@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -17,7 +18,7 @@ import com.itwill.shop.dto.Product;
 import com.itwill.shop.sql.OrderSQL;
 
 public class OrderDao {
-   
+
 	private DataSource dataSource;
 
 	public OrderDao() throws Exception {
@@ -31,42 +32,115 @@ public class OrderDao {
 		basicDataSource.setPassword(properties.getProperty("password"));
 		dataSource = basicDataSource;
 	}
-	/*************************** 작성중입니다 *********************************************/
+
+	/***************************
+	 * 작성중입니다
+	 *********************************************/
 	/* ------ order select------ */
 	/*
 	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
-	public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
-		/*
-		 * select * from orders o join orderitem oi on o.o_no = oi.o_no join product p
-		 * on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?
-		 */
-		Order findOrder = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		con = dataSource.getConnection();
-		pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_USERID_ORDERNO);
-		pstmt.setString(1, order.getU_id());
-		pstmt.setInt(2, order.getO_no());
-		rs = pstmt.executeQuery();
-
-		if (rs.next()) {
-			findOrder = new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"), rs.getInt("o_price"),
-					rs.getString("u_id"), new ArrayList<OrderItem>());
-			do {
-				findOrder.getOrderItemList()
-						.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
-								new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-										rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
-										new Category(rs.getInt("cg_no"), null))));
-			} while (rs.next());
+		public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
+			/*
+			 * select * from orders o join orderitem oi on o.o_no = oi.o_no join product p
+			 * on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?
+			 */
+			Order findOrder = null;
+	
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_USERID_ORDERNO);
+			pstmt.setString(1, order.getU_id());
+			pstmt.setInt(2, order.getO_no());
+			rs = pstmt.executeQuery();
+	
+			if (rs.next()) {
+				findOrder = new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"), rs.getInt("o_price"),
+						rs.getString("u_id"), new ArrayList<OrderItem>());
+				do {
+					findOrder.getOrderItemList()
+							.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
+									new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
+											rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
+											new Category(rs.getInt("cg_no"), null))));
+				} while (rs.next());
+			}
+			con.close();
+			return findOrder;
 		}
-		con.close();
-		return findOrder;
-	}
+		
+		/*
+		 * 주문상세리스트(특정사용자)
+		 */
+		public List<Order> list_detail(Order order) throws Exception{
+			
+			List<Order> orderList = new ArrayList<Order>();
 
+			Connection con = dataSource.getConnection();
+			
+			PreparedStatement pstmt1= con.prepareStatement(OrderSQL.ORDER_O_NO_LIST);
+			PreparedStatement pstmt2= con.prepareStatement(OrderSQL.ORDER_LIST_BY_ORDER_NO_USERID);
+			
+			pstmt1.setString(1, order.getU_id());
+			ResultSet rs1 = pstmt1.executeQuery();
+			
+			
+			while(rs1.next()) {
+				
+				int temp_o_no=rs1.getInt("o_no");
+				
+				pstmt2.clearParameters();
+				pstmt2.setString(1, order.getU_id());
+				pstmt2.setInt(2, temp_o_no);
+				
+				ResultSet rs2 = pstmt2.executeQuery();
+				
+				Order findOrder = null;
+				
+				if(rs2.next()) {
+					findOrder = new Order(rs2.getInt("o_no"),
+							rs2.getString("o_desc"),
+							rs2.getDate("o_date"),
+							rs2.getInt("o_price"),
+							rs2.getString("userId"),
+							new ArrayList<OrderItem>());
+					do {
+						findOrder.getOrderItemList().add(new OrderItem(rs2.getInt("oi_no"),
+																	rs2.getInt("oi_qty"),
+																	rs2.getInt("o_no"),
+																	new Product(rs2.getInt("p_no"),
+																				rs2.getString("p_name"),
+																				rs2.getInt("p_price"),
+																				rs2.getString("p_image"),
+																				rs2.getString("p_desc"),
+																				rs2.getInt("p_click_cout"),
+																				new Category(rs2.getInt("cg_no"), null) )
+													));
+					}while(rs2.next());
+					
+					/*
+					 * orderItem리스트는 
+					 * Order객체 내부에 null
+					 * List<OrderItem> orderItemList=new List<OrderItem>();
+					 * orderItemList.add(rs..);
+					 * order.setOrderItemList(orderItemList) 해도 됨.
+					 * 
+					 */
+				}// end if
+				orderList.add(order);
+			}// end while
+			return orderList;
+		}
+		
+		
+		
+	
+	
+	
+	
+	
 	/*
 	 * 2. 고객1명(특정사용자)의 주문 전체 목록
 	 */
@@ -175,7 +249,7 @@ public class OrderDao {
 	 */
 
 	/* ------ order insert------ */
-	//카트 -> 주문으로 옮겨올때에 관해서는 service에서 작성한다.
+	// 카트 -> 주문으로 옮겨올때에 관해서는 service에서 작성한다.
 	/*<<단일주문건 생성에 해당 - 상품detail에서 주문시 사용>>
 	7-1. 주문 생성(insert - orders) -> [order_create_action]
 	insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '책상 외 2종', sysdate, 200000, 'test1');
@@ -193,7 +267,7 @@ public class OrderDao {
 		pstmt1.setString(1, order.getO_desc());
 		pstmt1.setInt(2, order.getO_price());
 		pstmt1.setString(3, order.getU_id());
-		int orderInsertResult=pstmt1.executeUpdate();
+		int orderInsertResult = pstmt1.executeUpdate();
 
 		pstmt2 = con.prepareStatement(OrderSQL.INSERT_ORDER_ITEM);
 		for (OrderItem orderItem : order.getOrderItemList()) {
@@ -205,7 +279,6 @@ public class OrderDao {
 		return orderInsertResult;
 	}
 
-	
 	/******** 주문내역 삭제는 일어나지 않는다. 단지 주문상태만 바뀔 뿐이다. *************/
 	/*
 	8.주문번호 3번 삭제 -> 언제 일어나는 일? 주문 취소할때? 그래도 주문내역은 남지 않나?
@@ -226,7 +299,7 @@ public class OrderDao {
 
 		return rowCount;
 	}
-	
+
 	/*
 	8.주문번호 3번 삭제 -> 언제 일어나는 일? 주문 취소할때? 그래도 주문내역은 남지 않나?
 	--on delete cascade(아닐 경우)
@@ -234,27 +307,25 @@ public class OrderDao {
 		8-2.(주문1개삭제)delete from orders where o_no=3;
 	 */
 	public int delete(Order order) throws Exception {
-		Connection con=null;
-		PreparedStatement pstmt1=null;
-		PreparedStatement pstmt2=null;
-		con=dataSource.getConnection();
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		con = dataSource.getConnection();
 
-		pstmt1=con.prepareStatement(OrderSQL.DELETE_ORDER_BY_ORDER_NO);
-		pstmt2=con.prepareStatement(OrderSQL.DELETE_ORDERITEM_BY_ORDER_NO);
+		pstmt1 = con.prepareStatement(OrderSQL.DELETE_ORDER_BY_ORDER_NO);
+		pstmt2 = con.prepareStatement(OrderSQL.DELETE_ORDERITEM_BY_ORDER_NO);
 		pstmt1.setInt(1, order.getO_no());
 		pstmt2.setInt(1, order.getO_no());
 		int rowCount1 = pstmt1.executeUpdate();
 		int rowCount2 = pstmt2.executeUpdate();
-		
+
 		con.close();
-			
+
 		return rowCount1 * rowCount2;
 	}
-	
+
 	/*
 	 * 따라서, 주문 전체삭제 등도 필요없다. -> 필요시 구현한다.
 	 */
-	
-	
 
 }
