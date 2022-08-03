@@ -30,17 +30,18 @@
 <body>
 	<br>
 		<li>상품/책상</li>
+		<b><a href = 'product_list.jsp'>돌아가기</a></b>
 	<br>
 	<br>
 		<ul>
 		<% for(Product product : productTableList) { %>
-		<li><a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
-										 <b>[<%=product.getP_name()%>] 
-								          가격:<%=product.getP_price()%>원 
-										  <img width="100px" height="85px" src="image/<%=product.getP_image()%>" border="0">
-		</a></li>
-		
+		 
+		<img src="image/product/<%=product.getP_image()%>" width="40px" height="40px">
+		<li><a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>[<%=product.getP_name()%>] 가격:<%=product.getP_price()%>원</a></li>
 		<% } %>
+		
+		
+		
 	</ul>
 	
 </body>
