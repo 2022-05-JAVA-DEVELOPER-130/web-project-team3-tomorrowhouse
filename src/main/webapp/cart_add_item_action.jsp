@@ -3,7 +3,9 @@
 <%@page import="com.itwill.shop.service.CartService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>
 <%
+
 request.setCharacterEncoding("UTF-8");
 if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("product_list.jsp");
@@ -17,5 +19,6 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	cartService.addCart(cartItem);
 	
 	response.sendRedirect("cart_view.jsp");
+
 %>
 

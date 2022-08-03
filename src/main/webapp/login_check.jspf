@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%
 	String sUserId=(String)session.getAttribute("sUserId");
-	//User sUser=(User)session.getAttribute("sUser");
 	if(sUserId==null){
-		response.sendRedirect("shop_main.jsp");
-		return;
+		//response.sendRedirect("shop_main.jsp");
+		sUserId = "test1";
 	}
 %>  
