@@ -5,6 +5,7 @@
 <%@ include file="login_check.jspf" %> 
 
 <%
+<<<<<<< HEAD
 
 /*
 private String u_id;
@@ -14,18 +15,9 @@ private String u_email;
 private String u_address;
 private String u_phone;
 */
+=======
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team3-tomorrowhouse.git
 
-/*
- * 회원 1명 보기
-public UserInfo findUser(String u_id) throws Exception {
-	UserInfo findUser = userInfoDao.findUser(u_id);
-	return findUser;
-}
- */
- 
-
-
- 
 UserInfoService userInfoService = new UserInfoService();
 UserInfo findUser = userInfoService.findUser(sUserId);
 

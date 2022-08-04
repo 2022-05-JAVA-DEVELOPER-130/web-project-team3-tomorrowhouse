@@ -24,7 +24,7 @@ if(cart_qtyStr.equals("0")){
 }else{
 	cartService.updateCart(cartItem);
 }
-response.sendRedirect("cart_view_select_update_qty.jsp");
+response.sendRedirect("cart_view.jsp");
 
 %>
 
