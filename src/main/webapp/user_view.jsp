@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

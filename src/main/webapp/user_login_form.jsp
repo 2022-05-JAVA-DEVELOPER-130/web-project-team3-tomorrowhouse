@@ -123,7 +123,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 		<div id="footer">
 			<!-- include_common_bottom.jsp start-->
 			
-	<p align="center">Copyright (&copy;) By Kimkyoungho.[김경호] All
+	<p align="center">Copyright (&copy;) All
 		rights reserved.</p>
 
 			<!-- include_common_bottom.jsp end-->
