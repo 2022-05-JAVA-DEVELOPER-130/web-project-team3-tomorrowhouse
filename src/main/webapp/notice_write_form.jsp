@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<form name="f" method="post">
+<form>
 <h3>[공지사항 신규작성]</h3>
 <hr>
 <input type ='hidden'name='n_no' value='n_no'>
