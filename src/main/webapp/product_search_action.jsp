@@ -14,7 +14,7 @@ if( keyword==null || keyword.equals("")) {
 }
 
 ProductService productService = new ProductService();
-List<Product> searchList = productService.productSerch(keyword);
+List<Product> searchList = productService.productSearch(keyword);
 
 
 if(searchList.size() == 0) {
