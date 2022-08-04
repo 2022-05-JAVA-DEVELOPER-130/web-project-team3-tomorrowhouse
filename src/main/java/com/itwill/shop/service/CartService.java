@@ -41,4 +41,8 @@ public class CartService {
 	public List<CartItem> getCartList(String sU_Id) throws Exception{
 		return cartDao.getCartItem(sU_Id);
 	}
+	
+	public CartItem getCartItemByNo(int c_no)throws Exception{
+		return cartDao.getCartItemByCNo(c_no);
+	}
 }
