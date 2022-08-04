@@ -45,7 +45,7 @@
 		 request.setAttribute("fuser", fuser);
 		 
 		 RequestDispatcher rd=
-		 	request.getRequestDispatcher("test.jsp");
+		 	request.getRequestDispatcher("user_login_form.jsp");
 		 rd.forward(request, response);
 	 }else if(result==1){
 		 //1:패쓰워드 불일치
@@ -67,7 +67,7 @@
 	 }else if(result==2){
 		 //2:로그인성공(세션)
 		session.setAttribute("sUserId", u_id);
-		response.sendRedirect("user_main.jsp");		 
+		response.sendRedirect("shop_main.jsp");		 
 	 }
 		
 	
