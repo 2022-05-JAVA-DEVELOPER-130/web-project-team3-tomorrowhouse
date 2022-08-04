@@ -5,19 +5,6 @@
 <%@ include file="login_check.jspf" %> 
 
 <%
-<<<<<<< HEAD
-
-/*
-private String u_id;
-private String u_pw;
-private String u_name;
-private String u_email;
-private String u_address;
-private String u_phone;
-*/
-=======
->>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team3-tomorrowhouse.git
-
 UserInfoService userInfoService = new UserInfoService();
 UserInfo findUser = userInfoService.findUser(sUserId);
 
