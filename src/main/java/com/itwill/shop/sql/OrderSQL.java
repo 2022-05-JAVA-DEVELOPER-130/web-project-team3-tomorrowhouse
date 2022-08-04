@@ -83,6 +83,11 @@ public class OrderSQL {
 	public final static String DELETE_ALL_ORDER_BY_USERID
 	="delete from orders where u_id = ?";
 	
+	/*
+	 10. 주문취소
+	 */
+	
+	
 	
 }
 /**************** orders_orderitem (쪼금 수정) ***************
