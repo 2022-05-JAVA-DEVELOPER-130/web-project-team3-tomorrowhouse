@@ -6,7 +6,7 @@ import java.util.Date;
 import com.itwill.shop.dao.ReviewDao;
 import com.itwill.shop.dto.OrderItem;
 import com.itwill.shop.dto.Product;
-import com.itwill.shop.dto.Review;
+import com.itwill.shop.dto.review.Review;
 
 
 public class ReviewDaoTestMain {

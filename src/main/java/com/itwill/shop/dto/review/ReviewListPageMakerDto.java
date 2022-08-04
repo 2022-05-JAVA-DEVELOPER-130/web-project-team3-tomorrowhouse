@@ -1,4 +1,4 @@
-package com.itwill.shop.dto;
+package com.itwill.shop.dto.review;
 
 import java.util.*;
 

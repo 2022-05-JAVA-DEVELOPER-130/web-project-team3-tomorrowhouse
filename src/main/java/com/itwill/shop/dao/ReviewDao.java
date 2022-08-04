@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -12,9 +11,7 @@ import javax.sql.DataSource;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.itwill.shop.dto.OrderItem;
-import com.itwill.shop.dto.Product;
-import com.itwill.shop.dto.Review;
-import com.itwill.shop.sql.CartSQL;
+import com.itwill.shop.dto.review.Review;
 import com.itwill.shop.sql.ReviewSQL;
 
 
@@ -162,11 +159,6 @@ public class ReviewDao {
 	
 	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
 		//select * from review where r_no=26;
-	/*
-	public static final String SELECT_BY_REVIEW_NO =
-			"select * from review where r_no=?";
-	*/
-	
 	public Review selectByReviewNo(Review review)throws Exception{
 		
 		Review findReview= null;
@@ -311,7 +303,44 @@ public class ReviewDao {
 		return review_count;
 	}
 	
-	
-	
+	/******* 도전 *******************************************/
+	/*
+	 * 게시물리스트
+	 */
+	/**
+	 * 게시물 총 건수를 조회, 반환
+	 */
+	public int getBoardCount() throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM review";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				count = rs.getInt(1);
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (Exception ex) {
+			}
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception ex) {
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (Exception ex) {
+			}
+		}
+		return count;
+	}
 	
 }

@@ -371,6 +371,70 @@ public class OrderDao {
 		return orderCancelResult;
 		//return orderCancelResult * orderItemCancelResult;
 	}
+	/*
+	 * orderItem번호로 Product 정보 얻기
+	 */
+	public Product findProductByOrderItemNo(int oi_no)throws Exception{
+		Product product = null;
+		Connection con = null;
+		ResultSet rs = null;
+
+		PreparedStatement pstmt = null;
+		con = dataSource.getConnection();
+
+		pstmt = con.prepareStatement(OrderSQL.FIND_PRODUCT_BY_ORDER_ITEM_NO);
+		pstmt.setInt(1, oi_no);
+		rs = pstmt.executeQuery();
+
+		if(rs.next()) {
+			product = new Product(rs.getInt("p_no"),
+									rs.getString("p_name"),
+									rs.getInt("p_price"),
+									rs.getString("p_image"),
+									rs.getString("p_desc"),
+									rs.getInt("p_click_count"),
+									new Category(rs.getInt("cg_no"),null)
+								);
+		}
+		
+		con.close();
+		
+		return product;
+	}
 	
+	public Order findOrderDetailByOrderItemNo(int oi_no)throws Exception{
+		Order order = null;
+		OrderItem orderItem = null;
+		
+		Connection con = null;
+		ResultSet rs = null;
+
+		PreparedStatement pstmt = null;
+		con = dataSource.getConnection();
+
+		pstmt = con.prepareStatement(OrderSQL.FIND_ORDER_DETAIL_BY_ORDER_ITEM_NO);
+		pstmt.setInt(1, oi_no);
+		rs = pstmt.executeQuery();
+
+		if(rs.next()) {
+			order = new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"),
+								rs.getInt("o_price"), rs.getString("u_id"),
+								new ArrayList<OrderItem>()
+								);
+			order.getOrderItemList().add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
+														new Product(rs.getInt("p_no"),
+																rs.getString("p_name"),
+																rs.getInt("p_price"),
+																rs.getString("p_image"),
+																rs.getString("p_desc"),
+																rs.getInt("p_click_count"),
+																new Category(rs.getInt("cg_no"),null)
+																)));
+		}
+		
+		con.close();
+		
+		return order;
+	}
 	
 }

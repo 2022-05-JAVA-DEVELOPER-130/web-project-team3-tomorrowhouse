@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.dto.UserInfo"%>
+<%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@page import="com.itwill.shop.dto.CartItem"%>
 <%@page import="com.itwill.shop.service.CartService"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -9,6 +11,9 @@
 /********************/
 sUserId="test4";
 /********************/
+UserInfoService userInfoService = new UserInfoService();
+UserInfo userInfo =
+userInfoService.findUser(sUserId);
 
 CartService cartService = new CartService();
 ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
@@ -16,7 +21,7 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>쇼핑몰 관리</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/shop.css" type="text/css">
@@ -133,11 +138,6 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 			document.getElementById('tot_order_price').innerHTML = tot_order_price.toLocaleString();
 		
 	}
-	
-	
-	
-	
-	
 	/*
 	cart 아이템전체선택해제
 	*/
@@ -155,18 +155,11 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 	}
 </script>
 </head>
-<body onload="cart_item_select_count();" bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
-	
-	
+<body onload="cart_item_select_count();" bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 	
 	<form name="cart_view_form" style="margin:0">
 		<input type="hidden" name="buyType">
 	</form>
-	
-	
-	
-	
 	
 	<!-- container start-->
 	<div id="container">
@@ -196,7 +189,7 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td height="22">&nbsp;&nbsp;<b>쇼핑몰 - 장바구니 보기</b></td>
+									<td height="22">&nbsp;&nbsp;<b><%= userInfo.getU_name() %>님의 장바구니 보기</b></td>
 								</tr>
 							</table> <!--form--> <!-- 
 							<form name="f" method="post">
@@ -212,7 +205,7 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 										<td width=40 height=25 align="center" bgcolor="E6ECDE"
 											class=t1><font>이미지</font></td>
 										<td width=210 height=25 align="center" bgcolor="E6ECDE"
-											class=t1><font>강아지 이름</font></td>
+											class=t1><font>상품 이름</font></td>
 										<td width=112 height=25 align="center" bgcolor="E6ECDE"
 											class=t1><font>수 량</font></td>
 										<td width=146 height=25 align="center" bgcolor="E6ECDE"
@@ -303,22 +296,15 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 							</form> 
 							 --> <br />
 
-							<table style="padding-left: 10px" border="0" cellpadding="0"
-								cellspacing="1" width="590">
+								<table style="padding-left: 10px" border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp; <a href="product_list.jsp"
 										class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
 										 if (cartList.size() >= 1) {
-											 
-										 %> 
-										 
-										 
-										 
-										 <a href="javascript:cart_view_form_select_submit();" class=m1>
-										 	총 <span style="font-weight: bold;" id="+"></span>개 주문하기[주문폼]
+										 %> <a href="javascript:cart_view_form_select_submit();" class=m1>
+										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]
 										 	</a>&nbsp;&nbsp;
 											<a href="javascript:cart_delete();" class=m1>장바구니 비우기</a>&nbsp;&nbsp;
-											
 											<%
 											}
 											%>

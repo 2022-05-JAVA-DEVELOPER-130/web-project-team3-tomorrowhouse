@@ -134,4 +134,12 @@ public class OrderService {
 	public int cancelOrder(Order order)throws Exception{
 		return orderDao.cancelOrderOrderItem(order);
 	}
+	
+	public Product findProductByOrderItemNo(int oi_no)throws Exception{
+		return orderDao.findProductByOrderItemNo(oi_no);
+	}
+	
+	public Order findOrderDetailByOrderItemNo(int oi_no)throws Exception{ 
+		return orderDao.findOrderDetailByOrderItemNo(oi_no);
+	}
 }

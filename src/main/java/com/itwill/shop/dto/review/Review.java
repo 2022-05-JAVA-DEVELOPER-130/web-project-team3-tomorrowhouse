@@ -1,6 +1,8 @@
-package com.itwill.shop.dto;
+package com.itwill.shop.dto.review;
 
 import java.util.Date;
+
+import com.itwill.shop.dto.OrderItem;
 
 public class Review {
 	/*

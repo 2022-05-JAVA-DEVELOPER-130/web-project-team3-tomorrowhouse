@@ -1,4 +1,4 @@
-﻿package com.itwill.shop.common;
+﻿package com.itwill.shop.dto.review;
 
 // 리스트 페이지 관련 사용자 설정을 위한 DTO(VO)
 public class PageInputDto{

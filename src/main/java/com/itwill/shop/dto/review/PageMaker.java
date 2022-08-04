@@ -1,4 +1,4 @@
-package com.itwill.shop.common;
+package com.itwill.shop.dto.review;
 public class PageMaker {
  
     // 페이지당 게시물 수

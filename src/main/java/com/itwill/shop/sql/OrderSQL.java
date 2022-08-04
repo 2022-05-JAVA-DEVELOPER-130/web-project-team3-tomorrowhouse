@@ -92,5 +92,22 @@ public class OrderSQL {
 	="update orderitem set oi_qty=0 where o_no=?";
 	
 	
+	
+	/*
+	 * orderItem번호로 Product 정보 얻기
+	 */
+	public final static String FIND_PRODUCT_BY_ORDER_ITEM_NO
+	="select * from orderitem oi join product p on oi.p_no=p.p_no where oi.oi_no=?";
+	/*
+	 * orderItem번호로 Order, Product 정보 얻기
+	 */
+	public final static String FIND_ORDER_DETAIL_BY_ORDER_ITEM_NO
+	="select * from orders o\r\n"
+			+ "join orderitem oi\r\n"
+			+ "on o.o_no=oi.o_no\r\n"
+			+ "join product p\r\n"
+			+ "on oi.p_no=p.p_no\r\n"
+			+ "where oi.oi_no=?";
+	
 }
 

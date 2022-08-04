@@ -2,7 +2,7 @@ package com.itwill.shop.service.test;
 
 import java.util.ArrayList;
 
-import com.itwill.shop.dto.Review;
+import com.itwill.shop.dto.review.Review;
 import com.itwill.shop.service.ReviewService;
 
 public class ReviewServiceTestMain {
