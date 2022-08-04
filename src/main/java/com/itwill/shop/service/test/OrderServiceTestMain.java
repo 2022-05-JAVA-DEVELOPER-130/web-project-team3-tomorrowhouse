@@ -56,6 +56,10 @@ public class OrderServiceTestMain {
 		 */
 		String[] stringArray = {"31","32"};
 		orderService.createOrderByCartSelect("test6", stringArray);
+		
+		ProductService productService = new ProductService();
+		System.out.println(productService.productSearch(null));
+	 
 
 		/* ------ order cancel------ */
 		order = new Order(3, null, null, 0,null , null);
@@ -63,7 +67,6 @@ public class OrderServiceTestMain {
 		
 		//orderService.cancelOrder(order);
 		
-		ProductService productService = new ProductService();
 		
 	}
 

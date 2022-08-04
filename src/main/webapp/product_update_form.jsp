@@ -5,6 +5,10 @@
 <%@include file="login_check.jspf" %>
 <%
  
+if(!sUserId.equals("admin")){
+	
+}
+
 request.setCharacterEncoding("UTF-8");
 
 String noStr = request.getParameter("p_no");
