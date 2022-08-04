@@ -193,24 +193,66 @@ function cart_item_all_select(e){
 									
 									<!-- cart item start -->
 									<%
-									int tot_price=0;
-									for(CartItem cart:cartList){ 
-									tot_price+=cart.getProduct().getP_price()*cart.getC_qty();
+									int tot_price = 0;
+									for (CartItem cart : cartList) {
+										tot_price += cart.getProduct().getP_price() * cart.getC_qty();
 									%>
 									<tr>
-										<td width=60 height=26 align=center bgcolor="ffffff" class=t1></td>
-										<td width=40 height=26 align=center bgcolor="ffffff" class=t1><img src='image/product/<%=cart.getProduct().getP_image()%>' width="34" height="28"/></td>
-										<td width=210 height=26 align=center bgcolor="ffffff" class=t1><a href='product_detail.jsp?p_no=<%=cart.getProduct().getP_no()%>'><%=cart.getProduct().getP_name() %></a></td>
-										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=cart.getC_qty()%></td>
-										<td width=146 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price()*cart.getC_qty()) %></td>
+										<td width=60 height=26 align=center bgcolor="ffffff" class=t1>
+										 <input type="checkbox" name="cart_item_no_check" onchange="cart_item_all_select_checkbox_deselect();cart_item_select_count();" value="<%=cart.getC_no()%>" checked="checked">
+										</td>
+										<td width=40 height=26 align=center bgcolor="ffffff" class=t1>
+											<img src='image/product/<%=cart.getProduct().getP_image()%>' width="34" height="28" />
+										</td>
+										<td width=210 height=26 align=center bgcolor="ffffff" class=t1>
+											<a href='product_detail.jsp?p_no=<%=cart.getProduct().getP_no()%>'><%=cart.getProduct().getP_name()%></a>
+										</td>
+
+										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
+											<form action="cart_update_action.jsp" method="post"
+												id="cart_update_form_<%=cart.getC_no()%>">
+												<input type="hidden" name="cart_no"
+													value="<%=cart.getC_no()%>"> <input
+													type="button" value="-"
+													onclick="changeNumber('-','cart_update_form_<%=cart.getC_no()%>');"/>
+												<input type="text" readonly="readonly" size="2"
+													style="text-align: center; width: 15%" name="cart_qty"
+													value="<%=cart.getC_qty()%>"> <input
+													type="button" value="+"
+													onclick="changeNumber('+','cart_update_form_<%=cart.getC_no()%>');"/>
+												<input type="hidden" name="cart_product_unit_price" value="<%=cart.getProduct().getP_price()%>"/>	
+											</form>
+										</td>
+
+										<td width=146 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price() * cart.getC_qty())%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
+
+											<%-- 
 											<form action="cart_delete_item_action.jsp" method="post">
-												<input type="hidden" name="cart_no" value="<%=cart.getC_no()%>">
+												<input type="hidden" name="cart_no" value="<%=cart.getCart_no()%>">
 												<input type="submit" value="삭제">
 											</form>
+											 --%>
+											<form id="cart_delete_item_form_<%=cart.getC_no()%>">
+												<input type="hidden" name="cart_no"
+													value="<%=cart.getC_no()%>"> <a
+													href="javascript:cart_delete_item_action('cart_delete_item_form_<%=cart.getC_no()%>');">
+													<svg xmlns="http://www.w3.org/2000/svg" width="14"
+														height="14" viewBox="0 0 28 28" class="icon--close">
+													<g fill="none" fill-rule="evenodd"> <path
+														d="M0 0H28V28H0z"></path> <g fill="#9B9BA0"
+														transform="translate(6 6)" class="icon--close__group">
+													<rect width="2" height="18" x="7" y="-1" rx="1"
+														transform="rotate(-135 8 8)"></rect> <rect width="2"
+														height="18" x="7" y="-1" rx="1"
+														transform="rotate(-45 8 8)"></rect> </g> </g> </svg>
+												</a>
+											</form>
+
 										</td>
 									</tr>
 									<%}%>
+									<!-- cart item end -->
 									<!-- cart item end -->
 									<tr>
 										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
