@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>    
 <%
-	sUserId="test1";
+	sUserId="test3";
 
 	UserInfoService userInfoService = new UserInfoService();
 	UserInfo userInfo = userInfoService.findUser(sUserId);
