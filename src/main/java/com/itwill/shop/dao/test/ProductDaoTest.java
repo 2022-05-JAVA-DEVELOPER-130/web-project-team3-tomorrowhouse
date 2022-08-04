@@ -13,6 +13,7 @@ public class ProductDaoTest {
 		ProductDao productDao = new ProductDao();
 
 		
+		/*
 		System.out.println(">>상품 전체 출력");
 		List<Product> productList = productDao.productSelectAll();
 		System.out.println(productList);
@@ -41,23 +42,29 @@ public class ProductDaoTest {
 											new Category(1, null)
 											)
 									);
-									/*		
-											//update 상품변경
-											System.out.println(productDao.updateProduct
+		//update 상품변경
+		System.out.println(productDao.updateProduct
 													(new Product(10,
-																"조명",						
-																4000,
-																"바뀐.jpg",
-																"좋은조명인가보군요",
-																2,
-																new Category(4,null))));*/
-				/*		
-						//delete 상품제거 
-						System.out.println(productDao.deleteProduct(new Product(15, null, 0, null, null, 0, null)));*/
+													"조명",						
+													4000,
+													"바뀐.jpg",
+													"좋은조명인가보군요",
+													2,
+													new Category(4,null))));
+				
+	    //delete 상품제거 
+		System.out.println(productDao.deleteProduct(new Product(15, null, 0, null, null, 0, null)));
 		
 		//click_count
 		System.out.println(productDao.clickCount(new Product(1, null, 0, null, null, 10, null)));
-	
+		*/
+		
+		System.out.println("상품검색");
+		List<Product> productSerchList = productDao.productSerch("의자");
+		for(Product product : productSerchList) {
+			System.out.println(product);
+		}
+		
 		
 	}//
 }//
