@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h3> QNA 리스트 </h3>
 </body>
 </html>
