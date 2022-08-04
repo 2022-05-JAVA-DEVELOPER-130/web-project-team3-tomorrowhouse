@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.dto.Category"%>
 <%@page import="com.itwill.shop.service.CategoryService"%>
 <%@page import="com.itwill.shop.dto.Product"%>
@@ -7,12 +8,14 @@
     pageEncoding="UTF-8"%>
 <%
 	String cgNoStr= request.getParameter("cg_no");
+	
 	if(cgNoStr==null || cgNoStr.equals("")){
 		response.sendRedirect("product_list.jsp");
 		return;
 	}
 	ProductService productService = new ProductService();
 	List<Product> productTableList = productService.selectAllByCgNo(Integer.parseInt(cgNoStr));
+	Category category = new Category();
 %>
 
 
@@ -23,25 +26,99 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
-<title>카테고리목록</title>
+<title>내일의집</title>
 </head>
-<body>
-	<br>
-		<li>상품/책상</li>
-		<b><a href = 'product_list.jsp'>돌아가기</a></b>
-	<br>
-	<br>
-		<ul>
-		<% for(Product product : productTableList) { %>
-		 
-		<img src="image/product/<%=product.getP_image()%>" width="40px" height="40px">
-		<li><a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>[<%=product.getP_name()%>] 가격:<%=product.getP_price()%>원</a></li>
-		<% } %>
-		
-		
-		
-	</ul>
-	
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet href="css/styles.css" type="text/css">
+<link rel=stylesheet href="css/shop.css" type="text/css">
+ 
+<style type="text/css" media="screen">
+</style>
+</head>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+	<!-- container start-->
+	<div id="container">
+		<!-- header start -->
+		<div id="header">
+			<!-- include_common_top.jsp start-->
+			<jsp:include page="include_common_top.jsp" />
+			<!-- include_common_top.jsp end-->
+		</div>
+		<!-- header end -->
+		<!-- navigation start-->
+		<div id="navigation">
+			<!-- include_common_left.jsp start-->
+			<jsp:include page="include_common_left.jsp" />
+			<!-- include_common_left.jsp end-->
+		</div>
+		<!-- navigation end-->
+		<!-- wrapper start -->
+		<div id="wrapper">
+			<!-- content start -->
+
+			<!-- include_content.jsp start-->
+			<div id="content">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td><br />
+							<table style="padding-left: 10px" border=0 cellpadding=0
+								cellspacing=0>
+								<tr>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 상품리스트</b></td>
+								</tr>
+							</table>
+
+							<form name="f" method="post">
+								<table width="100%" align="center" border="0" cellpadding="10"
+									cellspacing="1" bgcolor="BBBBBB">
+									<%
+									int product_size=productTableList.size();
+									int product_column_size=4;
+									int product_line_count = 1;
+									
+									
+									for (int i=0;i<productTableList.size();i++) {
+											Product product=productTableList.get(i);
+									%>
+									<!--상품시작 -->
+									<%
+									 if(i%product_column_size==0){
+									%>
+									<tr>
+									<%} %>
+										<td align="center" width="25%"  bgcolor="ffffff"><a
+											href="product_detail.jsp?p_no=<%=product.getP_no()%>"><img width="88px" height="65px"
+												src="image/product/<%=product.getP_image()%>" border="0"></a><br />
+											<br /> <b>상품명 : <%=product.getP_name()%></b><br> <font
+											color="#FF0000">가격 : <%=new DecimalFormat("#,##0").format(product.getP_price())%>원
+										</font></td>
+									<%if(i%product_column_size==3){%>
+									</tr>
+									<%} %>	
+									
+								   <!--상품 끝 -->
+								   <%}%>	
+								</table>
+							</form> <br /></td>
+					</tr>
+				</table>
+			</div>
+			<!-- include_content.jsp end-->
+			<!-- content end -->
+		</div>
+		<!--wrapper end-->
+		<div id="footer">
+			<!-- include_common_bottom.jsp start-->
+			<jsp:include page="include_common_bottom.jsp" />
+			<!-- include_common_bottom.jsp end-->
+		</div>
+	</div>
+	<!--container end-->
 </body>
 </html>

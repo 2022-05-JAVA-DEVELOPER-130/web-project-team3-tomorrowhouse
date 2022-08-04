@@ -15,6 +15,8 @@ public class CartServiceTestMain {
 		//cartService.addCart(cartItem);
 		
 		//cartService.updateCart(cartItem);
+		
+		System.out.println(cartService.getCartItemByNo(1));
 	}
 
 }
