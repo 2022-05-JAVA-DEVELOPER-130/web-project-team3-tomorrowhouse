@@ -93,10 +93,12 @@ List<Product> productList = productService.productSelectAll();
 										</font></td>
 									<%if(i%product_column_size==5){%>
 									</tr>
-									<%} %>	
+									<%} %>
 									
+									
+										
 								   <!--상품 끝 -->
-								   <%}%>	
+								   <%}%> <!-- for문 fin -->	
 								</table>
 							</form> <br /></td>
 					</tr>
