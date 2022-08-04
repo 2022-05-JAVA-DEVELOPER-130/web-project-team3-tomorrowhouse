@@ -122,6 +122,37 @@ public class ProductDao {
 		return productList;
 	}
 	
+	 //product 검색기능 - 상품명만
+	 //public final static String PRODUCT_SERCH = "select * from product where p_name like ?";		
+	public List<Product> productSearch(String keyword) throws Exception {
+		List<Product> productSerchList = new ArrayList<Product>();
+					Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SEARCH);
+		pstmt.setString(1, "%"+keyword+"%");
+		ResultSet rs = pstmt.executeQuery();
+		
+		try {
+		
+			while(rs.next()) {
+				Product product = (new Product(rs.getInt("p_no"),
+						                rs.getString("p_name"),
+						                rs.getInt("p_price"),
+						                rs.getString("p_image"),
+						                rs.getString("p_desc"),
+						                rs.getInt("p_click_count"),
+						                new Category(rs.getInt("cg_no"), null)));
+			productSerchList.add(product);
+		  }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (rs != null) rs.close();
+			if (pstmt != null) pstmt.close();
+			if (con != null) con.close();
+		}
+		return productSerchList;
+	} //method fin
+	 
 	
 	
 	
@@ -179,44 +210,4 @@ public class ProductDao {
 			con.close();
 			return rowCount;
 		}
-		
-		
-		
-		 //product 검색기능
-		 //public final static String PRODUCT_SERCH = "select * from product where p_name like '%?%'";
-		
-		public List<Product> productSerch(String keyword) throws Exception {
-			List<Product> productSerchList = new ArrayList<Product>();
-			
-			Connection con = dataSource.getConnection();
-			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SERCH);
-			ResultSet rs = pstmt.executeQuery();
-			
-			try {
-				pstmt.setString(1, "%"+keyword+"%");
-			
-				while(rs.next()) {
-					Product product = (new Product(rs.getInt("p_no"),
-							                rs.getString("p_name"),
-							                rs.getInt("p_price"),
-							                rs.getString("p_image"),
-							                rs.getString("p_desc"),
-							                rs.getInt("p_click_count"),
-							                new Category(rs.getInt("cg_no"), null)));
-				productSerchList.add(product);
-			  }
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				if (rs != null) rs.close();
-				if (pstmt != null) pstmt.close();
-				if (con != null) con.close();
-			}
-			return productSerchList;
-		} //method fin
-		 
-		
-		
-		
-		
-}//
+}

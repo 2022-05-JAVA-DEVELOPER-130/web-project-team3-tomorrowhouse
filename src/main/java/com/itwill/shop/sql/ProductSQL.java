@@ -22,8 +22,9 @@ public class ProductSQL {
  				= "select * from product where cg_no = ?";
  
  //product 검색기능
- public final static String PRODUCT_SERCH
+ public final static String PRODUCT_SEARCH
 	= "select * from product where p_name like ?";
+ 
  
  
  /* Update문 (관리자전용) */
@@ -49,10 +50,5 @@ public class ProductSQL {
  public final static String PRODUCT_INSERT
 	="insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no) values (product_p_no_seq.nextval,?,?,?,?,?,?)";
 
-	/*	<< 소진아 사랑해 >>
-	--상품 키워드 검색 select
-	select * from product where p_name like '%?%';
-	-- ProdcutSQL = "select * from product where p_name like '%" + ? + "%'"
-	*/
- 
+
 }
