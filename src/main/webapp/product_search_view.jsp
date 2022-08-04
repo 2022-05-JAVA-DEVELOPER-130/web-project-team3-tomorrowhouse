@@ -114,6 +114,17 @@ if(searchList.size() == 0) {
 									<%if(i%product_column_size==5){%>
 									</tr>
 									<%} %>	
+										<% if(i==searchList.size()-1) {
+												
+												for(int j=0; j < 3 - i %4 ; i++){
+													
+												%> <td align="center" width="25%"  bgcolor="ffffff"></td>
+												
+												<%}
+												}%> 
+									
+									
+									
 									
 								   <!--상품 끝 -->
 								   <%}   //for문 fin %>
