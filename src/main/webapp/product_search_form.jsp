@@ -21,7 +21,7 @@
 	<div>
 	
 	</div>
-	<form method='get' action='product_serch_action.jsp'>
+	<form method='get' action='product_search_action.jsp'>
 			검색 <input type='text' name='keyword'  placeholder="검색어를입력하세요"' > <input type='submit' value='검색'>
 	</form>
 </body>
