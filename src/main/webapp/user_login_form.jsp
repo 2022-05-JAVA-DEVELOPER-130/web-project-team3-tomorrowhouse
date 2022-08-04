@@ -107,7 +107,10 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 		<!--wrapper end-->
 		<div id="footer">
 			<!-- include_common_bottom.jsp start-->
-			<jsp:include page="include_common_bottom.jsp"></jsp:include>
+			
+	<p align="center">Copyright (&copy;) All
+		rights reserved.</p>
+
 			<!-- include_common_bottom.jsp end-->
 		</div>
 	</div>
