@@ -45,7 +45,7 @@ select count(*) from review where oi_no=11;
 select * from review where u_id = 'test6';
 
 -- (마이페이지-리뷰detail)로그인한 회원이 주문아이템번호로 리뷰 선택 -> 같은 상품을 여러개 살 수도 있음
-select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.oi_no=22;
+select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.oi_no=7;
 
 -- 어차피 u_id로 select된 리스트에서 선택하는 건데, u_id를 조건에 또 줘야할까?
 --select * from review r join orderitem oi on r.oi_no = oi.oi_no where r.u_id = 'test6' and oi.oi_no=22;
@@ -92,5 +92,7 @@ select * from (select * from review r join orderitem o on r.oi_no = o.oi_no wher
 
 select * from review where r_no=26;
 --delete from review where r_no=26;
+
+
 
 desc review;

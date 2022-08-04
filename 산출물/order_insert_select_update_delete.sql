@@ -78,7 +78,14 @@ select * from orders o
 join orderitem oi on o.o_no=oi.o_no
 where o.o_no=3;
 
-
+--orderservice에 추가
+select * from orderitem oi join product p on oi.p_no=p.p_no;
+select * from orders o
+join orderitem oi
+on o.o_no=oi.o_no
+join product p
+on oi.p_no=p.p_no
+where oi.oi_no=14;
 
 
 ----serviceTest
