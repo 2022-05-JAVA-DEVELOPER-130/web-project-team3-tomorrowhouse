@@ -14,12 +14,11 @@
 <div id="menu">
 	<ul>
 		<li id="logo"><a href="shop_main.jsp"></a></li>
-		<li id="m_mypage"><a href="">마이페이지</a></li>
+		<li id="m_mypage"><a href="user_view.jsp">마이페이지</a></li>
 		<li id="m_order"><a href="order_list.jsp">주문내역</a></li>
 		<li id="m_cart"><a href="cart_view.jsp">장바구니</a></li>
 		<li id="m_join"><a href="user_wrtie_form.jsp" >회원가입</a></li>
 		<li id="m_login"><a href="user_login_form.jsp">로그인</a></li>
-		
 		<%-- 
 		<%if(sUserId==null){  %>
 			<li id="mypage" title="나의페이지" ><a href="user_login_form.jsp" ></a></li>
