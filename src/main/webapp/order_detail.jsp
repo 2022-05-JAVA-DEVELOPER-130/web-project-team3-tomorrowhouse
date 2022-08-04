@@ -73,7 +73,7 @@ form > table tr td{
 									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=order.getU_id() %>님의 주문상세조회</b></td>
 								</tr>
 							</table> <!--form-->
-							<form name="f" method="post" action="order_delete_action.jsp">
+							<form name="f" method="post" action="order_cancel_action.jsp">
 								<input type="hidden" name="cancel_order_no" value="<%=order.getO_no()%>">
 								<table align="center" width="80%"  border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문상세정보</caption>
@@ -81,7 +81,7 @@ form > table tr td{
 										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>
 										<font>주문번호</font></td>
 										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1>
-										<font>주문일</font></td>
+										<font>주문일자</font></td>
 										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>
 										<font>주문자</font></td>
 										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>
@@ -105,6 +105,9 @@ form > table tr td{
 								</table>
 									
 								<br/>	
+								
+								
+								
 								<table align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문제품목록</caption>
 									<tr style="border: 0.1px solid">
@@ -133,7 +136,9 @@ form > table tr td{
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
 										<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
 										</td>
-										<td width=50 height=26 align=center class=t1 bgcolor="ffffff"></td>
+										<td width=50 height=26 align=center class=t1 bgcolor="ffffff">
+										
+										</td>
 									</tr>
 									<%}%>
 									<!-- cart item end -->
