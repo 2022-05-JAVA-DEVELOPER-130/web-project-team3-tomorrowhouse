@@ -32,12 +32,15 @@ public class OrderService {
 	}
 
 	/*
-	 * 주문상세리스트(특정사용자) --- JSP에서 실행안됨...
+	 * 1-2.주문상세리스트(특정사용자) --- JSP에서 실행안됨...
 	 */
 	public List<Order> list_detail(Order order) throws Exception {
 		return orderDao.list_detail(order);
 	}
 
+	/*
+	 * 고객1명의 주문번호 List.......(1-2번이 JSP에서 실행이 안되서 서비스를 쪼개봄) 
+	 */
 	public ArrayList<Order> orderNoListByUserId(Order order) throws Exception {
 		return orderDao.orderNoListByUserId(order);
 	}
@@ -94,7 +97,38 @@ public class OrderService {
 		orderDao.create(newOrder);
 		cartDao.deleteCart(u_id);
 
-		return 0;
+		return 0;	//return 값은 무의미
+	}
+	
+	/*
+	 * cart에서 선택주문 -> cartDao에 cartNo로 select하는 메소드가 필요함!
+	 */
+	
+	public int createOrderByCartSelect(String u_id, String[] cart_item_noStr_array) throws Exception{
+
+		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
+		
+		int o_total_price = 0;
+		int oi_total_count = 0;
+		
+		for (int i = 0; i < cart_item_noStr_array.length; i++) {
+			/*		-> cartDao에 cartNo로 select하는 메소드가 필요함!	
+			CartItem cartItem = cartDao.getCartItemByCartNo(Integer.parseInt(cart_item_noStr_array[i]));
+			OrderItem orderItem = new OrderItem(0, cartItem.getC_qty(), 0, cartItem.getProduct());
+			orderItemList.add(orderItem);
+			
+			o_total_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
+			oi_total_count += orderItem.getOi_qty();
+			*/
+		}
+		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 종";
+		Order newOrder = new Order(0, o_desc, null, o_total_price, u_id, orderItemList);
+		// order생성-> cart삭제
+		orderDao.create(newOrder);
+		for (int i = 0; i < cart_item_noStr_array.length; i++) {
+			cartDao.deleteCartByNo(Integer.parseInt(cart_item_noStr_array[i]));
+		}
+		return 0;	//return 값은 무의미
 	}
 
 	/************** 소진이 자리 ********************************************************/
