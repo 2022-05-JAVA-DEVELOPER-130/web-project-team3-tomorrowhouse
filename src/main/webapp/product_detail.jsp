@@ -73,7 +73,7 @@ detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(no
 								<tr width=100%>
 									<td width=30% height=200 align=center class=t1>
 
-										<form name="add_cart_form" method="post" action="cart_add_action.jsp">
+										<form name="add_cart_form" method="post" action="cart_add_item_action.jsp">
 											수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  

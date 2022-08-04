@@ -18,14 +18,13 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 해결할거:Integer.parseInt(p_noStr) 가 안먹는거 and GET방식으로 전송되는거
 */
 	String cart_qtyStr = request.getParameter("c_qty");
-	//int cart_qty= 2;
-	//String p_noStr=request.getParameter("p_no");
-	int p_no = 1;
+	String p_noStr=request.getParameter("p_no");
+	
 	//Integer.parseInt(cart_qtyStr)
 	//Integer.parseInt(p_noStr)
 	
 	CartService cartService=new CartService();
-	CartItem cartItem = new CartItem(0,Integer.parseInt(cart_qtyStr),sUserId,new Product(p_no, "", 0, "","", 0,new Category(0,null)));
+	CartItem cartItem = new CartItem(0,Integer.parseInt(cart_qtyStr),sUserId,new Product(Integer.parseInt(p_noStr), "", 0, "","", 0,new Category(0,null)));
 	cartService.addCart(cartItem);
 	
 	response.sendRedirect("cart_view.jsp");
