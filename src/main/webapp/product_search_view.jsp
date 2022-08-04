@@ -6,8 +6,21 @@
     pageEncoding="UTF-8"%>
 
 <%
+String keyword = request.getParameter("keyword");
+
+if( keyword==null || keyword.equals("")) {
+	response.sendRedirect("shop_main.jsp");
+}
+
 ProductService productService = new ProductService();
-List<Product> productList = productService.productSelectAll();
+List<Product> searchList = productService.productSearch(keyword);
+
+
+if(searchList.size() == 0) {
+	//response.sendRedirect("product_serch_form.jsp");
+}
+
+//response.sendRedirect("product_detail.jsp?p_no="+);
 %>    
 
 <!DOCTYPE html>
@@ -68,16 +81,23 @@ List<Product> productList = productService.productSelectAll();
 							<form name="f" method="post">
 								<table width="100%" align="center" border="0" cellpadding="10"
 									cellspacing="1" bgcolor="BBBBBB">
-									
-																
 									<%
-									int product_size=productList.size();
+									//int product_size=productList.size();
 									int product_column_size=4;
 									int product_line_count = 1;
+									if(searchList.size() == 0) {
+									%>
+									<br>
+										<br>
+											<br>
+												<br>
+									<% 
+									out.print("검색결과 없습니다.");
+									}
+																	
 									
-									
-									for (int i=0;i<productList.size();i++) {
-											Product product=productList.get(i);
+									for (int i=0;i<searchList.size();i++) {
+											Product product=searchList.get(i);
 									%>
 									<!--상품시작 -->
 									<%
@@ -96,7 +116,7 @@ List<Product> productList = productService.productSelectAll();
 									<%} %>	
 									
 								   <!--상품 끝 -->
-								   <%}%>	
+								   <%}   //for문 fin %>
 								</table>
 							</form> <br /></td>
 					</tr>

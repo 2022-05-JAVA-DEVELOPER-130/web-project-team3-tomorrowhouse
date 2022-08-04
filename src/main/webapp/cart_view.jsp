@@ -27,11 +27,11 @@ function changeNumber(desc, formId) {
 	console.log(formId);
 	var form = document.getElementById(formId);
 	if (desc == '+') {
-		form.cart_qty.value = parseInt(form.cart_qty.value) + 1;
+		form.c_qty.value = parseInt(form.c_qty.value) + 1;
 
 	} else if (desc == '-') {
-		if (form.cart_qty.value - 1 >= 0) {
-			form.cart_qty.value = parseInt(form.cart_qty.value) - 1;
+		if (form.c_qty.value - 1 >= 0) {
+			form.c_qty.value = parseInt(form.c_qty.value) - 1;
 		}
 	}
 
@@ -209,14 +209,16 @@ function cart_item_all_select(e){
 										</td>
 
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
-											<form action="cart_update_action.jsp" method="post"
+											<form action="cart_update_item_action.jsp" method="post"
 												id="cart_update_form_<%=cartItem.getC_no()%>">
-												<input type="hidden" name="cart_no"
-													value="<%=cartItem.getC_no()%>"> <input
+												<input type="hidden" name="c_no"
+													value="<%=cartItem.getC_no()%>">
+													<input type="hidden" name="p_no" value="<%=cartItem.getProduct().getP_no()%>">
+													<input
 													type="button" value="-"
 													onclick="changeNumber('-','cart_update_form_<%=cartItem.getC_no()%>');"/>
 												<input type="text" readonly="readonly" size="2"
-													style="text-align: center; width: 15%" name="cart_qty"
+													style="text-align: center; width: 15%" name="c_qty"
 													value="<%=cartItem.getC_qty()%>"> <input
 													type="button" value="+"
 													onclick="changeNumber('+','cart_update_form_<%=cartItem.getC_no()%>');"/>
@@ -234,8 +236,9 @@ function cart_item_all_select(e){
 											</form>
 											 --%>
 											<form id="cart_delete_item_form_<%=cartItem.getC_no()%>">
-												<input type="hidden" name="cart_no"
-													value="<%=cartItem.getC_no()%>"> <a
+												<input type="hidden" name="c_no"
+													value="<%=cartItem.getC_no()%>"> 
+													<a
 													href="javascript:cart_delete_item_action('cart_delete_item_form_<%=cartItem.getC_no()%>');">
 													<svg xmlns="http://www.w3.org/2000/svg" width="14"
 														height="14" viewBox="0 0 28 28" class="icon--close">

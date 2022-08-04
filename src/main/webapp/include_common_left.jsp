@@ -10,7 +10,7 @@
 		<ul>
 		<h2>
 		<p align="center">
-		<li><a href= "product_list.jsp">전체 상품</a></li>
+		<li><a href = "product_list.jsp">전체 상품</a></li>
 	    <li><a href= "category_list.jsp?cg_no=1">선반 제품</a></li>
 	    <li><a href= "category_list.jsp?cg_no=2">가구 제품</a></li>
  		<li><a href= "category_list.jsp?cg_no=3">가전 제품</a></li>
@@ -19,7 +19,7 @@
     	<br><br><br>
     	<li><a href= "notice_list.jsp">공지 게시판</a></li>
     	<li><a href= "qna_list.jsp">문의 게시판</a></li>
-    	<li><a href= "order_list.jsp" >리뷰 게시판</a></li>
+    	<li><a href= "review_list.jsp" >리뷰 게시판</a></li>
     	</p>
     	</h2>
     	</ul>

@@ -5,7 +5,6 @@
 <%@ include file="login_check.jspf" %> 
 
 <%
-
 UserInfoService userInfoService = new UserInfoService();
 UserInfo findUser = userInfoService.findUser(sUserId);
 
@@ -27,10 +26,20 @@ UserInfo findUser = userInfoService.findUser(sUserId);
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
-		<div id="header">
+			<div id="header">
 			<!-- include_common_top.jsp start-->
-
-
+			<jsp:include page="include_common_top.jsp"/>
+			<!-- include_common_top.jsp end-->
+		</div>
+		<!-- header end -->
+		<!-- navigation start-->
+		<div id="navigation">
+			<!-- include_common_left.jsp start-->
+			<jsp:include page="include_common_left.jsp"/>
+			<!-- include_common_left.jsp end-->
+		</div>
+		<!-- navigation end-->
+		<!-- wrapper start -->
 		<div id="wrapper">
 
 			<div id="content">
