@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -51,18 +52,30 @@ public class ReviewDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				/*
-				 * 	private int r_no;
-					private String r_title;
-					private String r_content;
-					private String u_id;
-					
-					private OrderItem orderItem;
+				private int r_no;
+				private String r_title;
+				private String r_content;
+				
+				private Date r_date;
+				private int r_rating;
+				private String r_image;
+				private int r_click_count;
+				
+				private String u_id;
+				
+				private OrderItem orderItem;	// oi_no
 				 */
 				reviewList.add(new Review(rs.getInt("r_no"),
 											rs.getString("r_title"),
 											rs.getString("r_content"),
+											rs.getDate("r_date"),
+											rs.getInt("r_rating"),
+											rs.getString("r_image"),
+											rs.getInt("r_click_count"),
 											rs.getString("u_id"), 
-											new OrderItem(rs.getInt("oi_no"), 0, 0, null)));
+											new OrderItem(rs.getInt("oi_no"), 0, 0, null)
+											)
+								);
 			}
 		} finally {
 			if (con != null) {
@@ -97,8 +110,16 @@ public class ReviewDao {
 			private OrderItem orderItem;
 		 */
 		if (rs.next()) {
-			findReview = new Review(rs.getInt("r_no"), rs.getString("r_title"),rs.getString("r_content"), rs.getString("u_id"),
-										new OrderItem(rs.getInt("oi_no"), 0, 0, null));
+			findReview = new Review(rs.getInt("r_no"),
+												rs.getString("r_title"),
+												rs.getString("r_content"),
+												rs.getDate("r_date"),
+												rs.getInt("r_rating"),
+												rs.getString("r_image"),
+												rs.getInt("r_click_count"),
+												rs.getString("u_id"), 
+												new OrderItem(rs.getInt("oi_no"), 0, 0, null)
+									);
 		}
 		
 		return findReview;
@@ -123,12 +144,17 @@ public class ReviewDao {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				reviewList.add(new Review(rs.getInt("r_no"),
-											rs.getString("r_title"),
-											rs.getString("r_content"),
-											rs.getString("u_id"), 
-											new OrderItem(rs.getInt("oi_no"), 0, 0, 
-													new Product(rs.getInt("p_no"), null, 0, null, null, 0, null))));
+					reviewList.add(new Review(rs.getInt("r_no"),
+							rs.getString("r_title"),
+							rs.getString("r_content"),
+							rs.getDate("r_date"),
+							rs.getInt("r_rating"),
+							rs.getString("r_image"),
+							rs.getInt("r_click_count"),
+							rs.getString("u_id"), 
+							new OrderItem(rs.getInt("oi_no"), 0, 0, null)
+							)
+				);
 			}
 		
 		return reviewList;
@@ -164,8 +190,16 @@ public class ReviewDao {
 			private OrderItem orderItem;
 		 */
 		if (rs.next()) {
-			findReview = new Review(rs.getInt("r_no"), rs.getString("r_title"),rs.getString("r_content"), rs.getString("u_id"),
-										new OrderItem(rs.getInt("oi_no"), 0, 0, null));
+					findReview = new Review(rs.getInt("r_no"),
+							rs.getString("r_title"),
+							rs.getString("r_content"),
+							rs.getDate("r_date"),
+							rs.getInt("r_rating"),
+							rs.getString("r_image"),
+							rs.getInt("r_click_count"),
+							rs.getString("u_id"), 
+							new OrderItem(rs.getInt("oi_no"), 0, 0, null)
+				);
 		}
 		
 		return findReview;
