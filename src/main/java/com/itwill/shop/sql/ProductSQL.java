@@ -23,7 +23,7 @@ public class ProductSQL {
  
  //product 검색기능
  public final static String PRODUCT_SERCH
-	= "select * from product where p_name like '%?%'";
+	= "select * from product where p_name like ?";
  
  
  /* Update문 (관리자전용) */
