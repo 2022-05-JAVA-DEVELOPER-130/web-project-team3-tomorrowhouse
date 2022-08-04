@@ -4,6 +4,7 @@
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>
 <%
 
 NoticeService noticeService =new NoticeService();
@@ -34,7 +35,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 		f.submit();
 	}
 	function noticeUpdate(){
-		f.action = "notice_update_form.jsp";
+		f.action = "notice_modify_form.jsp";
 		f.submit();
 	}
 	function noticeList(){
@@ -86,7 +87,6 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 
 							<form name="f" method="post">
 								<input type="hidden" name="notino" value="<%=noticeDetail.getN_no() %>">
-								<input type="hidden" name="pageno" value="1">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">공지일</td>
@@ -98,7 +98,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=noticeDetail.getN_content().replace("\n","<br/>") %></td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=noticeDetail.getN_content()%></td>
 										
 									</tr>
 								</table>
@@ -106,9 +106,9 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
 									<td align=center>
-									<input type="hidden" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
-									<input type="hidden" value="수정" onClick="noticeUpdate()">&nbsp; 
-									<input type="hidden" value="삭제" onClick="noticeDelete()">&nbsp; 
+									<input type="button" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
+									<input type="button" value="수정" onClick="noticeUpdate()">&nbsp; 
+									<input type="button" value="삭제" onClick="noticeDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="noticeList()"></td>
 								</tr>
 							</table></td>
