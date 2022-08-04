@@ -123,6 +123,7 @@ insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.next
 insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '공지6', '공지6 내용', sysdate);
 
 ------리뷰 데이터------
+
 insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰내용'||REVIEW_R_NO_SEQ.currval, 'test1', 1);
 insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test1', 2);
 insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test1', 3);

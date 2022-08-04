@@ -40,7 +40,7 @@ public class NoticeDao {
 			notice.add(new Notice(rs.getInt("n_no"),
 									 rs.getString("n_title"),
 									 rs.getString("n_content"),
-									 null));
+									 rs.getDate("n_date")));
 		}
 		con.close();
 		return notice;
