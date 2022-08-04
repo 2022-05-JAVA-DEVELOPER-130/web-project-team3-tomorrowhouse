@@ -1,5 +1,9 @@
+<%@page import="com.itwill.shop.dto.UserInfo"%>
+<%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <%
 /*
 private String u_id;
@@ -8,35 +12,120 @@ private String u_name;
 private String u_email;
 private String u_address;
 private String u_phone;
+*/
+
+/*
+ * 회원 1명 보기
+public UserInfo findUser(String u_id) throws Exception {
+	UserInfo findUser = userInfoDao.findUser(u_id);
+	return findUser;
+}
  */
+ 
 
-
-
-
-
+String u_id = request.getParameter("u_id");
+ 
+UserInfoService userInfoService = new UserInfoService();
+UserInfo findUser = userInfoService.findUser("test5");
 
 %>
 
-<!DOCTYPE html>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내정보</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet href="css/styles.css" type="text/css">
+<link rel=stylesheet href="css/user.css" type="text/css">
+
 </head>
-<body>
-<form>
-<h3>[<%=%> 상세보기]</h1>
-<hr>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+	<!-- container start-->
+	<div id="container">
+		<!-- header start -->
+		<div id="header">
+			<!-- include_common_top.jsp start-->
 
-아이디 <input type ='text'name='u_id' value='<%=%>'><br>
-비밀번호 <input type ='text'name='u_pw' value='<%=%>'><br>
-이름 <input type ='text'name='u_name' value='<%=%>'><br>
-이메일주소 <input type ='text'name='u_email' value='<%=%>'><br>
-집주소 <input type ='text'name='u_address' value='<%=%>'><br>
-폰번호 <input type ='text'name='u_phone' value='<%=%>'><br>
 
-	<a href='user_modify_form.jsp'>[상품수정]</a>
-	<a href=''>[상품삭제]</a>
-</form>
+		<div id="wrapper">
+
+			<div id="content">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td>
+							<!--contents--> <br />
+							<table style="padding-left: 10px" border=0 cellpadding=0
+								cellspacing=0>
+								<tr>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내정보 관리
+											- 내정보보기</b></td>
+								</tr>
+							</table> <!-- view Form  -->
+							<form name="f" method="post">
+								<table border="0" cellpadding="0" cellspacing="1" width="590"
+									bgcolor="BBBBBB">
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
+											아이디</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+											<%=findUser.getU_id() %>
+										</td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+											<%=findUser.getU_name() %>
+										</td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일 주소</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+											<%=findUser.getU_email() %>
+										</td>
+									</tr>
+										<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">집 주소</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+											<%=findUser.getU_address() %>
+										</td>
+									</tr>
+										<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+											<%=findUser.getU_phone()%>
+										</td>
+									</tr>
+
+								</table>
+							</form> <br />
+							<table border="0" cellpadding="0" cellspacing="1">
+								<tr>
+									<td align=center>
+									<form action='user_modify_form.jsp' method='post' style='display:inline;'>
+									<input type='hidden' name='u_id' value='<%=u_id%>'>
+									<input type='submit' value="내정보수정">
+									</form>
+									<form action='user_remove_action.jsp' method='post' style='display:inline;'>
+									<input type='hidden' name='u_id' value='<%=u_id%>'>
+									<input type="button" value="내정보삭제[탈퇴]">
+									</form>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<!-- include_content.jsp end-->
+			<!-- content end -->
+		</div>
+		<!--wrapper end-->
+		<div id="footer">
+
+		</div>
+	</div>
+	<!--container end-->
 </body>
 </html>
