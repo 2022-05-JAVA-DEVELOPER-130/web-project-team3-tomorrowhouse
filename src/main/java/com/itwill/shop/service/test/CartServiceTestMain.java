@@ -14,7 +14,7 @@ public class CartServiceTestMain {
 
 		//cartService.addCart(cartItem);
 		
-		cartService.updateCart(cartItem);
+		//cartService.updateCart(cartItem);
 	}
 
 }

@@ -47,29 +47,14 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 		<!-- header start -->
 		<div id="header">
 			<!-- include_common_top.jsp start-->
-			
-<h1>
-	<a href="">회원관리 MODEL1</a>
-</h1>
-
+			<jsp:include page="include_common_top.jsp"></jsp:include>
 			<!-- include_common_top.jsp end-->
 		</div>
 		<!-- header end -->
 		<!-- navigation start-->
 		<div id="navigation">
 			<!-- include_common_left.jsp start-->
-				
-    		
-<p>
-	<strong>메 뉴</strong>
-</p>
-<ul>
-	
-		<li><a href="user_login_form.jsp">로그인</a></li>
-		<li><a href="user_write_form.jsp">회원가입</a></li>
-    
-</ul>
-
+				<jsp:include page="include_common_left.jsp"></jsp:include>
 			<!-- include_common_left.jsp end-->
 		</div>
 		<!-- navigation end-->
@@ -88,7 +73,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>로그인 페이지</b></td>
 								</tr>
 							</table> <!-- login Form  -->
-							<form name="f" >
+							<form name="f" method="post" >
 								<table border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
 									<tr>
@@ -123,7 +108,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 		<div id="footer">
 			<!-- include_common_bottom.jsp start-->
 			
-	<p align="center">Copyright (&copy;) By Kimkyoungho.[김경호] All
+	<p align="center">Copyright (&copy;) All
 		rights reserved.</p>
 
 			<!-- include_common_bottom.jsp end-->
