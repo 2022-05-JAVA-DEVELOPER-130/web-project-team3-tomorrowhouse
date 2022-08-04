@@ -5,7 +5,7 @@
 <%@ include file="login_check.jspf" %> 
 
 <%
-sUserId="test2";
+
 /*
 private String u_id;
 private String u_pw;
