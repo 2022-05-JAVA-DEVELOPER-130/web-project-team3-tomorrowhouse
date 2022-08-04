@@ -1,57 +1,131 @@
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@page import="com.itwill.shop.service.OrderService"%>
-<%@page import="com.itwill.shop.service.UserInfoService"%>
-<%@page import="com.itwill.shop.dto.UserInfo"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>    
+	pageEncoding="UTF-8"%>
+<%@ include file="login_check.jspf"%>
 <%
-	sUserId="test1";
 
-	UserInfoService userInfoService = new UserInfoService();
-	UserInfo userInfo = userInfoService.findUser(sUserId);
-	
-	/*
-	 * 주문상세리스트(특정사용자)
-	 */
-	OrderService orderService = new OrderService();
-	Order findOrder = new Order(0, null, null, 0, sUserId,null);
-	ArrayList<Order> orderList = 
-	(ArrayList)orderService.orderListByUserId(findOrder);
-	//ArrayList<Order> orderNoList = orderService.orderNoListByUserId(findOrder);
-	//실행안됨...
-	//ArrayList<Order> orderList = orderService.list_detail(findOrder);
+/*****************/
+sUserId = "test3";
+
+/*****************/
+
+
+OrderService orderService = new OrderService();
+
+Order newOrder = new Order(0,null,null,0,sUserId,null);
+ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
 %>
-
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의집</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet href="css/styles.css" type="text/css">
+<link rel=stylesheet href="css/shop.css" type="text/css">
+ 
+<style type="text/css" media="screen">
+</style>
+<script type="text/javascript">
+	function order_delete_all_action(){
+		document.order_delete_all_form.action='order_delete_all_action.jsp';
+		document.order_delete_all_form.method='POST';
+		document.order_delete_all_form.submit();
+	}
+</script>
 </head>
-<body>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+<form name="order_delete_all_form" style="margin: 0">
+</form>	
+	<!-- container start-->
+	<div id="container">
+		<!-- header start -->
+		<div id="header">
+			<!-- include_common_top.jsp start-->
+			<jsp:include page="include_common_top.jsp" />
+			<!-- include_common_top.jsp end-->
+		</div>
+		<!-- header end -->
+		<!-- navigation start-->
+		<div id="navigation">
+			<!-- include_common_left.jsp start-->
+			<jsp:include page="include_common_left.jsp" />
+			<!-- include_common_left.jsp end-->
+		</div>
+		<!-- navigation end-->
+		<!-- wrapper start -->
+		<div id="wrapper">
+			<!-- content start -->
 
-<h3>주문 내역</h3>
-<%
+			<!-- include_content.jsp start-->
+			<div id="content">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td><br />
+							<table style="padding-left: 10px" border=0 cellpadding=0
+								cellspacing=0>
+								<tr>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=newOrder.getU_id() %>님의 주문 목록</b></td>
+								</tr>
+							</table> <!--form-->
+							<form name="f" method="post">
+								<table align=center width=80%  border="0" cellpadding="0"
+									cellspacing="1" bgcolor="BBBBBB">
+									<tr>
+										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문번호</font></td>
+										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문이름</font></td>
+										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문날짜</font></td>
+										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문가격</font></td>
+										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1><font></font></td>
+									</tr>
 
-	for(Order order: orderList){
+									<!-- order start -->
+									<%
+									for (Order order : orderList) {
+									%>
+									<tr>
+										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
+										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_desc()%></td>
+										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(order.getO_date())%></td>
+										<td width=136 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(order.getO_price())%></td>
+										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><a
+											href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1>주문상세</a></td>
+									</tr>
+									<%
+									}
+									%>
+									<!-- order end -->
 
 
-%>
-
- 주문번호<input type ='text' name='o_no' value='<%= order.getO_no()%>'><br>
- 주문상세<input type ='text' name='o_desc' value='<%= order.getO_desc()%>'><br>
 
 
-<hr>
-<%
-} %>
-
-
-
-
+								</table>
+							</form> <br />
+							<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align=center>&nbsp;&nbsp;
+									<a href=product_list.jsp class=m1>계속 구경하기</a>
+									<a href='javascript:order_delete_all_action();' class=m1>주문전체삭제</a>
+									</td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+			</div>
+			<!-- include_content.jsp end-->
+			<!-- content end -->
+		</div>
+		<!--wrapper end-->
+		<div id="footer">
+			<!-- include_common_bottom.jsp start-->
+			<jsp:include page="include_common_bottom.jsp" />
+			<!-- include_common_bottom.jsp end-->
+		</div>
+	</div>
+	<!--container end-->
 </body>
 </html>

@@ -17,11 +17,6 @@
 	String u_phone=request.getParameter("u_phone");
 	
 	UserInfoService userInfoService=new UserInfoService();
-	
-	//UserInfo updateUserInfo = new UserInfo(sUserId,u_pw,u_name,u_email,u_address,u_phone);
-	//userInfoService.update(updateUserInfo);
-	
 	int updateRowCont=userInfoService.update(new UserInfo(sUserId,u_pw,u_name,u_email,u_address,u_phone));
-	
 	response.sendRedirect("user_view.jsp");
 %>

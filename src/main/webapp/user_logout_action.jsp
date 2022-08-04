@@ -3,7 +3,7 @@
 <%@include file="login_check.jspf" %>
 <%
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("user_login_from.jsp");
+		response.sendRedirect("user_login_form.jsp");
 		return;
 	}
 %>
