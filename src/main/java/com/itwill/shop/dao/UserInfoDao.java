@@ -25,8 +25,6 @@ public class UserInfoDao {
 	private DataSource dataSource;
 
 	public UserInfoDao() throws Exception {
-		/******Apache BasicDataSource*****/
-		
 		Properties properties = new Properties();
 		properties.load(this.getClass().getResourceAsStream("/com/itwill/shop/common/jdbc.properties"));
 		/*** Apache DataSource ***/

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -110,8 +109,8 @@ UserInfo findUser = userInfoService.findUser("test5");
 									<input type='submit' value="내정보수정">
 									</form>
 									<form action='user_remove_action.jsp' method='post' style='display:inline;'>
-									<input type='hidden' name='u_id' value='<%=u_id%>'>
-									<input type="button" value="내정보삭제[탈퇴]">
+									<input type='hidden' name='u_id' value='<%=findUser.getU_id()%>'>
+									<input type="submit" value="내정보삭제[탈퇴]">
 									</form>
 							</table>
 						</td>
