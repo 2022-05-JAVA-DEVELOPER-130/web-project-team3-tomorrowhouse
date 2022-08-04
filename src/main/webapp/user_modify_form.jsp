@@ -6,7 +6,8 @@
 <%
 
 	UserInfoService userInfoService=new UserInfoService();
-	UserInfo loginUser=userInfoService.findUser(sUserId);
+	//UserInfo loginUser=userInfoService.findUser(sUserId);
+	UserInfo loginUser = userInfoService.findUser("test2");
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -42,6 +43,16 @@
 			alert("비밀번호와 비밀번호확인은 일치하여야합니다.");
 			document.f.password.focus();
 			document.f.password.select();
+			return false;
+		}
+		if (document.f.address.value == "") {
+			alert("주소를 입력하십시요.");
+			document.f.address.focus();
+			return false;
+		}
+		if (document.f.phone.value == "") {
+			alert("전화번호를 입력하십시오.");
+			document.f.phone.focus();
 			return false;
 		}
 
@@ -143,10 +154,16 @@
 
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="내정보수정"
-										onClick="userModify()"> &nbsp; <input type="button"
-										value="메인" onClick="userMain()"></td>
+						
+										
+									<form action='user_modify_action.jsp' method='post' style='display:inline;'>
+									<input type='hidden' name='u_id' value='<%=loginUser.getU_id()%>'>
+									<input type='submit' value="내정보수정">
+									</form>
 								</tr>
+								
+								
+								
 							</table>
 
 						</td>
