@@ -5,6 +5,7 @@
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
 	String cgNoStr= request.getParameter("cg_no");
 	if(cgNoStr==null || cgNoStr.equals("")){

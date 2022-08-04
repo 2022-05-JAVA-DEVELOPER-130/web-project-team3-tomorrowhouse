@@ -7,10 +7,13 @@
 
 
 
-		<div>
-	    <li><a href= "category_list.jsp?cg_no=1">선반</a></li><tr>
-	    <li><a href= "category_list.jsp?cg_no=2">가구</a></li><tr>
- 		<li><a href= "category_list.jsp?cg_no=3">가전제품</a></li><td>
+		<ul>
+		<h2>
+		<li><a href= "product_list.jsp">전체 상품</a></li>
+	    <li><a href= "category_list.jsp?cg_no=1">선반</a></li>
+	    <li><a href= "category_list.jsp?cg_no=2">가구</a></li>
+ 		<li><a href= "category_list.jsp?cg_no=3">가전제품</a></li>
     	<li><a href= "category_list.jsp?cg_no=4">조명</a></li>
     	<li><a href= "category_list.jsp?cg_no=5">완구</a></li>
-    	</div>
+    	</h2>
+    	</ul>
