@@ -73,7 +73,11 @@
 									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 상품리스트</b></td>
 								</tr>
 							</table>
-
+							<!-- 검색아이콘 start -->
+							<form method='get' action='product_search_action_view.jsp'>
+							<input type = "text" name='keyword' placeholder="검색어를 입력하세요">&nbsp;<input type = "submit" value="검색">
+							</form>
+							<!-- 검색아이콘 fin -->
 							<form name="f" method="post">
 								<table width="100%" align="center" border="0" cellpadding="10"
 									cellspacing="1" bgcolor="BBBBBB">
@@ -93,7 +97,7 @@
 									<tr>
 									<%} %>
 										<td align="center" width="25%"  bgcolor="ffffff"><a
-											href="product_detail.jsp?p_no=<%=product.getP_no()%>"><img width="88px" height="65px"
+											href="product_detail.jsp?p_no=<%=product.getP_no()%>"><img width="60px" height="58px"
 												src="image/product/<%=product.getP_image()%>" border="0"></a><br />
 											<br /> <b>상품명 : <%=product.getP_name()%></b><br> <font
 											color="#FF0000">가격 : <%=new DecimalFormat("#,##0").format(product.getP_price())%>원
@@ -101,7 +105,13 @@
 									<%if(i%product_column_size==3){%>
 									</tr>
 									<%} %>	
-									
+									<!--  빈칸채우기 start -->
+										<% if(i==productTableList.size()-1) {
+												for(int j=0; j < 3 - i %4 ; i++){
+												%> <td align="center" width="25%"  bgcolor="ffffff"></td>
+												<%}
+												}%> 
+									<!--  빈칸채우기 fin -->	
 								   <!--상품 끝 -->
 								   <%}%>	
 								</table>
