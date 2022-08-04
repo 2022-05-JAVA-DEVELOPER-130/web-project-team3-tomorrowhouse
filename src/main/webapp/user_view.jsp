@@ -26,7 +26,7 @@ public UserInfo findUser(String u_id) throws Exception {
 String u_id = request.getParameter("u_id");
  
 UserInfoService userInfoService = new UserInfoService();
-UserInfo findUser = userInfoService.findUser("test5");
+UserInfo findUser = userInfoService.findUser("test8");
 
 %>
 
