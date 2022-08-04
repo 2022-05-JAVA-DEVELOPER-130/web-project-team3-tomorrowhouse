@@ -87,7 +87,7 @@ public class OrderSQL {
 	 10. 주문취소(cancel)를 위한 select-update
 	 */
 	public final static String CANCEL_ORDERS_BY_ORDER_NO
-	="update orders set o_price=-o_price, o_desc='[주문취소]'||o_desc where o_no=?";
+	="update orders set o_price=o_price, o_desc='[주문취소]'||o_desc where o_no=?";
 	public final static String CANCEL_ORDER_ITEM_BY_ORDER_NO
 	="update orderitem set oi_qty=0 where o_no=?";
 	

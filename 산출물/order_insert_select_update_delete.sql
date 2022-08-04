@@ -62,21 +62,21 @@ select * from orders o
 join orderitem oi on o.o_no=oi.o_no
 where o.o_no=3;
 
-update orderitem set oi_qty=99 where o_no=3;
-update orders set o_desc='[주문취소]'||o_desc where o_no=3;
+update orderitem set oi_qty= where o_no=3;
+update orders set o_price=-o_price, o_desc='[주문취소]'||o_desc where o_no=3;
 
 --한줄로 만들기 실패.. --- 안되는 것
 update (select * from orders o
 join orderitem oi on o.o_no=oi.o_no
 where o.o_no=3) set o_desc='(1줄로수정)주문취소', oi_qty=99 ;
 
-
+select * from product where p_name like 책상';
 
 
 
 select * from orders o
 join orderitem oi on o.o_no=oi.o_no
-where o.o_no=10;
+where o.o_no=3;
 
 
 
