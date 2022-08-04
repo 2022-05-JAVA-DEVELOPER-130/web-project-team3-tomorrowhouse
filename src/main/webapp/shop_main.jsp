@@ -42,10 +42,7 @@
 					<param name="play" value="true">
 					<param name="loop" value="true">
 					<param name="quality" value="high">
-					<embed src="image/ui/main3.jpg" scale="exactfit" play="true"
-						loop="true" quality="high" style="margin: 10px;"
-						pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
-						width="540px" height="350px"></embed>
+					<embed src="image/ui/main3.jpg" style="margin: 10px" width="540px" height="350px"></embed>
 				</object>
 			</div>
 			<!-- include_content.jsp end-->
