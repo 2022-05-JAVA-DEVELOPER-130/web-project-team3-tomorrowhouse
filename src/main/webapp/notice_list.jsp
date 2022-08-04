@@ -76,11 +76,11 @@
 									<tr>
 										<td width=280 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										<a href='notice_view.jsp?n_no=<%=notice.getN_no() %>'>
-											<%=notice.getN_title()%>
+										<%=notice.getN_title() %>	
 										</a>
 										</td>
 										<td width=120 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<%=notice.getN_date()%>
+											<%=notice.getN_date()%>
 										</td>
 									</tr>
 									<!-- 
