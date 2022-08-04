@@ -3,6 +3,7 @@ package com.itwill.shop.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -342,5 +343,34 @@ public class OrderDao {
 	/*
 	 * 따라서, 주문 전체삭제 등도 필요없다. -> 필요시 구현한다.
 	 */
+	/*
+	 10. 주문취소(cancel)를 위한 select-update
+	 */
+	/*
+		public final static String CANCEL_ORDERS_BY_ORDER_NO
+			="update orderitem set oi_qty=0 where o_no=?";
+		public final static String CANCEL_ORDER_ITEM_BY_ORDER_NO
+			="update orders set o_desc='주문취소' where o_no=?";
+	*/
+	
+	public int cancelOrderOrderItem(Order order) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		con = dataSource.getConnection();
 
+		pstmt1 = con.prepareStatement(OrderSQL.CANCEL_ORDERS_BY_ORDER_NO);
+		pstmt1.setInt(1, order.getO_no());
+		int orderCancelResult = pstmt1.executeUpdate();
+		/*
+				pstmt2 = con.prepareStatement(OrderSQL.CANCEL_ORDER_ITEM_BY_ORDER_NO);
+				pstmt2.setInt(1, order.getO_no());
+				int orderItemCancelResult = pstmt2.executeUpdate();
+				*/
+		con.close();
+		return orderCancelResult;
+		//return orderCancelResult * orderItemCancelResult;
+	}
+	
+	
 }

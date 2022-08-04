@@ -34,12 +34,12 @@ public class ProductService {
 	}
 	
 	//상품명 검색
-	public List<Product> productSerch(String keyword) throws Exception {
-		List<Product> productSerchList = productDao.productSerch(keyword);
-		for(Product product : productSerchList) {
+	public List<Product> productSearch(String keyword) throws Exception {
+		List<Product> productSearchList = productDao.productSearch(keyword);
+		for(Product product : productSearchList) {
 			System.out.println(product);
 		}
-		return productSerchList;
+		return productSearchList;
 	}
 	
 	/*********************<<관리자 전용>>**************************/

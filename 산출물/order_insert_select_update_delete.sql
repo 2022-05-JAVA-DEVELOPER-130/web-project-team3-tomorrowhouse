@@ -55,21 +55,31 @@ delete from orders where u_id = 'test3';
 
 --주문취소를 위한 select-update
 
-select * from orders where o_no=;
+select * from orders where o_no=3;
 select * from orderitem where o_no=3;
-
-
-
-update orderitem set oi_qty=0 where o_no=3;
-update orders set o_desc='주문취소' where o_no=3;
-
-update (select * from orders o
-join orderitem oi on o.o_no=oi.o_no
-where o.o_no=17) set o.o_desc='주문취소' and oi.oi_qty=0;
 
 select * from orders o
 join orderitem oi on o.o_no=oi.o_no
-where o.o_no=17;
+where o.o_no=3;
+
+update orderitem set oi_qty= where o_no=3;
+update orders set o_price=-o_price, o_desc='[주문취소]'||o_desc where o_no=3;
+
+--한줄로 만들기 실패.. --- 안되는 것
+update (select * from orders o
+join orderitem oi on o.o_no=oi.o_no
+where o.o_no=3) set o_desc='(1줄로수정)주문취소', oi_qty=99 ;
+
+select * from product where p_name like 책상';
+
+
+
+select * from orders o
+join orderitem oi on o.o_no=oi.o_no
+where o.o_no=3;
+
+
+
 
 ----serviceTest
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id ='test4' and o.o_no=7;

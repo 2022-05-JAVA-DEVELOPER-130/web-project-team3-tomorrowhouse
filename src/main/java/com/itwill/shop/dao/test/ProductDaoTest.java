@@ -60,7 +60,7 @@ public class ProductDaoTest {
 		*/
 		
 		System.out.println("상품검색");
-		List<Product> productSerchList = productDao.productSerch("의자");
+		List<Product> productSerchList = productDao.productSearch("의자");
 		for(Product product : productSerchList) {
 			System.out.println(product);
 		}

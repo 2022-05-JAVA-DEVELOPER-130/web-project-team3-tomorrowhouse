@@ -112,14 +112,13 @@ public class OrderService {
 		int oi_total_count = 0;
 		
 		for (int i = 0; i < cart_item_noStr_array.length; i++) {
-			/*		-> cartDao에 cartNo로 select하는 메소드가 필요함!	
-			CartItem cartItem = cartDao.getCartItemByCartNo(Integer.parseInt(cart_item_noStr_array[i]));
+			//		-> cartDao에 cartNo로 select하는 메소드가 필요함!	
+			CartItem cartItem = cartDao.getCartItemByCNo(Integer.parseInt(cart_item_noStr_array[i]));
 			OrderItem orderItem = new OrderItem(0, cartItem.getC_qty(), 0, cartItem.getProduct());
 			orderItemList.add(orderItem);
 			
 			o_total_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
 			oi_total_count += orderItem.getOi_qty();
-			*/
 		}
 		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 종";
 		Order newOrder = new Order(0, o_desc, null, o_total_price, u_id, orderItemList);
@@ -131,6 +130,8 @@ public class OrderService {
 		return 0;	//return 값은 무의미
 	}
 
-	/************** 소진이 자리 ********************************************************/
 
+	public int cancelOrder(Order order)throws Exception{
+		return orderDao.cancelOrderOrderItem(order);
+	}
 }

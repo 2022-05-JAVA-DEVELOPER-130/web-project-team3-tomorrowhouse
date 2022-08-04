@@ -84,50 +84,13 @@ public class OrderSQL {
 	="delete from orders where u_id = ?";
 	
 	/*
-	 10. 주문취소
+	 10. 주문취소(cancel)를 위한 select-update
 	 */
-	
+	public final static String CANCEL_ORDERS_BY_ORDER_NO
+	="update orders set o_price=o_price, o_desc='[주문취소]'||o_desc where o_no=?";
+	public final static String CANCEL_ORDER_ITEM_BY_ORDER_NO
+	="update orderitem set oi_qty=0 where o_no=?";
 	
 	
 }
-/**************** orders_orderitem (쪼금 수정) ***************
--- 7.주문 생성
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '책상 외 2종', sysdate, 200000, 'test1');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 1);
-
--- 주문 & 주문 상세 전체 목록 (관리자)
-select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no;
-
--- 1. test2의 주문 한개(o_no=4) & 주문상세, 상품 정보 모두 보기
-select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = 'test2' and o.o_no=4;
-
--- 2. test2 고객의 주문 전체 목록
-select * from orders where u_id = 'test2';
-
-
--- 3. test3 고객 주문 & 주문 상세 전체 목록
-select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id='test3';
-
--- 4.멤버1명의 주문번호 4번의 주문 정보
-select * from orders where o_no = 4;
-
--- 5.멤버1명의 주문번호 3번의 모든 상세 정보(여러개)
-select * from orderitem where o_no = 3;
-
-
--- 주문번호 3번 삭제(주문1개삭제,주문상세삭제) -> 언제 일어나는 일? 주문 취소할때? 그래도 주문내역은 남지 않나?
---on delete cascade
-delete from orderitem where o_no=3;
-delete from orders where o_no=3;
-
--- test3 고객의 주문 내역 전체 삭제 -> 언제 일어나는 일? 주문 취소할때? 그래도 주문내역은 남지 않나?
-
-	select * from orders;
-	select * from orderitem;
-	select * from orderitem where o_no=(select o_no from orders where u_id = 'test3');
-	select * from orders where u_id = 'test3';
-
-delete from orderitem where o_no=(select o_no from orders where u_id = 'test3');
-delete from orders where u_id = 'test3';
- */
 

@@ -24,6 +24,7 @@ detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(no
 <form>
 <h3>[<%=detailProduct.getP_name()%> 상세보기(상품번호)]</h1>
 <hr>
+
 <input type ='hidden'name='p_no' value='<%=detailProduct.getP_no()%>'>
 상품이름 <input type ='text'name='p_name' value='<%=detailProduct.getP_name()%>'><br>
 상품가격 <input type ='text'name='p_price' value='<%=detailProduct.getP_price()%>'><br>
