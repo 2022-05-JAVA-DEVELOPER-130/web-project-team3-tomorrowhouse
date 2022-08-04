@@ -26,6 +26,8 @@ public class CartDaoTestMain {
 		//System.out.println(cartDao.deleteCart("test1"));
 		System.out.println("6.test2의 카트리스트에 카트넘버 3번 삭제");
 		//System.out.println(cartDao.deleteCartByNo(3));
+		System.out.println("7.c_no로 물건하나 선택");
+		System.out.println(cartDao.getCartItemByCNo(5));
 
 	}
 
