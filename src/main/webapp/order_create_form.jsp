@@ -1,68 +1,209 @@
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="com.itwill.shop.dto.CartItem"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="com.itwill.shop.dto.UserInfo"%>
+<%@page import="com.itwill.shop.dto.CartItem"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
+<%@page import="com.itwill.shop.service.ProductService"%>
 <%@page import="com.itwill.shop.service.CartService"%>
-<%@page import="com.itwill.shop.service.OrderService"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="login_check.jspf"%>
 <%
-/*******************/
-sUserId = "test5";
 
-/*******************/
 
+if (request.getMethod().equalsIgnoreCase("GET")) {
+	response.sendRedirect("order_list.jsp");
+	return;
+}
+
+String buyType = request.getParameter("buyType");
+String p_noStr = request.getParameter("p_no");
+String p_qtyStr = request.getParameter("p_qty");
+String[] cart_item_noStr_array = request.getParameterValues("cart_item_no");
+
+if(buyType==null)buyType="";
+if(p_noStr==null)p_noStr="";
+if(p_qtyStr==null)p_qtyStr="";
+if(cart_item_noStr_array==null)cart_item_noStr_array=new String[]{};
 
 CartService cartService = new CartService();
-
-/* product_detail에서 상품1종 직접주문 */
-/* cart에서 직접주문 */
-/* cart에서 선택주문 */
-
-ArrayList<CartItem> cartItemList = (ArrayList)cartService.getCartList(sUserId);
-
 UserInfoService userInfoService = new UserInfoService();
+ProductService productService = new ProductService();
+
+
+ArrayList<CartItem> cartItemList = new ArrayList<CartItem>();
 UserInfo userInfo = userInfoService.findUser(sUserId);
 
+if (buyType.equals("cart")) {
+	cartItemList = (ArrayList)cartService.getCartList(sUserId);
+} else if (buyType.equals("cart_select")) {
+	for (String cart_item_noStr : cart_item_noStr_array) {
+		cartItemList.add(cartService.getCartItemByNo(Integer.parseInt(cart_item_noStr)));
+	}
+} else if (buyType.equals("direct")) {
+	/*
+	private int c_no;
+	private int c_qty;
+	private String u_id;// FK
+	private Product product;
+	*/
+	Product product = productService.productSelectByNo(new Product(Integer.parseInt(p_noStr),null,0,null,null,0,null));
+	cartItemList.add(new CartItem(0, 0, sUserId, product));
+}
 %>
 
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쇼핑몰 관리</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet href="css/styles.css" type="text/css">
+<link rel=stylesheet href="css/shop.css" type="text/css">
+ 
+<style type="text/css" media="screen">
+/*
+form > table tr td{
+	border: 0.1px solid black;
+}
+*/
+</style>
+<script type="text/javascript">
+	function order_create_form_submit() {
+		document.order_create_form.method = 'POST';
+		document.order_create_form.action = 'order_create_action.jsp';
+		document.order_create_form.submit();
+	}
+</script>
 </head>
-<body>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+	<form name="order_create_form" method="post">
+		<input type="hidden" name="buyType" value="<%=buyType%>"> <input
+			type="hidden" name="p_no" value="<%=p_noStr%>"> <input
+			type="hidden" name="p_qty" value="<%=p_qtyStr%>">
+		<%
+		for (String cart_item_noStr : cart_item_noStr_array) {
+		%>
+		<input type="hidden" name="cart_item_no" value="<%=cart_item_noStr%>">
+		<%
+		}
+		%>
+	</form>
+	<!-- container start-->
+	<div id="container">
+		<!-- header start -->
+		<div id="header">
+			<!-- include_common_top.jsp start-->
+			<jsp:include page="include_common_top.jsp" />
+			<!-- include_common_top.jsp end-->
+		</div>
+		<!-- header end -->
+		<!-- navigation start-->
+		<div id="navigation">
+			<!-- include_common_left.jsp start-->
+			<jsp:include page="include_common_left.jsp" />
+			<!-- include_common_left.jsp end-->
+		</div>
+		<!-- navigation end-->
+		<!-- wrapper start -->
+		<div id="wrapper">
+			<!-- content start -->
 
-<h3>고객정보</h3>
- 아이디<input type ='text' name='u_id' value='<%= userInfo.getU_id()%>'><br>
- 이름<input type ='text' name='u_name' value='<%= userInfo.getU_name()%>'><br>
- 이메일<input type ='text' name='u_email' value='<%= userInfo.getU_email()%>'><br>
- 주소<input type ='text' name='u_address' value='<%= userInfo.getU_address()%>'><br>
- 전화번호<input type ='text' name='u_phone' value='<%= userInfo.getU_phone()%>'><br>
+			<!-- include_content.jsp start-->
+			<div id="content">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td><br />
+							<table style="padding-left: 10px" border=0 cellpadding=0
+								cellspacing=0>
+								<tr>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 -
+											주문/결제폼</b></td>
+								</tr>
+							</table> <!--form-->
+							<form>
+								<table align=center width=80% border="0" cellpadding="0"
+									cellspacing="1" bgcolor="BBBBBB">
+									<caption style="text-align: left;">구매자정보</caption>
+									<tr>
+										<td width=290 height=25 align=center bgcolor="E6ECDE" class=t1>아이디</td>
+										<td width=112 height=25 align=center bgcolor="E6ECDE" class=t1>이름</td>
+										<td width=166 height=25 align=center bgcolor="E6ECDE" class=t1>이메일</td>
+										<td width=50 height=25 align=center bgcolor="E6ECDE" class=t1>비 고</td>
+									</tr>
+									<tr>
+										<td width=290 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
+										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_name()%></td>
+										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_email()%></td>
+										<td width=50 height=26 align=center bgcolor="ffffff" class=t1></td>
+									</tr>
+								</table>
 
-<hr>
-<h3>카트 상품 정보</h3>
-<%
+								<br />
 
-int total_cart_price =0;
-for(CartItem cartItem: cartItemList){
-	total_cart_price += cartItem.getProduct().getP_price() * cartItem.getC_qty();
-%>
- 카트번호<input type ='text' name='c_no' value='<%= cartItem.getC_no()%>'><br>
+								<table align=center width=80% border="0" cellpadding="0"
+									cellspacing="1" bgcolor="BBBBBB">
+									<caption style="text-align: left;">주문제품목록</caption>
+									<tr style="border: 0.1px solid">
+										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>상품이름</td>
+										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1>수    량</td>
+										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>가    격</td>
+										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>비    고</td>
+									</tr>
+									<%
+									int tot_price = 0;
+									for (CartItem cart : cartItemList) {
+										tot_price += cart.getC_qty() * cart.getProduct().getP_price();
+									%>
+									<!-- cart item start -->
+									<tr>
+										<td width=290 height=26 align=center bgcolor="ffffff" class=t1>
+											<a
+											href='product_detail.jsp?p_no=<%=cart.getProduct().getP_no()%>'><%=cart.getProduct().getP_name()%></a>
+										</td>
+										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=cart.getC_qty()%></td>
+										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
+											<%=new DecimalFormat("#,###").format(cart.getC_qty() * cart.getProduct().getP_price())%>
+										</td>
+										<td width=50 height=26 align=center bgcolor="ffffff" class=t1></td>
+									</tr>
+									<!-- cart item end -->
+									<%}%>
+									<tr>
+										<td width=640 colspan=4 height=26 bgcolor="ffffff" class=t1>
+											<p align=right style="padding-top: 10px">
+												<font color=#FF0000>총 주문 금액 : <%=new DecimalFormat("#,###").format(tot_price)%>원
+												</font>
+											</p>
+										</td>
+									</tr>
+								</table>
+							</form>
+							<br />
+							<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align=center>&nbsp;&nbsp; <a
+										href="javascript:order_create_form_submit();" class=m1>구매/결제하기</a>
+										&nbsp;&nbsp;<a href=product_list.jsp class=m1>계속 쇼핑하기</a>
 
- 상품번호<input type ='text' name='p_no' value='<%= cartItem.getProduct().getP_no()%>'><br>
- 상품이름<input type ='text' name='p_name' value='<%= cartItem.getProduct().getP_name()%>'><br>
- 상품 총 가격<input type ='text' name='o_price' value='<%= cartItem.getProduct().getP_price()* cartItem.getC_qty()%>'><br>
- 상품이미지<img src="image/product/<%=cartItem.getProduct().getP_image()%>" width="40px" height="40px"><br>
-
-<hr>
-<%	} %>
-
-total_cart_price = 
-<%=new DecimalFormat("#,##0").format(total_cart_price) %>
-
+									</td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+			</div>
+			<!-- include_content.jsp end-->
+			<!-- content end -->
+		</div>
+		<!--wrapper end-->
+		<div id="footer">
+			<!-- include_common_bottom.jsp start-->
+			<jsp:include page="include_common_bottom.jsp" />
+			<!-- include_common_bottom.jsp end-->
+		</div>
+	</div>
+	<!--container end-->
 </body>
 </html>

@@ -2,31 +2,12 @@
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="login_check.jspf" %> 
 
 <%
-/*
-private String u_id;
-private String u_pw;
-private String u_name;
-private String u_email;
-private String u_address;
-private String u_phone;
-*/
 
-/*
- * 회원 1명 보기
-public UserInfo findUser(String u_id) throws Exception {
-	UserInfo findUser = userInfoDao.findUser(u_id);
-	return findUser;
-}
- */
- 
-
-String u_id = request.getParameter("u_id");
- 
 UserInfoService userInfoService = new UserInfoService();
-UserInfo findUser = userInfoService.findUser("test3");
+UserInfo findUser = userInfoService.findUser(sUserId);
 
 %>
 
