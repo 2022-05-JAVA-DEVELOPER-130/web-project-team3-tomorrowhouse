@@ -13,7 +13,7 @@
 	*/
 	
 	 if(request.getMethod().equalsIgnoreCase("GET")){
-	     response.sendRedirect("test.jsp");		  
+	     response.sendRedirect("user_login_form.jsp");		  
 		 return;
 	 }
 	 //request.setCharacterEncoding("UTF-8");
@@ -62,7 +62,7 @@
 		 request.setAttribute("fuser", fuser);
 		 
 		 RequestDispatcher rd=
-			request.getRequestDispatcher("test.jsp");
+			request.getRequestDispatcher("user_login_form.jsp");
 		rd.forward(request, response);
 	 }else if(result==2){
 		 //2:로그인성공(세션)
