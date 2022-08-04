@@ -102,7 +102,7 @@ function cart_item_select_count(){
 			if (cart_item_no_check_list.item(i).checked === true) {
 				document.cart_view_form.innerHTML += "<input type='hidden' name='cart_item_no' value='"+ cart_item_no_check_list.item(i).value + "'>";
 				var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
-				var cart_qty=document.getElementById(updateFormId).c_qty.value;
+				var cart_qty=document.getElementById(updateFormId).cart_qty.value;
 				var cart_product_unit_price=document.getElementById(updateFormId).cart_product_unit_price.value;
 				tot_order_price+=cart_qty*cart_product_unit_price;
 				cart_item_check_selected_count++;
