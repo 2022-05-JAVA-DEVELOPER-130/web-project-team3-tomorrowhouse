@@ -6,15 +6,12 @@ import com.itwill.shop.dao.UserInfoDao;
 import com.itwill.shop.dto.UserInfo;
 
 
-
-
 public class UserInfoService {
 	private UserInfoDao userInfoDao;
 
 	public UserInfoService() throws Exception {
 		userInfoDao = new UserInfoDao();
 	}
-
 	/*
 	 * 회원가입
 	 */
@@ -43,17 +40,17 @@ public class UserInfoService {
 		int result=-1;
 		//1.아이디존재여부
 		UserInfo userinfo=userInfoDao.findUser(u_id);
+		//아이디존재안함
 		if(userinfo==null) {
-			//아이디존재안함
 			result=0;
-		}else {
 			//아이디존재함
+		}else {
+			//1:로그인성공
 			if(userinfo.isMatchPassword(u_pw)) {
-				//패쓰워드일치
-				result=2;
-			}else {
-				//패스워드 불일치
 				result=1;
+				//패스워드 불일치
+			}else {
+				result=2;
 			}
 		}
 		
