@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
+	sUserId="test3";
 	CartService cartService = new CartService();
 	List<CartItem> cartList = cartService.getCartList(sUserId);	
 %>
@@ -211,19 +212,21 @@ function cart_item_all_select(e){
 										</td>
 
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
-											<form action="cart_update_action.jsp" method="post"
+										
+											<form action="cart_item_update_action.jsp" method="post"
 												id="cart_update_form_<%=cartItem.getC_no()%>">
-												<input type="hidden" name="cart_no"
+												<input type="hidden" name="c_no"
 													value="<%=cartItem.getC_no()%>"> <input
 													type="button" value="-"
-													onclick="changeNumber('-','cart_update_form_<%=cartItem.getC_no()%>');"/>
+													onclick="changeNumber('-','cart_item_update_form_<%=cartItem.getC_no()%>');"/>
 												<input type="text" readonly="readonly" size="2"
-													style="text-align: center; width: 15%" name="cart_qty"
+													style="text-align: center; width: 15%" name="c_qty"
 													value="<%=cartItem.getC_qty()%>"> <input
 													type="button" value="+"
-													onclick="changeNumber('+','cart_update_form_<%=cartItem.getC_no()%>');"/>
+													onclick="changeNumber('+','cart_item_update_form_<%=cartItem.getC_no()%>');"/>
 												<input type="hidden" name="cart_product_unit_price" value="<%=cartItem.getProduct().getP_price()%>"/>	
 											</form>
+											
 										</td>
 
 										<td width=146 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,##0").format(cartItem.getProduct().getP_price() * cartItem.getC_qty())%></td>
@@ -276,7 +279,9 @@ function cart_item_all_select(e){
 									
 									<a href="product_list.jsp" class=m1>계속 구경하기</a>&nbsp;&nbsp;
 									<%if(cartList.size()>=1){ %>
-									<a href= >카트전체 주문하기[주문폼]</a>
+										 <a href="javascript:cart_view_form_select_submit();" class=m1>
+										 	총 <span style="font-weight: bold;" id="+"></span>개 주문하기[주문폼]
+										 	</a>&nbsp;&nbsp;
 									<a href= 'cart_delete_action.jsp?u_id=<%=sUserId%>' > 장바구니 비우기</a>&nbsp;&nbsp;
 									<%} %>
 									</td>
