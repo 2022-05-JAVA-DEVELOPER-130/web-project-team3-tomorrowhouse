@@ -24,7 +24,7 @@ public class ProductServiceTest {
 //		System.out.println(productService.productSelectByName(new Product(0, "신발장", 0, null, null, 0, null)));
 //				
 		System.out.println(">> 상품검색하기");
-		productService.productSerch("의자");
+		productService.productSearch("의자");
 		
 		
 		

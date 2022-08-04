@@ -10,6 +10,7 @@ import com.itwill.shop.dao.ProductDao;
 import com.itwill.shop.dto.Order;
 import com.itwill.shop.dto.OrderItem;
 import com.itwill.shop.service.OrderService;
+import com.itwill.shop.service.ProductService;
 
 public class OrderServiceTestMain {
 
@@ -48,8 +49,11 @@ public class OrderServiceTestMain {
 		/*
 		 * cart에서 전체주문
 		 */
-		System.out.println(orderService.createOrderByCart("test5"));
+		//System.out.println(orderService.createOrderByCart("test5"));
 		
+		ProductService productService = new ProductService();
+		System.out.println(productService.productSearch(null));
+	 
 
 	}
 
