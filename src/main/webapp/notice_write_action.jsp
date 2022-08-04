@@ -7,17 +7,15 @@
 <%@include file="login_check.jspf" %>
     
 <%
-	/*  if(request.getMethod().equalsIgnoreCase("GET")){
+	 if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("notice_list.jsp");
 		return;
-	} */
+	}
 
 	String title= request.getParameter("n_title");
 	String content= request.getParameter("n_content");
 	String date = request.getParameter("n_date");
-	SimpleDateFormat  fm = new SimpleDateFormat("yyyy-MM-dd");
-		
-	Notice newNotice = new Notice(0,title,content,fm.parse(date));
+	Notice newNotice = new Notice(0,title,content,null);
 	NoticeService noticeService = new NoticeService();
 	noticeService.insertNotice(newNotice);
 	response.sendRedirect("notice_list.jsp");

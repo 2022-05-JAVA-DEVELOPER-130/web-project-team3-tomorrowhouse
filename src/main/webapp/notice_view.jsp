@@ -106,9 +106,9 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
 									<td align=center>
-									<input type="button" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
-									<input type="button" value="수정" onClick="noticeUpdate()">&nbsp; 
-									<input type="button" value="삭제" onClick="noticeDelete()">&nbsp; 
+									<input type="hidden" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
+									<input type="hidden" value="수정" onClick="noticeUpdate()">&nbsp; 
+									<input type="hidden" value="삭제" onClick="noticeDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="noticeList()"></td>
 								</tr>
 							</table></td>
