@@ -13,13 +13,14 @@
 %>		
 <div id="menu">
 	<ul>
-		<li id="m_login"><a href="javascript:;">로그인</a></li>
-		<li id="m_join"><a href="javascript:;" >회원가입</a></li>
-		<li id="m_order"><a href="">주문/배송</a></li>
-		
-		<li id="m_customer"><a href="">고객센터</a></li>
-		<li id="m_mypage"><a href="">My한샘</a></li>
 		<li id="logo"><a href="shop_main.jsp"></a></li>
+		<li id="m_qna"><a href="qna_list.jsp">Q&A</a></li>
+		<li id="m_review"><a href="review_list.jsp">리뷰</a></li>
+		<li id="m_notice"><a href="notice_list.jsp">공지사항</a></li>
+		<li id="m_order"><a href="order_list.jsp">주문내역</a></li>
+		<li id="m_join"><a href="user_wrtie_form.jsp" >회원가입</a></li>
+		<li id="m_login"><a href="user_login_form.jsp">로그인</a></li>
+		
 		<%-- 
 		<%if(sUserId==null){  %>
 			<li id="mypage" title="나의페이지" ><a href="user_login_form.jsp" ></a></li>
