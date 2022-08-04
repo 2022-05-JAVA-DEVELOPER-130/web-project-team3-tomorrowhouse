@@ -17,11 +17,12 @@
 	 * 주문상세리스트(특정사용자)
 	 */
 	OrderService orderService = new OrderService();
-	Order findOrder = new Order(0, null, null, 0, "test1",null);
+	Order findOrder = new Order(0, null, null, 0, sUserId,null);
 	ArrayList<Order> orderList = 
-	(ArrayList)orderService.list_detail(new Order(0,null,null,0,sUserId,null));
+	(ArrayList)orderService.orderListByUserId(findOrder);
 	//ArrayList<Order> orderNoList = orderService.orderNoListByUserId(findOrder);
-	//ArrayList<Order> orderList = orderService.orderListByUserId(findOrder);
+	//실행안됨...
+	//ArrayList<Order> orderList = orderService.list_detail(findOrder);
 %>
 
 
@@ -42,7 +43,7 @@
 %>
 
  주문번호<input type ='text' name='o_no' value='<%= order.getO_no()%>'><br>
- 상품이름<input type ='text' name='p_name' value='<%= order.getOrderItemList().get(0).getProduct().getP_name()%>'><br>
+ 주문상세<input type ='text' name='o_desc' value='<%= order.getO_desc()%>'><br>
 
 
 <hr>
