@@ -1,6 +1,7 @@
-<%@page import="com.itwill.shop.service.UserInfoService"%>
+<%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@page import="com.itwill.shop.dto.CartItem"%>
+<%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@page import="com.itwill.shop.service.CartService"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -30,6 +31,7 @@ CartService cartService = new CartService();
 UserInfoService userInfoService = new UserInfoService();
 ProductService productService = new ProductService();
 
+
 ArrayList<CartItem> cartItemList = new ArrayList<CartItem>();
 UserInfo userInfo = userInfoService.findUser(sUserId);
 
@@ -37,11 +39,17 @@ if (buyType.equals("cart")) {
 	cartItemList = (ArrayList)cartService.getCartList(sUserId);
 } else if (buyType.equals("cart_select")) {
 	for (String cart_item_noStr : cart_item_noStr_array) {
-		//cartItemList.add(cartService.getCartItemByCartNo(Integer.parseInt(cart_item_noStr)));
+		cartItemList.add(cartService.getCartItemByNo(Integer.parseInt(cart_item_noStr)));
 	}
 } else if (buyType.equals("direct")) {
-	//Product product = productService.selectByNo(Integer.parseInt(p_noStr));
-	//cartItemList.add(new CartItem(0, user, product, Integer.parseInt(p_qtyStr)));
+	/*
+	private int c_no;
+	private int c_qty;
+	private String u_id;// FK
+	private Product product;
+	*/
+	Product product = productService.productSelectByNo(new Product(Integer.parseInt(p_noStr),null,0,null,null,0,null));
+	cartItemList.add(new CartItem(0, 0, sUserId, product));
 }
 %>
 
@@ -123,8 +131,7 @@ form > table tr td{
 										<td width=290 height=25 align=center bgcolor="E6ECDE" class=t1>아이디</td>
 										<td width=112 height=25 align=center bgcolor="E6ECDE" class=t1>이름</td>
 										<td width=166 height=25 align=center bgcolor="E6ECDE" class=t1>이메일</td>
-										<td width=50 height=25 align=center bgcolor="E6ECDE" class=t1>비
-											고</td>
+										<td width=50 height=25 align=center bgcolor="E6ECDE" class=t1>비 고</td>
 									</tr>
 									<tr>
 										<td width=290 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
@@ -140,14 +147,10 @@ form > table tr td{
 									cellspacing="1" bgcolor="BBBBBB">
 									<caption style="text-align: left;">주문제품목록</caption>
 									<tr style="border: 0.1px solid">
-										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>강아지
-											이름</td>
-										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1>수
-											량</td>
-										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>가
-											격</td>
-										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>비
-											고</td>
+										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>상품이름</td>
+										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1>수    량</td>
+										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>가    격</td>
+										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>비    고</td>
 									</tr>
 									<%
 									int tot_price = 0;
@@ -171,8 +174,7 @@ form > table tr td{
 									<tr>
 										<td width=640 colspan=4 height=26 bgcolor="ffffff" class=t1>
 											<p align=right style="padding-top: 10px">
-												<font color=#FF0000>총 주문 금액 : <%=new DecimalFormat("#,###").format(tot_price)%>
-													원
+												<font color=#FF0000>총 주문 금액 : <%=new DecimalFormat("#,###").format(tot_price)%>원
 												</font>
 											</p>
 										</td>
@@ -183,7 +185,7 @@ form > table tr td{
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp; <a
-										href="javascript:order_create_form_submit();" class=m1>구매/결재하기</a>
+										href="javascript:order_create_form_submit();" class=m1>구매/결제하기</a>
 										&nbsp;&nbsp;<a href=product_list.jsp class=m1>계속 쇼핑하기</a>
 
 									</td>
