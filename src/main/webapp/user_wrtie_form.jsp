@@ -157,7 +157,9 @@
 									</tr>
 								</table>
 							</form> <br />
-
+							
+							<a href='user_write_action.jsp'>[회원가입]</a>
+	
 							<table border=0 cellpadding=0 cellspacing=1>
 								<tr>
 									<td align=center>

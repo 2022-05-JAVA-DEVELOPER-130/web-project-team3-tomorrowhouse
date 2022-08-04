@@ -1,142 +1,42 @@
-<%@page import="com.itwill.shop.service.UserInfoService"%>
-<%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>
 <%
+/*
+private String u_id;
+private String u_pw;
+private String u_name;
+private String u_email;
+private String u_address;
+private String u_phone;
+ */
 
-	UserInfoService userInfoService=new UserInfoService();
-	UserInfo loginUser=userInfoService.findUser(sUserId);
+
+
+
+
 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
-<title>내정보</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel=stylesheet href="css/styles.css" type="text/css">
-<link rel=stylesheet href="css/user.css" type="text/css">
-<script type="text/javascript">
-	
-	function userModifyForm() {
-		location.href='user_modify_form.jsp'
-	}
-
-	function userRemove() {
-		if (window.confirm("정말 탈퇴하시겠습니까?")) {
-			window.document.f.action = "user_remove_action.jsp";
-			document.f.method='POST';
-			document.f.submit();
-		}
-	}
-</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
-<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
-	<!-- container start-->
-	<div id="container">
-		<!-- header start -->
-		<div id="header">
-			<!-- include_common_top.jsp start-->
-			
-<jsp:include page="include_common_top.jsp"/>
-			<!-- include_common_top.jsp end-->
-		</div>
-		<!-- header end -->
-		<!-- navigation start-->
-		<div id="navigation">
-			<!-- include_common_left.jsp start-->
-			<jsp:include page="include_common_left.jsp"/>
-			<!-- include_common_left.jsp end-->
-		</div>
-		<!-- navigation end-->
-		<!-- wrapper start -->
-		<div id="wrapper">
-			<!-- content start -->
+<body>
+<form>
+<h3>[<%=%> 상세보기]</h1>
+<hr>
 
-			<!-- include_content.jsp start-->
-			<div id="content">
-				<table border=0 cellpadding=0 cellspacing=0>
-					<tr>
-						<td>
-							<!--contents--> <br />
-							<table style="padding-left: 10px" border=0 cellpadding=0
-								cellspacing=0>
-								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내정보 관리
-											- 내정보보기</b></td>
-								</tr>
-							</table> <!-- view Form  -->
-							<form name="f" method="post">
-								<table border="0" cellpadding="0" cellspacing="1" width="590"
-									bgcolor="BBBBBB">
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
-											아이디</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_id() %>
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_pw() %>
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호 확인</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_pw() %>
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_name() %>
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일 주소</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_email()%>
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">주소</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_address()%>
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getU_phone()%>
-										</td>
-									</tr>
-								</table>
-							</form> <br />
-							<table border="0" cellpadding="0" cellspacing="1">
-								<tr>
-									<td align=center>
-									<input type="button" value="내정보수정" onClick="userModifyForm()"> &nbsp; 
-									<input type="button" value="내정보삭제[탈퇴]" onClick="userRemove()"> &nbsp; 
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-			</div>
-			
-			<!-- include_content.jsp end-->
-			<!-- content end -->
-		</div>
-		<!--wrapper end-->
-		<div id="footer">
-			<!-- include_common_bottom.jsp start-->
-			<jsp:include page="include_common_bottom.jsp"/>
-			<!-- include_common_bottom.jsp end-->
-		</div>
-	</div>
-	<!--container end-->
+아이디 <input type ='text'name='u_id' value='<%=%>'><br>
+비밀번호 <input type ='text'name='u_pw' value='<%=%>'><br>
+이름 <input type ='text'name='u_name' value='<%=%>'><br>
+이메일주소 <input type ='text'name='u_email' value='<%=%>'><br>
+집주소 <input type ='text'name='u_address' value='<%=%>'><br>
+폰번호 <input type ='text'name='u_phone' value='<%=%>'><br>
+
+	<a href='user_modify_form.jsp'>[상품수정]</a>
+	<a href=''>[상품삭제]</a>
+</form>
 </body>
 </html>
