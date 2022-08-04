@@ -65,8 +65,14 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 		document.f.submit();
 	}
 	function userMain() {
-		location.href='user_main.jsp';
+		location.href='shop_main.jsp';
 	}
+	/*
+	아이디중복체크
+	function openIdCheck(){
+		window.open('user_id_check_form.jsp','checkForm','width=500,height=300,resizable = no,scrollbar = no');
+	}
+	*/
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -113,7 +119,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="u_id"
 											 value="<%=fuser.getU_id()%>" >&nbsp;&nbsp;<font color="red"><%=msg%></font>
-											<font color="red"></font>
+											
 										</td>
 									</tr>
 									<tr>
@@ -185,6 +191,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 			<!-- include_common_bottom.jsp start-->
 			<jsp:include page="include_common_bottom.jsp"/>
 			<!-- include_common_bottom.jsp end-->
+		</div>
 		</div>
 	<!--container end-->
 </body>
