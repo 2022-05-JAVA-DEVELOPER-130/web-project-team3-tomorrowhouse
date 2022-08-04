@@ -115,55 +115,49 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="password" style="width: 150px"
-											name="password" value="<%=loginUser.getU_pw()%>"></td>
+											name="u_pw" value="<%=loginUser.getU_pw()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호
 											확인</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="password" style="width: 150px"
-											name="password2" value="<%=loginUser.getU_pw()%>"></td>
+											name="u_pw2" value="<%=loginUser.getU_pw()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="name" value="<%=loginUser.getU_name()%>"></td>
+											name="u_name" value="<%=loginUser.getU_name()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="email" value="<%=loginUser.getU_email()%>"></td>
+											name="u_email" value="<%=loginUser.getU_email()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="address" value="<%=loginUser.getU_address()%>"></td>
+											name="u_address" value="<%=loginUser.getU_address()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="phone" value="<%=loginUser.getU_phone()%>"></td>
+											name="u_phone" value="<%=loginUser.getU_phone()%>"></td>
 									</tr>
 								</table>
 							</form> <br>
 
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-						
-										
-									<form action='user_modify_action.jsp' method='post' style='display:inline;'>
-									<input type='hidden' name='u_id' value='<%=loginUser.getU_id()%>'>
-									<input type='submit' value="내정보수정">
-									</form>
+									<td align=center><input type="button" value="내정보수정"
+										onClick="userModify()"> &nbsp; <input type="button"
+										value="메인" onClick="userMain()"></td>
 								</tr>
-								
-								
-								
 							</table>
 
 						</td>
