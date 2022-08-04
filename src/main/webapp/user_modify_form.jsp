@@ -4,15 +4,10 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-sUserId="test2";
 
-if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("user_login_form.jsp");
-	return;
-}
 	UserInfoService userInfoService=new UserInfoService();
-	//UserInfo loginUser=userInfoService.findUser(sUserId);
-	UserInfo loginUser = userInfoService.findUser(sUserId);
+	UserInfo loginUser=userInfoService.findUser(sUserId);
+	//UserInfo loginUser = userInfoService.findUser("test3");
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,14 +19,14 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
 	function userModify() {
-		if (document.f.password.value == "") {
+		if (document.f.u_pw.value == "") {
 			alert("비밀번호를 입력하십시요.");
-			document.f.password.focus();
+			document.f.u_pw.focus();
 			return false;
 		}
-		if (document.f.password2.value == "") {
+		if (document.f.u_pw2.value == "") {
 			alert("비밀번호확인을 입력하십시요.");
-			document.f.password2.focus();
+			document.f.u_pw2.focus();
 			return false;
 		}
 		if (document.f.u_name.value == "") {
@@ -44,7 +39,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 			document.f.u_email.focus();
 			return false;
 		}
-		if (document.f.password.value != f.password2.value) {
+		if (document.f.u_pw.value != f.u_pw2.value) {
 			alert("비밀번호와 비밀번호확인은 일치하여야합니다.");
 			document.f.u_pw.focus();
 			document.f.u_pw.select();
@@ -127,7 +122,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 											확인</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="password" style="width: 150px"
-											name="password2" value="<%=loginUser.getU_pw()%>"></td>
+											name="u_pw2" value="<%=loginUser.getU_pw()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
@@ -159,17 +154,10 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-						<!-- <td align=center><input type="button" value="내정보수정" -->
-									<!-- 	onClick="userModifyAction();"> &nbsp;</td> -->
-										
- 									<form action='user_modify_action.jsp' method='post' style='display:inline;'>
-									<input type='hidden' name='u_id' value='<%=loginUser.getU_id()%>'> 
-									<input type='submit' value="내정보수정"> -->
- 									</form> 
+									<td align=center><input type="button" value="내정보수정"
+										onClick="userModify()"> &nbsp; <input type="button"
+										value="메인" onClick="userMain()"></td>
 								</tr>
-								
-								
-								
 							</table>
 
 						</td>
