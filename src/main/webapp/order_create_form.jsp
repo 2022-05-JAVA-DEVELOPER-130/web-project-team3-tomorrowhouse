@@ -9,13 +9,17 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-
+/*******************/
 sUserId = "test5";
 
-//OrderService orderService = new OrderService();
+/*******************/
+
+
 CartService cartService = new CartService();
 
+/* product_detail에서 상품1종 직접주문 */
 /* cart에서 직접주문 */
+/* cart에서 선택주문 */
 
 ArrayList<CartItem> cartItemList = (ArrayList)cartService.getCartList(sUserId);
 
