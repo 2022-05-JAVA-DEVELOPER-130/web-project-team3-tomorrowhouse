@@ -4,6 +4,6 @@
    String sUserId=(String)session.getAttribute("sUserId");
    if(sUserId==null){
       //response.sendRedirect("shop_main.jsp");
-      sUserId = "test1";
+      sUserId = "test2";
    }
 %> 

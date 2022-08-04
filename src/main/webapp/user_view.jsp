@@ -26,7 +26,7 @@ public UserInfo findUser(String u_id) throws Exception {
 String u_id = request.getParameter("u_id");
  
 UserInfoService userInfoService = new UserInfoService();
-UserInfo findUser = userInfoService.findUser("test5");
+UserInfo findUser = userInfoService.findUser("test2");
 
 %>
 
@@ -105,14 +105,14 @@ UserInfo findUser = userInfoService.findUser("test5");
 								<tr>
 									<td align=center>
 									<form action='user_modify_form.jsp' method='post' style='display:inline;'>
-									<input type='hidden' name='u_id' value='<%=u_id%>'>
+									<input type='hidden' name='u_id' value='<%=findUser.getU_id()%>'>
 									<input type='submit' value="내정보수정">
 									</form>
 									<form action='user_remove_action.jsp' method='post' style='display:inline;'>
 									<input type='hidden' name='u_id' value='<%=findUser.getU_id()%>'>
 									<input type="submit" value="내정보삭제[탈퇴]">
 									</form>
-							</table>
+							</table>	
 						</td>
 					</tr>
 				</table>

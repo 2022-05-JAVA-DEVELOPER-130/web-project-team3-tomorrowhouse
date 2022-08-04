@@ -21,5 +21,9 @@
     	<br>
     	<br>
     	<li><a href= "notice_list.jsp">공지사항</a></li>
+    	<li><a href=""></a></li>
+    	<li><a href="order_list.jsp">주문목록</a></li>
+    	<li><a href=""></a></li>
+    	<li><a href="notice_list.jsp">공지사항</a></li>
     	</h2>
     	</ul>
