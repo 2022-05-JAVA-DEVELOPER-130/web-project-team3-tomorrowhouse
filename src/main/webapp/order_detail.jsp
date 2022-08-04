@@ -1,61 +1,180 @@
-<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.dto.OrderItem"%>
-<%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="com.itwill.shop.dto.Order"%>
+<%@page import="com.itwill.shop.service.OrderService"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>
+<%@ include file="login_check.jspf" %>
 <%
-	/*	<< select by u_id and o_id>>
-	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
-	 */
-	sUserId = "test5";
-	String o_no = "17";
-	Order order = new Order(Integer.parseInt(o_no),null,null,0,sUserId,null);
-		
-	OrderService orderService = new OrderService();
-	//orderService.detail(order);
-	order = orderService.oneOfOrderProductdetailByUserId(order);
-%>
+/*****************/
+sUserId = "test3";
 
+/*****************/
 
-<!DOCTYPE html>
+String o_noStr=request.getParameter("o_no");
+	if(o_noStr==null|| o_noStr.equals("")){
+		response.sendRedirect("order_list.jsp");
+		return;
+	}
+
+	Order newOrder = new Order(Integer.parseInt(o_noStr),null,null,0,sUserId,null);
+	OrderService orderService=new OrderService();
+	Order order = orderService.oneOfOrderProductdetailByUserId(newOrder);
+%>     
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>내일의집</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet href="css/styles.css" type="text/css">
+<link rel=stylesheet href="css/shop.css" type="text/css">
+ 
+<style type="text/css" media="screen">
+/*
+form > table tr td{
+	border: 0.1px solid black;
+}
+*/
+</style>
 <script type="text/javascript">
-	function order_detail_form_submit() {
-		document.order_detail_form.method = 'POST';
-		document.order_detail_form.action = 'order_cancel_action.jsp';
-		document.order_detail_form.submit();
-	}
-</script>
-
-</head>
-<body>
-
-<h3>[ <%=order.getU_id() %>님의 주문번호<%=order.getO_no()%> 주문상세]</h1>
-<hr>
-<form name="order_detail_form" method="post">
-	주문번호 <input type ='text'name='o_no' value='<%=order.getO_no()%>'><br>
-	주문일자 <input type ='text'name='o_date' value='<%=order.getO_date()%>'><br>
-	<hr>
-	주문설명 <input type ='text'name='o_desc' value='<%=order.getO_desc() %>'><br>
 	
-	<% for(OrderItem orderItem : order.getOrderItemList()) { %>
-	상품이름 <input type ='text' name='p_name' value='<%=orderItem.getProduct().getP_name() %>'><br>
-	상품수량 <input type ='text' name='oi_qty' value='<%=orderItem.getOi_qty() %>'><br>
-	상품 단일가격 <input type ='text' name='p_name' value='<%=new DecimalFormat("#,##0").format(orderItem.getProduct().getP_price()) %>'><br>
-	상품이미지<img src="image/product/<%=orderItem.getProduct().getP_image()%>" width="40px" height="40px"><br>
-	<br>
-	상품 총 주문가격 <input type =' text'name='p_total_price' value='<%=new DecimalFormat("#,##0").format(orderItem.getProduct().getP_price()*orderItem.getOi_qty()) %>'><br>
-	<hr>
-	<% }%>
-	최종 주문가격 <input type ='text'name='o_price' value='<%=new DecimalFormat("#,##0").format(order.getO_price())%>'><br>
-</form>
-<a href='javascript:order_detail_form_submit();'>해당주문 전체 환불요청</a>
+</script>
+</head>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+	<!-- container start-->
+	<div id="container">
+		<!-- header start -->
+		<div id="header">
+			<!-- include_common_top.jsp start-->
+		    <jsp:include page="include_common_top.jsp"/>
+			<!-- include_common_top.jsp end-->
+		</div>
+		<!-- header end -->
+		<!-- navigation start-->
+		<div id="navigation">
+			<!-- include_common_left.jsp start-->
+			<jsp:include page="include_common_left.jsp"/>
+			<!-- include_common_left.jsp end-->
+		</div>
+		<!-- navigation end-->
+		<!-- wrapper start -->
+		<div id="wrapper">
+			<!-- content start -->
 
+			<!-- include_content.jsp start-->
+			<div id="content">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td><br />
+							<table style="padding-left: 10px" border=0 cellpadding=0
+								cellspacing=0>
+								<tr>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=order.getU_id() %>님의 주문상세조회</b></td>
+								</tr>
+							</table> <!--form-->
+							<form name="f" method="post" action="order_delete_action.jsp">
+								<input type="hidden" name="cancel_order_no" value="<%=order.getO_no()%>">
+								<table align="center" width="80%"  border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
+									<caption style="text-align: left;">주문상세정보</caption>
+									<tr>
+										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>주문번호</font></td>
+										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>주문일</font></td>
+										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>주문자</font></td>
+										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>비 고</font></td>
+									</tr>
+									
+									
+									<tr>
+										<td width=290 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
+										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_date()%></td>
+										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
+										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
+										
+										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
+												<input type="submit" value="취소">
+										<% } %>
+										
+										
+										</td>
+									</tr>
+								</table>
+									
+								<br/>	
+								<table align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
+									<caption style="text-align: left;">주문제품목록</caption>
+									<tr style="border: 0.1px solid">
+										<td width=290 height=25 align=center bgcolor="E6ECDE" class=t1>상품 이름</td>
+										<td width=112 height=25 align=center bgcolor="E6ECDE" class=t1>수 량</td>
+										<td width=166 height=25  align=center bgcolor="E6ECDE" class=t1>가 격</td>
+										<td width=50 height=25  align=center bgcolor="E6ECDE" class=t1>비 고</td>
+									</tr>
+									
+									<!-- orer item start -->
+									<%
+									int tot_price=0;
+												for(OrderItem orderItem:order.getOrderItemList()) {
+													tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+									%>
+									<tr>
+										<td width=290 height=26 align=center  bgcolor="ffffff" class=t1>
+										<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>'>
+										<%=orderItem.getProduct().getP_name()%></a>
+										</td>
+										
+										<td width=112 height=26 align=center  bgcolor="ffffff" class=t1>
+										<%=orderItem.getOi_qty()%>
+										</td>
+										
+										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
+										<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
+										</td>
+										<td width=50 height=26 align=center class=t1 bgcolor="ffffff"></td>
+									</tr>
+									<%}%>
+									<!-- cart item end -->
+									<tr>
+										<td width=640 colspan=4 height=26  bgcolor="ffffff" class=t1>
+										
+											<p align=right style="padding-top: 10px">
+												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
+												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
+												<% }else { %>
+												<font color=red>총 환불 금액 : -<%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
+												<% } %>
+											</p>
+										</td>
+									</tr>
+								</table>
+							</form> <br />
+							<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align=center> 
+										&nbsp;&nbsp;<a href=order_list.jsp
+										class=m1>주문목록</a>
+										&nbsp;&nbsp;<a href=product_list.jsp
+										class=m1>계속 쇼핑하기</a>
+
+									</td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+			</div>
+			<!-- include_content.jsp end-->
+			<!-- content end -->
+		</div>
+		<!--wrapper end-->
+		<div id="footer">
+			<!-- include_common_bottom.jsp start-->
+			<jsp:include page="include_common_bottom.jsp"/>
+			<!-- include_common_bottom.jsp end-->
+		</div>
+	</div>
+	<!--container end-->
 </body>
 </html>

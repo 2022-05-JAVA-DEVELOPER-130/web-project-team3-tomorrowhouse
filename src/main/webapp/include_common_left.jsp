@@ -19,7 +19,7 @@
     	<br><br><br>
     	<li><a href= "notice_list.jsp">공지 게시판</a></li>
     	<li><a href= "qna_list.jsp">문의 게시판</a></li>
-    	<li><a href= "order_list.jsp" >리뷰 게시판</a></li>
+    	<li><a href= "review_list.jsp" >리뷰 게시판</a></li>
     	</p>
     	</h2>
     	</ul>
