@@ -177,8 +177,8 @@ function cart_item_all_select(e){
 							<div id='f'>
 							<table  align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB">
 									<tr>
-										<td width=60 height=25  align="center" bgcolor="E6ECDE" class=t1><font
-											 >선 택</font></td>
+										<td width=60 height=25 align="center" bgcolor="E6ECDE"
+											class=t1><input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();"></td>
 										<td width=40 height=25 align="center" bgcolor="E6ECDE" class=t1><font
 											 >이미지</font></td>
 										<td width=210 height=25 align="center" bgcolor="E6ECDE" class=t1><font
