@@ -61,7 +61,7 @@ List<Product> productList = productService.productSelectAll();
 								</tr>
 							</table>
 							<!-- 검색아이콘 start -->
-							<form method='get' action='product_search_view.jsp'>
+							<form method='get' action='product_search_action_view.jsp'>
 							<input type = "text" name='keyword' placeholder="검색어를 입력하세요">&nbsp;<input type = "submit" value="검색">
 							</form>
 							<!-- 검색아이콘 fin -->
@@ -85,7 +85,7 @@ List<Product> productList = productService.productSelectAll();
 									%>
 									<tr>
 									<%} %>
-										<td align="center" width="25%"  bgcolor="ffffff"><a
+										<td align="center" width="25%"  bgcolor="ffffff" ><a
 											href="product_detail.jsp?p_no=<%=product.getP_no()%>"><img width="60px" height="40px"
 												src="image/product/<%=product.getP_image()%>" border="0"></a><br />
 											<br /> <b>상품명 : <%=product.getP_name()%></b><br> <font
@@ -94,9 +94,13 @@ List<Product> productList = productService.productSelectAll();
 									<%if(i%product_column_size==5){%>
 									</tr>
 									<%} %>
-									
-									
-										
+									<!--  빈칸채우기 start -->
+										<% if(i==productList.size()-1) {
+												for(int j=0; j < 3 - i %4 ; i++){
+												%> <td align="center" width="25%"  bgcolor="ffffff" ></td>
+												<%}
+												}%> 
+									<!--  빈칸채우기 fin -->		
 								   <!--상품 끝 -->
 								   <%}%> <!-- for문 fin -->	
 								</table>
