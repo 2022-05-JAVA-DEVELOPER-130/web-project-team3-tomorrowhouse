@@ -85,7 +85,7 @@ if(searchList.size() == 0) {
 									
 									
 									for (int i=0;i<searchList.size();i++) {
-											Product product=searchList.get(i);
+											Product product=productList.get(i);
 									%>
 									<!--상품시작 -->
 									<%
