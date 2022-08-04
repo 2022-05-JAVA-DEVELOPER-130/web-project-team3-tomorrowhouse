@@ -5,16 +5,16 @@
 <%@include file="login_check.jspf" %>
     
 <%
-	 if(request.getMethod().equalsIgnoreCase("GET")){
+	/*  if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("notice_list.jsp");
 		return;
-	}
+	} */
 
 	String title= request.getParameter("n_title");
 	String content= request.getParameter("n_content");
 		
-	Notice newnotice = new Notice(0,title,content,null);
+	Notice newNotice = new Notice(0,title,content,null);
 	NoticeService noticeService = new NoticeService();
-	noticeService.insertNotice(newnotice);
+	noticeService.insertNotice(newNotice);
 	response.sendRedirect("notice_list.jsp");
 %>
