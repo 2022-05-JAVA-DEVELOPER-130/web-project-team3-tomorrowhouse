@@ -145,4 +145,40 @@ public class CartDao {
 		}
 		return deleteRowCount;
 	}
+	
+	/*
+	 7. 카트에 있는 물품 하나 선택
+	 */
+	public CartItem getCartItemByCNo(int c_no)throws Exception{
+		CartItem cartItem = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(CartSQL.CART_SELECT_BY_C_No);
+			pstmt.setInt(1, c_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cartItem = new CartItem(rs.getInt("c_no"),
+						 				rs.getInt("c_qty"), 
+										rs.getString("u_id"), 
+										 new Product(rs.getInt("p_no"), 
+												 	 rs.getString("p_name"), 
+												 	 rs.getInt("p_price"), 
+												 	 rs.getString("p_image"), 
+												 	 rs.getString("p_desc"), 
+												 	 rs.getInt("p_click_count"), 
+												 	 new Category(rs.getInt("cg_no"), 
+												 			null)));
+			}
+			
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		
+		return cartItem;
+	}
 }
