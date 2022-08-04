@@ -22,7 +22,7 @@ List<CartItem> cartList = cartService.getCartList(sUserId);
 
 <h3>[장바구니리스트]</h3>
 <hr>
-
+<form>
 <div>
 	<ul>
 		<% for(CartItem cartItem : cartList) { %>
@@ -36,6 +36,7 @@ List<CartItem> cartList = cartService.getCartList(sUserId);
 		<% } %>
 	</ul>
 </div>
+</form>
 <a href= 'cart_delete_action.jsp?u_id=<%=sUserId%>'>[상품전체삭제]</a>
 
 							
