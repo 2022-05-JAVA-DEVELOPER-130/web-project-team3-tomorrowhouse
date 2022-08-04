@@ -102,9 +102,9 @@ function cart_item_select_count(){
 			if (cart_item_no_check_list.item(i).checked === true) {
 				document.cart_view_form.innerHTML += "<input type='hidden' name='cart_item_no' value='"+ cart_item_no_check_list.item(i).value + "'>";
 				var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
-				var cart_qty=document.getElementById(updateFormId).cart_qty.value;
+				var c_qty=document.getElementById(updateFormId).c_qty.value;
 				var cart_product_unit_price=document.getElementById(updateFormId).cart_product_unit_price.value;
-				tot_order_price+=cart_qty*cart_product_unit_price;
+				tot_order_price+=c_qty*cart_product_unit_price;
 				cart_item_check_selected_count++;
 			}
 		}
@@ -199,7 +199,9 @@ function cart_item_all_select(e){
 									%>
 									<tr>
 										<td width=60 height=26 align=center bgcolor="ffffff" class=t1>
-										 <input type="checkbox" name="cart_item_no_check" onchange="cart_item_all_select_checkbox_deselect();cart_item_select_count();" value="<%=cartItem.getC_no()%>" checked="checked">
+										 <input type="checkbox" name="cart_item_no_check" 
+										 		onchange="cart_item_all_select_checkbox_deselect();cart_item_select_count();" 
+										 		value="<%=cartItem.getC_no()%>" checked="checked">
 										</td>
 										<td width=40 height=26 align=center bgcolor="ffffff" class=t1>
 											<img src='image/product/<%=cartItem.getProduct().getP_image()%>' width="34" height="28" />

@@ -13,6 +13,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 String cart_noStr=request.getParameter("c_no");
 String cart_qtyStr=request.getParameter("c_qty");
 String p_noStr = request.getParameter("p_no");
+
 CartService cartService=new CartService();
 CartItem cartItem = new CartItem(Integer.parseInt(cart_noStr),
 								Integer.parseInt(cart_qtyStr),

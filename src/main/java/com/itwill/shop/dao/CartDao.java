@@ -96,7 +96,7 @@ public class CartDao {
 	/*
 	 4.카트 update
 	 */
-	public int updateByUserIdPNo(CartItem cartItem)throws Exception{
+	public int update(CartItem cartItem)throws Exception{
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(CartSQL.CART_UPDATE_BY_USERID_P_NO);
 		pstmt.setInt(1,cartItem.getC_qty());
@@ -106,27 +106,7 @@ public class CartDao {
 		con.close();
 		return  rowCount;
 	}
-	/*
-	 * cart update
-	 */
-	public int update(int c_no,int c_qty) throws Exception{
-		String updateQuery="update cart set cart_qty=? where cart_no=?";
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		int rowCount=0;
-		try {
-			con=dataSource.getConnection();
-			pstmt=con.prepareStatement(updateQuery);
-			pstmt.setInt(1, c_qty);
-			pstmt.setInt(2, c_no);
-			rowCount = pstmt.executeUpdate();
-		}finally {
-			if(con!=null) {
-				con.close();
-			}
-		}
-		return rowCount;
-	}
+	
 	/*
 	 5. 유저 1명의 카트 전체삭제
 	 */

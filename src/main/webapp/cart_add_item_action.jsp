@@ -8,15 +8,13 @@
 <%
 
 request.setCharacterEncoding("UTF-8");
-/*
+
 if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("product_list.jsp");
 		return;
 	}
-*/
-/*
-해결할거:Integer.parseInt(p_noStr) 가 안먹는거 and GET방식으로 전송되는거
-*/
+
+
 	String cart_qtyStr = request.getParameter("cart_qty");
 	String p_noStr=request.getParameter("p_no");
 	

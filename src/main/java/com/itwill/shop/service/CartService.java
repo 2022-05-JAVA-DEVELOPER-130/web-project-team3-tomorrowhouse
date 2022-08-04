@@ -17,14 +17,14 @@ public class CartService {
 		if(product_count==0) {
 			cartDao.add(cartItem);
 		}else if(product_count==1) {
-			cartDao.updateByUserIdPNo(cartItem);
+			cartDao.update(cartItem);
 		}
 		return 0;
 	}
 	
 	//카트리스트 update
 	public int updateCart(CartItem cartItem)throws Exception{
-		return cartDao.updateByUserIdPNo(cartItem);
+		return cartDao.update(cartItem);
 	}
 	
 	//카트리스트 delete all
