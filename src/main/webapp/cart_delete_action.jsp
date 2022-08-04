@@ -5,12 +5,14 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String sU_Id = "test6";
-if(sU_Id==null || sU_Id.equals("")) {
+if(sUserId==null || sUserId.equals("")) {
 	 response.sendRedirect("cart_view.jsp");
 	 return;
 }
 
 CartService cartService = new CartService();
-cartService.deleteCartAll(sU_Id);
+cartService.deleteCartAll(sUserId);
+
+response.sendRedirect("product_list.jsp");
 %>
 
