@@ -1,14 +1,21 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.itwill.shop.dto.Notice"%>
 <%@page import="com.itwill.shop.service.NoticeService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-sUserId ="test1";
+	
+	String noStr= request.getParameter("n_no");
 
-
-
-
+	if(noStr==null || noStr.equals("")){
+		response.sendRedirect("notice_list.jsp");
+		return;
+	}
+	
+	NoticeService noticeService = new NoticeService();
+	Notice notice=noticeService.selectByNoNotice(Integer.parseInt(noStr));	
+ 	
 
 
 %>
@@ -22,23 +29,23 @@ sUserId ="test1";
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script>
 	function noticeUpdate() {
-		if (f.title.value == "") {
+		if (f.n_title.value == "") {
 			alert("제목을 입력하십시요.");
 			f.title.focus();
 			return false;
 		}
-		if (f.content.value == "") {
+		if (f.n_content.value == "") {
 			alert("내용을 입력하십시요.");
 			f.content.focus();
 			return false;
 		}
 
-		f.action = "notice_update_action.jsp";
+		f.action = "notice_modify_action.jsp";
 		f.method = "post"
 		f.submit();
 	}
 	function noticeView() {
-		f.action = "notice_view.jsp?notino=" + notino;
+		f.action = "notice_list.jsp";
 		f.submit();
 	}
 </script>
@@ -77,25 +84,20 @@ sUserId ="test1";
 								</tr>
 							</table> <br> <!-- modify Form  -->
 							<form name="f" method="post">
-								<input type="hidden" name="pageno" value="<%=pageno%>" /> 
-								<input type="hidden" name="notino" value="<%=notice.getN_no()%>">
+								<input type="hidden" name="n_no" value="<%=notice.getN_no()%>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" name="n_title"
-											value=<%=notice.getN_title() %>></td>
+											value=<%=notice.getN_title()%>></td>
 									</tr>
 									<tr>
 									<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left"><textarea name="content"
-												style="width: 350px" rows="14"><%=notice.getN_content() %> </textarea></td>
-									</tr>
-									<tr>
-										<td>첨부파일</td>
-										<td><input type="text" name="notifile" placeholder="<%= notice.getN_date()%>"></td>
+											align="left"><textarea name="n_content"
+												style="width: 350px" rows="14"><%=notice.getN_content()%> </textarea></td>
 									</tr>
 								</table>
 							</form>
