@@ -19,40 +19,40 @@
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
 	function userModify() {
-		if (document.f.password.value == "") {
+		if (document.f.u_pw.value == "") {
 			alert("비밀번호를 입력하십시요.");
-			document.f.password.focus();
+			document.f.u_pw.focus();
 			return false;
 		}
-		if (document.f.password2.value == "") {
+		if (document.f.u_pw2.value == "") {
 			alert("비밀번호확인을 입력하십시요.");
-			document.f.password2.focus();
+			document.f.u_pw2.focus();
 			return false;
 		}
-		if (document.f.name.value == "") {
+		if (document.f.u_name.value == "") {
 			alert("이름을 입력하십시요.");
-			document.f.name.focus();
+			document.f.u_name.focus();
 			return false;
 		}
-		if (document.f.email.value == "") {
+		if (document.f.u_email.value == "") {
 			alert("이메일 주소를 입력하십시요.");
-			document.f.email.focus();
+			document.f.u_email.focus();
 			return false;
 		}
-		if (document.f.password.value != f.password2.value) {
+		if (document.f.u_pw.value != f.u_pw2.value) {
 			alert("비밀번호와 비밀번호확인은 일치하여야합니다.");
-			document.f.password.focus();
-			document.f.password.select();
+			document.f.u_pw.focus();
+			document.f.u_pw.select();
 			return false;
 		}
-		if (document.f.address.value == "") {
+		if (document.f.u_address.value == "") {
 			alert("주소를 입력하십시요.");
-			document.f.address.focus();
+			document.f.u_address.focus();
 			return false;
 		}
-		if (document.f.phone.value == "") {
+		if (document.f.u_phone.value == "") {
 			alert("전화번호를 입력하십시오.");
-			document.f.phone.focus();
+			document.f.u_phone.focus();
 			return false;
 		}
 
