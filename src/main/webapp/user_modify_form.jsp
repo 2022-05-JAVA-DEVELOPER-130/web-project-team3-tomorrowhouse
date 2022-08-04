@@ -4,10 +4,15 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
+sUserId="test2";
 
+if(request.getMethod().equalsIgnoreCase("GET")){
+	response.sendRedirect("user_login_form.jsp");
+	return;
+}
 	UserInfoService userInfoService=new UserInfoService();
 	//UserInfo loginUser=userInfoService.findUser(sUserId);
-	UserInfo loginUser = userInfoService.findUser("test2");
+	UserInfo loginUser = userInfoService.findUser(sUserId);
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,30 +34,30 @@
 			document.f.password2.focus();
 			return false;
 		}
-		if (document.f.name.value == "") {
+		if (document.f.u_name.value == "") {
 			alert("이름을 입력하십시요.");
-			document.f.name.focus();
+			document.f.u_name.focus();
 			return false;
 		}
-		if (document.f.email.value == "") {
+		if (document.f.u_email.value == "") {
 			alert("이메일 주소를 입력하십시요.");
-			document.f.email.focus();
+			document.f.u_email.focus();
 			return false;
 		}
 		if (document.f.password.value != f.password2.value) {
 			alert("비밀번호와 비밀번호확인은 일치하여야합니다.");
-			document.f.password.focus();
-			document.f.password.select();
+			document.f.u_pw.focus();
+			document.f.u_pw.select();
 			return false;
 		}
-		if (document.f.address.value == "") {
+		if (document.f.u_address.value == "") {
 			alert("주소를 입력하십시요.");
-			document.f.address.focus();
+			document.f.u_address.focus();
 			return false;
 		}
-		if (document.f.phone.value == "") {
+		if (document.f.u_phone.value == "") {
 			alert("전화번호를 입력하십시오.");
-			document.f.phone.focus();
+			document.f.u_phone.focus();
 			return false;
 		}
 
@@ -115,7 +120,7 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="password" style="width: 150px"
-											name="password" value="<%=loginUser.getU_pw()%>"></td>
+											name="u_pw" value="<%=loginUser.getU_pw()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호
@@ -128,38 +133,39 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="name" value="<%=loginUser.getU_name()%>"></td>
+											name="u_name" value="<%=loginUser.getU_name()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="email" value="<%=loginUser.getU_email()%>"></td>
+											name="u_email" value="<%=loginUser.getU_email()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="address" value="<%=loginUser.getU_address()%>"></td>
+											name="u_address" value="<%=loginUser.getU_address()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150px"
-											name="phone" value="<%=loginUser.getU_phone()%>"></td>
+											name="u_phone" value="<%=loginUser.getU_phone()%>"></td>
 									</tr>
 								</table>
 							</form> <br>
 
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-						
+						<!-- <td align=center><input type="button" value="내정보수정" -->
+									<!-- 	onClick="userModifyAction();"> &nbsp;</td> -->
 										
-									<form action='user_modify_action.jsp' method='post' style='display:inline;'>
-									<input type='hidden' name='u_id' value='<%=loginUser.getU_id()%>'>
-									<input type='submit' value="내정보수정">
-									</form>
+ 									<form action='user_modify_action.jsp' method='post' style='display:inline;'>
+									<input type='hidden' name='u_id' value='<%=loginUser.getU_id()%>'> 
+									<input type='submit' value="내정보수정"> -->
+ 									</form> 
 								</tr>
 								
 								

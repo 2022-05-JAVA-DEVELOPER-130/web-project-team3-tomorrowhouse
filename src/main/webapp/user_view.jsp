@@ -2,9 +2,10 @@
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="login_check.jspf" %> 
 
 <%
+sUserId="test2";
 /*
 private String u_id;
 private String u_pw;
@@ -23,10 +24,10 @@ public UserInfo findUser(String u_id) throws Exception {
  */
  
 
-String u_id = request.getParameter("u_id");
+
  
 UserInfoService userInfoService = new UserInfoService();
-UserInfo findUser = userInfoService.findUser("test2");
+UserInfo findUser = userInfoService.findUser(sUserId);
 
 %>
 
