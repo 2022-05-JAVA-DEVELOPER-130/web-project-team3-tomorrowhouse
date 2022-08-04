@@ -86,7 +86,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 							</table> <br> <!-- view Form  -->
 
 							<form name="f" method="post">
-								<input type="hidden" name="notino" value="<%=noticeDetail.getN_no() %>">
+								<input type="hidden" name="n_no" value="<%=noticeDetail.getN_no() %>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">공지일</td>
