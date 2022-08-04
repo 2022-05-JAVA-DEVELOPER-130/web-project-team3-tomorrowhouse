@@ -44,5 +44,7 @@
 <% }%>
 최종 주문가격 <input type ='text'name='o_price' value='<%=new DecimalFormat("#,##0").format(order.getO_price())%>'><br>
 
+<a href=''>해당주문 전체 환불요청</a>
+
 </body>
 </html>

@@ -9,6 +9,7 @@ import com.itwill.shop.dao.OrderDao;
 import com.itwill.shop.dao.ProductDao;
 import com.itwill.shop.dto.Order;
 import com.itwill.shop.dto.OrderItem;
+import com.itwill.shop.dto.Product;
 import com.itwill.shop.service.OrderService;
 
 public class OrderServiceTestMain {
@@ -48,9 +49,20 @@ public class OrderServiceTestMain {
 		/*
 		 * cart에서 전체주문
 		 */
-		System.out.println(orderService.createOrderByCart("test5"));
-		
+		//System.out.println(orderService.createOrderByCart("test5"));
+		/*
+		 * cart에서 선택주문
+		 */
+		String[] stringArray = {"31","32"};
+		//orderService.createOrderByCartSelect("test6", stringArray);
 
+		/* ------ order insert------ */
+		order = new Order(3, null, null, 0,null , null);
+		//orderService.cancelOrder(order);
+		
+		Product product = new Product(0, "책", 0, null, null, 0, null);
+		productDao.ProductSerch(product);
+		
 	}
 
 }
