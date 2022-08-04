@@ -5,27 +5,6 @@
 <%@ include file="login_check.jspf" %> 
 
 <%
-sUserId="test2";
-/*
-private String u_id;
-private String u_pw;
-private String u_name;
-private String u_email;
-private String u_address;
-private String u_phone;
-*/
-
-/*
- * 회원 1명 보기
-public UserInfo findUser(String u_id) throws Exception {
-	UserInfo findUser = userInfoDao.findUser(u_id);
-	return findUser;
-}
- */
- 
-
-
- 
 UserInfoService userInfoService = new UserInfoService();
 UserInfo findUser = userInfoService.findUser(sUserId);
 
@@ -47,10 +26,20 @@ UserInfo findUser = userInfoService.findUser(sUserId);
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
-		<div id="header">
+			<div id="header">
 			<!-- include_common_top.jsp start-->
-
-
+			<jsp:include page="include_common_top.jsp"/>
+			<!-- include_common_top.jsp end-->
+		</div>
+		<!-- header end -->
+		<!-- navigation start-->
+		<div id="navigation">
+			<!-- include_common_left.jsp start-->
+			<jsp:include page="include_common_left.jsp"/>
+			<!-- include_common_left.jsp end-->
+		</div>
+		<!-- navigation end-->
+		<!-- wrapper start -->
 		<div id="wrapper">
 
 			<div id="content">
