@@ -37,5 +37,7 @@ public class CartSQL {
 			"delete from cart where c_no=?";
 	public static final String CART_DELETE_BY_USERID =
 			"delete from cart where u_id = ?";
+	public static final String CART_SELECT_BY_C_No =
+			"select * from cart c join product p on c.p_no = p.p_no where c_no=?";
 	
 }
