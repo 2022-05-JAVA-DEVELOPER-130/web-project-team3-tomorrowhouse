@@ -23,8 +23,11 @@ public class ProductServiceTest {
 //		System.out.println(">> 상품이름으로 1개 출력");
 //		System.out.println(productService.productSelectByName(new Product(0, "신발장", 0, null, null, 0, null)));
 //				
-//		
-//		
+		System.out.println(">> 상품검색하기");
+		productService.productSerch("의자");
+		
+		
+		
 //		/*********************<<관리자 전용>>**************************/
 //		
 //		System.out.println(">> 상품등록하기");
@@ -33,8 +36,8 @@ public class ProductServiceTest {
 //		System.out.println(">> 상품수정하기");
 //		productService.updateProduct(new Product(23, "청소기", 150000, "cleaner.jpg", "청소기입니다", 0, new Category(3, null)));
 //		
-		System.out.println(">> 상품삭제하기");
-		productService.deleteProduct(new Product(24, null, 0, null, null, 0, null));
+//		System.out.println(">> 상품삭제하기");
+//		productService.deleteProduct(new Product(24, null, 0, null, null, 0, null));
 	}
 
 }
