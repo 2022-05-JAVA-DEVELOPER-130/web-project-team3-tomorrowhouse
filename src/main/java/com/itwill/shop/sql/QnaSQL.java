@@ -2,7 +2,7 @@ package com.itwill.shop.sql;
 
 public class QnaSQL {
 	public static final String QNA_INSERT =
-			"insert into qna(q_no, q_title, q_content, q_groupno, q_step, u_id) values(qna_q_no_seq.nextval, ?, ?, qna_q_no_seq.currval, 1, ?)";
+			"insert into qna(q_no, q_title, q_content, q_groupno, q_step, q_depth, u_id) values(qna_q_no_seq.nextval, 't', 't', qna_q_no_seq.currval, 1, 0, 'test1');";
 	
 	public static final String QNA_SELECT_ALL = 
 			"select * from qna;";

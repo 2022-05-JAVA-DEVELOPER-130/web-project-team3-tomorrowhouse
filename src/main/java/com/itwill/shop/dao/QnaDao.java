@@ -31,10 +31,8 @@ public class QnaDao {
 	
 	public int createQna(Qna qna) throws Exception{
 		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		con = dataSource.getConnection();
-		pstmt = con.prepareStatement(QnaSQL.QNA_INSERT);
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(QnaSQL.QNA_INSERT);
 		pstmt.setString(1, qna.getQ_title());
 		pstmt.setString(2, qna.getQ_content());
 		pstmt.setString(3, qna.getU_id());
@@ -45,34 +43,7 @@ public class QnaDao {
 		return createRowCount;
 	}
 	
-	public int deleteQna(Qna qna) throws Exception{
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int deleteRowCount = 0;
-		try {
-		con = dataSource.getConnection();
-		pstmt.setInt(1, qna.getQ_no());
-		pstmt.setString(2, qna.getU_id());
-		
-		deleteRowCount = pstmt.executeUpdate(); 
-		
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-			} catch (Exception ex) {
-		}
-		try {
-			if (con != null)
-				con.close();;
-			} catch (Exception ex) {
-			}
-		}
-		return deleteRowCount;
-	}
-	
+
 	
 	
 }
