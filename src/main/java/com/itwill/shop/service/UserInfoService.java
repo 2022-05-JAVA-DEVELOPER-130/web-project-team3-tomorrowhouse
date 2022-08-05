@@ -68,8 +68,7 @@ public class UserInfoService {
 	 * 회원 1명 보기
 	 */
 	public UserInfo findUser(String u_id) throws Exception {
-		UserInfo findUser = userInfoDao.findUser(u_id);
-		return findUser;
+		return userInfoDao.findUser(u_id);
 	}
 
 	/*

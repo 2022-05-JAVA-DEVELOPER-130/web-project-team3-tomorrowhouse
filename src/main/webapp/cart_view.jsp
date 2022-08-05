@@ -211,7 +211,7 @@ function cart_item_all_select(e){
 										</td>
 
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
-											<form action="cart_update_item_action.jsp" method="post"
+											<form action="cart_update_action.jsp" method="post"
 												id="cart_update_form_<%=cartItem.getC_no()%>">
 												<input type="hidden" name="c_no"
 													value="<%=cartItem.getC_no()%>">
