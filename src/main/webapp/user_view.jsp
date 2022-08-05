@@ -94,6 +94,10 @@ UserInfo findUser = userInfoService.findUser(sUserId);
 							<table border="0" cellpadding="0" cellspacing="1">
 								<tr>
 									<td align=center>
+									<form action='user_logout_action.jsp' method='post' style='display:inline;'>
+									<input type='hidden' name='u_id' value='<%=findUser.getU_id()%>'>
+									<input type='submit' value="로그아웃">
+									</form>
 									<form action='user_modify_form.jsp' method='post' style='display:inline;'>
 									<input type='hidden' name='u_id' value='<%=findUser.getU_id()%>'>
 									<input type='submit' value="내정보수정">
