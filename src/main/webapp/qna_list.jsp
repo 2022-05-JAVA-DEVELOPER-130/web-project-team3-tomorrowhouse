@@ -75,7 +75,7 @@
 							
 									<tr>
 										<td width=280 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<td a href=''>
+										<td> <a href=''>
 										
 										</a>
 										</td>
