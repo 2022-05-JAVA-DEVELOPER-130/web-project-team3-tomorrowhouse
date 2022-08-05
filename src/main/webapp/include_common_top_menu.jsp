@@ -13,6 +13,8 @@
 %>		
 <div id="menu">
 	<ul>
+		
+		
 		<li id="logo"><a href="shop_main.jsp"></a></li>
 		<li id="m_mypage"><a href="user_view.jsp">마이페이지</a></li>
 		<li id="m_order"><a href="order_list.jsp">주문내역</a></li>
