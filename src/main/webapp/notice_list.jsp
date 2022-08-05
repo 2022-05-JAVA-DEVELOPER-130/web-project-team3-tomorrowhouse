@@ -6,9 +6,9 @@
 <%@page import="com.itwill.shop.service.NoticeService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@include file= "login_check.jspf" %>   
 <%
-
+	
 	NoticeService noticeService = new NoticeService();
 	List<Notice> notices = noticeService.selectAllNotice();
 
@@ -121,14 +121,15 @@
 									<td align="right">
 									<!--관리자만 작성가능. 기능추가필요-->
 									
-<%-- 				관리자용!! 수정필요!!!		<%if(false){ %> --%>
+									<% if(sUserId.equals("admin")) {%>									
 									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
-<%-- 				관리자용!! 수정필요!!					<%} %> --%>
-
+									<%}else{ %>
+									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
+									<% } %>
 								</tr>
-							</table></td>
-					</tr>
-				</table>
+							</table>
+					
+				
 			</div>
 			<!-- include_content.jsp end-->
 			<!-- content end -->

@@ -7,6 +7,7 @@
 <%@include file="login_check.jspf" %>
 <%
 
+
 NoticeService noticeService =new NoticeService();
 Notice noticeDetail =new Notice();
 
@@ -104,6 +105,15 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 								</table>
 							</form>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
+								<%if(sUserId.equals("admin")){ %>
+								<tr>
+									<td align=center>
+									<input type="button" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
+									<input type="button" value="수정" onClick="noticeUpdate()">&nbsp; 
+									<input type="button" value="삭제" onClick="noticeDelete()">&nbsp; 
+									<input type="button" value="리스트" onClick="noticeList()"></td>
+								</tr>
+								<%}else{ %>
 								<tr>
 									<td align=center>
 									<input type="hidden" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
@@ -111,6 +121,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 									<input type="hidden" value="삭제" onClick="noticeDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="noticeList()"></td>
 								</tr>
+								<% } %>
 							</table></td>
 					</tr>
 				</table>
