@@ -110,7 +110,7 @@ public class CartDao {
 		int rowCount=0;
 		try {
 		con = dataSource.getConnection();
-		pstmt = con.prepareStatement(CartSQL.CART_UPDATE_BY_USERID_C_NO);;
+		pstmt = con.prepareStatement(CartSQL.CART_UPDATE_BY_USERID_C_NO);
 		pstmt.setInt(1,cartItem.getC_qty());
 		pstmt.setString(2,cartItem.getU_id());
 		pstmt.setInt(3,cartItem.getC_no());
