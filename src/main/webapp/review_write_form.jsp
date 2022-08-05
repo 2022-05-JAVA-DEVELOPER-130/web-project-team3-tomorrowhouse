@@ -8,8 +8,8 @@
 <%
 String oi_noStr = request.getParameter("oi_no");
 /*************/
-sUserId="test3";
-oi_noStr = "7";
+sUserId="test4";
+oi_noStr = "32";//33
 /*************/
 UserInfoService userInfoService = new UserInfoService();
 UserInfo userInfo = 
@@ -30,17 +30,12 @@ orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
  
 <script type="text/javascript">
 	function boardCreate() {
-		if (f.title.value == "") {
+		if (f.r_title.value == "") {
 			alert("제목을 입력하십시요.");
 			f.title.focus();
 			return false;
 		}
-		if (f.writer.value == "") {
-			alert("작성자를 입력하십시요.");
-			f.writer.focus();
-			return false;
-		}
-		if (f.content.value == "") {
+		if (f.r_content.value == "") {
 			alert("내용을 입력하십시요.");
 			f.content.focus();
 			return false;
@@ -91,6 +86,11 @@ orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
 							<form name="f" method="post">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
+										<input type="hidden" name="oi_no" value='<%=order.getOrderItemList().get(0).getOi_no() %>'>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">글쓴이</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=order.getU_id()%></td>
+									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
@@ -110,17 +110,17 @@ orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" style="width: 150px" name="title"></td>
+										<input type="text" style="width: 150px" name="r_title"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<textarea name="content" class="textarea" style="width: 350px " rows="10"></textarea></td>
+										<textarea name="r_content" class="textarea" style="width: 350px " rows="10"></textarea></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">별점</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<textarea name="content" class="textarea" style="width: 350px " rows="10"></textarea></td>
+										<input type="text" style="width: 150px" name="r_rating"></td>
 									</tr>
 								</table>
 							</form> <br>
