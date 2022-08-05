@@ -74,7 +74,7 @@ public class ProductDao {
 	public List<Product> productSelectAllSearch(String keyword, int begin, int end) throws Exception {
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_COUNT_SEARCH);
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL_BY_SEARCH);
 		pstmt.setString(1, "%" + keyword + "%");
 		pstmt.setInt(2, begin);
 		pstmt.setInt(3, end);
@@ -84,7 +84,9 @@ public class ProductDao {
 					rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
 					new Category(rs.getInt("cg_no"), null)));
 		}
+		rs.close();
 		con.close();
+		pstmt.close();
 		return productList;
 	}
 	
@@ -288,8 +290,6 @@ public class ProductDao {
 			try {
 				if (con != null)
 					con.close();
-				if (pstmt != null)
-					pstmt.close();
 			} catch (Exception ex) {
 			}
 		}
@@ -297,13 +297,14 @@ public class ProductDao {
 	}
 	
 	public int getProductSearchCount(String keyword) throws Exception {
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int count = 0;
 		try {
 			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL_BY_SEARCH);
+			pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_COUNT_CATEGORY);
 			pstmt.setString(1, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
 			if (rs.next())
@@ -323,8 +324,6 @@ public class ProductDao {
 			try {
 				if (con != null)
 					con.close();
-				if (pstmt != null)
-					pstmt.close();
 			} catch (Exception ex) {
 			}
 		}
