@@ -154,8 +154,7 @@ if (detailProduct == null) {
 
 							<table border="0" cellpadding="0" cellspacing="1">
 								<tr>
-									<td align=center><input type="button" value="주문하기[주문폼]"
-										onClick="order_create_form();"> &nbsp; <input
+									<td align=center><input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
 							</table></td>
