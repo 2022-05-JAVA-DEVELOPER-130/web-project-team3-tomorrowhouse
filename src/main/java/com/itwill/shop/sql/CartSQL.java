@@ -33,6 +33,8 @@ public class CartSQL {
 			"insert into cart(c_no,c_qty,u_id,p_no) values(CART_C_NO_SEQ.nextval,?,?,?)";
 	public static final String CART_UPDATE_BY_USERID_C_NO =
 			"update cart set c_qty=? where u_id=? and c_no=?";
+	public static final String CART_UPDATE =
+			"update cart set c_qty=c_qty + ? where u_id=? and p_no=?";
 	public static final String CART_DELETE_BY_C_NO=
 			"delete from cart where c_no=?";
 	public static final String CART_DELETE_BY_USERID =

@@ -1,6 +1,5 @@
 
 <%@page import="com.itwill.shop.service.UserInfoService"%>
-<%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -55,7 +54,7 @@
 	// 아이디 중복체크
 	function idCheck() {
 		var userId=document.getElementById("u_id").value;
-		if(userId==null|| userId==''){
+		if(u_id==null|| u_id==''){
 			alert('검색할아이디를 입력하시고 중복체크를 하세요.');
 			return;
 		}
@@ -69,7 +68,7 @@
 	function sendCheckValue() {
 		// 중복체크 결과인 idCheck 값을 전달한다.
 		// 회원가입 화면의 ID입력란에 값을 전달
-		opener.document.f.userId.value = window.document.getElementById('u_id').value;
+		opener.document.f.u_id.value = window.document.getElementById('u_id').value;
 		window.close();
 	}
 </script>
@@ -82,7 +81,7 @@
 		<br>
 		<div id="chk">
 			<form id="checkForm">
-				<input type="text" name="userId" id="u_id" value="<%=u_id%>"> <input
+				<input type="text" name="u_id" id="u_id" value="<%=u_id%>"> <input
 					type="button" value="중복확인" onclick="idCheck()">
 			</form>
 			<div id="msg"><%=msg %></div>
