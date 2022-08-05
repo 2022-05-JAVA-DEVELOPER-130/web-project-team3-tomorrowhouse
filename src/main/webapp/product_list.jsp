@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.ProductListPageMakerDto"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
@@ -6,8 +7,11 @@
     pageEncoding="UTF-8"%>
 
 <%
+String pagenoStr=request.getParameter("pageno");
+if(pagenoStr==null)pagenoStr="1";
+
 ProductService productService = new ProductService();
-List<Product> productList = productService.productSelectAll();
+ProductListPageMakerDto productListPageMaker = productService.productSelectAll(Integer.parseInt(pagenoStr));
 %>    
 
 <!DOCTYPE html>
@@ -72,13 +76,13 @@ List<Product> productList = productService.productSelectAll();
 									
 																
 									<%
-									int product_size=productList.size();
+									int product_size=productListPageMaker.itemList.size();
 									int product_column_size=4;
 									int product_line_count = 1;
 									
 									
-									for (int i=0;i<productList.size();i++) {
-											Product product=productList.get(i);
+									for (int i=0;i<productListPageMaker.itemList.size();i++) {
+											Product product=productListPageMaker.itemList.get(i);
 									%>
 									<!--상품시작 -->
 									<%
@@ -96,7 +100,7 @@ List<Product> productList = productService.productSelectAll();
 									</tr>
 									<%} %>
 									<!--  빈칸채우기 start -->
-										<% if(i==productList.size()-1) {
+										<% if(i==productListPageMaker.itemList.size()-1) {
 												for(int j=0; j < 3 - i %4 ; i++){
 												%> <td align="center" width="25%"  bgcolor="ffffff" ></td>
 												<%}
@@ -105,9 +109,41 @@ List<Product> productList = productService.productSelectAll();
 								   <!--상품 끝 -->
 								   <%}%> <!-- for문 fin -->	
 								</table>
+								<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align="center">
+							     
+										 <%if(productListPageMaker.pageMaker.getPrevGroupStartPage()>0) {%>    
+										    <a href="./product_list.jsp?pageno=1">◀◀</a>&nbsp;
+										 <%}%>
+										 <%if(productListPageMaker.pageMaker.getPrevPage()>0) {%>    
+											<a href="./product_list.jsp?pageno=<%=productListPageMaker.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
+										 <%}%>
+										<%
+											for (int i = productListPageMaker.pageMaker.getBlockBegin(); i <= productListPageMaker.pageMaker.getBlockEnd(); i++) {
+										 	if (productListPageMaker.pageMaker.getCurPage() == i) {
+										%>
+										 <font color='red'><strong><%=i%></strong></font>&nbsp;
+										<%} else {%>
+										<a href="./product_list.jsp?pageno=<%=i%>"><strong><%=i%></strong></a>&nbsp;
+										<%
+										   }
+										  }
+										 %>
+										 <%if(productListPageMaker.pageMaker.getCurPage() != productListPageMaker.pageMaker.getTotPage()){%>
+										  <a href="./product_list.jsp?pageno=<%=productListPageMaker.pageMaker.getNextPage()%>">▶&nbsp;</a>
+										 <%}%>
+										 <%if(productListPageMaker.pageMaker.getNextGroupStartPage() < productListPageMaker.pageMaker.getTotPage()){%>
+										<a
+										href="./product_list.jsp?pageno=<%=productListPageMaker.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
+										 <%}%>
+									</td>
+								</tr>
+							</table> <!-- button -->
 							</form> <br /></td>
 					</tr>
 				</table>
+				
 			</div>
 			<!-- include_content.jsp end-->
 			<!-- content end -->
