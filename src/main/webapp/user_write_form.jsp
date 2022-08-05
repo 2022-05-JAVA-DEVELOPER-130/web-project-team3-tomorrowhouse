@@ -63,11 +63,12 @@
 		document.f.method='POST';
 		document.f.submit();
 	}
-
+	/*
 	function userList() {
 		f.action = "user_list.jsp";
 		f.submit();
 	}
+	*/
 	/*
 	아이디중복체크
 	*/
@@ -157,6 +158,20 @@
 											value="">
 										</td>
 									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">주소</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<input type="text" style="width: 150px" name="u_address"
+											value="">
+										</td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<input type="text" style="width: 150px" name="u_phone"
+											value="">
+										</td>
+									</tr>
 								</table>
 							</form> <br />
 
@@ -164,7 +179,6 @@
 								<tr>
 									<td align=center>
 									<input type="button" value="회원 가입" onclick="userCreate();"> &nbsp; 
-									<input type="button" value="목록" onClick="userList()">
 									</td>
 								</tr>
 							</table>
