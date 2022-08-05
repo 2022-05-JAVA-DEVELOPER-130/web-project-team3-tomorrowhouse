@@ -58,6 +58,20 @@ if (detailProduct == null) {
 		}
 	}
 
+	function order_create_form() {
+		if (<%=!isLogin%>) {
+			alert('로그인 하세요');
+			location.href = 'user_login_form.jsp';
+		} else {
+			document.product_detail_form.method = 'POST';
+			document.product_detail_form.action = 'order_create_form.jsp';
+			document.product_detail_form.submit();
+		}
+	}
+	function productList() {
+		location.href = 'product_list.jsp';
+	}
+
 </script>
 
 </head>

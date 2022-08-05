@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.dto.Order"%>
+<%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@page import="com.itwill.shop.service.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,7 +25,11 @@
 	reviewService.updateClickCountByReviewNo(review);
 
 	review =reviewService.selectByReviewNo(review);
-			
+	
+	OrderService orderService = new OrderService();
+	Order order=
+	orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
+	
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -101,7 +107,16 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">글쓴이</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=review.getU_id()%></td>
 									</tr>
-
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<input type='placehholder' style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(0).getProduct().getP_name() %>'></td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<img width="60px" height="58px" src="image/product/<%=order.getOrderItemList().get(0).getProduct().getP_image()%>" border="0">
+									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=review.getR_title()%></td>
