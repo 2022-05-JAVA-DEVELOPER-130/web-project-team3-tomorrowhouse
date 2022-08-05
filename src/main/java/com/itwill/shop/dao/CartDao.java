@@ -134,7 +134,7 @@ public class CartDao {
 		pstmt = con.prepareStatement(CartSQL.CART_UPDATE);
 		pstmt.setInt(1,cartItem.getC_qty());
 		pstmt.setString(2,cartItem.getU_id());
-		pstmt.setInt(3,cartItem.getC_no());
+		pstmt.setInt(3,cartItem.getProduct().getP_no());
 		rowCount = pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
