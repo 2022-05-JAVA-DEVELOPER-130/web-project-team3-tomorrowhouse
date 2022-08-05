@@ -150,11 +150,11 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 										<td width=50 align=center bgcolor="E6ECDE">주문수량</td>
 										<td width=170 align=center bgcolor="E6ECDE">제목</td>
 										<td width=100 align=center bgcolor="E6ECDE">글쓴날</td>
-										<td width=70 align=center bgcolor="E6ECDE">본횟수</td>
+										<td width=70 align=center bgcolor="E6ECDE">조수</td>
 									</tr>
 									<%
 										for (Review review:reviewList) {
-											int rowNo = 0;
+											int rowNo = 1;
 											Order order = 
 													orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
 											Product product=order.getOrderItemList().get(0).getProduct(); 
@@ -162,7 +162,7 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 									%>
 									<tr>
 										<td width=20 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<%=rowNo%>
+											<%=rowNo++%>
 										</td>
 										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
