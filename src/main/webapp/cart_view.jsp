@@ -258,7 +258,7 @@ function cart_item_all_select(e){
 										</td>
 									</tr>
 									<%}%>
-									<!-- cart item end -->
+									
 									<!-- cart item end -->
 									<tr>
 										<% if(cartList.size()!=0){ %>
@@ -271,7 +271,9 @@ function cart_item_all_select(e){
 										<% }else{%>
 										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
 											<div style="padding: 40px">
-												<img src='image/empty_cart.webp' >
+												<img src='image/empty_cart.webp' ><br><br>
+												<p style = "color : olive; font-size: 15px;"><strong>장바구니 안에 상품이 없어요~<br>
+												</strong></p>
 											</div>
 										</td>
 										<%} %>
