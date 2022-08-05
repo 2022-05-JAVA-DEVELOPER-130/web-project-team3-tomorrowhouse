@@ -45,9 +45,10 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 		/*상품 삭제<관리자>  */
 		function product_delete_action() {
 			alert('상품삭제 하시겠습니까?');
-			document.product_detail_form.method = 'POST';
-			document.product_detail_form.action = 'product_delete_action.jsp';
-			document.product_detail_form.submit();
+			alert("상품의 내용변경을 완료했습니다.");
+			f.action = "product_delete_action.jsp";
+			f.method = "POST";
+			f.submit();
 		}
 		
 		/*이전화면 이동<관리자>*/
@@ -141,9 +142,9 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 							<table border=0 cellpadding=0 cellspacing=1>
 								<tr>
 									<td align=center>
-	★★★					<input type="button" value="상품 수정" onclick="product_modify_action()"> &nbsp; 
-	★★★					<input type="button" value="상품 삭제" onclick="product_delete_action()"> &nbsp; 
-	★★★					<input type="button" value="이전 상품" onClick="product_list()">
+					<input type="button" value="상품 수정" onclick="product_modify_action()"> &nbsp; 
+					<input type="button" value="상품 삭제" onclick="product_delete_action()"> &nbsp; 
+					<input type="button" value="이전 상품" onClick="product_list()">
 									</td>
 								</tr>
 								

@@ -11,6 +11,10 @@ Product detailProduct = new Product();
 
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
+/************/
+noStr = "3";
+
+/************/
 
 if (noStr == null || noStr .equals("")) {
 	response.sendRedirect("product_list.jsp");
@@ -93,11 +97,46 @@ if (detailProduct == null) {
 		document.product_detail_form.method = 'POST';
 		document.product_detail_form.submit();
 	}
+	function ChangeValue() {
+		var value_str = document.getElemnetByName('product_qty');
+		document.product_detail_form.innerHTML = "<input type='hidden' name='p_qty_test' value='"+ value_str + "'>";
+		
+	}
+	
+	function product_select_count(){
+		//var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
+		var p_qty = document.getElemnetByName('product_qty');
+		
+		var cart_item_check_selected_count = 0;
+		
+		document.product_detail_form.innerHTML ='';
+		//document.product_detail_form.innerHTML +="<input type='hidden' name='buyType'>";
+		
+			//if (cart_item_no_check_list.item(i).checked === true) {
+				document.product_detail_form.innerHTML = "<input type='hidden' name='p_qty' value='"+ p_qty.value + "'>";
+				
+				
+				//var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
+				
+				//var c_qty=document.getElementById(updateFormId).c_qty.value;
+				
+				//var cart_product_unit_price = document.getElementById(updateFormId).cart_product_unit_price.value;
+				
+				//tot_order_price+=c_qty*cart_product_unit_price;
+				//cart_item_check_selected_count++;
+			}
+		}
+		document.getElementById('cart_item_select_count').innerHTML = cart_item_check_selected_count;
+		//document.getElementById('tot_order_price').innerHTML = tot_order_price.toLocaleString();
+		
+	}
+	
+	
 	
 </script>
 
 </head>
-<body  bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+<body onload="product_select_count();" bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
 	<form name="product_detail_form">
 		<input type="hidden" name="p_no" value="<%=detailProduct.getP_no()%>">
@@ -159,7 +198,7 @@ if (detailProduct == null) {
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<select name="product_qty" >
+											<select name="product_qty" onChange="product_select_count();">
 												<option value="1">1
 												<option value="2">2
 												<option value="3">3
