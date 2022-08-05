@@ -214,11 +214,13 @@ public class ReviewDao {
 		pstmt = con.prepareStatement(ReviewSQL.UPDATE_BY_REVIEW_NO);
 		/*
 			public static final String UPDATE_BY_REVIEW_NO =
-					"update review set r_title = ?, r_content = ? where r_no= ?";
+					"update review set r_title = ?, r_content = ?, r_rating=?,r_image=? where r_no= ?";
 		 */
 		pstmt.setString(1, review.getR_title());
-		pstmt.setInt(2, review.getR_no());
-		pstmt.setInt(3, review.getR_no());
+		pstmt.setString(2, review.getR_content());
+		pstmt.setInt(3, review.getR_rating());
+		pstmt.setString(4, review.getR_image());
+		pstmt.setInt(5, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
 		
 		return rowCount;

@@ -1,16 +1,23 @@
+<%@page import="com.itwill.shop.dto.Order"%>
+<%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>    
 <%
+String oi_noStr = request.getParameter("oi_no");
 /*************/
 sUserId="test3";
+oi_noStr = "7";
 /*************/
 UserInfoService userInfoService = new UserInfoService();
 UserInfo userInfo = 
 userInfoService.findUser(sUserId);
 
+OrderService orderService = new OrderService();
+Order order=
+orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -85,19 +92,35 @@ userInfoService.findUser(sUserId);
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(0).getProduct().getP_name() %>'></td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<img width="60px" height="58px" src="image/product/<%=order.getOrderItemList().get(0).getProduct().getP_image()%>" border="0">
+									</tr>
+
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">구매일자</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<%=order.getO_date() %>
+									</tr>
+									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										<input type="text" style="width: 150px" name="title"></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" readonly="readonly" style="width: 150px" name="writer" value="<%=userInfo.getU_id()%>"></td>
-									</tr>
-									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<textarea name="content" class="textarea" style="width: 350px" rows="14"></textarea></td>
+										<textarea name="content" class="textarea" style="width: 350px " rows="10"></textarea></td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE">별점</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<textarea name="content" class="textarea" style="width: 350px " rows="10"></textarea></td>
 									</tr>
 								</table>
 							</form> <br>

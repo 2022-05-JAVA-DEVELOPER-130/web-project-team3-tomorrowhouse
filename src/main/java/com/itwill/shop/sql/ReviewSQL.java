@@ -64,7 +64,7 @@ public class ReviewSQL {
 	//update review set r_title = '9번 리뷰 제목_수정', r_content = '9번 리뷰 내용_수정' where r_no= 9;
 	//5.후기detail에서 r_no로 후기 업데이트
 	public static final String UPDATE_BY_REVIEW_NO =
-			"update review set r_title = ?, r_content = ? where r_no= ?";
+			"update review set r_title = ?, r_content = ?, r_rating=?,r_image=? where r_no= ?";
 	
 	public static final String UPDATE_CLICK_COUNT_BY_REVIEW_NO =
 			"update review set r_click_count=r_click_count+1 where r_no = ?";
