@@ -94,6 +94,9 @@ if (detailProduct == null) {
 		document.product_detail_form.submit();
 	}
 	
+	
+	
+	
 </script>
 
 </head>
@@ -159,7 +162,7 @@ if (detailProduct == null) {
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<select name="product_qty" >
+											<select name="cart_qty" >
 												<option value="1">1
 												<option value="2">2
 												<option value="3">3

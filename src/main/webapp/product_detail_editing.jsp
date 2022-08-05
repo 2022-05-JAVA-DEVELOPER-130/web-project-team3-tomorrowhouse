@@ -106,7 +106,7 @@ if (detailProduct == null) {
 	
 	function changeValue() {
 		document.order_direct_form.innerHTML="";
-		document.order_direct_form.innerHTML+="<input type=\"hidden\" name=\"buyType\" value=\"direct\">";
+		document.order_direct_form.innerHTML+="<input type='hidden' name='buyType' value='direct'">";
 		var value _str = document.getElementById('product_qty');
 		document.order_direct_form.innerHTML += "<input type='hidden' name='p_qty' value='"+ value_str.options[value_str.selectedIndex].value + "'>";
 		
@@ -183,7 +183,6 @@ if (detailProduct == null) {
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<!-- <input type="hidden" id="p_no" value="<%=detailProduct.getP_no()%>"> -->
 											<select name="cart_qty" id="product_qty" onchange="changeValue();">
 												<option value="1">1
 												<option value="2">2
