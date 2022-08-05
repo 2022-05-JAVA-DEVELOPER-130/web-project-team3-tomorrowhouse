@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.dto.review.Review"%>
+<%@page import="com.itwill.shop.service.ReviewService"%>
 <%@page import="com.itwill.shop.dto.OrderItem"%>
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@page import="com.itwill.shop.service.OrderService"%>
@@ -6,10 +8,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>
 <%
-/*****************/
-sUserId = "test3";
-
-/*****************/
 
 String o_noStr=request.getParameter("o_no");
 	if(o_noStr==null|| o_noStr.equals("")){
@@ -20,6 +18,9 @@ String o_noStr=request.getParameter("o_no");
 	Order newOrder = new Order(Integer.parseInt(o_noStr),null,null,0,sUserId,null);
 	OrderService orderService=new OrderService();
 	Order order = orderService.oneOfOrderProductdetailByUserId(newOrder);
+	
+	ReviewService reviewService = new ReviewService();
+	
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -120,8 +121,10 @@ form > table tr td{
 									<!-- orer item start -->
 									<%
 									int tot_price=0;
-												for(OrderItem orderItem:order.getOrderItemList()) {
-													tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+											for(OrderItem orderItem:order.getOrderItemList()) {
+												Review review=
+												reviewService.selectByOrderitemNo(new Review(10, null, null, null, 0, null, 0, null, orderItem));
+												tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
 									%>
 									<tr>
 										<td width=290 height=26 align=center  bgcolor="ffffff" class=t1>
@@ -137,6 +140,7 @@ form > table tr td{
 										<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
 										</td>
 										<td width=50 height=26 align=center class=t1 bgcolor="ffffff">
+										
 										
 										</td>
 									</tr>

@@ -2,39 +2,28 @@
 <%@page import="com.itwill.shop.service.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="login_check.jspf"%>
 <%
-	Integer boardno=null;
-	int pageno=1;
+/*
+	if(request.getMethod().equalsIgnoreCase("GET")){
+	    response.sendRedirect("review_list.jsp");		  
+		 return;
+	}*/
 	
 	String r_noStr=
 	request.getParameter("r_no");
+
+	if(r_noStr==null || r_noStr.equals("")){
+	    response.sendRedirect("shop_main.jsp");		  
+		 return;
+	}
+	
 	ReviewService reviewService = new ReviewService();
 	Review review = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
 	reviewService.updateClickCountByReviewNo(review);
 
 	review =reviewService.selectByReviewNo(review);
 			
-	/*
-	try{
-		boardno=Integer.parseInt(request.getParameter("boardno"));
-		pageno=Integer.parseInt(request.getParameter("pageno"));
-	}catch(Exception e){
-		
-	}
-	if(boardno==null){
-		//목록으로이동
-		response.sendRedirect("board_list.jsp?pageno="+pageno);
-		return;
-	}
-	Board board=BoardService.getInstance().findBoard(boardno);
-	if(board==null){
-		response.sendRedirect("board_list.jsp?pageno="+pageno);
-		return;
-	}
-	*/
-	//읽은회수증가
-	//BoardService.getInstance().updateHitCount(boardno);
-	
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -54,7 +43,7 @@
 		document.f.submit();
 	}
 	function boardUpdate() {
-		document.f.action = "board_modify.jsp";
+		document.f.action = "review_modify_form.jsp";
 		document.f.submit();
 	}
 	function boardRemove() {

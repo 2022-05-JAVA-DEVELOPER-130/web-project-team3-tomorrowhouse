@@ -71,6 +71,9 @@ update review set r_title = ?, r_content = ? where u_id = ? and oi_no = ?;
 -- update는 후기목록에서 선택할테니, pk이인 r_no로 접근해야하는건 아닌가?
 update review set r_title = '9번 리뷰 제목_수정', r_content = '9번 리뷰 내용_수정' where r_no= 9;
 
+--리뷰 수정
+update review set r_title = '(수정)리뷰 제목', r_content = '(수정)리뷰 내용', r_rating=5,r_image='a.jpg' where r_no= 10;
+
 /* ----- review delete ----*/
 --(4) u_id를 통해서 후기 전체삭제
 --select * from review where u_id = 'test1';
@@ -94,8 +97,10 @@ select * from review where r_no=26;
 --delete from review where r_no=26;
 
 --click count 증가
-select * from review where r_no = 9;
+select * from review where r_no = 10;
 
 update review set r_click_count=r_click_count+1 where r_no = 9;
+
+
 
 desc review;
