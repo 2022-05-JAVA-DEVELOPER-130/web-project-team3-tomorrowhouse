@@ -11,10 +11,6 @@ Product detailProduct = new Product();
 
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
-/************/
-noStr = "3";
-
-/************/
 
 if (noStr == null || noStr .equals("")) {
 	response.sendRedirect("product_list.jsp");
