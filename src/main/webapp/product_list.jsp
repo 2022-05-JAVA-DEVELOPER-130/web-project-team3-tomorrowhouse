@@ -68,7 +68,7 @@ List<Product> productList = productService.productSelectAll();
 							<!-- 검색아이콘 fin -->
 							<form name="f" method="post">
 								<table width="100%" align="center" border="0" cellpadding="10"
-									cellspacing="1" bgcolor="BBBBBB">
+									cellspacing="0" bgcolor="BBBBBB">
 									
 																
 									<%
