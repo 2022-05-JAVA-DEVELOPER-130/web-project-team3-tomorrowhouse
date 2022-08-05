@@ -15,11 +15,11 @@ public class NoticeDaoTest {
 		//selectbyno
 		System.out.println(noticeDao.selectByNNo(2));
 		//insert
-		System.out.println(noticeDao.insert(new Notice(7, "공지7", "공지7 내용",null)));
+		System.out.println(noticeDao.insert(new Notice(7, "공지11", "공지11 내용",null)));
 		//update 
-		System.out.println(noticeDao.update(new Notice(7, null, null, null)));
+		//System.out.println(noticeDao.update(new Notice(7, null, null, null)));
 		//delecte
-		System.out.println(noticeDao.delete(7));
+		//System.out.println(noticeDao.delete(7));
 			
 			
 			
