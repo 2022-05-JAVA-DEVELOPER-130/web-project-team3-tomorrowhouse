@@ -279,7 +279,9 @@ function cart_item_all_select(e){
 									
 									<a href="product_list.jsp" class=m1>계속 구경하기</a>&nbsp;&nbsp;
 									<%if(cartList.size()>=1){ %>
-									<a href= >카트전체 주문하기[주문폼]</a>
+									<a href="javascript:cart_view_form_select_submit();" class=m1>
+										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]
+										 	</a>&nbsp;&nbsp;
 									<a href= 'cart_delete_action.jsp?u_id=<%=sUserId%>' > 장바구니 비우기</a>&nbsp;&nbsp;
 									<%} %>
 									</td>
