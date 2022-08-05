@@ -141,9 +141,9 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 							<table border=0 cellpadding=0 cellspacing=1>
 								<tr>
 									<td align=center>
-	★★★					<input type="button" value="상품 수정" onclick="product_modify_action()"> &nbsp; 
-	★★★					<input type="button" value="상품 삭제" onclick="product_delete_action()"> &nbsp; 
-	★★★					<input type="button" value="이전 상품" onClick="product_list()">
+					<input type="button" value="상품 수정" onclick="product_modify_action()"> &nbsp; 
+					<input type="button" value="상품 삭제" onclick="product_delete_action()"> &nbsp; 
+					<input type="button" value="이전 상품" onClick="product_list()">
 									</td>
 								</tr>
 								
