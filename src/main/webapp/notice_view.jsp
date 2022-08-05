@@ -31,10 +31,6 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script type="text/javascript">
-	function noticeCreate(){
-		f.action="notice_write_form.jsp"
-		f.submit();
-	}
 	function noticeUpdate(){
 		f.action = "notice_modify_form.jsp";
 		f.submit();
@@ -108,7 +104,6 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 								<%if(sUserId==null){ %>
 								<tr>
 									<td align=center>
-									<input type="hidden" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
 									<input type="hidden" value="수정" onClick="noticeUpdate()">&nbsp; 
 									<input type="hidden" value="삭제" onClick="noticeDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="noticeList()"></td>
@@ -116,7 +111,6 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 								<%}else if(sUserId.equals("admin")){ %>
 								<tr>
 									<td align=center>
-									<input type="button" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
 									<input type="button" value="수정" onClick="noticeUpdate()">&nbsp; 
 									<input type="button" value="삭제" onClick="noticeDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="noticeList()"></td>
@@ -124,7 +118,6 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 								<% }else{ %>
 								<tr>
 									<td align=center>
-									<input type="hidden" value="글쓰기" onClick="noticeCreate()"> &nbsp; 
 									<input type="hidden" value="수정" onClick="noticeUpdate()">&nbsp; 
 									<input type="hidden" value="삭제" onClick="noticeDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="noticeList()"></td>
