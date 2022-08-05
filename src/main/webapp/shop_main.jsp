@@ -42,7 +42,7 @@
 					<param name="play" value="true">
 					<param name="loop" value="true">
 					<param name="quality" value="high">
-					<embed src="image/ui/main3.jpg" style="margin: 10px" width="540px" height="350px"></embed>
+					<embed src="image/ui/main3.jpg" style="margin: 10px" width="840px" height="550px"></embed>
 				</object>
 			</div>
 			<!-- include_content.jsp end-->

@@ -137,9 +137,19 @@ if (detailProduct == null) {
 									<td colspan=3 height=5><hr color=#556b2f></td>
 								</tr>
 								<tr width=100%>
-									<td width=30% height=200 align=center class=t1>
-
-										<form name="add_cart_form" method="post" action="cart_add_item_action.jsp">
+									<td width=10% height=200 align=center class=t1>
+									</td>
+									<td width=45% height=200 align=center><img border=0
+										src='image/product/<%=detailProduct.getP_image()%>' width=200 height=200></td>
+									<td width=35% height=200 class=t1>
+										<ol type="disc">
+											<li><b>이름 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
+											</b></li>
+											<li><font color=#FF0000>가격 : <%=detailProduct.getP_price()%>&nbsp;&nbsp;&nbsp;
+											</font></li>
+											<li><font color=#0000FF><%=detailProduct.getP_desc()%></font></li>
+										</ol>
+										<form name="add_cart_form" method="post" action="cart_add_item_action.jsp" style="display: inline;">
 											수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
@@ -158,20 +168,9 @@ if (detailProduct == null) {
 											</select> 개<br><br> 
 												<!--  <input type=submit value="장바구니에담기[장바구니보여주기]" /> -->
 												<br><br> 
-												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기" />
+												
 												<input type="hidden" name=p_no value="<%=detailProduct.getP_no()%>">
 										</form>
-									</td>
-									<td width=40% height=200 align=center><img border=0
-										src='image/product/<%=detailProduct.getP_image()%>' width=200 height=200></td>
-									<td width=30% height=200 class=t1>
-										<ol type="disc">
-											<li><b>이름 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
-											</b></li>
-											<li><font color=#FF0000>가격 : <%=detailProduct.getP_price()%>&nbsp;&nbsp;&nbsp;
-											</font></li>
-											<li><font color=#0000FF><%=detailProduct.getP_desc()%></font></li>
-										</ol>
 									</td>
 								</tr>
 								<tr>
@@ -183,9 +182,12 @@ if (detailProduct == null) {
 
 
 							<table border="0" cellpadding="0" cellspacing="1">
+							
 								<%if(sUserId==null){ %>
 								<tr>
-									<td align=center><input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
+									<td align=center>
+									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
+									<input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
 								
@@ -198,8 +200,11 @@ if (detailProduct == null) {
 								</tr>
 								<% }else{ %>
 								<tr>
-									<td align=center><input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
-										type="button" value="상품리스트" onClick="productList();"></td>
+									<td align=center>
+									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
+									<input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; 
+									<input type="button" value="상품리스트" onClick="productList();">
+									</td>
 								</tr>
 								
 								<%} %>
