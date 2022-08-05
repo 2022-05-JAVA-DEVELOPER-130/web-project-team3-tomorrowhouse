@@ -63,11 +63,12 @@
 		document.f.method='POST';
 		document.f.submit();
 	}
-
+	/*
 	function userList() {
 		f.action = "user_list.jsp";
 		f.submit();
 	}
+	*/
 	/*
 	아이디중복체크
 	*/
@@ -178,7 +179,6 @@
 								<tr>
 									<td align=center>
 									<input type="button" value="회원 가입" onclick="userCreate();"> &nbsp; 
-									<input type="button" value="목록" onClick="userList()">
 									</td>
 								</tr>
 							</table>
