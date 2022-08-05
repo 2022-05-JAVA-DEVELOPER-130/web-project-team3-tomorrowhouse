@@ -45,7 +45,11 @@ public class ReviewService {
 		return reviewDao.updateClickCountByReviewNo(review);
 	}
 	
+	//5.후기detail에서 r_no로 후기 업데이트
 	
+	public int updateByReviewNo(Review review)throws Exception{
+		return reviewDao.updateByReviewNo(review); 
+	}
 }
 	
 

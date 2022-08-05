@@ -7,7 +7,7 @@
 <%@ include file="login_check.jspf" %>
 <%
 /*****************/
-sUserId = "test3";
+//sUserId = "test3";
 
 /*****************/
 
