@@ -4,7 +4,7 @@
 <%@include file="login_check.jspf" %>
 <%
 request.setCharacterEncoding("UTF-8");
-String sU_Id = "test6";
+
 if(sUserId==null || sUserId.equals("")) {
 	 response.sendRedirect("cart_view.jsp");
 	 return;
