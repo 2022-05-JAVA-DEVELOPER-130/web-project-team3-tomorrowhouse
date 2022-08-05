@@ -6,10 +6,7 @@
     pageEncoding="UTF-8"%>
 <%@include file= "login_check.jspf" %>    
 <%
-	if(sUserId==null || sUserId != "admin"){
-		response.sendRedirect("user_login_form.jsp");
-		return;
-	}
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
