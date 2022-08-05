@@ -9,7 +9,7 @@
 <%@include file="login_check.jspf"%>
 <%
 /********************/
-sUserId="test4";
+sUserId="test4";  ///
 /********************/
 UserInfoService userInfoService = new UserInfoService();
 UserInfo userInfo =
@@ -101,7 +101,6 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 	function cart_item_all_select_checkbox_deselect(){
 		document.getElementById('all_select_checkbox').checked=false;
 	}
-	
 	
 	/*
 	cart 아이템카운트갱신,cart_view_form 갱신
