@@ -63,7 +63,7 @@ List<Product> productList = productService.productSelectAll();
 							<!-- 검색아이콘 start -->
 							
 							<form method='get' action='product_search_action_view.jsp'>
-							<p align ="right"><input type = "text" name='keyword' placeholder="검색어를 입력하세요">&nbsp;<input type = "submit" value="검색">
+							<p align ="right"><input  size="27" type = "text" name='keyword' placeholder="검색어를 입력하세요">&nbsp;<input type = "submit" value="검색">
 							</form>
 							<!-- 검색아이콘 fin -->
 							<form name="f" method="post">
