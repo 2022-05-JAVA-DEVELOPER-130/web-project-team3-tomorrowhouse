@@ -18,6 +18,8 @@ public class ReviewServiceTestMain {
 		
 		review = new Review(10, null, null, null, 0, null, 0, "test6", null);
 		System.out.println(reviewService.updateClickCountByReviewNo(review));
+		System.out.println(reviewService.selectByReviewNo(review));
+		
 		
 	}
 

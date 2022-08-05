@@ -30,6 +30,11 @@ public class ReviewService {
 		
 		return p_no;
 	}
+	//2.(마이페이지-리뷰detail)로그인한 회원이 주문아이템번호로 리뷰 선택
+	//select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.oi_no=22;
+	public Review selectByOrderitemNo(Review review) throws Exception{
+		return reviewDao.selectByOrderitemNo(review);
+	}
 	
 	
 	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
@@ -50,6 +55,14 @@ public class ReviewService {
 	public int updateByReviewNo(Review review)throws Exception{
 		return reviewDao.updateByReviewNo(review); 
 	}
+	
+	/* ------ review insert------ */
+	//8.리뷰 작성
+	//insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰1', '리뷰1 내용', 'test1', 1);
+	public int createReview(Review review)throws Exception{
+		return reviewDao.createReview(review);
+	}
+	
 }
 	
 
