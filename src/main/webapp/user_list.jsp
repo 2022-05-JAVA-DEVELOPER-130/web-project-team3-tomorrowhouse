@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.review.PageInputDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@page import="com.itwill.shop.dto.UserInfo"%>
@@ -13,6 +14,7 @@ UserInfoService userInfoService = new UserInfoService();
 ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
