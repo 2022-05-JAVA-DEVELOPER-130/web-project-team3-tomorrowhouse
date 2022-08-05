@@ -30,10 +30,10 @@ public class ProductDao {
 			basicDataSource.setPassword(properties.getProperty("password"));
 			dataSource = basicDataSource;
 		}
-	//상품전체리스트출력
+	
+	
+	//상품전체리스트출력 (페이징포함)
 	public List<Product> productSelectAll(int begin,int end) throws Exception {
-		
-		
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL);
@@ -56,6 +56,34 @@ public class ProductDao {
 		pstmt.close();
 		return productList;
 	}
+	
+	//카테고리별 해당 상품전체출력(페이징)
+	public List<Product> productSelectAllCategory(int cg_no,int begin,int end) throws Exception {
+		List<Product> productList = new ArrayList<Product>();
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL_BY_CATEGORY);
+		pstmt.setInt(1, cg_no);
+		pstmt.setInt(2, begin);
+		pstmt.setInt(3, end);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productList.add(new Product(rs.getInt("p_no"),
+										rs.getString("p_name"),
+										rs.getInt("p_price"),
+										rs.getString("p_image"),
+										rs.getString("p_desc"),
+										rs.getInt("p_click_count"),
+										new Category(rs.getInt("cg_no"),null)
+										)
+							);
+		}
+		rs.close();
+		con.close();
+		pstmt.close();
+		return productList;
+	}
+	
+	
 	
 	
 	//상품번호(p_no)로 1개 출력
@@ -105,6 +133,7 @@ public class ProductDao {
 		return findProductName;
 	}
 
+	//카테고리별 해당 상품전체출력
 	public List<Product> selectAllByCgNo(int cg_no)throws Exception{
 		List<Product> productList = new ArrayList<>();
 		Connection con =dataSource.getConnection();
@@ -125,6 +154,8 @@ public class ProductDao {
 		con.close();
 		return productList;
 	}
+	
+		
 	
 	 //product 검색기능 - 상품명만
 	 //public final static String PRODUCT_SERCH = "select * from product where p_name like ?";		
@@ -156,8 +187,7 @@ public class ProductDao {
 		}
 		return productSerchList;
 	} //method fin
-	 
-	
+	 	
 	
 	
 		//InsertProduct - 새상품추가(관리자 전용)
@@ -176,7 +206,6 @@ public class ProductDao {
 			return rowCount;
 		}
 			
-	
 	
 		//UpdateProduct - 상품번호로 수정(관리자 전용)
 		public int updateProduct(Product product)throws Exception {
@@ -215,6 +244,8 @@ public class ProductDao {
 			return rowCount;
 		}
 		
+		
+		//상품전체카운트
 		public int getProductCount() throws Exception {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -246,4 +277,38 @@ public class ProductDao {
 			}
 			return count;
 		}
+		
+		
+		//상품카테고리별전체카운트
+				public int getProductCategoryCount() throws Exception {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					int count = 0;
+					try {
+						con = dataSource.getConnection();
+						pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_COUNT_CATEGORY);
+						rs = pstmt.executeQuery();
+						if (rs.next())
+							count = rs.getInt(1);
+
+					} finally {
+						try {
+							if (rs != null)
+								rs.close();
+						} catch (Exception ex) {
+						}
+						try {
+							if (pstmt != null)
+								pstmt.close();
+						} catch (Exception ex) {
+						}
+						try {
+							if (con != null)
+								con.close();
+						} catch (Exception ex) {
+						}
+					}
+					return count;
+				}
 }

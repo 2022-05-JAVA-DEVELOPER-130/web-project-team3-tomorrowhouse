@@ -69,6 +69,7 @@
 										<td width=280 align=center bgcolor="E6ECDE">제목</td>
 										<td width=120 align=center bgcolor="E6ECDE">작성일</td>
 									</tr>
+									
 									<%
 										for (Notice notice : notices) {
 									%>

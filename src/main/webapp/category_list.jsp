@@ -1,9 +1,8 @@
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="com.itwill.shop.dto.Category"%>
-<%@page import="com.itwill.shop.service.CategoryService"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
+<%@page import="java.text.DecimalFormat"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -15,7 +14,10 @@
 	}
 	ProductService productService = new ProductService();
 	List<Product> productTableList = productService.selectAllByCgNo(Integer.parseInt(cgNoStr));
-	Category category = new Category();
+	//Category category = new Category();
+	
+	
+	
 %>
 
 
