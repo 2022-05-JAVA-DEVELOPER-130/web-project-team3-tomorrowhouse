@@ -19,6 +19,7 @@
 		<li id="m_cart"><a href="cart_view.jsp">장바구니</a></li>
 		<li id="m_join"><a href="user_write_form.jsp" >회원가입</a></li>
 		<li id="m_login"><a href="user_login_form.jsp">로그인</a></li>
+		<li><a href="user_logout_action.jsp">로그아웃</a></li>
 		<%-- 
 		<%if(sUserId==null){  %>
 			<li id="mypage" title="나의페이지" ><a href="user_login_form.jsp" ></a></li>
