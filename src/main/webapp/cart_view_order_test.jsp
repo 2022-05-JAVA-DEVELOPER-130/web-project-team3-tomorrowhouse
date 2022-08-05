@@ -34,11 +34,11 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 		console.log(formId);
 		var form = document.getElementById(formId);
 		if (desc == '+') {
-			form.cart_qty.value = parseInt(form.cart_qty.value) + 1;
+			form.c_qty.value = parseInt(form.c_qty.value) + 1;
 
 		} else if (desc == '-') {
-			if (form.cart_qty.value - 1 >= 0) {
-				form.cart_qty.value = parseInt(form.cart_qty.value) - 1;
+			if (form.c_qty.value - 1 >= 0) {
+				form.c_qty.value = parseInt(form.c_qty.value) - 1;
 			}
 		}
 
@@ -125,9 +125,9 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 					
 					var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
 					
-					var cart_qty=document.getElementById(updateFormId).cart_qty.value;
+					var c_qty=document.getElementById(updateFormId).c_qty.value;
 					var cart_product_unit_price=document.getElementById(updateFormId).cart_product_unit_price.value;
-					tot_order_price+=cart_qty*cart_product_unit_price;
+					tot_order_price+=c_qty*cart_product_unit_price;
 					cart_item_check_selected_count++;
 					
 				}
@@ -231,15 +231,14 @@ ArrayList<CartItem> cartList = (ArrayList)cartService.getCartList(sUserId);
 										</td>
 
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
-											
-											
-											
+
 											<form action="cart_update_item_action.jsp" method="post" id="cart_update_form_<%=cart.getC_no()%>">
-												<input type="hidden" name="cart_no" value="<%=cart.getC_no()%>">
+											<input type="hidden" name="p_no" value="<%=cart.getProduct().getP_no()%>">
+												<input type="hidden" name="c_no" value="<%=cart.getC_no()%>">
 													<input type="button" value="-" onclick="changeNumber('-','cart_update_form_<%=cart.getC_no()%>');"/>
 													
 												<input type="text" readonly="readonly" size="2"
-													style="text-align: center; width: 15%" name="cart_qty"
+													style="text-align: center; width: 15%" name="c_qty"
 													value="<%=cart.getC_qty()%>"> <input
 													type="button" value="+"
 													onclick="changeNumber('+','cart_update_form_<%=cart.getC_no()%>');"/>
