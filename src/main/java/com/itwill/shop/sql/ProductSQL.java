@@ -6,8 +6,11 @@ public class ProductSQL {
 	
  //product 전체보기
  public final static String PRODUCT_SELECT_ALL
- 				= "select * from product";
- 
+ 				= "SELECT * FROM ( SELECT rownum idx, s.*  FROM "
+ 						+ "				( SELECT * from  product) s"
+ 						+ "		 )"
+ 						+ "WHERE idx >= ? AND idx <= ?";
+ public final static String PRODUCT_SELECT_COUNT="SELECT COUNT(*) p_count FROM product";
 
  //product 상품번호(p_no)로 1개 보기
  public final static String PRODUCT_SELECT_BY_NO 

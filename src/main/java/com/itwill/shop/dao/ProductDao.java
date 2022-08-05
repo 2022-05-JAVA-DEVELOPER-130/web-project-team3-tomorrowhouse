@@ -31,10 +31,14 @@ public class ProductDao {
 			dataSource = basicDataSource;
 		}
 	//상품전체리스트출력
-	public List<Product> productSelectAll() throws Exception {
+	public List<Product> productSelectAll(int begin,int end) throws Exception {
+		
+		
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL);
+		pstmt.setInt(1, begin);
+		pstmt.setInt(2, end);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			productList.add(new Product(rs.getInt("p_no"),
@@ -209,5 +213,37 @@ public class ProductDao {
 			int rowCount = pstmt.executeUpdate();
 			con.close();
 			return rowCount;
+		}
+		
+		public int getProductCount() throws Exception {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int count = 0;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_COUNT);
+				rs = pstmt.executeQuery();
+				if (rs.next())
+					count = rs.getInt(1);
+
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+				} catch (Exception ex) {
+				}
+				try {
+					if (pstmt != null)
+						pstmt.close();
+				} catch (Exception ex) {
+				}
+				try {
+					if (con != null)
+						con.close();
+				} catch (Exception ex) {
+				}
+			}
+			return count;
 		}
 }
