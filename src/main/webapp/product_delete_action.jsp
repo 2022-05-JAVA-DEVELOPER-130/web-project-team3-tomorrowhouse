@@ -7,15 +7,13 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String noStr = request.getParameter("p_no");
-
 if(noStr==null || noStr.equals("")) {
 	 response.sendRedirect("product_list.jsp");
 	 return;
 }
-
+Product product =new Product(Integer.parseInt(noStr),null,0,null,null,0,null);
 ProductService productService = new ProductService();
-productService.deleteProduct(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
-
+productService.deleteProduct(product);
 /*
 p_no, String p_name, int p_price, String p_image, String p_desc, int p_click_count,
 			Category category)
