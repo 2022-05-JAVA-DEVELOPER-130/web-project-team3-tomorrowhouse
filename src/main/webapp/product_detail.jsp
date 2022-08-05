@@ -16,6 +16,7 @@ if (noStr == null || noStr .equals("")) {
 	return;
 }
 boolean isLogin = false;
+String sUserId=(String)session.getAttribute("sUserId");
 if (session.getAttribute("sUserId") != null) {
 	isLogin = true;
 }
@@ -71,7 +72,22 @@ if (detailProduct == null) {
 	function productList() {
 		location.href = 'product_list.jsp';
 	}
-
+	
+	function product_modify_form(){
+		
+		alert('상품수정 하시겠습니까?');
+		document.product_detail_form.method = 'POST';
+		document.product_detail_form.action = 'product_modify_form.jsp';
+		document.product_detail_form.submit();
+	}
+	function productdelite(){
+		alert('상품삭제 하시겠습니까?');
+		document.product_detail_form.method = 'POST';
+		document.product_detail_form.action = 'product_delete_action.jsp';
+		document.product_detail_form.submit();
+	}
+	
+	
 </script>
 
 </head>
@@ -167,10 +183,26 @@ if (detailProduct == null) {
 
 
 							<table border="0" cellpadding="0" cellspacing="1">
+								<%if(sUserId==null){ %>
 								<tr>
 									<td align=center><input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
+								
+								<% }else if(sUserId.equals("admin")){ %>
+								
+								<tr>
+									<td align=center><input type="button" value="상품수정[수정폼]" onClick="product_modify_form();"> &nbsp;
+									 				 <input type="button" value="상품삭제" onClick="productdelite();"> &nbsp; 
+									 				 <input	type="button" value="상품리스트" onClick="productList();"></td>
+								</tr>
+								<% }else{ %>
+								<tr>
+									<td align=center><input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
+										type="button" value="상품리스트" onClick="productList();"></td>
+								</tr>
+								
+								<%} %>
 							</table></td>
 					</tr>
 				</table>
