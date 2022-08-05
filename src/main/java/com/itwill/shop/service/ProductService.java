@@ -28,12 +28,31 @@ public class ProductService {
 		
 		// 3.게시물데이타 얻기
 		List<Product> productList = productDao.productSelectAll(pageMaker.getPageBegin(), pageMaker.getPageEnd());
-		ProductListPageMakerDto pageMakerBoardList = new ProductListPageMakerDto();
-		pageMakerBoardList.totRecordCount = totalRecordCount;
-		pageMakerBoardList.itemList = productList;
-		pageMakerBoardList.pageMaker = pageMaker;
-		return pageMakerBoardList;
+		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
+		pageMakerProductList.totRecordCount = totalRecordCount;
+		pageMakerProductList.itemList = productList;
+		pageMakerProductList.pageMaker = pageMaker;
+		return pageMakerProductList;
 	}
+	
+	
+	
+	// 카테고리번호로 해당상품 전체출력(페이징)
+	public ProductListPageMakerDto productSelectAllCategory(int pageno) throws Exception {
+		int totalRecordCount = productDao.getProductCategoryCount();
+		PageMaker pageMaker = new PageMaker(totalRecordCount,pageno);
+		PageMaker.BLOCK_SCALE=5;
+		PageMaker.PAGE_SCALE=12;
+		
+		List<Product> productList = productDao.productSelectAllCategory(int no ,pageMaker.getPageBegin(), pageMaker.getPageEnd());
+		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
+		pageMakerProductList.totRecordCount = totalRecordCount;
+		pageMakerProductList.itemList = productList;
+		pageMakerProductList.pageMaker = pageMaker;
+		return pageMakerProductList;
+	}
+		
+	
 
 	// 카테고리번호로 해당상품 전체출력
 	public List<Product> selectAllByCgNo(int no) throws Exception {
