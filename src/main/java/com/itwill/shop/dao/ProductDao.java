@@ -206,10 +206,10 @@ public class ProductDao {
 	}
 
 	// DeleteProduct - 상품번호로 삭제(관리자 전용)
-	public int deleteProduct(Product product) throws Exception {
+	public int deleteProduct(int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_DELETE_BY_NO);
-		pstmt.setInt(1, product.getP_no());
+		pstmt.setInt(1, p_no);
 		int rowCount = pstmt.executeUpdate();
 		con.close();
 		return rowCount;
