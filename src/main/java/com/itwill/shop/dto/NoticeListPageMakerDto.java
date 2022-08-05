@@ -8,5 +8,4 @@ public class NoticeListPageMakerDto {
 	public List<Notice> itemList;
 	public PageMaker pageMaker;
 	public int totRecordCount;
-
 }
