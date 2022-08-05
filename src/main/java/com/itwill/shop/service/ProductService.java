@@ -96,8 +96,8 @@ public class ProductService {
 	}
 
 	// 상품삭제하기
-	public int deleteProduct(int no) throws Exception {
-		return productDao.deleteProduct(no);
+	public int deleteProduct(Product product) throws Exception {
+		return productDao.deleteProduct(product);
 	}
 
 }//
