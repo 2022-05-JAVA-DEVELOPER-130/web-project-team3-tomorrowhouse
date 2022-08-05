@@ -12,7 +12,7 @@ delete from notice where n_no=2;
 public class NoticeSQL {
 	
 	public static final String NOTICE_SELECT_All = 
-			"select * from notice";
+			"select * from notice order by n_no desc";
 	public static final String NOTICE_SELECT_BY_NO=
 			"select * from notice where n_no =?";
 	public static final String NOTICE_UPDATE_BY_NO = 
