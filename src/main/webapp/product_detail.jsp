@@ -87,7 +87,11 @@ if (detailProduct == null) {
 		document.product_detail_form.submit();
 	}
 	
-	
+	function reviewList() {
+		document.product_detail_form.action = "review_product_list.jsp";
+		document.product_detail_form.method = 'POST';
+		document.product_detail_form.submit();
+	}
 </script>
 
 </head>
@@ -125,8 +129,7 @@ if (detailProduct == null) {
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 -
-											상품상세보기</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 - 상품상세보기</b></td>
 								</tr>
 							</table> <!-- 
 							<form name="f" method="post">
@@ -188,7 +191,8 @@ if (detailProduct == null) {
 									<td align=center>
 									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
 									<input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
-										type="button" value="상품리스트" onClick="productList();"></td>
+										type="button" value="상품리스트" onClick="productList();">
+									<input type="button" value="상품평(리뷰)" onClick="reviewList();"></td>
 								</tr>
 								
 								<% }else if(sUserId.equals("admin")){ %>
@@ -204,6 +208,7 @@ if (detailProduct == null) {
 									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
 									<input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; 
 									<input type="button" value="상품리스트" onClick="productList();">
+									<input type="button" value="상품평(리뷰)" onClick="reviewList();">
 									</td>
 								</tr>
 								
