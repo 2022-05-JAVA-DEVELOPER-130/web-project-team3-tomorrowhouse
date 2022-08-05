@@ -4,7 +4,6 @@
 <%@page import="com.itwill.shop.service.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="login_check.jspf"%>
 <%
 /*
 	if(request.getMethod().equalsIgnoreCase("GET")){
@@ -61,10 +60,13 @@
 			document.f.submit();
 		}
 	}
+	
 	function reviewList() {
-		f.action = "review_list.jsp";
-		f.submit();
+		document.f.action = "review_list.jsp";
+		document.f.method='POST';
+		document.f.submit();
 	}
+	
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -112,8 +114,8 @@
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type='placehholder' style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(0).getProduct().getP_name() %>'></td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=order.getOrderItemList().get(0).getProduct().getP_name() %>
+										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
