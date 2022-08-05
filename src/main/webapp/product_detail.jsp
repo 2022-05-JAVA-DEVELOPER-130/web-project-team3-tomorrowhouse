@@ -57,7 +57,9 @@ if (detailProduct == null) {
 			document.add_cart_form.submit();
 		}
 	}
-
+	functiom order_create_form(){
+		
+	}
 </script>
 
 </head>
