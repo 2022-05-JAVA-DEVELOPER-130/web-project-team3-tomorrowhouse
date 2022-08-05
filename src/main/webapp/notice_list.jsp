@@ -1,4 +1,3 @@
-
 <%@page import="com.itwill.shop.dto.NoticeListPageMakerDto"%>
 <%@page import="com.itwill.shop.dto.Notice"%>
 <%@page import="com.itwill.shop.dao.NoticeDao"%>
@@ -12,8 +11,8 @@
 	
 %>	
 <%
-	NoticeService noticeService = new NoticeService();
-	List<Notice> notices = noticeService.selectAllNotice();
+	//NoticeService noticeService = new NoticeService();
+	//List<Notice> notices = noticeService.selectAllNotice();
 	
 	String pageno=request.getParameter("pageno");
 	if(pageno==null||pageno.equals("")){
@@ -21,7 +20,7 @@
 	}	
 	
 	NoticeListPageMakerDto noticeListPage 
-		= noticeService.findBoardList(Integer.parseInt(pageno));
+		= new NoticeService().findBoardList(Integer.parseInt(pageno));
 %>
 
 
@@ -88,13 +87,9 @@
 										<td width=280 align=center bgcolor="E6ECDE">제목</td>
 										<td width=120 align=center bgcolor="E6ECDE">작성일</td>
 									</tr>
-									<!--  
+									
 									<%
-										//for (Notice notice : notices) {
-									%>
-									-->
-									<%
-										for (Notice notice : notices){
+										for (Notice notice : noticeListPage.itemList){
 									%>
 									<tr>
 										<td width=280 bgcolor="ffffff" style="padding-left: 10px" align="left">

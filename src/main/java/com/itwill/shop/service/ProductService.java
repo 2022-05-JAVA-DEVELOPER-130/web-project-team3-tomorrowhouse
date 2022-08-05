@@ -37,20 +37,37 @@ public class ProductService {
 	
 	
 	
-	// 카테고리번호로 해당상품 전체출력(페이징) - 서비스에서 검색
+	// 카테고리번호로 해당상품 전체출력(페이징) 
 	public ProductListPageMakerDto productSelectAllCategory(int pageno , int cg_no) throws Exception {
 		
 		int categoryRecordCount = productDao.getProductCategoryCount(cg_no); 
 		System.out.println("categoryRecordCount:"+categoryRecordCount);
 		PageMaker pageMaker = new PageMaker(categoryRecordCount,pageno);
-		PageMaker.BLOCK_SCALE=3;
+		PageMaker.BLOCK_SCALE=5;
 		PageMaker.PAGE_SCALE=12;
 	
 		List<Product> productList = productDao.productSelectAllCategory(cg_no, pageMaker.getPageBegin(), pageMaker.getPageEnd()); 
 		System.out.println("productList:"+productList.size());
-		
 		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
 		pageMakerProductList.totRecordCount = categoryRecordCount;
+		pageMakerProductList.itemList = productList;
+		pageMakerProductList.pageMaker = pageMaker;
+		return pageMakerProductList;
+
+	}
+	
+	
+	// 검색상품페이징
+	public ProductListPageMakerDto productSelectAllSearch(int pageno , String keyword) throws Exception {
+		
+		int searchRecordCount = productDao.getProductSearchCount(keyword); 
+		PageMaker pageMaker = new PageMaker(searchRecordCount,pageno);
+		PageMaker.BLOCK_SCALE=5;
+		PageMaker.PAGE_SCALE=12;
+	
+		List<Product> productList = productDao.productSelectAllSearch(keyword, pageMaker.getPageBegin(), pageMaker.getPageEnd()); 
+		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
+		pageMakerProductList.totRecordCount = searchRecordCount;
 		pageMakerProductList.itemList = productList;
 		pageMakerProductList.pageMaker = pageMaker;
 		return pageMakerProductList;
