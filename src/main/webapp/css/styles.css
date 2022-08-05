@@ -58,7 +58,11 @@ div#navigation ul {
 div#navigation li {
 	margin-bottom: 5px;
 }
-
+div#navigation li a{
+	font-size: 10pt;
+	font-weight: bold;
+	font-family: 'D2Coding';
+}
 div#navigation p {
 	margin-top: 20px;
 	margin-left: 15px
@@ -76,7 +80,7 @@ div#footer p {
 }
 
 div#container {
-	width: 700px;
+	width: 1000px;
 	margin: 0 auto
 }
 /*
