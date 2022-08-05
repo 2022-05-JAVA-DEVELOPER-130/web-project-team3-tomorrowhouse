@@ -32,6 +32,33 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
  
 <style type="text/css" media="screen">
 </style>
+
+<script type="text/javascript">
+		/*상품 변경<관리자>  */
+		function product_modify_action() {
+			alert("상품의 내용변경을 완료했습니다.");
+			f.action = "product_modify_action.jsp";
+			f.method = "POST";
+			f.submit();
+		}
+		
+		/*상품 삭제<관리자>  */
+		function product_delete_action() {
+			if(confirm("정말삭제하시겠습니까?")){
+				f.action="product_delete_action.jsp";
+				}
+				f.submit();
+		}
+		
+		/*이전화면 이동<관리자>*/
+		function product_list() {
+			f.action = "product_detail.jsp?p_no="+noStr;
+			f.method = "POST";
+			f.submit();
+		}
+
+</script>
+
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
@@ -114,11 +141,12 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 							<table border=0 cellpadding=0 cellspacing=1>
 								<tr>
 									<td align=center>
-	★★★					<input type="button" value="상품 수정" onclick="userCreate();"> &nbsp; 
-	★★★					<input type="button" value="상품 삭제" onclick="userCreate();"> &nbsp; 
-	★★★					<input type="button" value="목록" onClick="userList()">
+	★★★					<input type="button" value="상품 수정" onclick="product_modify_action()"> &nbsp; 
+	★★★					<input type="button" value="상품 삭제" onclick="product_delete_action()"> &nbsp; 
+	★★★					<input type="button" value="이전 상품" onClick="product_list()">
 									</td>
 								</tr>
+								
 							</table>
 
 						</td>

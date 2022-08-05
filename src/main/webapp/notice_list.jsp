@@ -1,4 +1,5 @@
 
+<%@page import="com.itwill.shop.dto.NoticeListPageMakerDto"%>
 <%@page import="com.itwill.shop.dto.Notice"%>
 <%@page import="com.itwill.shop.dao.NoticeDao"%>
 <%@page import="com.itwill.shop.service.NoticeService"%>
@@ -7,10 +8,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String sUserId = (String)session.getAttribute("sUserId");
+	//String sUserId = (String)session.getAttribute("sUserId");
+	
+%>	
+<%
 	NoticeService noticeService = new NoticeService();
 	List<Notice> notices = noticeService.selectAllNotice();
-
+	
+	String pageno=request.getParameter("pageno");
+	if(pageno==null||pageno.equals("")){
+		pageno="1";
+	}	
+	
+	NoticeListPageMakerDto noticeListPage 
+		= noticeService.findBoardList(Integer.parseInt(pageno));
 %>
 
 
@@ -60,6 +71,14 @@
 									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>공지사항-리스트</b>
 									</td>
 								</tr>
+								<tr bgcolor="#FFFFFF">
+									<td height="20" class="t1" align="right" valign="bottom">♠
+										총 <font color="#FF0000"><%=noticeListPage.totRecordCount%></font>
+										건 | 현재페이지( <font color="#FF0000"><%=noticeListPage.pageMaker.getCurPage()%></font>
+										/ <font color="#0000FF"><%=noticeListPage.pageMaker.getTotPage()%></font>
+										)
+									</td>
+								</tr>
 							</table> <br /> <!-- list -->
 							<form name="f" method="post" action="">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
@@ -69,13 +88,17 @@
 										<td width=280 align=center bgcolor="E6ECDE">제목</td>
 										<td width=120 align=center bgcolor="E6ECDE">작성일</td>
 									</tr>
-									
+									<!--  
 									<%
-										for (Notice notice : notices) {
+										//for (Notice notice : notices) {
+									%>
+									-->
+									<%
+										for (Notice notice : notices){
 									%>
 									<tr>
 										<td width=280 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<a href='notice_view.jsp?n_no=<%=notice.getN_no() %>'>
+										<a href='notice_view.jsp?n_no=<%=notice.getN_no() %>&pageno=<%=noticeListPage.pageMaker.getCurPage()%>'>
 										<%=notice.getN_title() %>	
 										</a>
 										</td>
@@ -100,33 +123,50 @@
 								<!-- /list -->
 							</form> <br>
 			<!-- 			board 참고 필요! -->
-							<!-- <table border="0" cellpadding="0" cellspacing="1" width="590">
+							 <table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="center">
-							     
+							     			
+							     			<%if(noticeListPage.pageMaker.getPrevGroupStartPage()>0) {%>  
 										    <a href="./notice_list.jsp?pageno=1">◀◀</a>&nbsp;
-											<a href="./notice_list.jsp?pageno=3">◀</a>&nbsp;&nbsp;
+										     <%}%>
+										 	 <%if(noticeListPage.pageMaker.getPrevPage()>0) {%> 
+											<a href="./notice_list.jsp?pageno=<%=noticeListPage.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
+										<%}%>
 										
-										 <font color='blue'><strong>1</strong></font>&nbsp;
-										<a href="./notice_list.jsp?pageno=1"><strong>1</strong></a>&nbsp;
+										<%
+											for (int i = noticeListPage.pageMaker.getBlockBegin(); i <= noticeListPage.pageMaker.getBlockEnd(); i++) {
+										 	if (noticeListPage.pageMaker.getCurPage() == i) {
+										%>
+										 <font color='blue'><strong><%=i %></strong></font>&nbsp;
+										 <%} else {%>
+										<a href="./notice_list.jsp?pageno=<%=i %>"><strong><%=i %></strong></a>&nbsp;
+										  <%
+										   }
+										  }%>
 										  
-										  
-										  <a href="./notice_list.jsp?pageno=1">▶&nbsp;</a>
-										  <a href="./notice_list.jsp?pageno=1">▶▶</a>&nbsp;
+										   <%if(noticeListPage.pageMaker.getNextGroupStartPage()< noticeListPage.pageMaker.getTotPage()){%>
+										  <a href="./notice_list.jsp?pageno=<%=noticeListPage.pageMaker.getNextPage()%>">▶&nbsp;</a>
+										  <%}%>
+										 <%if(noticeListPage.pageMaker.getNextGroupStartPage()< noticeListPage.pageMaker.getTotPage()){%>
+										  <a href="./notice_list.jsp?pageno=<%=noticeListPage.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
+										  <%}%>
 									</td>
-								</tr> -->
+								</tr> 
 							</table> <!-- button -->
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="right">
 									<!--관리자만 작성가능. 기능추가필요-->
 									
-									<% if(sUserId.equals("admin")) {%>									
+									<!--  <% //if(sUserId.equals("admin")) {%>	--> 						
 									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
-									<%}else{ %>
+									<!-- <%//}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
-									<% } %>
+									<%//} %> -->
 								</tr>
+							</table></td>
+							</tr>
 							</table>
 					
 				

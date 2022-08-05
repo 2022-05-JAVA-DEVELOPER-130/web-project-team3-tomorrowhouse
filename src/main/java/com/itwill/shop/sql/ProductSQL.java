@@ -4,31 +4,37 @@ public class ProductSQL {
 	
 /* Select문*/	
 	
- //product 전체보기
+ //product 전체보기 (페이징)
  public final static String PRODUCT_SELECT_ALL
  				= "SELECT * FROM ( SELECT rownum idx, s.*  FROM "
  						+ "				( SELECT * from  product) s"
  						+ "		 )"
  						+ "WHERE idx >= ? AND idx <= ?";
  
- 
- //product 전체 상품 카운트
+  //product 전체 상품 카운트
  public final static String PRODUCT_SELECT_COUNT
  				="SELECT COUNT(*) p_count FROM product";
  
  
  
  
- //product 전체보기(카테고리별)
+ //product 전체보기(카테고리별)(페이징)
  public final static String PRODUCT_SELECT_ALL_BY_CATEGORY
-  = "SELECT * FROM ( SELECT rownum idx, s.*  FROM ( SELECT * from product where cg_no= ? ) s)"
-   + "WHERE idx >= ? AND idx <= ? ";
+  = "SELECT * FROM ( SELECT rownum idx, s.*  FROM ( SELECT * from product where cg_no= ? ) s) WHERE idx >= ? AND idx <= ? ";
    
   //product 카테고리별 상품 카운트
  public final static String PRODUCT_SELECT_COUNT_CATEGORY
  				="SELECT COUNT(*) p_count FROM product where cg_no=?"; 
  
+
  
+  //검색 전체보기(페이징)
+ public final static String PRODUCT_SELECT_ALL_BY_SEARCH
+  = "SELECT * FROM ( SELECT rownum idx, s.*  FROM ( SELECT * from product where p_name like ? ) s)  WHERE idx >= ? AND idx <= ? "; 
+ 
+ //검색 상품 카운트
+ public final static String PRODUCT_SELECT_COUNT_SEARCH
+ =" select count(*) from product where p_name like ? ";
  
 
  //product 상품번호(p_no)로 1개 보기
@@ -48,6 +54,8 @@ public class ProductSQL {
 	= "select * from product where p_name like ?";
  
  
+ 
+ /***********************************(관리자전용)****************************************/
  
  /* Update문 (관리자전용) */
 
