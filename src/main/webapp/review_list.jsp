@@ -119,9 +119,7 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 								</tr>
 							</table> <br /> <!-- list -->
 							<form name="f" method="post" action="">
-								<table border="0" cellpadding="0" cellspacing="1" width="590"
-									bgcolor="BBBBBB">
-
+								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<td width=70 align=center bgcolor="E6ECDE">주문일</td>
 										<td width=80 align=center bgcolor="E6ECDE">상품</td>
@@ -138,6 +136,7 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 													//orderService.findProductByOrderItemNo(review.getOrderItem().getOi_no());
 									%>
 									<tr>
+										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										<%=(order.getO_date()+"").substring(5, 10) %>
 										</td>
