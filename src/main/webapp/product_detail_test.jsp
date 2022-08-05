@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+
 request.setCharacterEncoding("UTF-8");
 
 ProductService productService = new ProductService();
@@ -10,6 +11,10 @@ Product detailProduct = new Product();
 
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
+/************/
+noStr = "3";
+
+/************/
 
 if (noStr == null || noStr .equals("")) {
 	response.sendRedirect("product_list.jsp");
@@ -92,28 +97,51 @@ if (detailProduct == null) {
 		document.product_detail_form.method = 'POST';
 		document.product_detail_form.submit();
 	}
-	function changeValue() {
-		document.product_detail_form.innerHTML="";
-		document.product_detail_form.innerHTML+="<input type=\"hidden\" name=\"buyType\" value=\"direct\">";
-		var value _str = document.getElementById('product_qty');
-		document.product_detail_form.innerHTML += "<input type='hidden' name='p_qty' value='"+ value_str.options[value_str.selectedIndex].value + "'>";
-		
-		var p_noStr = document.getElementById('p_no').value;
-		document.product_detail_form.innerHTML += "<input type='hidden' name='p_no' value='"+ p_noStr + "'>";
+	function ChangeValue() {
+		var value_str = document.getElemnetByName('product_qty');
+		document.product_detail_form.innerHTML = "<input type='hidden' name='p_qty_test' value='"+ value_str + "'>";
 		
 	}
 	
+	function product_select_count(){
+		//var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
+		var p_qty = document.getElemnetByName('product_qty');
+		
+		var cart_item_check_selected_count = 0;
+		
+		document.product_detail_form.innerHTML ='';
+		//document.product_detail_form.innerHTML +="<input type='hidden' name='buyType'>";
+		
+			//if (cart_item_no_check_list.item(i).checked === true) {
+				document.product_detail_form.innerHTML = "<input type='hidden' name='p_qty' value='"+ p_qty.value + "'>";
+				
+				
+				//var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
+				
+				//var c_qty=document.getElementById(updateFormId).c_qty.value;
+				
+				//var cart_product_unit_price = document.getElementById(updateFormId).cart_product_unit_price.value;
+				
+				//tot_order_price+=c_qty*cart_product_unit_price;
+				//cart_item_check_selected_count++;
+			}
+		}
+		document.getElementById('cart_item_select_count').innerHTML = cart_item_check_selected_count;
+		//document.getElementById('tot_order_price').innerHTML = tot_order_price.toLocaleString();
+		
+	}
 	
 	
 	
 </script>
 
 </head>
-<body  bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+<body onload="product_select_count();" bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
 	<form name="product_detail_form">
-		
-		
+		<input type="hidden" name="p_no" value="<%=detailProduct.getP_no()%>">
+		<input type="hidden" name="p_qty" value="1"> 
+		<input type="hidden" name="buyType" value="direct">
 	</form>
 	<!-- container start-->
 	<div id="container">
@@ -170,8 +198,7 @@ if (detailProduct == null) {
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<input type="hidden" id="p_no" value="<%=detailProduct.getP_no()%>">
-											<select name="cart_qty" id="product_qty" onchange="changeValue();">
+											<select name="product_qty" onChange="product_select_count();">
 												<option value="1">1
 												<option value="2">2
 												<option value="3">3
