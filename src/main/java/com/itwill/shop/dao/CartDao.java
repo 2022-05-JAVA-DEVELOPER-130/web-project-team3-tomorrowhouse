@@ -87,8 +87,8 @@ public class CartDao {
 		PreparedStatement pstmt=null;
 		int rowCount = 0;
 		try {
-		dataSource.getConnection();
-		con.prepareStatement(CartSQL.CART_INSERT_LIST);
+		con = dataSource.getConnection();
+		pstmt= con.prepareStatement(CartSQL.CART_INSERT_LIST);
 		pstmt.setInt(1, cartItem.getC_qty());
 		pstmt.setString(2, cartItem.getU_id());
 		pstmt.setInt(3, cartItem.getProduct().getP_no());
@@ -111,6 +111,27 @@ public class CartDao {
 		try {
 		con = dataSource.getConnection();
 		pstmt = con.prepareStatement(CartSQL.CART_UPDATE_BY_USERID_C_NO);
+		pstmt.setInt(1,cartItem.getC_qty());
+		pstmt.setString(2,cartItem.getU_id());
+		pstmt.setInt(3,cartItem.getC_no());
+		rowCount = pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+			con.close();
+			}
+		}
+		return  rowCount;
+	}
+	/*
+	 4. 카트업데이트(프로덕트 리스트에서)
+	 */
+	public int updateFromProduct(CartItem cartItem)throws Exception{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rowCount=0;
+		try {
+		con = dataSource.getConnection();
+		pstmt = con.prepareStatement(CartSQL.CART_UPDATE);
 		pstmt.setInt(1,cartItem.getC_qty());
 		pstmt.setString(2,cartItem.getU_id());
 		pstmt.setInt(3,cartItem.getC_no());
