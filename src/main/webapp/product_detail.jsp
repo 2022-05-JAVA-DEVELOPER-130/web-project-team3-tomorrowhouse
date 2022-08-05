@@ -10,7 +10,24 @@ Product detailProduct = new Product();
 
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
+
+if (noStr == null || noStr .equals("")) {
+	response.sendRedirect("product_list.jsp");
+	return;
+}
+boolean isLogin = false;
+if (session.getAttribute("sUserId") != null) {
+	isLogin = true;
+}
+
 detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
+if (detailProduct == null) {
+	out.println("<script>");
+	out.println("alert('매진된상품입니다.');");
+	out.println("location.href='product_list.jsp';");
+	out.println("</script>");
+	return;
+}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,7 +39,26 @@ detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(no
 <link rel=stylesheet href="css/shop.css" type="text/css">
 <style type="text/css" media="screen">
 </style>
+<script type="text/javascript">
+	function add_cart_popup_window(){
+		if (<%=!isLogin%>) {
+			alert('로그인 하세요');
+			location.href = 'user_login_form.jsp';
+		} else {
+			
+			var left = Math.ceil(( window.screen.width)/3);
+			var top = Math.ceil(( window.screen.height)/3); 
+			console.log(left);
+			console.log(top);
+			var cartWin = window.open("about:blank","cartForm","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+			document.add_cart_form.action = 'cart_add_action_popup_window.jsp';
+			document.add_cart_form.target = 'cartForm';
+			document.add_cart_form.method = 'POST';
+			document.add_cart_form.submit();
+		}
+	}
 
+</script>
 
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0

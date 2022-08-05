@@ -4,13 +4,8 @@
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file= "login_check.jspf" %>    
 <%
-	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("notice_list.jsp");
-		return;
-	}
-
-
 
 %>
 
@@ -98,10 +93,14 @@
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
 									<td align=center>
-									<%-- 	<%if(false){ %> --%>
+									
+									<%if(sUserId.equals("admin")){%> 
+									<input type="button" value="쓰기" onClick="noticeCreate()"> &nbsp; 
+									<input type="button" value="목록" onClick="noticeList()"></td>
+									 <% }else{ %>
 									<input type="hidden" value="쓰기" onClick="noticeCreate()"> &nbsp; 
 									<input type="button" value="목록" onClick="noticeList()"></td>
-									<%-- <%}//관리자만실행가능 %> --%>
+									 <% } %>
 								</tr>
 							</table></td>
 </body>

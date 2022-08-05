@@ -6,4 +6,6 @@
 //String u_id = request.getParameter("u_id");
 UserInfoService userInfoService = new UserInfoService();
 userInfoService.remove(sUserId);
+session.invalidate();
+response.sendRedirect("shop_main.jsp");
 %>
