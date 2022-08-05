@@ -194,6 +194,7 @@ function cart_item_all_select(e){
 									<!-- cart item start -->
 									<%
 									int tot_price = 0;
+									
 									for (CartItem cartItem : cartList) {
 										tot_price += cartItem.getProduct().getP_price() * cartItem.getC_qty();
 									%>
@@ -260,14 +261,24 @@ function cart_item_all_select(e){
 									<!-- cart item end -->
 									<!-- cart item end -->
 									<tr>
+										<% if(cartList.size()!=0){ %>
 										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
 											<p align=right>
 												<br/>
 												<span id="tot_order_price" style="color: red">총주문금액 : <%=new DecimalFormat("#,##0").format(tot_price)%>원</span>
 											</p>
 										</td>
+										<% }else{%>
+										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
+											<div style="padding: 40px">
+												<img src='image/empty_cart.webp' >
+											</div>
+										</td>
+										<%} %>
 									</tr>
 								</table>
+								
+								
 							</div>
 							<!-- 
 							</form> 
