@@ -22,7 +22,7 @@ String sUserId=(String)session.getAttribute("sUserId");
 	<!--관리자일경우  -->
 	<%}else if(sUserId.equals("admin")){ %>
 	<li><a href=""></a>관리자페이지</li>
-	<li><a href="product_insert_form.jsp">상품 등록</a></li>
+	<li><a href="product_write_form.jsp">상품 등록</a></li>
 	<li><a href="notice_write_form.jsp">공지 작성</a></li>
 	<li><a href=""></a></li>
 	<li><a href=""></a></li>
