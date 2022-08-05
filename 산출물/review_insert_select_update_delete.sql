@@ -93,6 +93,9 @@ select * from (select * from review r join orderitem o on r.oi_no = o.oi_no wher
 select * from review where r_no=26;
 --delete from review where r_no=26;
 
+--click count 증가
+select * from review where r_no = 9;
 
+update review set r_click_count=r_click_count+1 where r_no = 9;
 
 desc review;
