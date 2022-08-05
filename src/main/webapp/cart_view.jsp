@@ -94,16 +94,24 @@ cart 아이템카운트갱신,cart_view_form 갱신
 */
 function cart_item_select_count(){
 		var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
+		
 		var cart_item_check_selected_count = 0;
+		
 		document.cart_view_form.innerHTML ='';
 		document.cart_view_form.innerHTML +="<input type='hidden' name='buyType'>";
+		
 		var tot_order_price=0;
 		for (var i = 0; i < cart_item_no_check_list.length; i++) {
 			if (cart_item_no_check_list.item(i).checked === true) {
 				document.cart_view_form.innerHTML += "<input type='hidden' name='cart_item_no' value='"+ cart_item_no_check_list.item(i).value + "'>";
+				
+				
 				var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
+				
 				var c_qty=document.getElementById(updateFormId).c_qty.value;
-				var cart_product_unit_price=document.getElementById(updateFormId).cart_product_unit_price.value;
+				
+				var cart_product_unit_price = document.getElementById(updateFormId).cart_product_unit_price.value;
+				
 				tot_order_price+=c_qty*cart_product_unit_price;
 				cart_item_check_selected_count++;
 			}
@@ -212,21 +220,28 @@ function cart_item_all_select(e){
 										</td>
 
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
-											<form action="cart_update_action.jsp" method="post"
-												id="cart_update_form_<%=cartItem.getC_no()%>">
+										
+											<form action="cart_update_action.jsp" method="post" id="cart_update_form_<%=cartItem.getC_no()%>">
+											
 												<input type="hidden" name="c_no"
 													value="<%=cartItem.getC_no()%>">
+													
 													<input type="hidden" name="p_no" value="<%=cartItem.getProduct().getP_no()%>">
-													<input
-													type="button" value="-"
+													
+													<input type="button" value="-"
 													onclick="changeNumber('-','cart_update_form_<%=cartItem.getC_no()%>');"/>
+											
 												<input type="text" readonly="readonly" size="2"
 													style="text-align: center; width: 15%" name="c_qty"
-													value="<%=cartItem.getC_qty()%>"> <input
-													type="button" value="+"
+													value="<%=cartItem.getC_qty()%>">
+													
+													<input type="button" value="+"
 													onclick="changeNumber('+','cart_update_form_<%=cartItem.getC_no()%>');"/>
+													
 												<input type="hidden" name="cart_product_unit_price" value="<%=cartItem.getProduct().getP_price()%>"/>	
+											
 											</form>
+											
 										</td>
 
 										<td width=146 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,##0").format(cartItem.getProduct().getP_price() * cartItem.getC_qty())%></td>
