@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-
 request.setCharacterEncoding("UTF-8");
 
 ProductService productService = new ProductService();
@@ -12,12 +11,22 @@ Product detailProduct = new Product();
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
 
+/*******************/
+noStr="33";
+/*******************/
+
 if (noStr == null || noStr .equals("")) {
 	response.sendRedirect("product_list.jsp");
 	return;
 }
 boolean isLogin = false;
 String sUserId=(String)session.getAttribute("sUserId");
+/*******************/
+sUserId = "abc";
+/*******************/
+
+
+
 if (session.getAttribute("sUserId") != null) {
 	isLogin = true;
 }
@@ -81,7 +90,7 @@ if (detailProduct == null) {
 		document.product_detail_form.action = 'product_modify_form.jsp';
 		document.product_detail_form.submit();
 	}
-	function productdelite(){
+	function productdelete(){
 		alert('상품삭제 하시겠습니까?');
 		document.product_detail_form.method = 'POST';
 		document.product_detail_form.action = 'product_delete_action.jsp';
@@ -95,6 +104,18 @@ if (detailProduct == null) {
 	}
 	
 	
+	function changeValue() {
+		document.order_direct_form.innerHTML="";
+		document.order_direct_form.innerHTML+="<input type='hidden' name='buyType' value='direct'">";
+		var value _str = document.getElementById('product_qty');
+		document.order_direct_form.innerHTML += "<input type='hidden' name='p_qty' value='"+ value_str.options[value_str.selectedIndex].value + "'>";
+		
+		var p_noStr = document.getElementById('p_no').value;
+		document.order_direct_form.innerHTML += "<input type='hidden' name='p_no' value='"+ p_noStr + "'>";
+		
+	}
+	
+	
 	
 	
 </script>
@@ -105,7 +126,7 @@ if (detailProduct == null) {
 	<form name="product_detail_form">
 		<input type="hidden" name="p_no" value="<%=detailProduct.getP_no()%>">
 		<input type="hidden" name="p_qty" value="1"> 
-		<input type="hidden" name="buyType" value="direct">
+		<input type="hidden" name="buyType" value="direct">	
 	</form>
 	<!-- container start-->
 	<div id="container">
@@ -162,7 +183,7 @@ if (detailProduct == null) {
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<select name="cart_qty" >
+											<select name="cart_qty" id="product_qty" onchange="changeValue();">
 												<option value="1">1
 												<option value="2">2
 												<option value="3">3
@@ -204,7 +225,7 @@ if (detailProduct == null) {
 								
 								<tr>
 									<td align=center><input type="button" value="상품수정[수정폼]" onClick="product_modify_form();"> &nbsp;
-									 				 <input type="button" value="상품삭제" onClick="productdelite();"> &nbsp; 
+									 				 <input type="button" value="상품삭제" onClick="productdelete();"> &nbsp; 
 									 				 <input	type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
 								<% }else{ %>

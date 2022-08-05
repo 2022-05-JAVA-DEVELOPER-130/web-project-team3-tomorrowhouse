@@ -9,7 +9,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/user.css" type="text/css">
- 
+<script type="text/javascript">
+	function productCreate(){
+		if (document.f.p_name.value == "") {
+			alert("상품명을 입력하세요.");
+			f.p_name.focus();
+			return false;
+		}
+		if (f.p_price.value == "") {
+			alert("상품가격을 입력하세요.");
+			f.p_price.focus();
+			return false;
+		}
+
+		if (f.p_image.value == "") {
+			alert("상품이미지를 입력하세요.");
+			f.p_image.focus();
+			return false;
+		}
+		if (f.p_desc.value == "") {
+			alert("상품설명을 입력하세요.");
+			f.p_desc.focus();
+			return false;
+		}
+		if (f.category.value == "") {
+			alert("상품카테고리를 입력하세요.");
+			f.category.focus();
+			return false;
+		}
+		
+		f.action = "product_write_action.jsp";
+		f.method='POST';
+		f.submit();
+	}
+
+	function productList() {
+		f.action = "product_list.jsp";
+		f.submit();
+	}
+</script>
 <style type="text/css" media="screen">
 </style>
 </head>
@@ -89,15 +127,14 @@
 									
 								</table>
 							</form> <br />
-
-							<table border=0 cellpadding=0 cellspacing=1>
+								<table border="0" cellpadding="0" cellspacing="1">
 								<tr>
 									<td align=center>
-	★★★					<input type="button" value="상품 등록" onclick="userCreate();"> &nbsp; 
-	★★★					<input type="button" value="목록" onClick="userList()">
-									</td>
+									<input type="button" value="상품 등록" onclick="productCreate();"> &nbsp; 
+									<input type="button" value="목록" onClick="productList()"></td>
 								</tr>
-							</table>
+							</table>	
+							
 
 						</td>
 					</tr>

@@ -123,6 +123,7 @@
 											align="left"><input type="password" style="width: 150px"
 											name="u_pw2" value="<%=loginUser.getU_pw()%>"></td>
 									</tr>
+									
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
