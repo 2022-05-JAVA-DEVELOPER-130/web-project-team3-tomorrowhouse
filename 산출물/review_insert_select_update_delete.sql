@@ -72,6 +72,7 @@ update review set r_title = ?, r_content = ? where u_id = ? and oi_no = ?;
 update review set r_title = '9번 리뷰 제목_수정', r_content = '9번 리뷰 내용_수정' where r_no= 9;
 
 --리뷰 수정
+select * from review where r_no= 10;
 update review set r_title = '(수정)리뷰 제목', r_content = '(수정)리뷰 내용', r_rating=5,r_image='a.jpg' where r_no= 10;
 
 /* ----- review delete ----*/

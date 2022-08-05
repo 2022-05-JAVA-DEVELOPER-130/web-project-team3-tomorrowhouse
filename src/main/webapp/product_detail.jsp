@@ -57,9 +57,21 @@ if (detailProduct == null) {
 			document.add_cart_form.submit();
 		}
 	}
-	functiom order_create_form(){
-		
+
+	function order_create_form() {
+		if (<%=!isLogin%>) {
+			alert('로그인 하세요');
+			location.href = 'user_login_form.jsp';
+		} else {
+			document.product_detail_form.method = 'POST';
+			document.product_detail_form.action = 'order_create_form.jsp';
+			document.product_detail_form.submit();
+		}
 	}
+	function productList() {
+		location.href = 'product_list.jsp';
+	}
+
 </script>
 
 </head>
@@ -128,8 +140,9 @@ if (detailProduct == null) {
 												<option value="9">9
 												<option value="10">10
 											</select> 개<br><br> 
-												<input type=submit value="장바구니에담기[장바구니보여주기]" /><br><br> 
-												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기[계속쇼핑팝업]" />
+												<!--  <input type=submit value="장바구니에담기[장바구니보여주기]" /> -->
+												<br><br> 
+												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기" />
 												<input type="hidden" name=p_no value="<%=detailProduct.getP_no()%>">
 										</form>
 									</td>
