@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.ProductListPageMakerDto"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
@@ -6,16 +7,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+//	String cgNoStr= request.getParameter("cg_no");
+//	
+//	if(cgNoStr==null || cgNoStr.equals("")){
+//		response.sendRedirect("product_list.jsp");
+//		return;
+//	}
+//	ProductService productService = new ProductService();
+//	List<Product> productTableList = productService.selectAllByCgNo(Integer.parseInt(cgNoStr));
+//	//Category category = new Category();
+	
+	String pagenoStr = request.getParameter("pageno");
 	String cgNoStr= request.getParameter("cg_no");
 	
-	if(cgNoStr==null || cgNoStr.equals("")){
-		response.sendRedirect("product_list.jsp");
-		return;
-	}
-	ProductService productService = new ProductService();
-	List<Product> productTableList = productService.selectAllByCgNo(Integer.parseInt(cgNoStr));
-	//Category category = new Category();
+	if(pagenoStr==null)pagenoStr="1";
+	if(cgNoStr==null)cgNoStr="1";
 	
+	ProductService productService = new ProductService();
+	ProductListPageMakerDto productListPageMaker = productService.productSelectAllCategory(Integer.parseInt(pagenoStr),Integer.parseInt(cgNoStr));
 	
 	
 %>
@@ -84,13 +93,13 @@
 								<table width="100%" align="center" border="0" cellpadding="10"
 									cellspacing="0" bgcolor="BBBBBB">
 									<%
-									int product_size=productTableList.size();
+									int product_size=productListPageMaker.itemList.size();
 									int product_column_size=4;
 									int product_line_count = 1;
 									
 									
-									for (int i=0;i<productTableList.size();i++) {
-											Product product=productTableList.get(i);
+									for (int i=0;i<productListPageMaker.itemList.size();i++) {
+											Product product=productListPageMaker.itemList.get(i);
 									%>
 									<!--상품시작 -->
 									<%
@@ -108,7 +117,7 @@
 									</tr>
 									<%} %>	
 									<!--  빈칸채우기 start -->
-										<% if(i==productTableList.size()-1) {
+										<% if(i==productListPageMaker.itemList.size()-1) {
 												for(int j=0; j < 3 - i %4 ; i++){
 												%> <td align="center" width="25%"  bgcolor="ffffff"></td>
 												<%}
@@ -117,6 +126,37 @@
 								   <!--상품 끝 -->
 								   <%}%>	
 								</table>
+								<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align="center">
+							     
+										 <%if(productListPageMaker.pageMaker.getPrevGroupStartPage()>0) {%>    
+										    <a href="./category_list.jsp?pageno=1&cg_no=1">◀◀</a>&nbsp;
+										 <%}%>
+										 <%if(productListPageMaker.pageMaker.getPrevPage()>0) {%>    
+											<a href="./category_list.jsp?cg_no=<%=cgNoStr%>&pageno=<%=productListPageMaker.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
+										 <%}%>
+										<%
+											for (int i = productListPageMaker.pageMaker.getBlockBegin(); i <= productListPageMaker.pageMaker.getBlockEnd(); i++) {
+										 	if (productListPageMaker.pageMaker.getCurPage() == i) {
+										%>
+										 <font color='red'><strong><%=i%></strong></font>&nbsp;
+										<%} else {%>
+										<a href="./category_list.jsp?cg_no=<%=cgNoStr%>&pageno=<%=i%>"><strong><%=i%></strong></a>&nbsp;
+										<%
+										   }
+										  }
+										 %>
+										 <%if(productListPageMaker.pageMaker.getCurPage() != productListPageMaker.pageMaker.getTotPage()){%>
+										  <a href="./category_list.jsp?cg_no=<%=cgNoStr%>&pageno=<%=productListPageMaker.pageMaker.getNextPage()%>">▶&nbsp;</a>
+										 <%}%>
+										 <%if(productListPageMaker.pageMaker.getNextGroupStartPage() < productListPageMaker.pageMaker.getTotPage()){%>
+										<a
+										href="./category_list.jsp?cg_no=<%=cgNoStr%>&pageno=<%=productListPageMaker.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
+										 <%}%>
+									</td>
+								</tr>
+							</table> <!-- button -->
 							</form> <br /></td>
 					</tr>
 				</table>
