@@ -1,3 +1,6 @@
+<%@page import="com.itwill.shop.dto.OrderItem"%>
+<%@page import="com.itwill.shop.dto.review.Review"%>
+<%@page import="com.itwill.shop.service.ReviewService"%>
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
@@ -9,7 +12,7 @@
 String oi_noStr = request.getParameter("oi_no");
 /*************/
 sUserId="test4";
-oi_noStr = "32";//33
+oi_noStr = "23";//이미작성된 리뷰 13
 /*************/
 UserInfoService userInfoService = new UserInfoService();
 UserInfo userInfo = 
@@ -19,6 +22,19 @@ OrderService orderService = new OrderService();
 Order order=
 orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
 
+ReviewService reviewService = new ReviewService();
+/*	private int oi_no;
+	private int oi_qty;
+	private int o_no;
+	
+	private Product product;
+	*/
+if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0, null, new OrderItem(Integer.parseInt(oi_noStr),0,0,null)))!=null){
+	out.println("<script>");
+	out.println("alert('이미 작성된 리뷰입니다♡');");
+	out.println("location.href='review_list.jsp';");
+	out.println("</script>");
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
