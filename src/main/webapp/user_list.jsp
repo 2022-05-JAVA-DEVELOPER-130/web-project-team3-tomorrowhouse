@@ -24,6 +24,9 @@ ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 <style type="text/css" media="screen">
 </style>
 <script type="text/javascript">
+function mainForm() {
+	location.href = "shop_main.jsp";
+}
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -93,7 +96,7 @@ ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp;
-									<a href=shop_main.jsp class=m1>메인으로</a>
+									<input type="button" value="메인으로" onClick="mainForm();">
 									</td>
 								</tr>
 							</table></td>
