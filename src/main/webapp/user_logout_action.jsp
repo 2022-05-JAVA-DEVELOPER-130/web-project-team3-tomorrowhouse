@@ -6,6 +6,8 @@
 		response.sendRedirect("user_login_form.jsp");
 		return;
 	}
+	 session.invalidate(); //session삭제 
+	 response.sendRedirect("user_login_form.jsp");
 %>
 
 
