@@ -157,6 +157,20 @@
 											value="">
 										</td>
 									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">주소</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<input type="text" style="width: 150px" name="u_address"
+											value="">
+										</td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<input type="text" style="width: 150px" name="u_phone"
+											value="">
+										</td>
+									</tr>
 								</table>
 							</form> <br />
 
