@@ -16,10 +16,6 @@ List<Product> productList = productService.productSelectAll();
 
 <meta charset="UTF-8">
 <title>내일의집</title>
-</head>
-<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/shop.css" type="text/css">
@@ -27,6 +23,10 @@ List<Product> productList = productService.productSelectAll();
 <style type="text/css" media="screen">
 </style>
 </head>
+
+
+
+
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
 	<!-- container start-->
