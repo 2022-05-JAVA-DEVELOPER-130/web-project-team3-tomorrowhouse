@@ -8,10 +8,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>
 <%
-/*****************/
-//sUserId = "test3";
-
-/*****************/
 
 String o_noStr=request.getParameter("o_no");
 	if(o_noStr==null|| o_noStr.equals("")){

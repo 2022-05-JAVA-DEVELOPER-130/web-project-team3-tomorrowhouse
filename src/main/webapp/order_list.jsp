@@ -8,11 +8,6 @@
 <%@ include file="login_check.jspf"%>
 <%
 
-/*****************/
-//sUserId = "test3";
-
-/*****************/
-
 
 OrderService orderService = new OrderService();
 
