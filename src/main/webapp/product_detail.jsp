@@ -80,7 +80,7 @@ if (detailProduct == null) {
 		document.product_detail_form.action = 'product_modify_form.jsp';
 		document.product_detail_form.submit();
 	}
-	function productdelite(){
+	function productdelete(){
 		alert('상품삭제 하시겠습니까?');
 		document.product_detail_form.method = 'POST';
 		document.product_detail_form.action = 'product_delete_action.jsp';
@@ -213,7 +213,7 @@ if (detailProduct == null) {
 								
 								<tr>
 									<td align=center><input type="button" value="상품수정[수정폼]" onClick="product_modify_form();"> &nbsp;
-									 				 <input type="button" value="상품삭제" onClick="productdelite();"> &nbsp; 
+									 				 <input type="button" value="상품삭제" onClick="productdelete();"> &nbsp; 
 									 				 <input	type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
 								<% }else{ %>
