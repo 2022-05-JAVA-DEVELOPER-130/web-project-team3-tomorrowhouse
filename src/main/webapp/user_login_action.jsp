@@ -31,7 +31,7 @@
 	 */
 
 	 if(result==1){//성공
-		 session.setAttribute("s_u_id", u_id);
+		 session.setAttribute("sUserId", u_id);
 
 		 response.sendRedirect("product_list.jsp");
 	 }else if(result==0){//아이디없음
