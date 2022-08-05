@@ -42,47 +42,26 @@ public String getTitleString(Review review) {
 %>
 
 <%
+
+if(request.getMethod().equalsIgnoreCase("GET")&&sUserId==null){
+    response.sendRedirect("shop_main.jsp");		  
+	 return;
+}
+
+
 /********로그인한 고객의 리뷰를 보여주는 페이지***********/
-/***************/
-sUserId="test3";
-/***************/
 
 UserInfoService userInfoService = new UserInfoService();
 UserInfo userInfo =
 userInfoService.findUser(sUserId);
 OrderService orderService = new OrderService();
 
-//1.요청페이지번호	
-String pageno=request.getParameter("pageno");
-if(pageno==null||pageno.equals("")){
-	pageno="1";
-}	
-//2.한페이지에표시할 게시물수 
-int rowCountPerPage = 10;
-//3.한화면에보여줄 페이지번호갯수( 1 2 3 4 5 6 7 8 9 10 ▶ ▶▶)
-int pageCountPerPage =10;
-//페이징(계산)을위한DTO,VO
-PageInputDto pageInputDto=
-		new PageInputDto(rowCountPerPage,pageCountPerPage,pageno,"","");
-
 //게시물조회
 ReviewService reviewService = new ReviewService();
-/*
-	private int r_no;
-	private String r_title;
-	private String r_content;
-	
-	private Date r_date;
-	private int r_rating;
-	private String r_image;
-	private int r_click_count;
-	
-	private String u_id;
-	
-	private OrderItem orderItem;	// oi_no
-*/
+
 ArrayList<Review> reviewList=
 reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,null));
+
 //BoardService boardService=new BoardService();
 //BoardListPageDto boardListPage 	=boardService.findBoardList(pageInputDto);
 %>
@@ -144,25 +123,23 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 									bgcolor="BBBBBB">
 
 									<tr>
-										<td width=20 align=center bgcolor="E6ECDE">No.</td>
+										<td width=70 align=center bgcolor="E6ECDE">주문일</td>
 										<td width=80 align=center bgcolor="E6ECDE">상품</td>
 										<td width=100 align=center bgcolor="E6ECDE">상품명</td>
-										<td width=50 align=center bgcolor="E6ECDE">주문수량</td>
 										<td width=170 align=center bgcolor="E6ECDE">제목</td>
-										<td width=100 align=center bgcolor="E6ECDE">글쓴날</td>
-										<td width=70 align=center bgcolor="E6ECDE">조수</td>
+										<td width=100 align=center bgcolor="E6ECDE">작성일</td>
+										<td width=70 align=center bgcolor="E6ECDE">조회수</td>
 									</tr>
 									<%
 										for (Review review:reviewList) {
-											int rowNo = 1;
 											Order order = 
 													orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
 											Product product=order.getOrderItemList().get(0).getProduct(); 
 													//orderService.findProductByOrderItemNo(review.getOrderItem().getOi_no());
 									%>
 									<tr>
-										<td width=20 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<%=rowNo++%>
+										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<%=(order.getO_date()+"").substring(5, 10) %>
 										</td>
 										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
@@ -173,9 +150,6 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
 											<%=product.getP_name()%>
 											</a>
-										</td>
-										<td width=50 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<%=order.getOrderItemList().get(0).getOi_qty()%>
 										</td>
 										<td width=170 align=center bgcolor="ffffff">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
@@ -198,7 +172,6 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 											</tr>
 											 -->
 									<%
-										rowNo++;
 										}
 									%>
 								</table>
