@@ -44,7 +44,7 @@ public class NoticeService {
 		
 		//3.게시물데이타 얻기
 		List<Notice> noticeList=
-				noticeDao.findNoticeList( totalRecordCount,currentPage);
+				noticeDao.findNoticeList(totalRecordCount,currentPage);
 		
 		NoticeListPageMakerDto pageMakerNoticeList=new NoticeListPageMakerDto();
 		pageMakerNoticeList.totRecordCount=totalRecordCount;
