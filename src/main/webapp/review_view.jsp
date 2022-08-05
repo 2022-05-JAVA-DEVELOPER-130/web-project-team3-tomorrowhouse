@@ -48,10 +48,13 @@
 		document.f.method='POST';
 		document.f.submit();
 	}
+	
 	function boardUpdate() {
 		document.f.action = "review_modify_form.jsp";
+		document.f.method='POST';
 		document.f.submit();
 	}
+	
 	function boardRemove() {
 		if (confirm("정말 삭제하시겠습니까?")) {
 			document.f.action = "board_remove_action.jsp";
@@ -100,7 +103,7 @@
 							<!-- 
 							 -->
 							<form name="f" method="post">
-								<input type="hidden" name="r_np" value="<%=review.getR_no()%>">
+								<input type="hidden" name="r_no" value="<%=review.getR_no()%>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
@@ -133,8 +136,7 @@
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="글쓰기"
-										onClick="boardCreate()"> &nbsp; 
+									<td align=center><input type="button" value="글쓰기" onClick="boardCreate()"> &nbsp; 
 										<!-- <input type="button" value="답글쓰기" onClick="boardReplyCreate()"> &nbsp; --> 
 										<input type="button" value="수정" onClick="boardUpdate()"> &nbsp; 
 										<input type="button" value="삭제" onClick="boardRemove()"> &nbsp; 

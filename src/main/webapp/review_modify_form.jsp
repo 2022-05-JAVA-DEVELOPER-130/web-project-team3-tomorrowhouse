@@ -1,3 +1,7 @@
+<%@page import="com.itwill.shop.service.UserInfoService"%>
+<%@page import="com.itwill.shop.dto.Order"%>
+<%@page import="com.itwill.shop.service.OrderService"%>
+<%@page import="com.itwill.shop.service.ProductService"%>
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@page import="com.itwill.shop.service.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,8 +11,8 @@
 	String r_noStr=
 	request.getParameter("r_no");
 	/*******************/
-	sUserId="test4";
-	r_noStr="13";
+	//sUserId="test4";
+	//r_noStr="13";
 	
 	/*******************/
 	if(r_noStr==null || r_noStr.equals("")){
@@ -16,11 +20,20 @@
 		 return;
 	}
 	
+	UserInfoService userInfoService = new UserInfoService();
+	UserInfo userInfo=
+	userInfoService.findUser(sUserId);
+	
 	ReviewService reviewService = new ReviewService();
 	Review review = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
 	reviewService.updateClickCountByReviewNo(review);
 	
 	review =reviewService.selectByReviewNo(review);
+	
+	OrderService orderService = new OrderService();
+	Order order=
+	orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,28 +44,24 @@
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script type="text/javascript">
 	function boardUpdate() {
-		if (f.title.value == "") {
+		if (f.r_title.value == "") {
 			alert("제목을 입력하십시요.");
 			f.title.focus();
 			return false;
 		}
-		if (f.writer.value == "") {
-			alert("작성자를 입력하십시요.");
-			f.writer.focus();
-			return false;
-		}
-		if (f.content.value == "") {
+		if (f.r_content.value == "") {
 			alert("내용을 입력하십시요.");
 			f.content.focus();
 			return false;
 		}
 
-		f.action = "board_modify_action.jsp";
+		f.action = "review_modify_action.jsp";
+		f.method="POST";
 		f.submit();
 	}
 
 	function boardList() {
-		f.action = "board_list.jsp";
+		f.action = "review_list.jsp";
 		f.submit();
 	}
 </script>
@@ -85,21 +94,28 @@
 						<td><br />
 							<table style="padding-left: 10px" border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=sUserId %> 님의 리뷰 수정</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=review.getU_id() %> 님의 리뷰 수정</b></td>
 								</tr>
 							</table> <br> <!-- write Form  -->
+							
+							
 							<form name="f" method="post">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
 										<input type="hidden" name="oi_no" value='<%=review.getOrderItem().getOi_no() %>'>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">글쓴이</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=order.getU_id()%></td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=review.getU_id()%></td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">구매일자</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<%=order.getO_date() %>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(0).getProduct().getP_name() %>'></td>
+										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(0).getProduct().getP_no() %>'></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
@@ -108,30 +124,30 @@
 									</tr>
 
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">구매일자</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">작성일자</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<%=order.getO_date() %>
+										<%=review.getR_date() %>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" style="width: 150px" name="r_title"></td>
+										<input type="text" style="width: 150px" name="r_title" value='<%=review.getR_title() %>'></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<textarea name="r_content" class="textarea" style="width: 350px " rows="10"></textarea></td>
+										<textarea name="r_content" class="textarea" style="width: 350px " rows="10" ><%=review.getR_content() %></textarea></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">별점</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" style="width: 150px" name="r_rating"></td>
+										<input type="text" style="width: 150px" name="r_rating" value='<%=review.getR_rating() %>'></td>
 									</tr>
 								</table>
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="리뷰 쓰기" onClick="boardCreate()"> &nbsp;
+									<td align=center><input type="button" value="리뷰 수정" onClick="boardUpdate()"> &nbsp;
 									<input type="button" value="<%=userInfo.getU_name() %>님의 리뷰 목록" onClick="boardList()"></td>
 								</tr>
 							</table></td>

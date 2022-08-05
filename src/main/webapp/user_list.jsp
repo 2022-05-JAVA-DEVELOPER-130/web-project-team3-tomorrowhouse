@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.review.PageInputDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
 <%@page import="com.itwill.shop.dto.UserInfo"%>
@@ -13,6 +14,7 @@ UserInfoService userInfoService = new UserInfoService();
 ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,6 +26,9 @@ ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 <style type="text/css" media="screen">
 </style>
 <script type="text/javascript">
+function mainForm() {
+	location.href = "shop_main.jsp";
+}
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -78,7 +83,7 @@ ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 									%>
 									<tr>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
-										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_pw()%></td>
+										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_pw().replaceAll("(?<=.{0}).", "")%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_name()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_email()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_address()%></td>
@@ -93,7 +98,7 @@ ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp;
-									<a href=shop_main.jsp class=m1>메인으로</a>
+									<input type="button" value="메인으로" onClick="mainForm();">
 									</td>
 								</tr>
 							</table></td>
