@@ -6,8 +6,9 @@
 <%@page import="com.itwill.shop.service.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="login_check.jspf"%>
 <%
+	String sUserId=(String)session.getAttribute("sUserId");
+
 	String r_noStr=
 	request.getParameter("r_no");
 	/*******************/
@@ -15,20 +16,29 @@
 	//r_noStr="13";
 	
 	/*******************/
+	/*
 	if(r_noStr==null || r_noStr.equals("")){
 	    response.sendRedirect("shop_main.jsp");		  
 		 return;
 	}
-	
+	*/
+	/* 
 	UserInfoService userInfoService = new UserInfoService();
 	UserInfo userInfo=
 	userInfoService.findUser(sUserId);
-	
+	 */
 	ReviewService reviewService = new ReviewService();
 	Review review = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
 	reviewService.updateClickCountByReviewNo(review);
 	
 	review =reviewService.selectByReviewNo(review);
+	//비회원과 작성자가 아닌사람은 접근불가
+	if(sUserId==null|| sUserId.equals("") || !review.getU_id().equals(sUserId) ){
+		out.println("<script>");
+		out.println("alert('작성자만 수정가능합니다');");
+		out.println("location.href='review_list.jsp?r_no="+r_noStr+"';");
+		out.println("</script>");
+	}
 	
 	OrderService orderService = new OrderService();
 	Order order=
@@ -115,7 +125,7 @@
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(0).getProduct().getP_no() %>'></td>
+										<input type="placeholder"  style="width: 150px" name="p_name" value='<%=order.getOrderItemList().get(0).getProduct().getP_name() %>'></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
@@ -148,7 +158,7 @@
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
 									<td align=center><input type="button" value="리뷰 수정" onClick="boardUpdate()"> &nbsp;
-									<input type="button" value="<%=userInfo.getU_name() %>님의 리뷰 목록" onClick="boardList()"></td>
+									<input type="button" value="리뷰 목록" onClick="boardList()"></td>
 								</tr>
 							</table></td>
 					</tr>
