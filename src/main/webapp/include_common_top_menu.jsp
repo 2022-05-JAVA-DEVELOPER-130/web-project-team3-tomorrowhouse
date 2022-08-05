@@ -13,13 +13,28 @@
 %>		
 <div id="menu">
 	<ul>
+		<!--비회원-->
+		<% if(sUserId==null){%>
+		<li id="logo"><a href="shop_main.jsp"></a></li>
+		<li id="m_cart"><a href="cart_view.jsp">장바구니</a></li>
+		<li id="m_join"><a href="user_write_form.jsp" >회원가입</a></li>
+		<li id="m_login"><a href="user_login_form.jsp">로그인</a></li>
+		
+		<!--관리자-->
+		<% }else if(sUserId.equals("admin")){ %>
+		<li id="logo"><a href="shop_main.jsp"></a></li>
+		<li><a href="user_logout_action.jsp">로그아웃</a></li>
+		
+		
+		<!--회원-->
+		<%}else{ %>
 		<li id="logo"><a href="shop_main.jsp"></a></li>
 		<li id="m_mypage"><a href="user_view.jsp">마이페이지</a></li>
 		<li id="m_order"><a href="order_list.jsp">주문내역</a></li>
 		<li id="m_cart"><a href="cart_view.jsp">장바구니</a></li>
-		<li id="m_join"><a href="user_write_form.jsp" >회원가입</a></li>
-		<li id="m_login"><a href="user_login_form.jsp">로그인</a></li>
 		<li><a href="user_logout_action.jsp">로그아웃</a></li>
+		
+		<% } %>
 		<%-- 
 		<%if(sUserId==null){  %>
 			<li id="mypage" title="나의페이지" ><a href="user_login_form.jsp" ></a></li>
