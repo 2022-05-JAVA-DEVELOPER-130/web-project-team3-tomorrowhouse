@@ -83,7 +83,7 @@ function mainForm() {
 									%>
 									<tr>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
-										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_pw()%></td>
+										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_pw().replaceAll("(?<=.{0}).", "")%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_name()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_email()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_address()%></td>

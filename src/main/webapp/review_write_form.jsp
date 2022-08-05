@@ -11,8 +11,8 @@
 <%
 String oi_noStr = request.getParameter("oi_no");
 /*************/
-sUserId="test4";
-oi_noStr = "23";//이미작성된 리뷰 13
+//sUserId="test4";
+//oi_noStr = "23";//이미작성된 리뷰 13
 /*************/
 UserInfoService userInfoService = new UserInfoService();
 UserInfo userInfo = 
