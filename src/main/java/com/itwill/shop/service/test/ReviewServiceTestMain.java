@@ -2,6 +2,8 @@ package com.itwill.shop.service.test;
 
 import java.util.ArrayList;
 
+import com.itwill.shop.dto.OrderItem;
+import com.itwill.shop.dto.Product;
 import com.itwill.shop.dto.review.Review;
 import com.itwill.shop.service.ReviewService;
 
@@ -22,6 +24,16 @@ public class ReviewServiceTestMain {
 
 		review = new Review(10, null, null, null, 0, null, 0, "test6", null);
 		System.out.println(reviewService.updateByReviewNo(review));
+		
+		Product product = new Product(1,null,0,null,null,0,null);
+		System.out.println(	reviewService.selectAllByProductNo(new Review(0,null,null,null,0,null,0,null,
+													new OrderItem(0,0,0,
+																	product
+																))));
+		
+		ArrayList<Review> arrayList = new ArrayList<Review>(0);
+		arrayList.size();
+		System.out.println(arrayList.size());
 	}
 
 }
