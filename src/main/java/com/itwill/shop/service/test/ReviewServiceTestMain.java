@@ -16,6 +16,9 @@ public class ReviewServiceTestMain {
 		reviewService.selectAllByUserId(review);
 		System.out.println(reviewList);
 		
+		review = new Review(10, null, null, null, 0, null, 0, "test6", null);
+		System.out.println(reviewService.updateClickCountByReviewNo(review));
+		
 	}
 
 }

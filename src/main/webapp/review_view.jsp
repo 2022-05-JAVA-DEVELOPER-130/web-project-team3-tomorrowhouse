@@ -10,6 +10,8 @@
 	request.getParameter("r_no");
 	ReviewService reviewService = new ReviewService();
 	Review review = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
+	reviewService.updateClickCountByReviewNo(review);
+
 	review =reviewService.selectByReviewNo(review);
 			
 	/*
@@ -61,8 +63,8 @@
 			document.f.submit();
 		}
 	}
-	function boardList() {
-		f.action = "board_list.jsp?pageno="+<%=pageno%>;
+	function reviewList() {
+		f.action = "review_list.jsp";
 		f.submit();
 	}
 </script>
@@ -129,10 +131,10 @@
 								<tr>
 									<td align=center><input type="button" value="글쓰기"
 										onClick="boardCreate()"> &nbsp; 
-										<input type="button" value="답글쓰기" onClick="boardReplyCreate()"> &nbsp; 
+										<!-- <input type="button" value="답글쓰기" onClick="boardReplyCreate()"> &nbsp; --> 
 										<input type="button" value="수정" onClick="boardUpdate()"> &nbsp; 
 										<input type="button" value="삭제" onClick="boardRemove()"> &nbsp; 
-										<input type="button" value="리스트" onClick="boardList()"></td>
+										<input type="button" value="리스트" onClick="reviewList()"></td>
 								</tr>
 							</table></td>
 					</tr>
