@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -223,6 +224,24 @@ public class ReviewDao {
 		return rowCount;
 	}
 	
+	public int updateClickCountByReviewNo(Review review)throws Exception{
+		int r_click_count =0;
+		Review updateReview = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		con=dataSource.getConnection();
+		/*
+			public static final String UPDATE_CLICK_COUNT_BY_REVIEW_NO =
+			"update review set r_click_count=r_click_count+1 where r_no = ?";
+		 */
+		pstmt=con.prepareStatement(ReviewSQL.UPDATE_CLICK_COUNT_BY_REVIEW_NO);
+		pstmt.setInt(1, review.getR_no());
+		int rowCount = pstmt.executeUpdate();
+		con.close();
+		return rowCount;
+	}
 	/* ----- review delete ----*/
 	//6. u_id로 후기 전체삭제
 	//delete from review where u_id = 'test1';
@@ -289,6 +308,7 @@ public class ReviewDao {
 	//9.리뷰 작성시, 기존에 작성된 리뷰가 있는지 orderItem_no로 체크
 	 //-> u_id & p_no조합은, 고객이 상품을 여러번 샀을 수도있다.
 	public int isExistedReviewByOrderitemNo(Review review) throws Exception {
+		int review_count =0;
 		 Connection con=dataSource.getConnection();
 		 /*
 		  	public static final String IS_EXISTED_REVIEW_BY_ORDER_ITEM_NO =
@@ -297,11 +317,14 @@ public class ReviewDao {
 		 PreparedStatement pstmt=con.prepareStatement(ReviewSQL.IS_EXISTED_REVIEW_BY_ORDER_ITEM_NO);
 		 pstmt.setInt(1, review.getOrderItem().getOi_no());
 		 ResultSet rs = pstmt.executeQuery();
-		 rs.next();
-		 int review_count = rs.getInt(1);
+		 if(rs.next()) {
+			 review_count = rs.getInt(1);
+		 }
 		 con.close();
 		return review_count;
 	}
+	
+	
 	
 	/******* 도전 *******************************************/
 	/*
@@ -342,5 +365,10 @@ public class ReviewDao {
 		}
 		return count;
 	}
+	
+	/*
+	 * 
+	 */
+	
 	
 }

@@ -32,14 +32,25 @@ public class ReviewService {
 	}
 	
 	
-		//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
+	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
 	//select * from review where r_no=26;
 	public Review selectByReviewNo(Review review)throws Exception{
 	
 	return reviewDao.selectByReviewNo(review);
 	}
+	
+	/* ------ review update------ */
+	//리뷰 클릭시, r_click_count 증가
+	public int updateClickCountByReviewNo(Review review)throws Exception{
+		return reviewDao.updateClickCountByReviewNo(review);
+	}
+	
+	
 }
 	
+
+
+
 	/***************/
 
 	

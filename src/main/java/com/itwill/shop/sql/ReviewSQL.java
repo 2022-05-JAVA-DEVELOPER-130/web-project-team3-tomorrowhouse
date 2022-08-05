@@ -66,6 +66,9 @@ public class ReviewSQL {
 	public static final String UPDATE_BY_REVIEW_NO =
 			"update review set r_title = ?, r_content = ? where r_no= ?";
 	
+	public static final String UPDATE_CLICK_COUNT_BY_REVIEW_NO =
+			"update review set r_click_count=r_click_count+1 where r_no = ?";
+	
 	
 	/* ----- review delete ----*/
 	//6. u_id로 후기 전체삭제

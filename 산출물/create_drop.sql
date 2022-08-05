@@ -107,9 +107,9 @@ CREATE TABLE review(
 		r_title                       		VARCHAR2(100)		 NULL ,
 		r_content                     		VARCHAR2(1000)		 NULL ,
 		r_date                        		DATE		 DEFAULT sysdate		 NULL ,
-		r_rating                      		NUMBER(10)		 DEFAULT 5		 NULL ,
+		r_rating                      		NUMBER(10)		 DEFAULT 0		 NULL ,
 		r_image                       		VARCHAR2(50)		 NULL ,
-		r_click_count                 		NUMBER(10)		 NULL ,
+		r_click_count                 		NUMBER(10)		DEFAULT 0 NULL ,
 		u_id                          		VARCHAR2(50)		 NULL ,
 		oi_no                         		NUMBER(10)		 NULL 
 );
