@@ -104,7 +104,6 @@ ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
 								<tr>
 									<td align=center>&nbsp;&nbsp;
 									<a href=product_list.jsp class=m1>계속 구경하기</a>
-									<a href='javascript:order_delete_all_action();' class=m1>주문전체삭제</a>
 									</td>
 								</tr>
 							</table></td>
