@@ -147,6 +147,9 @@ select * from orders where u_id = 'test3';
 --delete
 delete from orderitem where o_no=(select o_no from orders where u_id = 'test3');
 delete from orders where u_id = 'test3';
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------
 
 
