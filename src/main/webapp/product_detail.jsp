@@ -126,8 +126,9 @@ if (detailProduct == null) {
 												<option value="9">9
 												<option value="10">10
 											</select> 개<br><br> 
-												<input type=submit value="장바구니에담기[장바구니보여주기]" /><br><br> 
-												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기[계속쇼핑팝업]" />
+												<!--  <input type=submit value="장바구니에담기[장바구니보여주기]" /> -->
+												<br><br> 
+												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기" />
 												<input type="hidden" name=p_no value="<%=detailProduct.getP_no()%>">
 										</form>
 									</td>
