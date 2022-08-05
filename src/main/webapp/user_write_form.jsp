@@ -1,13 +1,11 @@
-<%@page import="com.itwill.shop.dto.UserInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-String msg=(String)request.getAttribute("msg");
-if(msg==null)msg="";
-UserInfo fuser=(UserInfo)request.getAttribute("fuser");
-if(fuser==null)fuser=new UserInfo("","","","","","");
+	String msg = request.getParameter("msg");
+	if(msg==null){
+		msg="";
+	}
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,42 +13,43 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/user.css" type="text/css">
+ 
 <style type="text/css" media="screen">
 </style>
 <script type="text/javascript">
 	function userCreate() {
 		if (document.f.u_id.value == "") {
-			alert("사용자 아이디를 입력하십시요.");
+			alert("사용자 아이디를 입력하십시오.");
 			document.f.u_id.focus();
-			return;
+			return false;
 		}
 		if (document.f.u_pw.value == "") {
-			alert("비밀번호를 입력하십시요.");
+			alert("비밀번호를 입력하십시오.");
 			document.f.u_pw.focus();
-			return;
+			return false;
 		}
 		if (document.f.u_pw2.value == "") {
-			alert("비밀번호 확인을 입력하십시요.");
+			alert("비밀번호확인을 입력하십시오.");
 			f.u_pw2.focus();
-			return;
+			return false;
 		}
 		if (document.f.u_name.value == "") {
-			alert("이름을 입력하십시요.");
+			alert("이름을 입력하십시오.");
 			f.u_name.focus();
-			return;
+			return false;
 		}
 		if (document.f.u_email.value == "") {
-			alert("이메일 주소를 입력하십시요.");
+			alert("이메일 주소를 입력하십시오.");
 			f.u_email.focus();
-			return;
+			return false;
 		}
 		if (document.f.u_address.value == "") {
-			alert("주소를 입력하십시요.");
+			alert("주소를 입력하십시오.");
 			f.u_address.focus();
 			return;
 		}
 		if (document.f.u_phone.value == "") {
-			alert("전화번호를 입력하십시요.");
+			alert("전화번호를 입력하십시오.");
 			f.u_phone.focus();
 			return;
 		}
@@ -58,21 +57,26 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 			alert("비밀번호와 비밀번호확인은 일치하여야합니다.");
 			f.u_pw.focus();
 			f.u_pw.select();
-			return;
+			return false;
 		}
 		document.f.action = "user_write_action.jsp";
 		document.f.method='POST';
 		document.f.submit();
 	}
-	function userMain() {
-		location.href='shop_main.jsp';
+
+	function userList() {
+		f.action = "user_list.jsp";
+		f.submit();
 	}
 	/*
 	아이디중복체크
+	*/
 	function openIdCheck(){
 		window.open('user_id_check_form.jsp','checkForm','width=500,height=300,resizable = no,scrollbar = no');
 	}
-	*/
+	
+	
+	
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -117,16 +121,17 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<input type="text" style="width: 150px" name="u_id"
-											 value="<%=fuser.getU_id()%>" >&nbsp;&nbsp;<font color="red"><%=msg%></font>
-											
+											<input onclick="openIdCheck();" type="text" style="width: 150px" name="u_id" 
+											value="" readonly="readonly">&nbsp;&nbsp;
+											<input type="button" value="아이디 중복 검사" onclick="openIdCheck();">
+											<font color="red"><%=msg%></font>
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="password" style="width: 150px" name="u_pw"
-											value="<%=fuser.getU_pw()%>">
+											value="">
 										</td>
 									</tr>
 									<tr>
@@ -134,14 +139,14 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 											확인</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="password" style="width: 150px" name="u_pw2"
-											value="<%=fuser.getU_pw()%>">
+											value="">
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="u_name"
-											value="<%=fuser.getU_name()%>">
+											value="">
 										</td>
 									</tr>
 									<tr>
@@ -149,27 +154,12 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="u_email"
-											value="<%=fuser.getU_email()%>">
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">주소
-											</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<input type="text" style="width: 150px" name="u_address"
-											value="<%=fuser.getU_address()%>">
-										</td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">연락처
-											</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<input type="text" style="width: 150px" name="u_phone"
-											value="<%=fuser.getU_phone()%>">
+											value="">
 										</td>
 									</tr>
 								</table>
 							</form> <br />
+
 							<table border=0 cellpadding=0 cellspacing=1>
 								<tr>
 									<td align=center>
@@ -192,7 +182,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 			<jsp:include page="include_common_bottom.jsp"/>
 			<!-- include_common_bottom.jsp end-->
 		</div>
-		</div>
+	</div>
 	<!--container end-->
 </body>
 </html>
