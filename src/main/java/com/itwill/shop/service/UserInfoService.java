@@ -1,9 +1,12 @@
 package com.itwill.shop.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.shop.dao.UserInfoDao;
 import com.itwill.shop.dto.UserInfo;
+import com.itwill.shop.dto.UserInfoListPageMakerDto;
+import com.itwill.shop.dto.review.PageMaker;
 
 
 public class UserInfoService {
@@ -60,8 +63,22 @@ public class UserInfoService {
 	/*
 	 * 회원 전체 리스트
 	 */
-	public ArrayList<UserInfo> findUserInfoList() throws Exception {
-		return userInfoDao.findUserInfoList();
+	public UserInfoListPageMakerDto findUserInfoList(int pageno) throws Exception {
+		// 1.전체회원수
+		int totalRecordCount =userInfoDao.getUserInfoCount();
+		// 2.paging 계산 (PageMaker 유틸클레스)
+		PageMaker pageMaker = 
+				new PageMaker(totalRecordCount, pageno);
+		PageMaker.BLOCK_SCALE=4;
+		PageMaker.PAGE_SCALE=4;
+		
+		// 3. 유저정보 얻기 
+		List<UserInfo> userInfoList = userInfoDao.findUserInfoList(pageMaker.getPageBegin(),pageMaker.getPageEnd());
+		UserInfoListPageMakerDto pageMakerUserInfoList = new UserInfoListPageMakerDto();
+		pageMakerUserInfoList.totRecordCount = totalRecordCount;
+		pageMakerUserInfoList.itemList = userInfoList;
+		pageMakerUserInfoList.pageMaker =pageMaker;
+		return pageMakerUserInfoList;
 	}
 
 	/*

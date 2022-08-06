@@ -157,16 +157,18 @@ public class UserInfoDao {
 	}
 
 	/*
-	 * 모든사용자 정보를 데이타베이스에서 찾아서 List<UserInfo> 콜렉션 에 저장하여 반환
+	 * 유저전체리스트 출력 (페이징 포함)
 	 */
-	public ArrayList<UserInfo> findUserInfoList() throws Exception {
+	public ArrayList<UserInfo> findUserInfoList(int being,int end) throws Exception {
+		ArrayList<UserInfo> findUserInfoList = new ArrayList<UserInfo>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<UserInfo> findUserInfoList = new ArrayList<UserInfo>();
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(UserInfoSQL.USER_SELECT_ALL);
+			pstmt.setInt(1, being);
+			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				findUserInfoList.add(new UserInfo(rs.getString("u_id"),
@@ -175,7 +177,6 @@ public class UserInfoDao {
 											  rs.getString("u_email"),
 											  rs.getString("u_address"),
 											  rs.getString("u_phone")));
-
 			}
 		} finally {
 			/*
@@ -190,7 +191,35 @@ public class UserInfoDao {
 		}
 		return findUserInfoList;
 	}
-
+	
+	//회원 전체 카운트 
+	public int getUserInfoCount() throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		int count=0;
+		try {
+			con =dataSource.getConnection();
+			pstmt= con.prepareStatement(UserInfoSQL.USER_SELECT_COUNT);
+			rs= pstmt.executeQuery();
+			if(rs.next())
+				count = rs.getInt(1);
+		} finally {
+			try {
+				if (rs !=null)
+					rs.close();
+			} catch (Exception ex) {
+			}
+			try { 
+				if (con != null)
+					con.close();
+			}catch(Exception ex) {
+			}
+		}
+		return count;
+	}
+	
+	
 	/*
 	 * 인자로 전달되는 아이디를 가지는 사용자가 존재하는지의 여부를 판별
 	 */
@@ -223,4 +252,7 @@ public class UserInfoDao {
 		return isExist;
 	}
 
+	
+	
+	
 }

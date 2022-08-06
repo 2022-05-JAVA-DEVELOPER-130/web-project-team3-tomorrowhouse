@@ -13,9 +13,12 @@ public class UserInfoSQL {
 	//ID로 회원 찾기 <USER_SELECT_BY_ID>
 	public final static String USER_SELECT_BY_ID=
 	"select u_id,u_pw,u_name,u_email,u_address,u_phone from userinfo where u_id=?";
-	//모든 회원 찾기 <USER_SELECT_ALL>
+	//모든 회원 찾기 <USER_SELECT_ALL><페이징>
 	public final static String USER_SELECT_ALL=
-	"select u_id,u_pw,u_name,u_email,u_address,u_phone from userinfo";
+	"select * from ( select rownum idx, s.*  FROM ( SELECT * from userinfo) s )WHERE idx >= ? AND idx <= ?";
+	//userInfo 전체 인원 카운트 
+	public final static String USER_SELECT_COUNT=
+			"SELECT Count(*) u_count from userinfo";
 	//ID로 중복 체크 <USER_SELECT_BY_ID_COUNT>
 	public final static String USER_SELECT_BY_ID_COUNT=
 	"select count(*) cnt from userinfo where u_id=?";

@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.UserInfoListPageMakerDto"%>
 <%@page import="com.itwill.shop.dto.review.PageInputDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
@@ -8,10 +9,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf"%>
 <%
+String pagenoStr= request.getParameter("pageno");
+if(pagenoStr ==null|| pagenoStr.equals("")){
+	pagenoStr="1";
+}
 
-UserInfoService userInfoService = new UserInfoService();
-
-ArrayList<UserInfo> userInfoList = userInfoService.findUserInfoList();
+UserInfoListPageMakerDto userInfoListPage
+ = new UserInfoService().findUserInfoList(Integer.parseInt(pagenoStr));
 
 %>
 
@@ -65,6 +69,14 @@ function mainForm() {
 								<tr>
 									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>전체 회원 정보</b></td>
 								</tr>
+								<tr bgcolor="#FFFFFF">
+									<td height="20" class="t1" align="right" valign="bottom">♠
+										총 <font color="#FF0000"><%=userInfoListPage.totRecordCount%></font>
+										건 | 현재페이지( <font color="#FF0000"><%=userInfoListPage.pageMaker.getCurPage()%></font>
+										/ <font color="#0000FF"><%=userInfoListPage.pageMaker.getTotPage()%></font>
+										)
+									</td>
+								</tr>
 							</table> <!--form-->
 							<form name="f" method="post">
 								<table align=center width=80%  border="0" cellpadding="0"
@@ -79,7 +91,7 @@ function mainForm() {
 									</tr>
 
 									<%
-									for (UserInfo userInfo : userInfoList) {
+									for (UserInfo userInfo : userInfoListPage.itemList) {
 									%>
 									<tr>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
@@ -95,6 +107,38 @@ function mainForm() {
 
 								</table>
 							</form> <br />
+							<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align="center">
+							     			
+							     			<%if(userInfoListPage.pageMaker.getPrevGroupStartPage()>0) {%>  
+										    <a href="./user_list.jsp?pageno=1">◀◀</a>&nbsp;
+										     <%}%>
+										 	 <%if(userInfoListPage.pageMaker.getPrevPage()>0) {%> 
+											<a href="./user_list.jsp?pageno=<%=userInfoListPage.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
+										<%}%>
+										
+										<%
+											for (int i = userInfoListPage.pageMaker.getBlockBegin(); i <= userInfoListPage.pageMaker.getBlockEnd(); i++) {
+										 	if (userInfoListPage.pageMaker.getCurPage() == i) {
+										%>
+										 <font color='blue'><strong><%=i %></strong></font>&nbsp;
+										 <%} else {%>
+										<a href="./user_list.jsp?pageno=<%=i %>"><strong><%=i %></strong></a>&nbsp;
+										  <%
+										   }
+										  }%>
+										  
+										   <%if(userInfoListPage.pageMaker.getNextGroupStartPage()< userInfoListPage.pageMaker.getTotPage()){%>
+										  <a href="./user_list.jsp?pageno=<%=userInfoListPage.pageMaker.getNextPage()%>">▶&nbsp;</a>
+										  <%}%>
+										 <%if(userInfoListPage.pageMaker.getNextGroupStartPage()< userInfoListPage.pageMaker.getTotPage()){%>
+										  <a href="./user_list.jsp?pageno=<%=userInfoListPage.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
+										  <%}%>
+									</td>
+								</tr> 
+							</table> <!-- button -->
+							
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp;
