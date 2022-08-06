@@ -16,9 +16,9 @@ public class UserInfoServiceTest {
 		System.out.println(">>>>> 회원 로그인");
 		System.out.println(userInfoService.login("test1","pw1"));
 		
-		System.out.println(">>>>> 회원 전체 리스트");
-		System.out.println(userInfoService.findUserInfoList());
-		
+//		System.out.println(">>>>> 회원 전체 리스트");
+//		System.out.println(userInfoService.findUserInfoList());
+//		
 		System.out.println(">>>>> 회원 1명 보기");
 		System.out.println(userInfoService.findUser("test1"));
 		
