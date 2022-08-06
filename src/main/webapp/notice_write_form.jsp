@@ -101,7 +101,20 @@
 									<input type="hidden" value="쓰기" onClick="noticeCreate()"> &nbsp; 
 									<input type="button" value="목록" onClick="noticeList()"></td>
 									 <% } %>
-								</tr>
-							</table></td>
+								</table></td>
+					</tr>
+				</table>
+			</div>
+			<!-- include_content.jsp end-->
+			<!-- content end -->
+		</div>
+		<!--wrapper end-->
+		<div id="footer">
+			<!-- include_common_bottom.jsp start-->
+			<jsp:include page="include_common_bottom.jsp" />
+			<!-- include_common_bottom.jsp end-->
+		</div>
+	</div>
+	<!--container end-->
 </body>
 </html>

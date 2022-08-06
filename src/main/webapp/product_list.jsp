@@ -136,13 +136,9 @@ ProductListPageMakerDto productListPageMaker = productService.productSelectAll(I
 										<a
 										href="./product_list.jsp?pageno=<%=productListPageMaker.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
 										 <%}%>
-									</td>
-								</tr>
-							</table> <!-- button -->
-							</form> <br /></td>
+									</table></td>
 					</tr>
 				</table>
-				
 			</div>
 			<!-- include_content.jsp end-->
 			<!-- content end -->

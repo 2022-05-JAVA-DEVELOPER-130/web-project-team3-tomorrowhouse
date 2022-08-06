@@ -24,6 +24,7 @@ String sUserId=(String)session.getAttribute("sUserId");
 	<li><a href=""></a>관리자페이지</li>
 	<li><a href="product_write_form.jsp">상품 등록</a></li>
 	<li><a href="notice_write_form.jsp">공지 작성</a></li>
+	<li><a href="user_list.jsp">전체 회원 정보</a></li>
 	<li><a href=""></a></li>
 	<li><a href=""></a></li>
 	<li><a href="product_list.jsp">전체 상품</a></li>
@@ -38,7 +39,6 @@ String sUserId=(String)session.getAttribute("sUserId");
 	<li><a href="qna_list.jsp">문의 게시판</a></li>
 	<li><a href=""></a></li>
 	<li><a href=""></a></li>
-	<li><a href="user_list.jsp">전체 회원 정보</a></li>
 	<!-- !!!!!!!!관리자는 리뷰게시판이 필요없는가?? 
 	<li><a href="review_list.jsp">리뷰 게시판</a></li> -->
 	

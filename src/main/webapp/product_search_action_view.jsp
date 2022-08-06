@@ -5,18 +5,17 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
 String keyword = request.getParameter("keyword");
-
-if(keyword==null || keyword.equals("")) {
-response.sendRedirect("shop_main.jsp");
-}
-
-//ProductService productService = new ProductService();
-//List<Product> searchList = productService.productSearch(keyword);
-
 String pageno = request.getParameter("pageno");
+
+if(keyword == null || keyword.equals("")) {
+	out.println("<script>");
+	out.println("alert('검색어를 입력하세요.');");
+	out.println("location.href='product_list.jsp';");
+	out.println("</script>");
+	return;
+}
 
 if(pageno==null || pageno.equals("")) {
 	pageno="1";
@@ -24,8 +23,6 @@ if(pageno==null || pageno.equals("")) {
 
 ProductService productService = new ProductService();
 ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integer.parseInt(pageno) , keyword);
-
-
 
 %>    
 
@@ -80,8 +77,9 @@ ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integ
 								</tr>
 							</table>
 					<!-- 검색아이콘 start -->
+							
 							<form method='get' action='product_search_action_view.jsp'>
-							<p align ="right"><input size="30"  type = "text" name='keyword' placeholder="검색어를 입력하세요">&nbsp;<input type = "submit" value="검색">
+										<p align ="right"><input size="30"  type = "text" name='keyword' placeholder="검색어를 입력하세요">&nbsp;<input type = "submit" value="검색">
 							</form>
 							<!-- 검색아이콘 fin -->
 							<form name="f" method="post">
@@ -91,8 +89,7 @@ ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integ
 									int product_size=searchList.itemList.size();
 									int product_column_size=4;
 									int product_line_count = 1;
-									
-									
+					
 									
 									if(searchList.itemList.size() == 0) {
 									%>
@@ -100,14 +97,14 @@ ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integ
 										<br>
 											<br>
 												<br>
+									<embed src="image/ui/no_search_results.png" style="margin: 10px" width="230" height="175px"></embed>
 									<% 
-									out.print("검색결과 없습니다.");
-									}
-																	
+									//out.print("검색결과 없습니다.");
+									}						
 									
 									for (int i=0;i<searchList.itemList.size();i++) {
 											Product product=searchList.itemList.get(i);
-									%>
+									%> 	
 									<!--상품시작 -->
 									<%
 									 if(i%product_column_size==0){
@@ -128,7 +125,7 @@ ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integ
 												for(int j=0; j < 3 - i %4 ; i++){
 												%> <td align="center" width="25%"  bgcolor="ffffff"></td>
 												<%}
-												}%> 
+											}%> 
 									<!--  빈칸채우기 fin -->							
 									<!--상품 끝 -->
 								   <%}   //for문 fin %>

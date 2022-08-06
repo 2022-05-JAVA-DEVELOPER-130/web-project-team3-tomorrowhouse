@@ -154,10 +154,7 @@
 										<a
 										href="./category_list.jsp?cg_no=<%=cgNoStr%>&pageno=<%=productListPageMaker.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
 										 <%}%>
-									</td>
-								</tr>
-							</table> <!-- button -->
-							</form> <br /></td>
+									</table></td>
 					</tr>
 				</table>
 			</div>
