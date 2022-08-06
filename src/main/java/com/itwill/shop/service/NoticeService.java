@@ -42,11 +42,13 @@ public class NoticeService {
 		//2.paging계산(PageMaker 유틸클래스)
 		PageMaker pageMaker=new PageMaker(totalRecordCount,currentPage);
 		
+		
 		//3.게시물데이타 얻기
 		List<Notice> noticeList=
 				noticeDao.findNoticeList(pageMaker.getPageBegin(), pageMaker.getPageEnd());
 		
 		NoticeListPageMakerDto pageMakerNoticeList=new NoticeListPageMakerDto();
+		pageMakerNoticeList.totRecordCount=totalRecordCount;
 		pageMakerNoticeList.itemList=noticeList;
 		pageMakerNoticeList.pageMaker=pageMaker;
 		return pageMakerNoticeList;
