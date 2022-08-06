@@ -147,8 +147,8 @@ if (detailProduct == null) {
 								<tr width=100%>
 									<td width=10% height=200 align=center class=t1>
 									</td>
-									<td width=45% height=200 align=center><img border=0
-										src='image/product/<%=detailProduct.getP_image()%>' width=200 height=200></td>
+									<td width=45% height=300 align=center><img border=0
+										src='image/product/<%=detailProduct.getP_image()%>' width=250 height=250></td>
 									<td width=35% height=200 class=t1>
 										<ol type="disc">
 											<li><b>이름 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
@@ -158,7 +158,7 @@ if (detailProduct == null) {
 											<li><font color=#0000FF><%=detailProduct.getP_desc()%></font></li>
 										</ol>
 										<form name="add_cart_form" method="post" action="cart_add_item_action.jsp" style="display: inline;">
-											수량 :
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
@@ -203,7 +203,7 @@ if (detailProduct == null) {
 								<% }else if(sUserId.equals("admin")){ %>
 								
 								<tr>
-									<td align=center><input type="button" value="상품수정[수정폼]" onClick="product_modify_form();"> &nbsp;
+									<td align=center><input type="button" value="상품수정" onClick="product_modify_form();"> &nbsp;
 									 				 <input type="button" value="상품삭제" onClick="productdelite();"> &nbsp; 
 									 				 <input	type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>

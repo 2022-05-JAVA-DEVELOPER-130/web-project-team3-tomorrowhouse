@@ -155,6 +155,7 @@
 										href="./category_list.jsp?cg_no=<%=cgNoStr%>&pageno=<%=productListPageMaker.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
 										 <%}%>
 									</table></td>
+						</form> </td>
 					</tr>
 				</table>
 			</div>
