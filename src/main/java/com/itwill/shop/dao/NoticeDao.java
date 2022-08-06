@@ -122,7 +122,7 @@ public class NoticeDao {
 			sql.append("			N_No,N_TITLE,N_CONTENT, ");
 			sql.append("			N_DATE ");
 			sql.append("		FROM ");
-			sql.append("			notice ");
+			sql.append("			notice order by n_no desc");
 			sql.append("	) s ");
 
 			sql.append(") ");
@@ -170,7 +170,7 @@ public class NoticeDao {
 		int count = 0;
 		try {
 			con = dataSource.getConnection();
-			String sql = "SELECT COUNT(*) FROM notice";
+			String sql = "SELECT COUNT(*) FROM notice order by n_no desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next())
