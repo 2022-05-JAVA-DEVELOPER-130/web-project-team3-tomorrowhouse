@@ -2,7 +2,6 @@ package com.itwill.shop.service;
 
 import java.util.List;
 
-
 import com.itwill.shop.dao.ProductDao;
 import com.itwill.shop.dto.Product;
 import com.itwill.shop.dto.ProductListPageMakerDto;
@@ -14,18 +13,17 @@ public class ProductService {
 
 	public ProductService() throws Exception {
 		productDao = new ProductDao();
-			}
+	}
 
 	// 상품전체출력
 	public ProductListPageMakerDto productSelectAll(int pageno) throws Exception {
 		// 1.전체글의 갯수
 		int totalRecordCount = productDao.getProductCount();
 		// 2.paging계산(PageMaker 유틸클래스)
-		PageMaker pageMaker =
-				new PageMaker(totalRecordCount, pageno);
-		PageMaker.BLOCK_SCALE=5;
-		PageMaker.PAGE_SCALE=12;
-		
+		PageMaker pageMaker = new PageMaker(totalRecordCount, pageno);
+		PageMaker.BLOCK_SCALE = 5;
+		PageMaker.PAGE_SCALE = 12;
+
 		// 3.게시물데이타 얻기
 		List<Product> productList = productDao.productSelectAll(pageMaker.getPageBegin(), pageMaker.getPageEnd());
 		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
@@ -34,20 +32,18 @@ public class ProductService {
 		pageMakerProductList.pageMaker = pageMaker;
 		return pageMakerProductList;
 	}
-	
-	
-	
-	// 카테고리번호로 해당상품 전체출력(페이징) 
-	public ProductListPageMakerDto productSelectAllCategory(int pageno , int cg_no) throws Exception {
-		
-		int categoryRecordCount = productDao.getProductCategoryCount(cg_no); 
-		System.out.println("categoryRecordCount:"+categoryRecordCount);
-		PageMaker pageMaker = new PageMaker(categoryRecordCount,pageno);
-		PageMaker.BLOCK_SCALE=5;
-		PageMaker.PAGE_SCALE=12;
-	
-		List<Product> productList = productDao.productSelectAllCategory(cg_no, pageMaker.getPageBegin(), pageMaker.getPageEnd()); 
-		System.out.println("productList:"+productList.size());
+
+	// 카테고리번호로 해당상품 전체출력(페이징)
+	public ProductListPageMakerDto productSelectAllCategory(int pageno, int cg_no) throws Exception {
+		int categoryRecordCount = productDao.getProductCategoryCount(cg_no);
+		//System.out.println("categoryRecordCount:" + categoryRecordCount);
+		PageMaker pageMaker = new PageMaker(categoryRecordCount, pageno);
+		PageMaker.BLOCK_SCALE = 5;
+		PageMaker.PAGE_SCALE = 12;
+
+		List<Product> productList = productDao.productSelectAllCategory(cg_no, pageMaker.getPageBegin(),
+				pageMaker.getPageEnd());
+		//System.out.println("productList:" + productList.size());
 		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
 		pageMakerProductList.totRecordCount = categoryRecordCount;
 		pageMakerProductList.itemList = productList;
@@ -55,26 +51,24 @@ public class ProductService {
 		return pageMakerProductList;
 
 	}
-	
-	
+
 	// 검색상품페이징
 	public ProductListPageMakerDto productSelectAllSearch(int pageno , String keyword) throws Exception {
-		
-		int searchRecordCount = productDao.getProductSearchCount(keyword); 
-		PageMaker pageMaker = new PageMaker(searchRecordCount,pageno);
+		//전체글개수
+		int seachRecordCount = productDao.getProductSearchCount(keyword);
+		//페이지계산
+		PageMaker pageMaker = new PageMaker(seachRecordCount,pageno);
 		PageMaker.BLOCK_SCALE=5;
 		PageMaker.PAGE_SCALE=12;
-	
-		List<Product> productList = productDao.productSelectAllSearch(keyword, pageMaker.getPageBegin(), pageMaker.getPageEnd()); 
-		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
-		pageMakerProductList.totRecordCount = searchRecordCount;
-		pageMakerProductList.itemList = productList;
-		pageMakerProductList.pageMaker = pageMaker;
-		return pageMakerProductList;
-
-	}
 		
-	
+		//계시물 데이터 얻기
+		List<Product> productList = productDao.productSelectAllSearch(keyword, pageMaker.getPageBegin(), pageMaker.getPageEnd());
+		ProductListPageMakerDto pageMakerProductList = new ProductListPageMakerDto();
+		pageMakerProductList.totRecordCount = seachRecordCount;
+		pageMakerProductList.itemList = productList;
+		pageMakerProductList.pageMaker = pageMaker;	
+		return pageMakerProductList;
+		}
 
 	// 카테고리번호로 해당상품 전체출력
 	public List<Product> selectAllByCgNo(int no) throws Exception {
@@ -94,9 +88,6 @@ public class ProductService {
 	// 상품명 검색
 	public List<Product> productSearch(String keyword) throws Exception {
 		List<Product> productSearchList = productDao.productSearch(keyword);
-		for (Product product : productSearchList) {
-			System.out.println(product);
-		}
 		return productSearchList;
 	}
 

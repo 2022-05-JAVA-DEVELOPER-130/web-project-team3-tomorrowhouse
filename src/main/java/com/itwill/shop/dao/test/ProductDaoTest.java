@@ -59,11 +59,14 @@ public class ProductDaoTest {
 		System.out.println(productDao.clickCount(new Product(1, null, 0, null, null, 10, null)));
 		*/
 		
-		System.out.println("상품검색");
-		List<Product> productSerchList = productDao.productSearch("의자");
-		for(Product product : productSerchList) {
-			System.out.println(product);
+		
+		//검색
+		System.out.println(">>상품검색");
+		List<Product> productSerchList = productDao.productSearch("책");
+		for(Product product2 : productSerchList) {
+			System.out.println(product2);
 		}
+		
 		
 		
 	}//

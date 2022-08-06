@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.ProductListPageMakerDto"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
@@ -8,19 +9,24 @@
 <%
 String keyword = request.getParameter("keyword");
 
-if( keyword==null || keyword.equals("")) {
-	response.sendRedirect("shop_main.jsp");
+if(keyword==null || keyword.equals("")) {
+response.sendRedirect("shop_main.jsp");
+}
+
+//ProductService productService = new ProductService();
+//List<Product> searchList = productService.productSearch(keyword);
+
+String pageno = request.getParameter("pageno");
+
+if(pageno==null || pageno.equals("")) {
+	pageno="1";
 }
 
 ProductService productService = new ProductService();
-List<Product> searchList = productService.productSearch(keyword);
+ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integer.parseInt(pageno) , keyword);
 
 
-if(searchList.size() == 0) {
-	//response.sendRedirect("product_serch_form.jsp");
-}
 
-//response.sendRedirect("product_detail.jsp?p_no="+);
 %>    
 
 <!DOCTYPE html>
@@ -82,10 +88,13 @@ if(searchList.size() == 0) {
 								<table width="100%" align="center" border="0" cellpadding="10"
 									cellspacing="0" bgcolor="BBBBBB">
 									<%
-									//int product_size=productList.size();
+									int product_size=searchList.itemList.size();
 									int product_column_size=4;
 									int product_line_count = 1;
-									if(searchList.size() == 0) {
+									
+									
+									
+									if(searchList.itemList.size() == 0) {
 									%>
 									<br>
 										<br>
@@ -96,8 +105,8 @@ if(searchList.size() == 0) {
 									}
 																	
 									
-									for (int i=0;i<searchList.size();i++) {
-											Product product=searchList.get(i);
+									for (int i=0;i<searchList.itemList.size();i++) {
+											Product product=searchList.itemList.get(i);
 									%>
 									<!--상품시작 -->
 									<%
@@ -115,7 +124,7 @@ if(searchList.size() == 0) {
 									</tr>
 									<%} %>	
 									<!--  빈칸채우기 start -->
-										<% if(i==searchList.size()-1) {
+										<% if(i==searchList.itemList.size()-1) {
 												for(int j=0; j < 3 - i %4 ; i++){
 												%> <td align="center" width="25%"  bgcolor="ffffff"></td>
 												<%}
@@ -124,6 +133,37 @@ if(searchList.size() == 0) {
 									<!--상품 끝 -->
 								   <%}   //for문 fin %>
 								</table>
+								<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align="center">
+							     
+										 <%if(searchList.pageMaker.getPrevGroupStartPage()>0) {%>    
+										    <a href="./product_search_action_view.jsp?keyword=">◀◀</a>&nbsp;
+										 <%}%>
+										 <%if(searchList.pageMaker.getPrevPage()>0) {%>    
+											<a href="./product_search_action_view.jsp?keyword=<%=keyword%>&pageno=<%=searchList.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
+										 <%}%>
+										<%
+											for (int i = searchList.pageMaker.getBlockBegin(); i <= searchList.pageMaker.getBlockEnd(); i++) {
+										 	if (searchList.pageMaker.getCurPage() == i) {
+										%>
+										 <font color='red'><strong><%=i%></strong></font>&nbsp;
+										<%} else {%>
+										<a href="./product_search_action_view.jsp?keyword=<%=keyword%>&pageno=<%=i%>"><strong><%=i%></strong></a>&nbsp;
+										<%
+										   }
+										  }
+										 %>
+										 <%if(searchList.pageMaker.getCurPage() != searchList.pageMaker.getTotPage()){%>
+										  <a href="./product_search_action_view.jsp?keyword=<%=keyword%>&pageno=<%=searchList.pageMaker.getNextPage()%>">▶&nbsp;</a>
+										 <%}%>
+										 <%if(searchList.pageMaker.getNextGroupStartPage() < searchList.pageMaker.getTotPage()){%>
+										<a
+										href="./product_search_action_view.jsp?keyword=<%=keyword%>&pageno=<%=searchList.pageMaker.getNextGroupStartPage()%>">▶▶</a>&nbsp;
+										 <%}%>
+									</td>
+								</tr>
+							</table>
 							</form> <br /></td>
 					</tr>
 				</table>

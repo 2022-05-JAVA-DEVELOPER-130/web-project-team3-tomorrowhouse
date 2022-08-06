@@ -69,28 +69,69 @@ public class ProductDao {
 		pstmt.close();
 		return productList;
 	}
-	
-	//검색결과 상품(페이징)
+
+	// 검색결과 상품(페이징)
 	public List<Product> productSelectAllSearch(String keyword, int begin, int end) throws Exception {
-		List<Product> productList = new ArrayList<Product>();
+		List<Product> productSerchList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_ALL_BY_SEARCH);
-		pstmt.setString(1, "%" + keyword + "%");
+		pstmt.setNString(1, "%" + keyword + "%");
 		pstmt.setInt(2, begin);
 		pstmt.setInt(3, end);
 		ResultSet rs = pstmt.executeQuery();
-		while(rs.next()) {
-			productList.add(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-					rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
-					new Category(rs.getInt("cg_no"), null)));
+		try {
+			while (rs.next()) {
+				Product product = (new Product(rs.getInt("p_no"),
+											   rs.getString("p_name"),
+											   rs.getInt("p_price"),
+											   rs.getString("p_image"),
+											   rs.getString("p_desc"),
+											   rs.getInt("p_click_count"),
+											   new Category(rs.getInt("cg_no"), null)));
+				productSerchList.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)	rs.close();
+			if (pstmt != null) pstmt.close();
+			if (con != null) con.close();
 		}
-		rs.close();
-		con.close();
-		pstmt.close();
-		return productList;
+		return productSerchList;
 	}
-	
-		
+
+	// product 검색기능 - 상품명만
+	// public final static String PRODUCT_SERCH = "select * from product where
+	// p_name like ?";
+	public List<Product> productSearch(String keyword) throws Exception {
+		List<Product> productSerchList = new ArrayList<Product>();
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SEARCH);
+		pstmt.setString(1, "%" + keyword + "%");
+		ResultSet rs = pstmt.executeQuery();
+		try {
+			while (rs.next()) {
+				Product product = (new Product(rs.getInt("p_no"),
+												rs.getString("p_name"),
+												rs.getInt("p_price"),
+												rs.getString("p_image"),
+												rs.getString("p_desc"),
+												rs.getInt("p_click_count"),
+												new Category(rs.getInt("cg_no"), null)));
+				productSerchList.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return productSerchList;
+	} // method fin
 
 	// 상품번호(p_no)로 1개 출력
 	public Product productSelectByNo(Product product) throws Exception {
@@ -136,51 +177,22 @@ public class ProductDao {
 		pstmt.setInt(1, cg_no);
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
-			productList.add(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-					rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
-					new Category(rs.getInt("cg_no"), null)));
+			productList.add(new Product(rs.getInt("p_no"),
+										rs.getString("p_name"),
+										rs.getInt("p_price"),
+										rs.getString("p_image"), 
+										rs.getString("p_desc"), 
+										rs.getInt("p_click_count"),
+										new Category(rs.getInt("cg_no"), null)));
 		}
 		con.close();
 		return productList;
 	}
 
-	// product 검색기능 - 상품명만
-	// public final static String PRODUCT_SERCH = "select * from product where
-	// p_name like ?";
-	public List<Product> productSearch(String keyword) throws Exception {
-		List<Product> productSerchList = new ArrayList<Product>();
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SEARCH);
-		pstmt.setString(1, "%" + keyword + "%");
-		ResultSet rs = pstmt.executeQuery();
-
-		try {
-
-			while (rs.next()) {
-				Product product = (new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-						rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"),
-						new Category(rs.getInt("cg_no"), null)));
-				productSerchList.add(product);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (con != null)
-				con.close();
-		}
-		return productSerchList;
-	} // method fin
-
 	// InsertProduct - 새상품추가(관리자 전용)
 	public int insertProduct(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_INSERT);
-		// "insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count,
-		// cg_no) values (product_p_no_seq.nextval,?,?,?,?,?,?)";
 		pstmt.setString(1, product.getP_name());
 		pstmt.setInt(2, product.getP_price());
 		pstmt.setString(3, product.getP_image());
@@ -295,7 +307,7 @@ public class ProductDao {
 		}
 		return count;
 	}
-	
+
 	public int getProductSearchCount(String keyword) throws Exception {
 
 		Connection con = null;
@@ -304,7 +316,7 @@ public class ProductDao {
 		int count = 0;
 		try {
 			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_COUNT_CATEGORY);
+			pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_COUNT_SEARCH);
 			pstmt.setString(1, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
 			if (rs.next())

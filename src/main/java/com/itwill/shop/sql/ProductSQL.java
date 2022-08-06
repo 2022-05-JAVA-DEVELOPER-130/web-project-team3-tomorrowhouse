@@ -34,7 +34,7 @@ public class ProductSQL {
  
  //검색 상품 카운트
  public final static String PRODUCT_SELECT_COUNT_SEARCH
- =" select count(*) from product where p_name like ? ";
+ =" select count(*) p_count from product where p_name like ? ";
  
 
  //product 상품번호(p_no)로 1개 보기
