@@ -108,8 +108,9 @@
 										<%=qna.getQ_title() %>	
 										</a>
 										</td>
-										<td width=80 align=center bgcolor="ffffff"><%=qna.getU_id()%>
-										</td>
+										
+										<td width=80 align=center bgcolor="ffffff">
+											<%=qna.getU_id()%>
 										<td width=80 align=center bgcolor="ffffff">
 											<%=qna.getQ_date()%>
 										</td>
@@ -171,7 +172,7 @@
 									<!--관리자만 작성가능. 기능추가필요-->
 									
 									<!--  <% //if(sUserId.equals("admin")) {%>	--> 						
-									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
+									<input type="button" value="게시물 생성" onclick="qnaCreate();" /></td>
 									<!-- <%//}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<%//} %> -->
