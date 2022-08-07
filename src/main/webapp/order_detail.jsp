@@ -43,6 +43,27 @@ form > table tr td{
 */
 </style>
 <script type="text/javascript">
+	/*
+	(참고)cart item1개삭제하기
+	 */
+	function cart_delete_item_action(formId) {
+		if(window.confirm('해당상품을 장바구니에서 삭제하시겠습니까?')){
+			var form = document.getElementById(formId);
+			form.method = 'POST';
+			form.action = 'cart_delete_item_action.jsp';
+			form.submit();
+		}
+	}
+	
+	function review_select_write_action(formId) {
+		if(window.confirm('리뷰를 작성하시겠습니까?')){
+			var form = document.getElementById(formId);
+			form.method = 'POST';
+			form.action = 'review_write_form.jsp';
+			form.submit();
+		}
+	}
+	
 	function review_write() {
 		/*
 		if(f.r_count==0){
@@ -52,6 +73,15 @@ form > table tr td{
 		f.action = "review_write_form.jsp";
 		f.method = "POST";
 		f.submit();
+	}
+
+	function review_select_view_action(formId) {
+		if(window.confirm('리뷰를 보시겠습니까?')){
+			var form = document.getElementById(formId);
+			form.method = 'POST';
+			form.action = 'review_view_form.jsp';
+			form.submit();
+		}
 	}
 	
 	function review_view() {
@@ -65,12 +95,11 @@ form > table tr td{
 		f.method = "POST";
 		f.submit();
 	}
-	
+
 	
 </script>
 </head>
-<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
@@ -134,7 +163,9 @@ form > table tr td{
 										</td>
 									</tr>
 								</table>
-								<br/>	
+								</form> 
+								<br/>
+								<div id='f'>	
 								<table align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문제품목록</caption>
 									<tr style="border: 0.1px solid">
@@ -161,24 +192,32 @@ form > table tr td{
 										<td width=112 height=26 align=center  bgcolor="ffffff" class=t1>
 												<%=orderItem.getOi_qty()%>
 										</td>
+										
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
 												<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
 										</td>
+										
+										<!-- review 관리를 위한 from - start -->
+										<form id='review_list_form_<%=orderItem.getOi_no() %>'>
 										<td width=50 height=26 align=center class=t1 bgcolor="ffffff">
 										<!-- '주문취소' or '리뷰작성완료'했을 경우, 표기 변경 -->
 												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { 
 											//oi_no로 작성된 리뷰가 없다면
 														if(review==null){%>
-											<input type='hidden' name='oi_no' value='<%=orderItem.getOi_no()%>'>
-											<input type='hidden' name='index' value='<%=i%>'>
-											<input type="button" value="작성하기" onClick="review_write()">
+															<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
+															<input type='hidden' name='oi_no' value='<%=orderItem.getOi_no()%>'>
+															<input type='hidden' name='index' value='<%=i%>'>
+															<a href="javascript:review_select_write_action('review_list_form_<%=orderItem.getOi_no() %>');">리뷰작성</a>
+															<!-- <input type="button" value="작성하기" onClick="review_select_write_action()"> -->
 														<%} else if (review!=null){%>
-											<!-- oi_no로 작성된 리뷰가 있다면 -->
-											<input type='hidden' name='r_no' value='<%=review.getR_no()%>'>
-											<input type="button" value="리뷰보기" onClick="review_view()">
-														<% }
-													} %>
+															<!-- oi_no로 작성된 리뷰가 있다면 -->
+															<input type='hidden' name='r_no' value='<%=review.getR_no()%>'>
+															<a href="javascript:review_select_view_action('review_list_form_<%=review.getR_no() %>');">리뷰보기</a>
+														
+													<% }}%>
 										</td>
+										</form>
+										<!-- review 관리를 위한 from - end -->
 									</tr>
 									<%}%>
 									<!-- order item end -->
@@ -196,13 +235,14 @@ form > table tr td{
 										</td>
 									</tr>
 								</table>
-							</form> <br />
+							<br />
+							</div>
 							<!-- form end -->
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center> 
 										&nbsp;&nbsp;<a href=order_list.jsp class=m1>주문목록</a>
-										&nbsp;&nbsp;<a href=product_list.jsp class=m1>계속 쇼핑하기</a>
+										&nbsp;&nbsp;<a href=product_list.jsp class=m1>쇼핑하러가기</a>
 									</td>
 								</tr>
 							</table></td>
