@@ -130,7 +130,8 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(index).getProduct().getP_name() %>'></td>
+											<%=order.getOrderItemList().get(index).getProduct().getP_name() %>
+										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>

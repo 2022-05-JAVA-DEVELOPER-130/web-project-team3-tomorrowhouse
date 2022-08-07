@@ -57,7 +57,7 @@ CREATE SEQUENCE cart_c_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 CREATE TABLE orders(
 		o_no                          		NUMBER(10)		 NULL ,
-		o_desc                        		VARCHAR2(100)		 NULL ,
+		o_desc                        		VARCHAR2(200)		 NULL ,
 		o_date                        		DATE		 NULL ,
 		o_price                       		NUMBER(10)		 NULL ,
 		u_id                          		VARCHAR2(50)		 NULL 

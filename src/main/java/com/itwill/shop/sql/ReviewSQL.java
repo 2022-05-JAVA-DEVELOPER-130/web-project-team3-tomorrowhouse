@@ -99,5 +99,10 @@ public class ReviewSQL {
 	
 	public static final String DELETE_BY_REVIEW_NO =
 			"delete from review where r_no=?";
-	
+
+	//8.o_no로 연관후기들 삭제
+	//delete from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = 7
+	/*public static final String DELETE_BY_ORDER_NO =
+			"delete from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = ?";
+	*/
 }

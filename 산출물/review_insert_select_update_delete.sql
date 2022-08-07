@@ -104,6 +104,10 @@ select * from (select * from review r join orderitem o on r.oi_no = o.oi_no wher
 select * from review where r_no=26;
 --delete from review where r_no=26;
 
+--(주문내역 삭제)에서 o_no로 연관된 후기들 삭제
+--select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = 7;
+delete from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = 7;
+
 --click count 증가
 select * from review where r_no = 10;
 

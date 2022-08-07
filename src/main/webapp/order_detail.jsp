@@ -46,11 +46,19 @@ form > table tr td{
 	
 	function review_select_write_action(formId) {
 		if(window.confirm('리뷰를 작성하시겠습니까?')){
-			var form = document.getElementById(formId);
+		var form = document.getElementById(formId);
 			form.method = 'POST';
 			form.action = 'review_write_form.jsp';
 			form.submit();
 		}
+	}
+	function review_select_first_write_action(formId) {
+			if(window.confirm('첫번째리뷰를 작성완료하면 구매확정됩니다.\n리뷰를 작성하시겠습니까?')){
+				var form = document.getElementById(formId);
+				form.method = 'POST';
+				form.action = 'review_write_form.jsp';
+				form.submit();
+			}
 	}
 	
 	function review_write() {
@@ -89,15 +97,23 @@ form > table tr td{
 
 	function delete_order_popup_window(){
 			
-			var left = Math.ceil(( window.screen.width)/3);
-			var top = Math.ceil(( window.screen.height)/3); 
-			console.log(left);
-			console.log(top);
-			var orderDeleteWin = window.open("about:blank","orderDeleteForm","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
-			document.f.action = 'order_delete_action_popup_window.jsp';
-			document.f.target = 'orderDeleteForm';
+		var left = Math.ceil(( window.screen.width)/3);
+		var top = Math.ceil(( window.screen.height)/3); 
+		console.log(left);
+		console.log(top);
+		var orderDeleteWin = window.open("about:blank","orderDeleteForm","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+		document.f.action = 'order_delete_action_popup_window.jsp';
+		document.f.target = 'orderDeleteForm';
+		document.f.method = 'POST';
+		document.f.submit();
+	}
+	
+	function delete_order(){
+		if(window.confirm('주문내역을 삭제하시겠습니까?\n해당 주문과 연괸된 리뷰는 유지집니다.')){
 			document.f.method = 'POST';
+			document.f.action = "order_delete_action.jsp";
 			document.f.submit();
+		}
 	}
 	
 </script>
@@ -138,6 +154,7 @@ form > table tr td{
 							<!--form start-->
 							<!-- <form name="f" method="post" action="order_cancel_action.jsp"> -->
 							<form name="f" >
+								<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
 								<input type="hidden" name="cancel_order_no" value="<%=order.getO_no()%>">
 								<input type="hidden" name="r_count" value="<%=reviewCount%>">
 								<table align="center" width="80%"  border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
@@ -162,10 +179,9 @@ form > table tr td{
 										<td width=150 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
 										<% if(reviewCount==0) {%>
-											 <input type="hidden" name="o_no" value="<%=order.getO_no()%>">
 											 배송 준비중<br/>
 											<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
-										<% } else if(order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
+										<% } else if(!order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
 											<font color=blue>구매확정</font>
 										<% } else {%>
 											<font color=blue>구매확정</font>
@@ -183,10 +199,10 @@ form > table tr td{
 										<% if(reviewCount!=0) {%>
 										<font style='font-style:italic' color=gray>[주문취소]는 배송 준비중에만 가능합니다</font>
 										<!-- &nbsp;&nbsp;<a href=order_list.jsp class=m1>주문목록</a> -->
-										<% } %>
 										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) {%>
 										<br/>
-										<a href="javascript:delete_order_popup_window();"><font >[주문내역 삭제]</font></a>
+										<a href="javascript:delete_order();"><font >[주문내역 삭제]</font></a>
+										<% } %>
 										<% } %>
 									</td>
 								</tr>
@@ -235,13 +251,22 @@ form > table tr td{
 										<form id='review_list_form_<%=orderItem.getOi_no() %>'>
 										<td width=50 height=26 align=center class=t1 bgcolor="ffffff">
 										<!-- '주문취소' or '리뷰작성완료'했을 경우, 표기 변경 -->
-												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { 
-											//oi_no로 작성된 리뷰가 없다면
+												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) {%>
+													
+												
+												<% //oi_no로 작성된 리뷰가 없다면
 														if(review==null){%>
 															<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
 															<input type='hidden' name='oi_no' value='<%=orderItem.getOi_no()%>'>
+															<input type="hidden" name="r_count" value="<%=reviewCount%>">
 															<input type='hidden' name='index' value='<%=i%>'>
+															<% if(reviewCount!=0) {%>
+															<!-- 주문내역 리뷰 존재시 -->
 															<a href="javascript:review_select_write_action('review_list_form_<%=orderItem.getOi_no() %>');">작성하기</a>
+															<%} else {%>
+															<!-- 주문내역 중 첫번째 리뷰 작성시, 구매확정 -->
+															<a href="javascript:review_select_first_write_action('review_list_form_<%=orderItem.getOi_no() %>');">작성하기</a>
+															<% }%>
 															<!-- <input type="button" value="작성하기" onClick="review_select_write_action()"> -->
 														<%} else if (review!=null){%>
 															<!-- oi_no로 작성된 리뷰가 있다면 -->

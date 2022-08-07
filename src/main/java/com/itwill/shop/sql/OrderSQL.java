@@ -103,7 +103,7 @@ public class OrderSQL {
 	 11-2. 주문내역삭제(jsp에서 안보여줌)를 위한 updqte
 	 */
 	public final static String HIDE_ORDERS_BY_ORDER_NO
-	="update orders set o_desc='[구매확정]'||o_desc where o_no=?";
+	="update orders set o_desc='[주문내역삭제]'||o_desc where o_no=?";
 	
 	
 	/*
