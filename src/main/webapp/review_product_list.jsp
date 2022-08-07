@@ -126,6 +126,9 @@ session.setAttribute("review_access_route", "review_product_list");
 										<%=order.getU_id() %>
 										</td>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<%for(int j=0;j<review.getR_rating();j++) {%>
+											★
+											<%} %>
 										</td>
 										<td width=170 align=center bgcolor="ffffff">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
