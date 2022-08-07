@@ -307,15 +307,15 @@ public class QnaDao {
 	/**
 	 * 게시물 조회수를 1 증가.
 	 */
-	public void increaseReadCount(int countNo) throws Exception {
+	public void increaseReadCount(int q_no) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
+		int count = 0;
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(QnaSQL.QNA_READCOUNTUP);
-			pstmt.setInt(1, countNo);
-			pstmt.executeUpdate();
+			pstmt.setInt(1, q_no);
+			count = pstmt.executeUpdate();
 		} finally {
 			try {
 				if (pstmt != null)

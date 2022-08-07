@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-
+sUserId= (String)session.getAttribute("sUserId");
 QnaService qnaService =new QnaService();
 Qna qnaView =new Qna();
 
@@ -101,14 +101,15 @@ qnaView = qnaService.findQna(Integer.parseInt(noStr));
 								</table>
 							</form>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
-								<%if(sUserId==null){ %>
+								
+								<%if(sUserId.equals("admin")){%>
 								<tr>
 									<td align=center>
-									<input type="hidden" value="수정" onClick="qnaUpdate()">&nbsp; 
-									<input type="hidden" value="삭제" onClick="qnaDelete()">&nbsp; 
+									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
+									<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="qnaList()"></td>
 								</tr>
-								<%}else if(sUserId.equals("admin")){%>
+								<% }else if(sUserId.equals(qnaView.getU_id())){%>
 								<tr>
 									<td align=center>
 									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
@@ -120,13 +121,6 @@ qnaView = qnaService.findQna(Integer.parseInt(noStr));
 									<td align=center>
 									<input type="hidden" value="수정" onClick="qnaUpdate()">&nbsp; 
 									<input type="hidden" value="삭제" onClick="qnaDelete()">&nbsp; 
-									<input type="button" value="리스트" onClick="qnaList()"></td>
-								</tr>
-								<% }else if(sUserId.equals(qnaView.getU_id())){%>
-								<tr>
-									<td align=center>
-									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
-									<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="qnaList()"></td>
 								</tr>
 								<%}%>

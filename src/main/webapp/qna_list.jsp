@@ -4,9 +4,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%
-
-%>
+<%!public String getTitleString(Qna qna) {
+	StringBuilder title = new StringBuilder(128);
+	String t = qna.getQ_title();
+	if (t.length() > 15) {
+		//t = t.substring(0,15);
+		//t = t+"...";
+		t = String.format("%s...", t.substring(0, 15));
+	}
+	//답글공백삽입
+	for (int i = 0; i < qna.getQ_depth(); i++) {
+		title.append("&nbsp;&nbsp;");
+	}
+	if (qna.getQ_depth() > 0) {
+		title.append("<img border='0' src='image/re.gif'/>");
+	}
+	title.append(t.replace(" ", "&nbsp;"));
+	return title.toString();
+}%>
 
 <%
 	String pageno=request.getParameter("pageno");
