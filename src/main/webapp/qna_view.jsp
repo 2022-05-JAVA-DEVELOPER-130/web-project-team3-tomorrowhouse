@@ -2,9 +2,8 @@
 <%@page import="com.itwill.shop.service.QnaService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>
 <%
-sUserId= (String)session.getAttribute("sUserId");
+String sUserId= (String)session.getAttribute("sUserId");
 Integer q_no=null;
 int pageno=1;
 try{
@@ -112,29 +111,26 @@ QnaService.getInstance().updateHitCount(q_no);
 							</form>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								
-								<%if(sUserId.equals("admin")){%>
-								<tr>
-									<td align=center>
-									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
-									<input type="button" value="삭제" onClick="qnaDelete()">&nbsp;
-									<input type="button" value="답글" onClick="reply()">&nbsp;
-									<input type="button" value="리스트" onClick="qnaList()"></td>
-								</tr>
-								<% }else if(sUserId.equals(qna.getU_id())){%>
-								<tr>
-									<td align=center>
-									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
-									<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
-									<input type="button" value="리스트" onClick="qnaList()"></td>
-								</tr>
-								<%}else if(!sUserId.equals(qna.getU_id())){ %>
+								<%if(sUserId==null||!sUserId.equals("admin") && !sUserId.equals(qna.getU_id())){ %>
 								<tr>
 									<td align=center>
 									<input type="hidden" value="수정" onClick="qnaUpdate()">&nbsp; 
 									<input type="hidden" value="삭제" onClick="qnaDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="qnaList()"></td>
 								</tr>
-								<%}%>
+								<%} else if(sUserId.equals("admin")){%>
+								<td align=center>
+								<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
+								<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
+								<input type="button" value="답글" onClick="reply()">&nbsp;
+								<input type="button" value="리스트" onClick="qnaList()"></td>
+								</tr>
+								<%}else{%>
+								<td align=center>
+								<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
+								<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
+								<input type="button" value="리스트" onClick="qnaList()"></td>
+								<%} %>
 							</table></td>
 					</tr>
 				</table>
