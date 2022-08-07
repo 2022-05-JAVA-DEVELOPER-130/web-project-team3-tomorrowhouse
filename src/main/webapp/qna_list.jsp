@@ -4,9 +4,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%
-
-%>
+<%!public String getTitleString(Qna qna) {
+	StringBuilder title = new StringBuilder(128);
+	String t = qna.getQ_title();
+	if (t.length() > 15) {
+		//t = t.substring(0,15);
+		//t = t+"...";
+		t = String.format("%s...", t.substring(0, 15));
+	}
+	//답글공백삽입
+	for (int i = 0; i < qna.getQ_depth(); i++) {
+		title.append("&nbsp;&nbsp;");
+	}
+	if (qna.getQ_depth() > 0) {
+		title.append("<img border='0' src='image/re.gif'/>");
+	}
+	title.append(t.replace(" ", "&nbsp;"));
+	return title.toString();
+}%>
 
 <%
 	String pageno=request.getParameter("pageno");
@@ -93,8 +108,9 @@
 										<%=qna.getQ_title() %>	
 										</a>
 										</td>
-										<td width=80 align=center bgcolor="ffffff"><%=qna.getU_id()%>
-										</td>
+										
+										<td width=80 align=center bgcolor="ffffff">
+											<%=qna.getU_id()%>
 										<td width=80 align=center bgcolor="ffffff">
 											<%=qna.getQ_date()%>
 										</td>
@@ -156,7 +172,7 @@
 									<!--관리자만 작성가능. 기능추가필요-->
 									
 									<!--  <% //if(sUserId.equals("admin")) {%>	--> 						
-									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
+									<input type="button" value="게시물 생성" onclick="qnaCreate();" /></td>
 									<!-- <%//}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<%//} %> -->

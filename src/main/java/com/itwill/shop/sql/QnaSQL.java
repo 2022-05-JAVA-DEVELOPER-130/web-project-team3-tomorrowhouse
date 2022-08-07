@@ -26,7 +26,7 @@ public class QnaSQL {
 			"SELECT count(*) cnt FROM qna WHERE q_groupno = ? AND q_depth >= ? AND q_step >= ? ORDER BY q_step, q_depth ASC";
 	
 	public static final String QNA_READCOUNTUP = 
-			"UPDATE qna SET q_readcount = q_readcount + 1 WHERE q_no = ?";
+			"UPDATE qna SET q_readcount = q_readcount+1 WHERE q_no = ?";
 	
 	public static final String QNA_COUNT = 
 			"SELECT COUNT(*) FROM qna";

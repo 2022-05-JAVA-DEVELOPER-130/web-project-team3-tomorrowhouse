@@ -2,10 +2,9 @@
 <%@page import="com.itwill.shop.service.QnaService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@include file="login_check.jspf" %>
 <%
-
-String sUserId= (String)session.getAttribute("sUserId");
+sUserId= (String)session.getAttribute("sUserId");
 QnaService qnaService =new QnaService();
 Qna qnaView =new Qna();
 
@@ -83,43 +82,48 @@ qnaView = qnaService.findQna(Integer.parseInt(noStr));
 								<input type="hidden" name="n_no" value="<%=qnaView.getQ_no() %>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">등록일</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_date()%></td>
-									</tr>
-									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">문의 제목</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_title()%></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getU_id()%></td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">작성일</td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_date()%></td>
+									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">문의내용</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_content()%></td>
 										
 									</tr>
 								</table>
 							</form>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
-								<%if(sUserId==null){ %>
+								
+								<%if(sUserId.equals("admin")){%>
+								<tr>
+									<td align=center>
+									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
+									<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
+									<input type="button" value="리스트" onClick="qnaList()"></td>
+								</tr>
+								<% }else if(sUserId.equals(qnaView.getU_id())){%>
+								<tr>
+									<td align=center>
+									<input type="button" value="수정" onClick="qnaUpdate()">&nbsp; 
+									<input type="button" value="삭제" onClick="qnaDelete()">&nbsp; 
+									<input type="button" value="리스트" onClick="qnaList()"></td>
+								</tr>
+								<%}else if(!sUserId.equals(qnaView.getU_id())){ %>
 								<tr>
 									<td align=center>
 									<input type="hidden" value="수정" onClick="qnaUpdate()">&nbsp; 
 									<input type="hidden" value="삭제" onClick="qnaDelete()">&nbsp; 
 									<input type="button" value="리스트" onClick="qnaList()"></td>
 								</tr>
-								<%}else if(sUserId.equals("admin")){ %>
-								<tr>
-									<td align=center>
-									<input type="button" value="수정" onClick="noticeUpdate()">&nbsp; 
-									<input type="button" value="삭제" onClick="noticeDelete()">&nbsp; 
-									<input type="button" value="리스트" onClick="qnaList()"></td>
-								</tr>
-								<% }else{ %>
-								<tr>
-									<td align=center>
-									<input type="hidden" value="수정" onClick="qnaUpdate()">&nbsp; 
-									<input type="hidden" value="삭제" onClick="qnaDelete()">&nbsp; 
-									<input type="button" value="리스트" onClick="qnaList()"></td>
-								</tr>
-								<% } %>
+								<%}%>
 							</table></td>
 					</tr>
 				</table>
