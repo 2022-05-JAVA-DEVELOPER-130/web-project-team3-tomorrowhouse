@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -153,7 +154,7 @@ if (detailProduct == null) {
 										<ol type="disc">
 											<li><b>이름 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
 											</b></li>
-											<li><font color=#FF0000>가격 : <%=detailProduct.getP_price()%>&nbsp;&nbsp;&nbsp;
+											<li><font color=#FF0000>가격 : <%=new DecimalFormat("#,##0").format(detailProduct.getP_price())%> 원&nbsp;&nbsp;&nbsp;
 											</font></li>
 											<li><font color=#0000FF><%=detailProduct.getP_desc()%></font></li>
 										</ol>
