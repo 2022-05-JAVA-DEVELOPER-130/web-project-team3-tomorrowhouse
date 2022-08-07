@@ -59,8 +59,8 @@ form > table tr td{
 			alert("해당주문의 리뷰를 작성하시면, 구매확정 됩니다♡");
 		}
 		*/
-		document.f.action = "review_write_form.jsp";
 		document.f.method = "POST";
+		document.f.action = "review_write_form.jsp";
 		document.f.submit();
 	}
 
@@ -138,7 +138,7 @@ form > table tr td{
 										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>
 										<font>주문자</font></td>
 										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>
-										<font>주문취소</font></td>
+										<font>주문상태</font></td>
 									</tr>
 									
 									<tr>
@@ -146,14 +146,14 @@ form > table tr td{
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_date()%></td>
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
-										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
-											<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
-											<a href="javascript:order_cancel();">주문취소</a>
-												<!-- <input type="button" value="취소" onClick="order_cancel()"> -->
-												<!-- <input type="submit" value="취소"> -->
+										<% if(reviewCount==0) {%>
+										<% //if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
+											 <input type="hidden" name="o_no" value="<%=order.getO_no()%>">
+											<a href="javascript:order_cancel();"><font color=red>주문취소</font></a> 
+										<% } else if(order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
+											<font color=blue>구매확정</font>
 										<% } else {%>
-											<!-- 주문취소 멘트 추가필요 -->
-											(수정필요)구매확정
+											<font color=blue>구매확정</font>
 										<% } %>
 										</td>
 									</tr>

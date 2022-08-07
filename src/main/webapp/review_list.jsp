@@ -87,6 +87,7 @@ session.setAttribute("review_access_route", "review_list");
 							<form name="f" method="post" action="">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
+										<td width=70 align=center bgcolor="E6ECDE">주문번호</td>
 										<td width=70 align=center bgcolor="E6ECDE">주문일</td>
 										<td width=80 align=center bgcolor="E6ECDE">상품</td>
 										<td width=100 align=center bgcolor="E6ECDE">상품명</td>
@@ -103,10 +104,13 @@ session.setAttribute("review_access_route", "review_list");
 									%>
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
+										<td width=70 bgcolor="ffffff" align="center">
+										<%=order.getO_no() %>
+										</td>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										<%=order.getO_date() %>
 										</td>
-										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<td width=80 bgcolor="ffffff" style="padding-left: 10px; padding-top: 10px" align="left">
 											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
 											<img width="60px" height="58px" src="image/product/<%=product.getP_image()%>" border="0">
 											</a>
@@ -116,14 +120,13 @@ session.setAttribute("review_access_route", "review_list");
 											<%=product.getP_name()%>
 											</a>
 										</td>
-										<td width=170 align=center bgcolor="ffffff">
+										<td width=170 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
 											<%=review.getR_title()%>
 										</td>
-										<td width=100 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<%=review.getR_date()%>
+										<td width=100 bgcolor="ffffff" align="center"><%=review.getR_date()%>
 										</td>
-										<td width=70 align=center bgcolor="ffffff" align="left"><%=review.getR_click_count()%>
+										<td width=70  bgcolor="ffffff" align="center"><%=review.getR_click_count()%>
 										</td>
 									</tr>
 									<%
