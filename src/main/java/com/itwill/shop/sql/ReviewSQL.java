@@ -33,6 +33,12 @@ public class ReviewSQL {
 	
 	
 	/* ------ review select------ */
+	//0.(관리자페이지-리뷰list)
+	//select * from review where u_id = 'test6';
+	public static final String SELECT_ALL_REVIEW =
+			"select * from review r join orderitem oi on r.oi_no = oi.oi_no";
+	
+	
 	//1.(마이페이지-리뷰list) 로그인한 회원이 마이페이지?에서 리뷰를 모아서 볼 수 있음 -> u_id로 review 선택
 	//select * from review where u_id = 'test6';
 	public static final String SELECT_ALL_BY_USER_ID =

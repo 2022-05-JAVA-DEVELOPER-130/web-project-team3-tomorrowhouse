@@ -33,6 +33,44 @@ public class ReviewDao {
 		
 	}
 	/* ------ review select------ */
+	//0.(관리자페이지-리뷰list)
+	//select * from review where u_id = 'test6';
+	public ArrayList<Review> selectAllReview()throws Exception{
+		/*
+			public static final String SELECT_ALL_REVIEW =
+			"select * from review r join orderitem oi on r.oi_no = oi.oi_no";
+		 */
+		ArrayList<Review> reviewList = new ArrayList<Review>();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(ReviewSQL.SELECT_ALL_REVIEW);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				reviewList.add(new Review(rs.getInt("r_no"),
+						rs.getString("r_title"),
+						rs.getString("r_content"),
+						rs.getDate("r_date"),
+						rs.getInt("r_rating"),
+						rs.getString("r_image"),
+						rs.getInt("r_click_count"),
+						rs.getString("u_id"), 
+						new OrderItem(rs.getInt("oi_no"), 0, 0, null)
+						)
+						);
+			}
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+		return reviewList;
+	}
+	
 	//1.(마이페이지-리뷰list) 로그인한 회원이 마이페이지?에서 리뷰를 모아서 볼 수 있음 -> u_id로 review 선택
 	public ArrayList<Review> selectAllByUserId(Review review)throws Exception{
 		//	public static final String SELECT_ALL_BY_USER_ID =
@@ -49,20 +87,6 @@ public class ReviewDao {
 			pstmt.setString(1, review.getU_id());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				/*
-				private int r_no;
-				private String r_title;
-				private String r_content;
-				
-				private Date r_date;
-				private int r_rating;
-				private String r_image;
-				private int r_click_count;
-				
-				private String u_id;
-				
-				private OrderItem orderItem;	// oi_no
-				 */
 				reviewList.add(new Review(rs.getInt("r_no"),
 											rs.getString("r_title"),
 											rs.getString("r_content"),

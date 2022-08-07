@@ -16,6 +16,7 @@
 	//접근 경로 저장
 	String review_access_route=
 	(String)session.getAttribute("review_access_route");
+	//session.setAttribute("sUserId", "review_list");
 	
 	String r_noStr=
 	request.getParameter("r_no");
@@ -67,6 +68,11 @@
 
 	function review_product_List() {
 		document.f.action = "review_product_list.jsp";
+		document.f.method='POST';
+		document.f.submit();
+	}
+	function review_admin_List() {
+		document.f.action = "review_admin_list.jsp";
 		document.f.method='POST';
 		document.f.submit();
 	}
@@ -150,10 +156,15 @@
 										<input type="button" value="수정" onClick="reviewUpdate()"> &nbsp; 
 										<input type="button" value="삭제" onClick="reviewRemove()"> &nbsp; 
 										<%if(review_access_route.equals("review_list")) {%>
-										<input type="button" value="리스트" onClick="reviewList()"></td>
+										<input type="button" value="리스트" onClick="reviewList()">
+										
 										<%} else if(review_access_route.equals("review_product_list")) {%>
-										<input type="button" value="리스트" onClick="review_product_List()"></td>
+										<input type="button" value="리스트" onClick="review_product_List()">
+										
+										<%} else if(review_access_route.equals("review_admin_list")) {%>
+										<input type="button" value="리스트" onClick="review_admin_List()">
 										<%} %>
+									</td>
 								</tr>
 							</table></td>
 					</tr>

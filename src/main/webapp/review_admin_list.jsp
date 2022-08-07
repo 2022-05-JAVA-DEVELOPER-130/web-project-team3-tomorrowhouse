@@ -12,7 +12,7 @@
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- 로그인한 고객의 리뷰를 보여주는 페이지 -->	
+<!-- 관리자에게 모든 리뷰를 보여주는 페이지 -->	
 <%@include file="login_check.jspf"%>  
 
 <%
@@ -22,17 +22,20 @@
 		 return;
 	}
 	*/
-	UserInfoService userInfoService = new UserInfoService();
-	UserInfo userInfo = userInfoService.findUser(sUserId);
-	OrderService orderService = new OrderService();
+	//관리자가 아닐경우
+	if(!sUserId.equals("admin")){
+	    response.sendRedirect("product_list.jsp");		  
+		 return;
+	}
 	
 	//리뷰 조회
 	ReviewService reviewService = new ReviewService();
+	OrderService orderService = new OrderService();
 	
 	ArrayList<Review> reviewList=
-	reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,null));
+	reviewService.selectAllReview();
 	//review 접근경로
-	session.setAttribute("review_access_route", "review_list");
+	session.setAttribute("review_access_route", "review_admin_list");
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,9 +46,7 @@
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script type="text/javascript">
-	function boardCreate() {
-		location.href = "board_write.jsp";
-	}
+
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -79,7 +80,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=userInfo.getU_name() %>님의 리뷰 리스트</b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>리뷰 전체 리스트</b>
 									</td>
 								</tr>
 								<tr bgcolor="#FFFFFF">
@@ -123,8 +124,7 @@
 										</td>
 										<td width=170 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
-											<%=review.getR_title()%>
-											</a>
+											<%=review.getR_title()%></a>
 										</td>
 										<td width=100 bgcolor="ffffff" align="center"><%=review.getR_date()%>
 										</td>
@@ -138,23 +138,6 @@
 								<!-- /list -->
 							</form> <br>
 							
-											<table border="0" cellpadding="0" cellspacing="1" width="590">
-												<tr>
-													<td align="center">
-													
-													
-													</td>
-												</tr>
-											</table>
-											<!-- button -->
-											<!-- 
-											<table border="0" cellpadding="0" cellspacing="1" width="590">
-												<tr>
-													<td align="right"><input type="button" value="게시물 생성"
-														onclick="boardCreate();" /></td>
-												</tr>
-											</table>
-											 -->
 							</td>
 						</tr>
 					</table><!-- outline table end -->

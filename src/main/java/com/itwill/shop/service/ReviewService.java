@@ -19,6 +19,12 @@ public class ReviewService {
 		orderService=new OrderService();
 	}
 	/* ------ review select------ */
+	//0.(관리자페이지-리뷰list)
+	//select * from review where u_id = 'test6';
+	public ArrayList<Review> selectAllReview()throws Exception{
+		return reviewDao.selectAllReview();
+	}
+	
 	public ArrayList<Review> selectAllByUserId(Review review)throws Exception{
 		return reviewDao.selectAllByUserId(review);
 	}
