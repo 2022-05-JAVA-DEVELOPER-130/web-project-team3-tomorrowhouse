@@ -353,15 +353,14 @@ public class OrderDao {
 			="update orders set o_desc='주문취소' where o_no=?";
 	*/
 	
-	public int cancelOrderOrderItem(Order order) throws Exception {
+	public int cancelOrder(Order order) throws Exception {
 		Connection con = null;
-		PreparedStatement pstmt1 = null;
-		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt = null;
 		con = dataSource.getConnection();
 
-		pstmt1 = con.prepareStatement(OrderSQL.CANCEL_ORDERS_BY_ORDER_NO);
-		pstmt1.setInt(1, order.getO_no());
-		int orderCancelResult = pstmt1.executeUpdate();
+		pstmt = con.prepareStatement(OrderSQL.CANCEL_ORDERS_BY_ORDER_NO);
+		pstmt.setInt(1, order.getO_no());
+		int orderCancelResult = pstmt.executeUpdate();
 		/*
 				pstmt2 = con.prepareStatement(OrderSQL.CANCEL_ORDER_ITEM_BY_ORDER_NO);
 				pstmt2.setInt(1, order.getO_no());
@@ -369,8 +368,21 @@ public class OrderDao {
 				*/
 		con.close();
 		return orderCancelResult;
-		//return orderCancelResult * orderItemCancelResult;
 	}
+	
+	public int confirmOrder(Order order) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		con = dataSource.getConnection();
+
+		pstmt1 = con.prepareStatement(OrderSQL.CONFIRM_ORDERS_BY_ORDER_NO);
+		pstmt1.setInt(1, order.getO_no());
+		int orderCancelResult = pstmt1.executeUpdate();
+		
+		con.close();
+		return orderCancelResult;
+	}
+	
 	/*
 	 * orderItem번호로 Product 정보 얻기
 	 */

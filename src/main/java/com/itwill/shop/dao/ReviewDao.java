@@ -198,6 +198,34 @@ public class ReviewDao {
 		return findReview;
 		
 	}
+	/*
+	 11-2. 구매확정(리뷰삭제불가)를 위한 count_select
+	 */
+	public int countReviewByOrderNo(int o_no)throws Exception{
+
+		int reviewCount=0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		con = dataSource.getConnection();
+		pstmt = con.prepareStatement(ReviewSQL.COUNT_REVIEW_BY_ORDER_NO);
+		/*
+			public final static String COUNT_REVIEW_BY_ORDER_NO
+				="select count(*) from review "
+						+ "		join orderitem oi on r.oi_no=oi.oi_no"
+						+ "		join orders o on oi.o_no=o.o_no"
+						+ "		where o.o_no=?";
+		 */
+		pstmt.setInt(1, o_no);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			reviewCount=rs.getInt(1);
+		}
+		return reviewCount;
+	}
+	
 	/* ----- review update ----*/
 	//5.후기detail에서 r_no로 후기 업데이트
 	/*

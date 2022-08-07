@@ -58,6 +58,23 @@ public class ReviewSQL {
 	public static final String SELECT_BY_REVIEW_NO =
 			"select * from review where r_no=?";
 	
+	/*
+	 11-2. 구매확정(리뷰삭제불가)를 위한 count_select
+	 */
+	/*
+	 * select count(*) from review r
+		join orderitem oi on r.oi_no=oi.oi_no
+		join orders o on oi.o_no=o.o_no
+		where o.o_no=7;
+	 */
+	public final static String COUNT_REVIEW_BY_ORDER_NO
+	="select count(*) from review r"
+			+ "		join orderitem oi on r.oi_no=oi.oi_no"
+			+ "		join orders o on oi.o_no=o.o_no"
+			+ "		where o.o_no=?";
+	
+	
+	
 	/* ----- review update ----*/
 	
 	//-- update는 후기목록에서 선택할테니, pk이인 r_no로 접근해야하는건 아닌가?

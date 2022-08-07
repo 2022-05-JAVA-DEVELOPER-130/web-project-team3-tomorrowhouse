@@ -23,7 +23,7 @@ public class ReviewServiceTestMain {
 		System.out.println(reviewService.selectByReviewNo(review));
 
 		review = new Review(10, null, null, null, 0, null, 0, "test6", null);
-		System.out.println(reviewService.updateByReviewNo(review));
+		//System.out.println(reviewService.updateByReviewNo(review));
 		
 		Product product = new Product(1,null,0,null,null,0,null);
 		System.out.println(	reviewService.selectAllByProductNo(new Review(0,null,null,null,0,null,0,null,
@@ -35,7 +35,10 @@ public class ReviewServiceTestMain {
 		arrayList.size();
 		System.out.println(arrayList.size());
 		
-		System.out.println(reviewService.deleteByReviewNo(new Review(19, null, null, null, 0, null, 0, "test6", null)));
+		//System.out.println(reviewService.deleteByReviewNo(new Review(19, null, null, null, 0, null, 0, "test6", null)));
+		int o_no=0;
+		System.out.println("o_no로 작성된 review_count");
+		System.out.println(reviewService.countReviewByOrderNo(o_no));
 	}
 
 }

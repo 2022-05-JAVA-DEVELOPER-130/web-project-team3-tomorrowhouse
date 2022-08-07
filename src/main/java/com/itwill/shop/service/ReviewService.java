@@ -44,8 +44,14 @@ public class ReviewService {
 	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
 	//select * from review where r_no=26;
 	public Review selectByReviewNo(Review review)throws Exception{
+		return reviewDao.selectByReviewNo(review);
+	}
 	
-	return reviewDao.selectByReviewNo(review);
+	/*
+	 11-2. 구매확정(리뷰삭제불가)를 위한 count_select
+	 */
+	public int countReviewByOrderNo(int o_no)throws Exception{
+		return reviewDao.countReviewByOrderNo(o_no);
 	}
 	
 	/* ------ review update------ */

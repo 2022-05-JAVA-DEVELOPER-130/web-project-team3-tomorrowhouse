@@ -24,7 +24,7 @@ public class OrderServiceTestMain {
 		
 		/***** order_list *******/
 		
-		Order order = new Order(0, null, null, 0, "test1", null);
+		Order order = new Order(9, null, null, 0, "test1", null);
 
 		// System.out.println(orderDao.list_detail(order));
 		ArrayList<Order> orderNoList = orderService.orderNoListByUserId(order);
@@ -75,6 +75,8 @@ public class OrderServiceTestMain {
 		order=
 		orderService.findOrderDetailByOrderItemNo(17);
 		System.out.println(order);
+		
+		orderService.confirmOrder(order);
 		
 	}
 
