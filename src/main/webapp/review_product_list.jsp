@@ -89,7 +89,7 @@ session.setAttribute("review_access_route", "review_product_list");
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=product.getP_name() %> 상품의 리뷰 리스트</b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b><%=product.getP_name() %>의 상품리뷰 리스트</b>
 									</td>
 								</tr>
 								<tr bgcolor="#FFFFFF">
@@ -101,12 +101,12 @@ session.setAttribute("review_access_route", "review_product_list");
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<input type="hidden" name="p_no" value='<%=product.getP_no() %>'>
-										<td width=70 align=center bgcolor="E6ECDE">No.</td>
+										<td width=30 align=center bgcolor="E6ECDE">No.</td>
 										<td width=70 align=center bgcolor="E6ECDE">작성자</td>
-										<td width=170 align=center bgcolor="E6ECDE">평점</td>
-										<td width=170 align=center bgcolor="E6ECDE">제목</td>
-										<td width=150 align=center bgcolor="E6ECDE">내용</td>
-										<td width=100 align=center bgcolor="E6ECDE">작성일</td>
+										<td width=70 align=center bgcolor="E6ECDE">평점</td>
+										<td width=100 align=center bgcolor="E6ECDE">제목</td>
+										<td width=250 align=center bgcolor="E6ECDE">내용</td>
+										<td width=70 align=center bgcolor="E6ECDE">작성일</td>
 										<td width=70 align=center bgcolor="E6ECDE">조회수</td>
 									</tr>
 									<%
@@ -119,29 +119,33 @@ session.setAttribute("review_access_route", "review_product_list");
 									%>
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
-										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<td width=30 bgcolor="ffffff"  align="center">
 										<%=i %>
 										</td>
-										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<%=order.getU_id() %>
+										<td width=70 bgcolor="ffffff"  align="center">
+										<%=order.getU_id().replace(order.getU_id().substring(2, 4), "**") %>
 										</td>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<%for(int j=0;j<review.getR_rating();j++) {%>
-											★
+											<img width="10px" height="10x" src="image/ui/star_rating.png" border="0">
 											<%} %>
 										</td>
-										<td width=170 align=center bgcolor="ffffff">
+										<td width=100 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
 											<%=review.getR_title()%>
 										</td>
-										<td width=170 align=center bgcolor="ffffff">
+										<td width=250 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
-											<%=review.getR_content()%>
+											<% if(review.getR_content().length()>10){%>
+												<%= review.getR_content().replace(review.getR_content().substring(20,review.getR_content().length()), "...") %>
+											<%} else{ %>
+												<%= review.getR_content()%>
+											<%} %>
 										</td>
-										<td width=100 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<td width=70 bgcolor="ffffff"  align="center">
 											<%=review.getR_date()%>
 										</td>
-										<td width=70 align=center bgcolor="ffffff" align="left"><%=review.getR_click_count()%>
+										<td width=70 align=center bgcolor="ffffff" align="center"><%=review.getR_click_count()%>
 										</td>
 									</tr>
 											<!-- 
