@@ -21,7 +21,7 @@ String sUserId=(String)session.getAttribute("sUserId");
 	
 	<!--관리자일경우  -->
 	<%}else if(sUserId.equals("admin")){ %>
-	<li><a href=""></a>관리자페이지</li>
+	<li><a href=""></a>관리자 페이지</li>
 	<li><a href="product_write_form.jsp">상품 등록</a></li>
 	<li><a href="notice_write_form.jsp">공지 작성</a></li>
 	<li><a href="user_list.jsp">전체 회원 정보</a></li>
@@ -37,6 +37,7 @@ String sUserId=(String)session.getAttribute("sUserId");
 	<li><a href=""></a></li>
 	<li><a href="notice_list.jsp">공지 게시판</a></li>
 	<li><a href="qna_list.jsp">문의 게시판</a></li>
+	<li><a href="review_list.jsp">리뷰 게시판</a></li>
 	<li><a href=""></a></li>
 	<li><a href=""></a></li>
 	<!-- !!!!!!!!관리자는 리뷰게시판이 필요없는가?? 

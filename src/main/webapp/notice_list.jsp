@@ -27,7 +27,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>게시판</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
@@ -67,7 +67,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>공지사항-리스트</b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>내일의집 - 공지 게시판</b>
 									</td>
 								</tr>
 								<tr bgcolor="#FFFFFF">
@@ -84,8 +84,8 @@
 									bgcolor="BBBBBB">
 
 									<tr>
-										<td width=280 align=center bgcolor="E6ECDE">제목</td>
-										<td width=120 align=center bgcolor="E6ECDE">작성일</td>
+										<td width=280 align=center bgcolor="E6ECDE">공지 제목</td>
+										<td width=120 align=center bgcolor="E6ECDE">공지 일자</td>
 									</tr>
 									
 									<%

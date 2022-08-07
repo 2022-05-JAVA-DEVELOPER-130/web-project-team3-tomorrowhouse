@@ -16,12 +16,12 @@ String nameStr = request.getParameter("p_name");
 String priceStr = request.getParameter("p_price");
 String imageStr = request.getParameter("p_image");
 String descStr = request.getParameter("p_desc");
-String categoryStr = request.getParameter("category");
+String categoryStr = request.getParameter("categorys");
 
 ProductService productService = new ProductService();
 
 Product newProduct = new Product(0,nameStr,Integer.parseInt(priceStr),imageStr,descStr,0,
-		new Category(Integer.parseInt(categoryStr),null));
+		new Category(Integer.parseInt(categoryStr), "가구"));
 productService.insertProduct(newProduct);
 
 response.sendRedirect("product_list.jsp");

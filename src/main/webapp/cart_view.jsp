@@ -15,7 +15,7 @@
 <html>
 <head>
 
-<title>내일의 집[장바구니]</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/menu.css" type="text/css"> 
@@ -173,7 +173,7 @@ function cart_item_all_select(e){
 								cellspacing=0>
 								<tr>
 
-									<td height="22">&nbsp;&nbsp;<b>내일의집 - 장바구니 보기</b></td>
+									<td height="22">&nbsp;&nbsp;<b>내일의집 - 장바구니</b></td>
 								</tr>
 							</table> 
 							<!--form-->
@@ -186,13 +186,13 @@ function cart_item_all_select(e){
 										<td width=60 height=25 align="center" bgcolor="E6ECDE"
 											class=t1><input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();"></td>
 										<td width=40 height=25 align="center" bgcolor="E6ECDE" class=t1><font
-											 >이미지</font></td>
+											 >상품 이미지</font></td>
 										<td width=210 height=25 align="center" bgcolor="E6ECDE" class=t1><font
-											 >제품 이름</font></td>
+											 >상품 명</font></td>
 										<td width=112 height=25 align="center" bgcolor="E6ECDE" class=t1><font
-											 >수 량</font></td>
+											 >상품 수량</font></td>
 										<td width=146 height=25 align="center" bgcolor="E6ECDE" class=t1><font
-											 >가 격</font></td>
+											 >상품 가격</font></td>
 										<td width=50 height=25 align="center" bgcolor="E6ECDE" class=t1><font
 											 >비 고</font></td>
 									</tr>
@@ -278,7 +278,7 @@ function cart_item_all_select(e){
 										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
 											<p align=right>
 												<br/>
-												<font color='red'>총주문금액 : <span id="tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%></span> 원</font>
+												<font color='red'>총 주문 금액 : <span id="tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%></span> 원</font>
 											</p>
 										</td>
 										<% }else{%>

@@ -35,7 +35,7 @@ if (detailProduct == null) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>쇼핑몰</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/shop.css" type="text/css">
@@ -134,7 +134,7 @@ if (detailProduct == null) {
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 - 상품상세보기</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 상품상세보기</b></td>
 								</tr>
 							</table> <!-- 
 							<form name="f" method="post">
@@ -151,14 +151,14 @@ if (detailProduct == null) {
 										src='image/product/<%=detailProduct.getP_image()%>' width=200 height=200></td>
 									<td width=35% height=200 class=t1>
 										<ol type="disc">
-											<li><b>이름 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
+											<li><b>상품 명 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
 											</b></li>
-											<li><font color=#FF0000>가격 : <%=detailProduct.getP_price()%>&nbsp;&nbsp;&nbsp;
+											<li><font color=#FF0000>상품 가격 : <%=detailProduct.getP_price()%>&nbsp;&nbsp;&nbsp;
 											</font></li>
 											<li><font color=#0000FF><%=detailProduct.getP_desc()%></font></li>
 										</ol>
 										<form name="add_cart_form" method="post" action="cart_add_item_action.jsp" style="display: inline;">
-											수량 :
+											구매수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->

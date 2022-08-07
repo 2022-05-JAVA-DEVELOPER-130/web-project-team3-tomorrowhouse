@@ -9,9 +9,7 @@
 		q_no = Integer.valueOf(request.getParameter("q_no"));
 	} catch (Exception ex) {
 	}
-	//글번호가 없다면
 	if (q_no == null) {
-		//목록으로 이동
 		response.sendRedirect("qna_list.jsp");
 		return;
 	}
@@ -28,7 +26,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>게시판</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
@@ -89,8 +87,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>게시판 -
-											게시판 수정</b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>내일의집 - 문의 게시판</b>
 									</td>
 								</tr>
 							</table> <br> <!-- modify Form  -->
@@ -100,19 +97,19 @@
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">문의 제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150"
 											name="q_title" value="<%=qna.getQ_title()%>"></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="hidden" style="width: 150"
 											readonly="readonly" name="u_id" value="<%=qna.getU_id()%>"><%=qna.getU_id()%></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">문의 내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><textarea name="q_content"
 												style="width: 350px" rows="14"><%=qna.getQ_content().replace("\n", ">>").trim()%></textarea></td>

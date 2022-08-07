@@ -10,11 +10,8 @@
 	StringBuilder title = new StringBuilder(128);
 	String t = qna.getQ_title();
 	if (t.length() > 15) {
-		//t = t.substring(0,15);
-		//t = t+"...";
 		t = String.format("%s...", t.substring(0, 15));
 	}
-	//답글공백삽입
 	for (int i = 0; i < qna.getQ_depth(); i++) {
 		title.append("&nbsp;&nbsp;");
 	}
@@ -37,7 +34,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>게시판</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
@@ -77,7 +74,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>문의사항-리스트</b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>내일의집 - 문의 게시판</b>
 									</td>
 								</tr>
 								<tr bgcolor="#FFFFFF">
@@ -94,8 +91,8 @@
 									bgcolor="BBBBBB">
 
 									<tr>
-										<td width=280 align=center bgcolor="E6ECDE">제  목</td>
-										<td width=80 align=center bgcolor="E6ECDE">작성자</td>
+										<td width=280 align=center bgcolor="E6ECDE">문의 제목</td>
+										<td width=80 align=center bgcolor="E6ECDE">아이디</td>
 										<td width=80 align=center bgcolor="E6ECDE">작성일</td>
 										<td width=30 align=center bgcolor="E6ECDE">조회수</td>
 										
@@ -107,7 +104,7 @@
 									<tr>
 										<td width=280 align=left bgcolor="ffffff">
 										<a href='qna_view.jsp?q_no=<%=qna.getQ_no() %>&pageno=<%=qnaListPage.pageMaker.getCurPage()%>'>
-										<%=qna.getQ_title() %>	
+										<%=this.getTitleString(qna) %>	
 										</a>
 										</td>
 										
@@ -136,7 +133,7 @@
 								</table>
 								<!-- /list -->
 							</form> <br>
-			<!-- 			board 참고 필요! -->
+						<!-- board 참고 필요! -->
 							 <table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="center">

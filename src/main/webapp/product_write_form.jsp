@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-    
+<%
+
+
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -81,8 +84,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0 >
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>관리자 전용
-											- 상품 등록</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>관리자 전용 - 상품 등록</b></td>
 								</tr>
 							</table> 
 							<!-- write Form  -->
@@ -90,35 +92,35 @@
 								<table  border="0" cellpadding="5" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr >
-										<td  width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
+										<td  width=100 align=center bgcolor="E6ECDE" height="22">상품 명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_name"
 											value="">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품가격</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 가격</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_price"
 											value="">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 이미지</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_image"
 											value="">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품설명</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 설명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_desc"
 											value="">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품분류</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 분류</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="category"
 											value="">
