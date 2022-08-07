@@ -65,48 +65,48 @@ insert into product(p_no, p_name, p_price, p_image, p_desc, p_click_count, cg_no
 */
 
 ------주문&주문상세-----
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '선반 외 2종', sysdate, 200000, 'test1');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '선반 외 2개', sysdate-10, 200000, 'test1');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 1);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 5);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 10);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '책상 외 1종', sysdate, 450000, 'test1');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '책상 외 1개', sysdate-15, 450000, 'test1');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 4);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 4, orders_o_no_seq.currval, 7);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '라디오 외 3종', sysdate, 450000, 'test2');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '라디오 외 3개', sysdate-20, 450000, 'test2');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 10);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 14);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 19);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '조명 외 2종', sysdate, 350000, 'test2');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '조명 외 2개', sysdate-5, 350000, 'test2');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 14);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 1);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 5);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '침대 외 0종', sysdate, 100000, 'test3');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '침대 외 0개', sysdate-7, 100000, 'test3');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 9);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '침대 외 1종', sysdate, 100000, 'test3');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '침대 외 1개', sysdate-4, 100000, 'test3');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 9);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 1);
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '숟가락 외 2종', sysdate, 200000, 'test4');
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '숟가락 외 2개', sysdate-3, 200000, 'test4');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 4, orders_o_no_seq.currval, 18);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 19);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 20);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 19);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 20);
 
 
 insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '청소기 외 2종', sysdate-5, 200000, 'test4');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 4, orders_o_no_seq.currval, 27);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 27);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 24);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 7);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 5, orders_o_no_seq.currval, 7);
 
 
-insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '넓은책상 외 2종', sysdate-7, 200000, 'test4');
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 4, orders_o_no_seq.currval, 4);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 8);
-insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 12);
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '넓은책상 외 2개', sysdate-7, 200000, 'test4');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 4);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 8);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 7, orders_o_no_seq.currval, 12);
 
 ------카트 데이터------
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test1', 1);
@@ -136,22 +136,34 @@ insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.next
 
 ------리뷰 데이터------
 
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰내용'||REVIEW_R_NO_SEQ.currval, 'test1', 1);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test1', 2);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test1', 3);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test1', 4);
+/*
+		r_no                          		NUMBER(10)		 NULL ,
+		r_title                       		VARCHAR2(100)		 NULL ,
+		r_content                     		VARCHAR2(1000)		 NULL ,
+		r_date                        		DATE		 DEFAULT sysdate		 NULL ,
+		r_rating                      		NUMBER(10)		 DEFAULT 0		 NULL ,
+		r_image                       		VARCHAR2(50)		 NULL ,
+		r_click_count                 		NUMBER(10)		DEFAULT 0 NULL ,
+		u_id                          		VARCHAR2(50)		 NULL ,
+		oi_no                         		NUMBER(10)		 NULL 
+*/
 
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test2', 6);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test2', 7);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '좋아요'||REVIEW_R_NO_SEQ.currval, '추천해요'||REVIEW_R_NO_SEQ.currval, sysdate-7, 5, null, 3, 'test1', 1);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '아주 좋아요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-6, 4, null,2, 'test1', 2);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '만족해요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-5, 4, null, 1,'test1', 3);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '보통이에요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-4, 4, null,1,'test1', 4);
 
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test2', 9);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test2', 10);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '보통이에요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-5, 4, null, 7, 'test2', 6);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '만족해요'||REVIEW_R_NO_SEQ.currval, '추천해요'||REVIEW_R_NO_SEQ.currval, sysdate-4, 5, null, 6, 'test2', 7);
 
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test3', 13);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test3', 14);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '선물하기 좋아요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-3, 5, null, 10, 'test2', 9);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '좋아요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-2, 4, null, 8, 'test2',  10);
 
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test4', 15);
-insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰'||REVIEW_R_NO_SEQ.currval, '리뷰 내용'||REVIEW_R_NO_SEQ.currval, 'test4', 16);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '보통이에요'||REVIEW_R_NO_SEQ.currval, '추천해요'||REVIEW_R_NO_SEQ.currval, sysdate-2, 4, null, 8, 'test3', 13);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '그냥 그래요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-4, 3, null, 5,'test3', 14);
+
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '선물하기 좋아요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-3, 5, null, 12,'test4', 15);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '재구매합니다'||REVIEW_R_NO_SEQ.currval, '추천해요'||REVIEW_R_NO_SEQ.currval, sysdate-1, 5, null, 15,'test4', 16);
 
 
 ------qna 데이터------

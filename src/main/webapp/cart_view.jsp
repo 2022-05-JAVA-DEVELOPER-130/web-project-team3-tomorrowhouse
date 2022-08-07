@@ -49,7 +49,6 @@ function cart_delete_item_action(formId) {
 		form.action = 'cart_delete_item_action.jsp';
 		form.submit();
 	}
-	
 }
 /*
 cart 전체삭제(비우기)
@@ -138,7 +137,6 @@ function cart_item_all_select(e){
 </script>
 
 </head>
-
 
 <body onload="cart_item_select_count();" bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>

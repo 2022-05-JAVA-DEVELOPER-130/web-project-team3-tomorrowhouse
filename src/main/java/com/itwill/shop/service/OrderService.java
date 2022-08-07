@@ -91,7 +91,7 @@ public class OrderService {
 			oi_total_count += orderItem.getOi_qty();
 		}
 		
-		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 종";
+		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 개";
 		Order newOrder = new Order(0, o_desc, null, o_total_price, u_id, orderItemList);
 		// order생성-> cart삭제
 		orderDao.create(newOrder);
@@ -120,7 +120,7 @@ public class OrderService {
 			o_total_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
 			oi_total_count += orderItem.getOi_qty();
 		}
-		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 종";
+		String o_desc = orderItemList.get(0).getProduct().getP_name() + "외 " + (oi_total_count - 1) + " 개";
 		Order newOrder = new Order(0, o_desc, null, o_total_price, u_id, orderItemList);
 		// order생성-> cart삭제
 		orderDao.create(newOrder);
