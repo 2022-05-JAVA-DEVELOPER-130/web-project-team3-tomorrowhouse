@@ -8,13 +8,13 @@ sUserId= (String)session.getAttribute("sUserId");
 QnaService qnaService =new QnaService();
 Qna qnaView =new Qna();
 
-String noStr = request.getParameter("q_no");
-if(noStr==null || noStr.equals("")){
+String q_no = request.getParameter("q_no");
+if(q_no==null || q_no.equals("")){
 	response.sendRedirect("qna_list.jsp");
 	return;
 }
 
-qnaView = qnaService.findQna(Integer.parseInt(noStr));
+qnaView = qnaService.findQna(Integer.parseInt(q_no));
 
 %>
 
@@ -79,7 +79,7 @@ qnaView = qnaService.findQna(Integer.parseInt(noStr));
 							</table> <br> <!-- view Form  -->
 
 							<form name="f" method="post">
-								<input type="hidden" name="n_no" value="<%=qnaView.getQ_no() %>">
+								<input type="hidden" name="q_no" value="<%=qnaView.getQ_no() %>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">문의 제목</td>
