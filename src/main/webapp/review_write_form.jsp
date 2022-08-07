@@ -10,6 +10,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>    
 <%
+
+if(request.getMethod().equalsIgnoreCase("GET")){
+    response.sendRedirect("review_list.jsp");		  
+	 return;
+}
+
 String oi_noStr = request.getParameter("oi_no");
 String o_noStr = request.getParameter("o_no");
 String indexStr = request.getParameter("index");
@@ -50,7 +56,7 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 <link rel=stylesheet href="css/board.css" type="text/css">
  
 <script type="text/javascript">
-	function boardCreate() {
+	function reviewCreate() {
 		if (f.r_title.value == "") {
 			alert("제목을 입력하십시요.");
 			f.title.focus();
@@ -62,15 +68,23 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 			return false;
 		}
 
-		f.action = "review_write_action.jsp";
 		f.method="POST";
+		f.action = "review_write_action.jsp";
 		f.submit();
 	}
 
-	function boardList() {
+	function reviewList() {
+		f.method="POST";
 		f.action = "review_list.jsp";
 		f.submit();
 	}
+	
+	function order_detail() {
+		f.method="POST";
+		f.action = "order_detail.jsp";
+		f.submit();
+	}
+	
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -107,6 +121,7 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 							<form name="f" method="post">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
+										<input type="hidden" name="o_no" value='<%=order.getO_no() %>'>
 										<input type="hidden" name="oi_no" value='<%=oi_noStr %>'>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">글쓴이</td>
@@ -147,8 +162,10 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="리뷰 쓰기" onClick="boardCreate()"> &nbsp;
-									<input type="button" value="<%=userInfo.getU_name() %>님의 리뷰 목록" onClick="boardList()"></td>
+									<td align=center>
+									<input type="button" value="리뷰 쓰기" onClick="reviewCreate()"> &nbsp;
+									<input type="button" value="취소(돌아가기)" onClick="order_detail()"> &nbsp;
+									<input type="button" value="<%=userInfo.getU_name() %>님의 리뷰 목록" onClick="reviewList()"></td>
 								</tr>
 							</table></td>
 					</tr>

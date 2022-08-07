@@ -209,7 +209,6 @@ form > table tr td{
 										</td>
 									</tr>
 								</table>
-								</div>
 							<br />
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
@@ -220,6 +219,7 @@ form > table tr td{
 									</td>
 								</tr>
 							</table></td>
+							</div>
 					</tr>
 				</table>
 			</div>

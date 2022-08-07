@@ -110,7 +110,6 @@ QnaService.getInstance().updateHitCount(q_no);
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">문의내용</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qna.getQ_content()%></td>
-										
 									</tr>
 								</table>
 							</form>
