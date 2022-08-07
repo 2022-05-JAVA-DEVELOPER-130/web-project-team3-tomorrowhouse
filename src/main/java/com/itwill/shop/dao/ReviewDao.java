@@ -310,6 +310,26 @@ public class ReviewDao {
 		
 		return rowCount;
 	}
+	//8.o_no로 연관후기들 삭제
+		//delete from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = 7
+	/*
+	public int deleteAllByOrderNo(int o_no)throws Exception{
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		con = dataSource.getConnection();
+		pstmt = con.prepareStatement(ReviewSQL.DELETE_BY_ORDER_NO);
+		/*
+		public static final String DELETE_BY_ORDER_NO =
+				"delete from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = ?";
+		 */
+		//pstmt.setInt(1, o_no);
+		//int rowCount = pstmt.executeUpdate();
+		
+		//return rowCount;
+	//}
 	
 	/* ------ review insert------ */
 	//8.리뷰 작성

@@ -77,7 +77,7 @@ ReviewService reviewService = new ReviewService();
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
 										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 번호</font></td>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 요약</font></td>
+										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 요약(주문 상세보기)</font></td>
 										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 날짜</font></td>
 										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 가격</font></td>
 										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1> <font>주문 상태</font></td>
@@ -89,6 +89,7 @@ ReviewService reviewService = new ReviewService();
 										int reviewCount= reviewService.countReviewByOrderNo(order.getO_no());
 									%>
 									<tr>
+										<% if(!order.getO_desc().substring(0, 8).equals("[주문내역삭제]")) {%>
 										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><a href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1><%=order.getO_desc()%></a></td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(order.getO_date())%></td>
@@ -101,8 +102,10 @@ ReviewService reviewService = new ReviewService();
 											<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
 										<% } else if(order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
 											주문취소
+										
 										<% } else if(reviewCount>0) {%>
 											<font color=blue>구매확정</font>
+										<% } %>
 										<% } %>
 										
 										

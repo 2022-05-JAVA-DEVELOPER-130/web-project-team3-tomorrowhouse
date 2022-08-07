@@ -83,6 +83,13 @@ public class ReviewService {
 		return reviewDao.deleteByReviewNo(review);
 	}
 	
+	//8.o_no로 연관후기들 삭제
+	//delete from review r join orderitem oi on r.oi_no = oi.oi_no where oi.o_no = 7
+	/*
+	public int deleteAllByOrderNo(int o_no)throws Exception{
+		return reviewDao.deleteAllByOrderNo(o_no);
+	}
+	*/
 	
 	
 	
