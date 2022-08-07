@@ -2,6 +2,7 @@
 <%@page import="com.itwill.shop.service.QnaService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>
 <%
 	Integer q_no = null;
 	try {
@@ -35,17 +36,17 @@
 	function qnaUpdate() {
 		if (f.q_title.value == "") {
 			alert("제목을 입력하십시요.");
-			f.title.focus();
+			f.q_title.focus();
 			return false;
 		}
 		if (f.u_id.value == "") {
 			alert("작성자를 입력하십시요.");
-			f.writer.focus();
+			f.u_id.focus();
 			return false;
 		}
 		if (f.q_content.value == "") {
 			alert("내용을 입력하십시요.");
-			f.content.focus();
+			f.q_content.focus();
 			return false;
 		}
 
@@ -108,7 +109,7 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" style="width: 150"
-											name="u_id" value="<%=qna.getU_id()%>"></td>
+											readonly="readonly" name="u_id" value="<%=qna.getU_id()%>"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
@@ -153,11 +154,23 @@
 							 --> <br>
 
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
+								<%if(sUserId.equals("admin")){%>
 								<tr>
-									<td align=center><input type="button" value="수정"
-										onClick="QnaUpdate()"> &nbsp; <input type="button"
-										value="리스트" onClick="QnaList()"></td>
+									<td align=center>
+									<input type="button" value="수정" onClick="qnaUpdate()"> &nbsp; 
+									<input type="button" value="리스트" onClick="qnaList()"></td>
 								</tr>
+								<%} else if(sUserId.equals(qna.getU_id())){%>
+								<tr>
+									<td align=center>
+									<input type="button" value="수정" onClick="qnaUpdate()"> &nbsp; 
+									<input type="button" value="리스트" onClick="qnaList()"></td>
+								</tr>
+								<%}else if(!sUserId.equals(qna.getU_id())){ %>
+									<td align=center>
+									<input type="hidden" value="수정" onClick="qnaUpdate()"> &nbsp; 
+									<input type="button" value="리스트" onClick="qnaList()"></td>
+								<%}%>
 							</table></td>
 					</tr>
 				</table>
