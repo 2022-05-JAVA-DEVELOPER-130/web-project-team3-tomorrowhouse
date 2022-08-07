@@ -87,6 +87,18 @@ form > table tr td{
 		}
 	}
 
+	function delete_order_popup_window(){
+			
+			var left = Math.ceil(( window.screen.width)/3);
+			var top = Math.ceil(( window.screen.height)/3); 
+			console.log(left);
+			console.log(top);
+			var orderDeleteWin = window.open("about:blank","orderDeleteForm","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+			document.f.action = 'order_delete_action_popup_window.jsp';
+			document.f.target = 'orderDeleteForm';
+			document.f.method = 'POST';
+			document.f.submit();
+	}
 	
 </script>
 </head>
@@ -163,20 +175,24 @@ form > table tr td{
 										</td>
 									</tr>
 								</table>
+								</form>
 								<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>
 										<br/>
 										<% if(reviewCount!=0) {%>
-										[주문취소]는 배송 준비중에만 가능합니다
+										<font style='font-style:italic' color=gray>[주문취소]는 배송 준비중에만 가능합니다</font>
 										<!-- &nbsp;&nbsp;<a href=order_list.jsp class=m1>주문목록</a> -->
+										<% } %>
+										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) {%>
+										<br/>
+										<a href="javascript:delete_order_popup_window();"><font >[주문내역 삭제]</font></a>
 										<% } %>
 									</td>
 								</tr>
 								</table>
-								</form>
 								
-								<br/>
+								<!-- <br/> -->
 								<div id='f'>	
 								<table align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문제품목록</caption>

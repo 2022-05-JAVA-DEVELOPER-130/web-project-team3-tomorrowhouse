@@ -52,6 +52,11 @@ delete from orders where u_id = 'test3';
 --update(X)
 --주문내역을 수정하는 일은 발생하지 않아 작성하지 않았습니다.
 
+--주문완료 내역 삭제
+
+update orders set o_desc='[주문내역삭제]'||o_desc where o_no=10;
+select * from orders where o_no=10;
+
 
 --주문취소를 위한 select-update
 
@@ -63,16 +68,9 @@ join orderitem oi on o.o_no=oi.o_no
 where o.o_no=3;
 
 update orderitem set oi_qty= where o_no=3;
-update orders set o_price=-o_price, o_desc='[주문취소]'||o_desc where o_no=3;
-
---한줄로 만들기 실패.. --- 안되는 것
-update (select * from orders o
-join orderitem oi on o.o_no=oi.o_no
-where o.o_no=3) set o_desc='(1줄로수정)주문취소', oi_qty=99 ;
+update orders set o_desc='[주문취소]'||o_desc where o_no=9;
 
 select * from product where p_name like 책상';
-
-
 
 select * from orders o
 join orderitem oi on o.o_no=oi.o_no
@@ -91,3 +89,13 @@ where oi.oi_no=36;
 
 ----serviceTest
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id ='test4' and o.o_no=7;
+
+
+
+
+--한줄로 만들기 실패.. --- (결론)안되는 것 -> update에 inline은 안됨
+/*
+update (select * from orders o
+join orderitem oi on o.o_no=oi.o_no
+where o.o_no=3;) set o_desc='(1줄로수정)주문취소', oi_qty=99 
+*/

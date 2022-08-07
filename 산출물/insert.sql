@@ -96,17 +96,20 @@ insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.next
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 19);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 20);
 
-
 insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '청소기 외 2종', sysdate-5, 200000, 'test4');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 27);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 24);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 5, orders_o_no_seq.currval, 7);
 
-
 insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '넓은책상 외 2개', sysdate-7, 200000, 'test4');
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 4);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 8);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 7, orders_o_no_seq.currval, 12);
+
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '에어컨 외 2개', sysdate-14, 450000, 'test5');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 21);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 11);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 28);
 
 ------카트 데이터------
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test1', 1);
@@ -135,19 +138,6 @@ insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.next
 insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '공지6', '공지6 내용', sysdate);
 
 ------리뷰 데이터------
-
-/*
-		r_no                          		NUMBER(10)		 NULL ,
-		r_title                       		VARCHAR2(100)		 NULL ,
-		r_content                     		VARCHAR2(1000)		 NULL ,
-		r_date                        		DATE		 DEFAULT sysdate		 NULL ,
-		r_rating                      		NUMBER(10)		 DEFAULT 0		 NULL ,
-		r_image                       		VARCHAR2(50)		 NULL ,
-		r_click_count                 		NUMBER(10)		DEFAULT 0 NULL ,
-		u_id                          		VARCHAR2(50)		 NULL ,
-		oi_no                         		NUMBER(10)		 NULL 
-*/
-
 insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '좋아요'||REVIEW_R_NO_SEQ.currval, '추천해요! 너무너무 만족스러운 구매였어요! 후회하지 않으실꺼에요! 절대로! 꼭사세요!'||REVIEW_R_NO_SEQ.currval, sysdate-7, 5, null, 3, 'test1', 1);
 insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '아주 좋아요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-6, 4, null,2, 'test1', 2);
 insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '만족해요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-5, 4, null, 1,'test1', 3);
