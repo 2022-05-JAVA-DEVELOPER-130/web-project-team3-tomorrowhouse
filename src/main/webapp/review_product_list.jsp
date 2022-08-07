@@ -15,12 +15,10 @@
 	pageEncoding="UTF-8"%>
 <!-- 비회원 유저도 접근가능 -> login check(X) -->
 <%
-/*
 if(request.getMethod().equalsIgnoreCase("GET")){
     response.sendRedirect("product_list.jsp");		  
 	 return;
 }
-*/
 
 String p_noStr= request.getParameter("p_no");
 
@@ -103,7 +101,7 @@ session.setAttribute("review_access_route", "review_product_list");
 										<input type="hidden" name="p_no" value='<%=product.getP_no() %>'>
 										<td width=30 align=center bgcolor="E6ECDE">No.</td>
 										<td width=70 align=center bgcolor="E6ECDE">작성자</td>
-										<td width=70 align=center bgcolor="E6ECDE">평점</td>
+										<td width=70 align=center bgcolor="E6ECDE">별점</td>
 										<td width=100 align=center bgcolor="E6ECDE">제목</td>
 										<td width=250 align=center bgcolor="E6ECDE">내용</td>
 										<td width=70 align=center bgcolor="E6ECDE">작성일</td>

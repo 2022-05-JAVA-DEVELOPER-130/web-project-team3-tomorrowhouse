@@ -54,7 +54,6 @@ if (buyType.equals("cart")) {
 }
 %>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -76,6 +75,24 @@ form > table tr td{
 		document.order_create_form.action = 'order_create_action.jsp';
 		document.order_create_form.submit();
 	}
+	
+	function review_select_write_action(formId) {
+		if(window.confirm('리뷰를 작성하시겠습니까?')){
+			var form = document.getElementById(formId);
+			form.method = 'POST';
+			form.action = 'review_write_form.jsp';
+			form.submit();
+		}
+	}
+	
+	function user_modify() {
+		if(window.confirm('회원정보를 수정하시겠습니까?')){
+			document.user_info.method = 'POST';
+			document.user_info.action = 'user_modify_form.jsp';
+			document.user_info.submit();
+		}
+	}
+	
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
@@ -84,9 +101,6 @@ form > table tr td{
 		<input type="hidden" name="p_no" value="<%=p_noStr%>">
 		<input type="hidden" name="p_qty" value="<%=p_qtyStr%>">
 
- <input
-			type="hidden" name="p_no" value="<%=p_noStr%>">
-			<input type="hidden" name="p_qty" value="<%=p_qtyStr%>">
 		<%
 		for (String cart_item_noStr : cart_item_noStr_array) {
 		%>
@@ -126,29 +140,40 @@ form > table tr td{
 									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 -
 											주문/결제폼</b></td>
 								</tr>
-							</table> <!--form-->
-							<form>
-								<table align=center width=80% border="0" cellpadding="0"
-									cellspacing="1" bgcolor="BBBBBB">
+							</table>
+							<!--form start-->
+							<form name="user_info">
+								<table align=center width=80% border="0" cellpadding="0" cellspacing="1" bgcolor="BBBBBB">
 									<caption style="text-align: left;">구매자정보</caption>
 									<tr>
-										<td width=290 height=25 align=center bgcolor="E6ECDE" class=t1>아이디</td>
-										<td width=112 height=25 align=center bgcolor="E6ECDE" class=t1>이름</td>
-										<td width=166 height=25 align=center bgcolor="E6ECDE" class=t1>이메일</td>
-										<td width=50 height=25 align=center bgcolor="E6ECDE" class=t1>비 고</td>
+										<td width=100 height=25 align=center bgcolor="E6ECDE" class=t1>아이디</td>
+										<td width=100 height=25 align=center bgcolor="E6ECDE" class=t1>이름</td>
+										<td width=150 height=25 align=center bgcolor="E6ECDE" class=t1>이메일</td>
+										<td width=200 height=25 align=center bgcolor="E6ECDE" class=t1>배송지 주소</td>
+										<td width=150 height=25 align=center bgcolor="E6ECDE" class=t1>전화번호</td>
 									</tr>
 									<tr>
-										<td width=290 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
-										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_name()%></td>
-										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_email()%></td>
-										<td width=50 height=26 align=center bgcolor="ffffff" class=t1></td>
+										<td width=100 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_id()%></td>
+										<td width=100 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_name()%></td>
+										<td width=150 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_email()%></td>
+										<td width=200 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_address()%></td>
+										<td width=150 height=26 align=center bgcolor="ffffff" class=t1><%=userInfo.getU_phone()%></td>
 									</tr>
 								</table>
 
 								<br />
-
-								<table align=center width=80% border="0" cellpadding="0"
-									cellspacing="1" bgcolor="BBBBBB">
+								<table border="0" cellpadding="0" cellspacing="1" width="590">
+									<tr>
+										<td align=center>&nbsp;&nbsp;
+											<a href="javascript:user_modify();" class=m1>회원정보 변경</a>&nbsp;&nbsp;
+										</td>
+									</tr>
+								</table></td>
+							</form>
+							<!--form end-->
+								<br />
+								<div id='f'>
+								<table align=center width=80%  border="0" cellpadding="0" cellspacing="1" bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문제품목록</caption>
 									<tr style="border: 0.1px solid">
 										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>상품이름</td>
@@ -184,13 +209,13 @@ form > table tr td{
 										</td>
 									</tr>
 								</table>
-							</form>
+								</div>
 							<br />
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
-									<td align=center>&nbsp;&nbsp; <a
-										href="javascript:order_create_form_submit();" class=m1>구매/결제하기</a>
-										&nbsp;&nbsp;<a href=product_list.jsp class=m1>계속 쇼핑하기</a>
+									<td align=center>&nbsp;&nbsp;
+										<a href="javascript:order_create_form_submit();" class=m1>구매/결제하기</a>&nbsp;&nbsp;
+										<a href=product_list.jsp class=m1>계속 쇼핑하기</a>
 
 									</td>
 								</tr>
