@@ -4,12 +4,16 @@
 <%@page import="com.itwill.shop.service.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 비회원 유저도 접근가능 -> login check(X) -->
 <%
-/*
 	if(request.getMethod().equalsIgnoreCase("GET")){
 	    response.sendRedirect("review_list.jsp");		  
 		 return;
-	}*/
+	}
+
+	//접근 경로 저장
+	String review_access_route=
+	(String)session.getAttribute("review_access_route");
 	
 	String r_noStr=
 	request.getParameter("r_no");
@@ -38,31 +42,29 @@
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script language="JavaScript">
-	function boardCreate() {
-		f.action = "board_write.jsp";
-		f.submit();
-	}
-	function boardReplyCreate() {
-		document.f.action = "board_reply_write.jsp";
-		document.f.method='POST';
-		document.f.submit();
-	}
 	
-	function boardUpdate() {
+	function reviewUpdate() {
 		document.f.action = "review_modify_form.jsp";
 		document.f.method='POST';
 		document.f.submit();
 	}
 	
-	function boardRemove() {
+	function reviewRemove() {
 		if (confirm("정말 삭제하시겠습니까?")) {
-			document.f.action = "board_remove_action.jsp";
+			document.f.action = "review_remove_action.jsp";
+			document.f.method='POST';
 			document.f.submit();
 		}
 	}
 	
 	function reviewList() {
 		document.f.action = "review_list.jsp";
+		document.f.method='POST';
+		document.f.submit();
+	}
+
+	function review_product_List() {
+		document.f.action = "review_product_list.jsp";
 		document.f.method='POST';
 		document.f.submit();
 	}
@@ -106,6 +108,8 @@
 							 -->
 							<form name="f" method="post">
 								<input type="hidden" name="r_no" value="<%=review.getR_no()%>">
+								<input type="hidden" name="p_no" value="<%=order.getOrderItemList().get(0).getProduct().getP_no()%>">
+								
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
@@ -141,9 +145,13 @@
 									<td align=center>
 									<!-- <input type="button" value="글쓰기" onClick="boardCreate()"> &nbsp; --> 
 										<!-- <input type="button" value="답글쓰기" onClick="boardReplyCreate()"> &nbsp; --> 
-										<input type="button" value="수정" onClick="boardUpdate()"> &nbsp; 
-										<input type="button" value="삭제" onClick="boardRemove()"> &nbsp; 
+										<input type="button" value="수정" onClick="reviewUpdate()"> &nbsp; 
+										<input type="button" value="삭제" onClick="reviewRemove()"> &nbsp; 
+										<%if(review_access_route.equals("review_list")) {%>
 										<input type="button" value="리스트" onClick="reviewList()"></td>
+										<%} else if(review_access_route.equals("review_product_list")) {%>
+										<input type="button" value="리스트" onClick="review_product_List()"></td>
+										<%} %>
 								</tr>
 							</table></td>
 					</tr>

@@ -34,6 +34,8 @@ public class ReviewServiceTestMain {
 		ArrayList<Review> arrayList = new ArrayList<Review>(0);
 		arrayList.size();
 		System.out.println(arrayList.size());
+		
+		System.out.println(reviewService.deleteByReviewNo(new Review(19, null, null, null, 0, null, 0, "test6", null)));
 	}
 
 }

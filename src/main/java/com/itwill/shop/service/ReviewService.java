@@ -67,6 +67,19 @@ public class ReviewService {
 		return reviewDao.createReview(review);
 	}
 	
+	/* ----- review delete ----*/
+	
+	//6. u_id로 후기 전체삭제
+	//delete from review where u_id = 'test1';
+	//7.r_no로 후기 1개삭제
+	//delete from review where r_no=?;
+	public int deleteByReviewNo(Review review)throws Exception{
+		return reviewDao.deleteByReviewNo(review);
+	}
+	
+	
+	
+	
 }
 	
 

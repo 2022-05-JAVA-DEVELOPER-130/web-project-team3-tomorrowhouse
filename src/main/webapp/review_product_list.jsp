@@ -13,7 +13,7 @@
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<!-- 비회원 유저도 접근가능 -> login check(X) -->
 <%
 /*
 if(request.getMethod().equalsIgnoreCase("GET")){
@@ -22,13 +22,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 }
 */
 
-
-String p_noStr=
-request.getParameter("p_no");
-
-/**************/
-//p_noStr="1";
-/**************/
+String p_noStr= request.getParameter("p_no");
 
 //게시물조회
 ReviewService reviewService = new ReviewService();
@@ -50,9 +44,9 @@ if(reviewList.size()==0){
 	out.println("location.href='product_detail.jsp?p_no="+p_noStr+"';");
 	out.println("</script>");
 }
-	 
-//BoardService boardService=new BoardService();
-//BoardListPageDto boardListPage 	=boardService.findBoardList(pageInputDto);
+//review 접근경로
+session.setAttribute("review_access_route", "review_product_list");
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -66,8 +60,7 @@ if(reviewList.size()==0){
 	
 </script>
 </head>
-<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0  marginwidth=0 marginheight=0>
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
@@ -123,7 +116,7 @@ if(reviewList.size()==0){
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<%=(order.getO_date()+"").substring(5, 10) %>
+										<%=order.getO_date() %>
 										</td>
 										<td width=170 align=center bgcolor="ffffff">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>

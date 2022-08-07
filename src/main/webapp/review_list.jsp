@@ -12,58 +12,27 @@
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<!-- 로그인한 고객의 리뷰를 보여주는 페이지 -->	
 <%@include file="login_check.jspf"%>  
-<%!
-/* 댓글이 없어서 필요없음
-public String getTitleString(Review review) {
-		StringBuilder title = new StringBuilder(128);
-		String t = review.getR_title()();
-		if (t.length() > 15) {
-			//t = t.substring(0,15);
-			//t = t+"...";
-			t = String.format("%s...", t.substring(0, 15));
-		}
-		//답글공백삽입
-		
-		for (int i = 0; i < review.getDepth(); i++) {
-			title.append("&nbsp;&nbsp;");
-		}
-		
-		if (review.getDepth() > 0) {
-			title.append("<img border='0' src='image/re.gif'/>");
-		}
-		
-		title.append(t.replace(" ", "&nbsp;"));
-		
-		return title.toString();
-}
-*/
-%>
 
 <%
-
 if(request.getMethod().equalsIgnoreCase("GET")&&sUserId==null){
     response.sendRedirect("shop_main.jsp");		  
 	 return;
 }
 
-
-/********로그인한 고객의 리뷰를 보여주는 페이지***********/
-
 UserInfoService userInfoService = new UserInfoService();
-UserInfo userInfo =
-userInfoService.findUser(sUserId);
+UserInfo userInfo = userInfoService.findUser(sUserId);
 OrderService orderService = new OrderService();
 
-//게시물조회
+//리뷰 조회
 ReviewService reviewService = new ReviewService();
 
 ArrayList<Review> reviewList=
 reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,null));
+//review 접근경로
+session.setAttribute("review_access_route", "review_list");
 
-//BoardService boardService=new BoardService();
-//BoardListPageDto boardListPage 	=boardService.findBoardList(pageInputDto);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -102,6 +71,7 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 			<!-- include_content.jsp start-->
 
 			<div id="content">
+			<!-- outline table start -->
 				<table border=0 cellpadding=0 cellspacing=0>
 					<tr>
 						<td><br />
@@ -112,10 +82,6 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 									</td>
 								</tr>
 								<tr bgcolor="#FFFFFF">
-								<!-- 
-								
-								
-									 -->
 								</tr>
 							</table> <br /> <!-- list -->
 							<form name="f" method="post" action="">
@@ -138,7 +104,7 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<%=(order.getO_date()+"").substring(5, 10) %>
+										<%=order.getO_date() %>
 										</td>
 										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
@@ -160,16 +126,6 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 										<td width=70 align=center bgcolor="ffffff" align="left"><%=review.getR_click_count()%>
 										</td>
 									</tr>
-											<!-- 
-											<tr>
-												<td width=280 bgcolor="ffffff" style="padding-left: 10"><a
-													href='board_view.jsp?boardno=532&pageno=6'>게시판타이틀514</a></td>
-												<td width=120 align=center bgcolor="ffffff">김경호514</td>
-												<td width=120 bgcolor="ffffff" style="padding-left: 10">2014-12-23
-												</td>
-												<td width=70 align=center bgcolor="ffffff">0</td>
-											</tr>
-											 -->
 									<%
 										}
 									%>
@@ -177,26 +133,27 @@ reviewService.selectAllByUserId(new Review(0,null,null,null,0,null,0,sUserId,nul
 								<!-- /list -->
 							</form> <br>
 							
-							<table border="0" cellpadding="0" cellspacing="1" width="590">
-								<tr>
-									<td align="center">
-									
-									
-									</td>
-								</tr>
-							</table>
-							<!-- button -->
-							<!-- 
-							<table border="0" cellpadding="0" cellspacing="1" width="590">
-								<tr>
-									<td align="right"><input type="button" value="게시물 생성"
-										onclick="boardCreate();" /></td>
-								</tr>
-							</table>
-							 -->
+											<table border="0" cellpadding="0" cellspacing="1" width="590">
+												<tr>
+													<td align="center">
+													
+													
+													</td>
+												</tr>
+											</table>
+											<!-- button -->
+											<!-- 
+											<table border="0" cellpadding="0" cellspacing="1" width="590">
+												<tr>
+													<td align="right"><input type="button" value="게시물 생성"
+														onclick="boardCreate();" /></td>
+												</tr>
+											</table>
+											 -->
 							</td>
 						</tr>
-					</table>
+					</table><!-- outline table end -->
+					
 			</div>
 			<!-- include_content.jsp end-->
 			<!-- content end -->

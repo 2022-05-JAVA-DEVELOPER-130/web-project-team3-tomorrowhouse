@@ -5,9 +5,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-/**********************/
-//sUserId = "test4";
-/**********************/
 if(request.getMethod().equalsIgnoreCase("GET")){
 	response.sendRedirect("shop_main.jsp");
 	return;

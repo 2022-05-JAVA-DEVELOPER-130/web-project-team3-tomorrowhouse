@@ -36,8 +36,9 @@
 	if(sUserId==null|| sUserId.equals("") || !review.getU_id().equals(sUserId) ){
 		out.println("<script>");
 		out.println("alert('작성자만 수정가능합니다');");
-		out.println("location.href='review_list.jsp?r_no="+r_noStr+"';");
+		out.println("location.href='review_view.jsp?r_no="+r_noStr+"';");
 		out.println("</script>");
+		return;
 	}
 	
 	OrderService orderService = new OrderService();

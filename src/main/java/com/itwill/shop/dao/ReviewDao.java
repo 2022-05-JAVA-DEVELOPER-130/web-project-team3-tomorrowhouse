@@ -265,7 +265,7 @@ public class ReviewDao {
 	}
 	
 	//7.r_no로 후기 1개삭제
-	//select * from review where r_no=26;
+	//delete from review where r_no=?;
 	public int deleteByReviewNo(Review review)throws Exception{
 		
 		Connection con = null;
