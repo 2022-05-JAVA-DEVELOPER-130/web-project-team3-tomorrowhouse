@@ -31,7 +31,7 @@ public class QnaService {
 	 * 게시물삭제
 	 */
 	public int removeQna(int q_no) throws Exception{
-			return qnaDao.removeQna(q_no);
+		return qnaDao.removeQna(q_no);
 	}
 	/*
 	 * 게시물수정
