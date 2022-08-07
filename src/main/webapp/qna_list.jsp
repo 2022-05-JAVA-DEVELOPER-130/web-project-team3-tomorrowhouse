@@ -107,7 +107,7 @@
 									<tr>
 										<td width=280 align=left bgcolor="ffffff">
 										<a href='qna_view.jsp?q_no=<%=qna.getQ_no() %>&pageno=<%=qnaListPage.pageMaker.getCurPage()%>'>
-										<%=qna.getQ_title() %>	
+										<%=this.getTitleString(qna) %>	
 										</a>
 										</td>
 										

@@ -37,6 +37,7 @@ String sUserId=(String)session.getAttribute("sUserId");
 	<li><a href=""></a></li>
 	<li><a href="notice_list.jsp">공지 게시판</a></li>
 	<li><a href="qna_list.jsp">문의 게시판</a></li>
+	<li><a href="review_list.jsp">리뷰 게시판</a></li>
 	<li><a href=""></a></li>
 	<li><a href=""></a></li>
 	<!-- !!!!!!!!관리자는 리뷰게시판이 필요없는가?? 
