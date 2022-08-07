@@ -366,12 +366,3 @@ public class QnaDao {
 	}
 
 }
-
-	
-	
-	
-	
-	
-	
-	
-	

@@ -17,7 +17,7 @@ public class QnaSQL {
 			"SELECT q_no, q_title, u_id, q_content, q_date, q_readcount, q_groupno, q_step, q_depth FROM qna WHERE q_no = ?";
 
 	public static final String QNA_REPLY_CREATE = 
-			"INSERT INTO qna(q_no, q_title, u_id, q_content, q_groupno, q_step, q_depth) VALUES (qna_sequence.nextval, ?, ?, ?, ?, ?, ?)";
+			"INSERT INTO qna(q_no, q_title, u_id, q_content, q_groupno, q_step, q_depth) VALUES (qna_q_no_seq.nextval, ?, ?, ?, ?, ?, ?)";
 	
 	public static final String QNA_SORT = 
 			"UPDATE qna SET q_step = q_step + 1 WHERE q_step > ? AND q_groupno = ?";

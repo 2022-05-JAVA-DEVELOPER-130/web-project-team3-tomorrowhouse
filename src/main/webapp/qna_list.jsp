@@ -1,6 +1,8 @@
 <%@page import="com.itwill.shop.dto.qna.Qna"%>
 <%@page import="com.itwill.shop.service.QnaService"%>
 <%@page import="com.itwill.shop.dto.qna.QnaListPageMaker"%>
+<%@page import="com.itwill.shop.dto.qna.PageInput"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -103,7 +105,7 @@
 										for (Qna qna : qnaListPage.itemList ){
 									%>
 									<tr>
-										<td width=280 align=center bgcolor="ffffff">
+										<td width=280 align=left bgcolor="ffffff">
 										<a href='qna_view.jsp?q_no=<%=qna.getQ_no() %>&pageno=<%=qnaListPage.pageMaker.getCurPage()%>'>
 										<%=qna.getQ_title() %>	
 										</a>
