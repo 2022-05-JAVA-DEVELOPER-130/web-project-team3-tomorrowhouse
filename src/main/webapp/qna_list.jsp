@@ -77,10 +77,10 @@
 									bgcolor="BBBBBB">
 
 									<tr>
-										<td width=280 align=center bgcolor="E6ECDE">제목</td>
+										<td width=280 align=center bgcolor="E6ECDE">제  목</td>
 										<td width=80 align=center bgcolor="E6ECDE">작성자</td>
 										<td width=80 align=center bgcolor="E6ECDE">작성일</td>
-										<td width=80 align=center bgcolor="E6ECDE">조회수</td>
+										<td width=30 align=center bgcolor="E6ECDE">조회수</td>
 										
 									</tr>
 									
@@ -88,18 +88,17 @@
 										for (Qna qna : qnaListPage.itemList ){
 									%>
 									<tr>
-										<td width=280 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<td width=280 align=center bgcolor="ffffff">
 										<a href='qna_view.jsp?n_no=<%=qna.getQ_no() %>&pageno=<%=qnaListPage.pageMaker.getCurPage()%>'>
 										<%=qna.getQ_title() %>	
 										</a>
 										</td>
-										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<%=qna.getU_id()%>
+										<td width=80 align=center bgcolor="ffffff"><%=qna.getU_id()%>
 										</td>
-										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<td width=80 align=center bgcolor="ffffff">
 											<%=qna.getQ_date()%>
 										</td>
-										<td width=80 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<td width=30 align=center bgcolor="ffffff">
 											<%=qna.getQ_readcount()%>
 										</td>
 									</tr>
