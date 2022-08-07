@@ -101,14 +101,18 @@ session.setAttribute("review_access_route", "review_product_list");
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<input type="hidden" name="p_no" value='<%=product.getP_no() %>'>
-										<td width=70 align=center bgcolor="E6ECDE">주문일</td>
+										<td width=70 align=center bgcolor="E6ECDE">No.</td>
+										<td width=70 align=center bgcolor="E6ECDE">작성자</td>
+										<td width=170 align=center bgcolor="E6ECDE">평점</td>
 										<td width=170 align=center bgcolor="E6ECDE">제목</td>
 										<td width=150 align=center bgcolor="E6ECDE">내용</td>
 										<td width=100 align=center bgcolor="E6ECDE">작성일</td>
 										<td width=70 align=center bgcolor="E6ECDE">조회수</td>
 									</tr>
 									<%
+										int i=0;
 										for (Review review:reviewList) {
+											i++;
 											Order order = 
 													orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
 													//orderService.findProductByOrderItemNo(review.getOrderItem().getOi_no());
@@ -116,7 +120,12 @@ session.setAttribute("review_access_route", "review_product_list");
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<%=order.getO_date() %>
+										<%=i %>
+										</td>
+										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<%=order.getU_id() %>
+										</td>
+										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										</td>
 										<td width=170 align=center bgcolor="ffffff">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
