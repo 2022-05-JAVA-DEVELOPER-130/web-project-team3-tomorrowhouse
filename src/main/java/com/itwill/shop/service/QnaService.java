@@ -68,5 +68,7 @@ public class QnaService {
 		pageMakerQnaList.pageMaker=pageMaker;
 		return pageMakerQnaList;
 	}
-	
+	public int createReply(Qna qna) throws Exception{
+		return qnaDao.createQnaReply(qna);
+	}
 }
