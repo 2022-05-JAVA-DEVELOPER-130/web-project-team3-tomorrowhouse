@@ -16,6 +16,7 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/user.css" type="text/css">
@@ -70,15 +71,14 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>로그인 페이지</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 로그인</b></td>
 								</tr>
 							</table> <!-- login Form  -->
 							<form name="f" method="post" >
 								<table border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
-											아이디</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">아이디</td>
 										<td width=490 align="left" bgcolor="ffffff"
 											style="padding-left: 10px"><input type="text"
 											style="width: 150" name="u_id" value="">&nbsp;&nbsp;<font color="red"></font></td>

@@ -23,7 +23,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지수정</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
@@ -79,7 +79,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>공지사항 - 수정</b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>내일의집 - 공지사항</b>
 									</td>
 								</tr>
 							</table> <br> <!-- modify Form  -->
@@ -88,13 +88,13 @@
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">공지 제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><input type="text" name="n_title"
 											value=<%=notice.getN_title()%>></td>
 									</tr>
 									<tr>
-									<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
+									<td width=100 align=center bgcolor="E6ECDE" height="22">공지 내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
 											align="left"><textarea name="n_content"
 												style="width: 350px" rows="14"><%=notice.getN_content()%> </textarea></td>

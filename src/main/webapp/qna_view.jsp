@@ -30,7 +30,7 @@ QnaService.getInstance().updateHitCount(q_no);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의사항</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
@@ -84,8 +84,7 @@ QnaService.getInstance().updateHitCount(q_no);
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>
-											게시글상세 </b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b> 내일의집 - 문의 게시판</b>
 									</td>
 								</tr>
 							</table> <br> <!-- view Form  -->
@@ -98,7 +97,7 @@ QnaService.getInstance().updateHitCount(q_no);
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qna.getQ_title()%></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">아이디</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qna.getU_id()%></td>
 									</tr>
 									<tr>
@@ -106,7 +105,7 @@ QnaService.getInstance().updateHitCount(q_no);
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qna.getQ_date()%></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">문의내용</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">문의 내용</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qna.getQ_content()%></td>
 									</tr>
 								</table>

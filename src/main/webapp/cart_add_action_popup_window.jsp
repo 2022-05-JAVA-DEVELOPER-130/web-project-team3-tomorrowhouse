@@ -31,7 +31,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의집</title>
 <script type="text/javascript">
 </script>
 </head>

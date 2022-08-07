@@ -83,8 +83,7 @@
 								cellspacing=0>
 								<tr>
 
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>문의사항 -
-											문의사항 답글 쓰기</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 문의 게시판</b></td>
 								</tr>
 							</table> <br> <!-- write Form  -->
 							<form name="f" method="post">
@@ -94,21 +93,21 @@
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">답글 제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input value="[RE]<%=qna.getQ_title()%>"  type="text" style="width: 150"
 											name="q_title">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input value="<%=qna.getU_id()%>" type="text" style="width: 150"
 											name="u_id">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">답글 내용</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<textarea name="q_content" class="textarea" style="width: 350px" rows="14">>><%=qna.getQ_content().replace("\n",">>").trim()%></textarea>
 										</td>

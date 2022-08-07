@@ -82,10 +82,10 @@ function mainForm() {
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>ID</font></td>
+										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>아이디</font></td>
 										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>비밀번호</font></td>
 										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>이름</font></td>
-										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>이메일 주소</font></td>
+										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>이메일</font></td>
 										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주소</font></td>
 										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>전화번호</font></td>
 									</tr>

@@ -91,8 +91,7 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0 >
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>관리자 전용
-											- 상품 수정</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>관리자 전용 - 상품 수정</b></td>
 								</tr>
 							</table> 
 							<!-- write Form  -->
@@ -101,35 +100,35 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 									bgcolor="BBBBBB">
 									<tr >
 										<input type='hidden' name='p_no' value='<%=product.getP_no()%>' >
-										<td  width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
+										<td  width=100 align=center bgcolor="E6ECDE" height="22">상품 명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_name"
 											value="<%=product.getP_name()%>">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품가격</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 가격</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_price"
 											value="<%=product.getP_price() %>">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 이미지</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_image"
 											value="<%=product.getP_image()%>">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품설명</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 설명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="p_desc"
 											value="<%=product.getP_desc()%>">
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">상품분류</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">상품 분류</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="category"
 											value="<%=product.getCategory().getCg_no()%>">

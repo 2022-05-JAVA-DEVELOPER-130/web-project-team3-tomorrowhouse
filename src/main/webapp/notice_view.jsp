@@ -26,7 +26,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
@@ -76,8 +76,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>
-											게시글상세 </b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b>내일의집 - 공지사항 </b>
 									</td>
 								</tr>
 							</table> <br> <!-- view Form  -->
@@ -86,15 +85,15 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 								<input type="hidden" name="n_no" value="<%=noticeDetail.getN_no() %>">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">공지일</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">공지 일자</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=noticeDetail.getN_date()%></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">공지 제목</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=noticeDetail.getN_title()%></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">공지 내용</td>
 										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=noticeDetail.getN_content()%></td>
 										
 									</tr>

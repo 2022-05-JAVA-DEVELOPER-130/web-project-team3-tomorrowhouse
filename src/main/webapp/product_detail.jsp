@@ -135,7 +135,7 @@ if (detailProduct == null) {
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 - 상품상세보기</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 상품상세보기</b></td>
 								</tr>
 							</table> <!-- 
 							<form name="f" method="post">
@@ -152,14 +152,14 @@ if (detailProduct == null) {
 										src='image/product/<%=detailProduct.getP_image()%>' width=250 height=250></td>
 									<td width=35% height=200 class=t1>
 										<ol type="disc">
-											<li><b>이름 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
+											<li><b>상품 명 : <%=detailProduct.getP_name()%>&nbsp;&nbsp;&nbsp;
 											</b></li>
-											<li><font color=#FF0000>가격 : <%=new DecimalFormat("#,##0").format(detailProduct.getP_price())%> 원&nbsp;&nbsp;&nbsp;
+											<li><font color=#FF0000>상품 가격 : <%=new DecimalFormat("#,##0").format(detailProduct.getP_price())%> 원&nbsp;&nbsp;&nbsp;
 											</font></li>
 											<li><font color=#0000FF><%=detailProduct.getP_desc()%></font></li>
 										</ol>
 										<form name="add_cart_form" method="post" action="cart_add_item_action.jsp" style="display: inline;">
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량 :
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구매 수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
