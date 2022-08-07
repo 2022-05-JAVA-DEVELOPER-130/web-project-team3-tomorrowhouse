@@ -86,7 +86,7 @@ ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_desc()%></td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(order.getO_date())%></td>
-										<td width=136 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(order.getO_price())%></td>
+										<td width=136 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(order.getO_price())%> 원</td>
 										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><a
 											href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1>주문상세</a></td>
 									</tr>

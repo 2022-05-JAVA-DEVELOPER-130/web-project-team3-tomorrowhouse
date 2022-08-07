@@ -43,17 +43,6 @@ form > table tr td{
 */
 </style>
 <script type="text/javascript">
-	/*
-	(참고)cart item1개삭제하기
-	 */
-	function cart_delete_item_action(formId) {
-		if(window.confirm('해당상품을 장바구니에서 삭제하시겠습니까?')){
-			var form = document.getElementById(formId);
-			form.method = 'POST';
-			form.action = 'cart_delete_item_action.jsp';
-			form.submit();
-		}
-	}
 	
 	function review_select_write_action(formId) {
 		if(window.confirm('리뷰를 작성하시겠습니까?')){
@@ -70,30 +59,32 @@ form > table tr td{
 			alert("해당주문의 리뷰를 작성하시면, 구매확정 됩니다♡");
 		}
 		*/
-		f.action = "review_write_form.jsp";
-		f.method = "POST";
-		f.submit();
+		document.f.action = "review_write_form.jsp";
+		document.f.method = "POST";
+		document.f.submit();
 	}
 
 	function review_select_view_action(formId) {
 		if(window.confirm('리뷰를 보시겠습니까?')){
 			var form = document.getElementById(formId);
 			form.method = 'POST';
-			form.action = 'review_view_form.jsp';
+			form.action = 'review_view.jsp';
 			form.submit();
 		}
 	}
-	
+	/*
 	function review_view() {
-		f.action = "review_view.jsp";
-		f.method = "POST";
-		f.submit();
+		document.f.method = "POST";
+		document.f.action = "review_view.jsp";
+		document.f.submit();
 	}
-	
-	function review_cancel() {
-		f.action = "order_cancel_action.jsp";
-		f.method = "POST";
-		f.submit();
+	*/
+	function order_cancel() {
+		if(window.confirm('주문을 취소하시겠습니까?')){
+			document.f.method = "POST";
+			document.f.action = "order_cancel_action.jsp";
+			document.f.submit();
+		}
 	}
 
 	
@@ -136,7 +127,6 @@ form > table tr td{
 							<!-- <form name="f" method="post" action="order_cancel_action.jsp"> -->
 							<form name="f" >
 								<input type="hidden" name="cancel_order_no" value="<%=order.getO_no()%>">
-								<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
 								<input type="hidden" name="r_count" value="<%=reviewCount%>">
 								<table align="center" width="80%"  border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문상세정보</caption>
@@ -157,13 +147,19 @@ form > table tr td{
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
 										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
-												<input type="button" value="취소" onClick="review_cancel()">
+											<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
+											<a href="javascript:order_cancel();">주문취소</a>
+												<!-- <input type="button" value="취소" onClick="order_cancel()"> -->
 												<!-- <input type="submit" value="취소"> -->
+										<% } else {%>
+											<!-- 주문취소 멘트 추가필요 -->
+											(수정필요)구매확정
 										<% } %>
 										</td>
 									</tr>
 								</table>
-								</form> 
+								</form>
+								
 								<br/>
 								<div id='f'>	
 								<table align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
@@ -194,7 +190,7 @@ form > table tr td{
 										</td>
 										
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
-												<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
+												<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%> 원
 										</td>
 										
 										<!-- review 관리를 위한 from - start -->
@@ -207,12 +203,12 @@ form > table tr td{
 															<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
 															<input type='hidden' name='oi_no' value='<%=orderItem.getOi_no()%>'>
 															<input type='hidden' name='index' value='<%=i%>'>
-															<a href="javascript:review_select_write_action('review_list_form_<%=orderItem.getOi_no() %>');">리뷰작성</a>
+															<a href="javascript:review_select_write_action('review_list_form_<%=orderItem.getOi_no() %>');">작성하기</a>
 															<!-- <input type="button" value="작성하기" onClick="review_select_write_action()"> -->
 														<%} else if (review!=null){%>
 															<!-- oi_no로 작성된 리뷰가 있다면 -->
 															<input type='hidden' name='r_no' value='<%=review.getR_no()%>'>
-															<a href="javascript:review_select_view_action('review_list_form_<%=review.getR_no() %>');">리뷰보기</a>
+															<a href="javascript:review_select_view_action('review_list_form_<%=orderItem.getOi_no() %>');">보기</a>
 														
 													<% }}%>
 										</td>
@@ -226,10 +222,11 @@ form > table tr td{
 											<!-- '주문취소'했을 경우, 금액 표기및 색상 변경 -->
 											<p align=right style="padding-top: 10px">
 												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
-												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
+												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
 												<% }else { %>
-												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
-												<font color=red>총 환불 금액 : -<%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
+												<font color=blue>총 주문 금액 :  <%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
+												<br/>
+												<font color=red>총 환불 금액 : -<%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
 												<% } %>
 											</p>
 										</td>
