@@ -89,7 +89,7 @@
 									%>
 									<tr>
 										<td width=280 align=center bgcolor="ffffff">
-										<a href='qna_view.jsp?n_no=<%=qna.getQ_no() %>&pageno=<%=qnaListPage.pageMaker.getCurPage()%>'>
+										<a href='qna_view.jsp?q_no=<%=qna.getQ_no() %>&pageno=<%=qnaListPage.pageMaker.getCurPage()%>'>
 										<%=qna.getQ_title() %>	
 										</a>
 										</td>
