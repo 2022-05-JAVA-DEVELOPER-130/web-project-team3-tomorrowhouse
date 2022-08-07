@@ -83,19 +83,19 @@ qnaView = qnaService.findQna(Integer.parseInt(q_no));
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">문의 제목</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_title()%></td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px"><%=qnaView.getQ_title()%></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">작성자</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getU_id()%></td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px"><%=qnaView.getU_id()%></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">작성일</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_date()%></td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px"><%=qnaView.getQ_date()%></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">문의내용</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10"><%=qnaView.getQ_content()%></td>
+										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px"><%=qnaView.getQ_content()%></td>
 										
 									</tr>
 								</table>
