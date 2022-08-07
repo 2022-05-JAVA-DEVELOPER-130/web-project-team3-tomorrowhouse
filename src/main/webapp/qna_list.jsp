@@ -9,8 +9,8 @@
 <%!public String getTitleString(Qna qna) {
 	StringBuilder title = new StringBuilder(128);
 	String t = qna.getQ_title();
-	if (t.length() > 15) {
-		t = String.format("%s...", t.substring(0, 15));
+	if (t.length() > 30) {
+		t = String.format("%s...", t.substring(0, 30));
 	}
 	for (int i = 0; i < qna.getQ_depth(); i++) {
 		title.append("&nbsp;&nbsp;");
