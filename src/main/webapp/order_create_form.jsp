@@ -19,7 +19,7 @@ if (request.getMethod().equalsIgnoreCase("GET")) {
 
 String buyType = request.getParameter("buyType");
 String p_noStr = request.getParameter("p_no");
-String p_qty_testStr = request.getParameter("p_qty_test");
+//String p_qty_testStr = request.getParameter("p_qty_test");
 String p_qtyStr = request.getParameter("p_qty");
 String[] cart_item_noStr_array = request.getParameterValues("cart_item_no");
 
@@ -78,10 +78,11 @@ form > table tr td{
 	}
 </script>
 </head>
-<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 	<form name="order_create_form" method="post">
-
+		<input type="hidden" name="buyType" value="<%=buyType%>">
+		<input type="hidden" name="p_no" value="<%=p_noStr%>">
+		<input type="hidden" name="p_qty" value="<%=p_qtyStr%>">
 
  <input
 			type="hidden" name="p_no" value="<%=p_noStr%>">

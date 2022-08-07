@@ -280,7 +280,7 @@ function cart_item_all_select(e){
 										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
 											<p align=right>
 												<br/>
-												<span id="tot_order_price" style="color: red">총주문금액 : <%=new DecimalFormat("#,##0").format(tot_price)%>원</span>
+												<font color='red'>총주문금액 : <span id="tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%></span> 원</font>
 											</p>
 										</td>
 										<% }else{%>

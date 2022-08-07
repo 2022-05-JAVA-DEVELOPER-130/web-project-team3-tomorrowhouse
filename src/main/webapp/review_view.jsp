@@ -138,7 +138,8 @@
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="글쓰기" onClick="boardCreate()"> &nbsp; 
+									<td align=center>
+									<!-- <input type="button" value="글쓰기" onClick="boardCreate()"> &nbsp; --> 
 										<!-- <input type="button" value="답글쓰기" onClick="boardReplyCreate()"> &nbsp; --> 
 										<input type="button" value="수정" onClick="boardUpdate()"> &nbsp; 
 										<input type="button" value="삭제" onClick="boardRemove()"> &nbsp; 
