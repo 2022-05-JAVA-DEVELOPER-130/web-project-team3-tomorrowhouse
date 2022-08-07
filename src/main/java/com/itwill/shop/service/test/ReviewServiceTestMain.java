@@ -39,6 +39,9 @@ public class ReviewServiceTestMain {
 		int o_no=0;
 		System.out.println("o_no로 작성된 review_count");
 		System.out.println(reviewService.countReviewByOrderNo(o_no));
+		review = new Review(15, null, null, null, 0, null, 0, "test6", null);
+		review = reviewService.selectByReviewNo(review);
+		System.out.println(review.getR_content().length());
 	}
 
 }
