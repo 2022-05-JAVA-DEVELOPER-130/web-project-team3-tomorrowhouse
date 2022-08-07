@@ -9,9 +9,7 @@
 		q_no = Integer.valueOf(request.getParameter("q_no"));
 	} catch (Exception ex) {
 	}
-	//글번호가 없다면
 	if (q_no == null) {
-		//목록으로 이동
 		response.sendRedirect("qna_list.jsp");
 		return;
 	}

@@ -14,7 +14,6 @@ try{
 	
 }
 if(q_no==null){
-	//목록으로이동
 	response.sendRedirect("qna_list.jsp?pageno="+pageno);
 	return;
 }
@@ -23,7 +22,6 @@ if(qna==null){
 	response.sendRedirect("qna_list.jsp?pageno="+pageno);
 	return;
 }
-//읽은회수증가
 QnaService.getInstance().updateHitCount(q_no);
 
 %>

@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	//댓글의 대상글번호를 읽어서 변수에 저장
 	if(request.getParameter("q_no")==null){
 		response.sendRedirect("qna_list.jsp");
 		return;

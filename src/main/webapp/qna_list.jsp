@@ -10,11 +10,8 @@
 	StringBuilder title = new StringBuilder(128);
 	String t = qna.getQ_title();
 	if (t.length() > 15) {
-		//t = t.substring(0,15);
-		//t = t+"...";
 		t = String.format("%s...", t.substring(0, 15));
 	}
-	//답글공백삽입
 	for (int i = 0; i < qna.getQ_depth(); i++) {
 		title.append("&nbsp;&nbsp;");
 	}
@@ -136,7 +133,7 @@
 								</table>
 								<!-- /list -->
 							</form> <br>
-			<!-- 			board 참고 필요! -->
+						<!-- board 참고 필요! -->
 							 <table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="center">
