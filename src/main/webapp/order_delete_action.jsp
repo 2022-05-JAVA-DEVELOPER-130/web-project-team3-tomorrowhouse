@@ -4,18 +4,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>       
 <%
-/*****************/
-sUserId = "test3";
-
-/*****************/
        	if(request.getMethod().equalsIgnoreCase("GET")){
        		response.sendRedirect("order_list.jsp");
        		return;
        	}
-       	String cancel_order_noStr=request.getParameter("cancel_order_no");
+       	String delete_order_noStr=request.getParameter("delete_order_no");
        	OrderService orderService=new OrderService();
        	
-       	Order order = new Order(Integer.parseInt(cancel_order_noStr),null,null,0,null,null);
-       	orderService.cancelOrder(order);
+       	Order order = new Order(Integer.parseInt(delete_order_noStr),null,null,0,null,null);
+       	orderService.hideOrder(order);
        	response.sendRedirect("order_list.jsp");
 %>

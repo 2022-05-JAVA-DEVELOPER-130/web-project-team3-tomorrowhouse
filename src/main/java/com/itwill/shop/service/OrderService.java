@@ -138,6 +138,16 @@ public class OrderService {
 	public int confirmOrder(Order order) throws Exception {
 		return orderDao.confirmOrder(order);
 	}
+	/*
+	 11-2. 주문내역삭제(jsp에서 안보여줌)를 위한 updqte
+	 */
+	/*
+	 * public final static String HIDE_ORDERS_BY_ORDER_NO
+	 * ="update orders set o_desc='[구매확정]'||o_desc where o_no=?";
+	 */
+	public int hideOrder(Order order) throws Exception {
+		return orderDao.hideOrder(order);
+	}
 	
 	public Product findProductByOrderItemNo(int oi_no)throws Exception{
 		return orderDao.findProductByOrderItemNo(oi_no);

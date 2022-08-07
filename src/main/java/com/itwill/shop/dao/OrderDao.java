@@ -373,14 +373,37 @@ public class OrderDao {
 	public int confirmOrder(Order order) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt1 = null;
+		int orderCancelResult = 0;
+		
 		con = dataSource.getConnection();
-
 		pstmt1 = con.prepareStatement(OrderSQL.CONFIRM_ORDERS_BY_ORDER_NO);
 		pstmt1.setInt(1, order.getO_no());
-		int orderCancelResult = pstmt1.executeUpdate();
+		orderCancelResult = pstmt1.executeUpdate();
 		
 		con.close();
 		return orderCancelResult;
+	}
+	
+	/*
+	 11-2. 주문내역삭제(jsp에서 안보여줌)를 위한 updqte
+	 */
+	/*
+	 * public final static String HIDE_ORDERS_BY_ORDER_NO
+	 * ="update orders set o_desc='[구매확정]'||o_desc where o_no=?";
+	 */
+	public int hideOrder(Order order) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		
+		int orderHideResult = 0;
+		
+		con = dataSource.getConnection();
+		pstmt1 = con.prepareStatement(OrderSQL.HIDE_ORDERS_BY_ORDER_NO);
+		pstmt1.setInt(1, order.getO_no());
+		orderHideResult = pstmt1.executeUpdate();
+		
+		con.close();
+		return orderHideResult;
 	}
 	
 	/*

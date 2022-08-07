@@ -76,7 +76,7 @@ ReviewService reviewService = new ReviewService();
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 번호</font></td>
+										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 번호</font></td>
 										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 요약</font></td>
 										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 날짜</font></td>
 										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 가격</font></td>
@@ -89,7 +89,7 @@ ReviewService reviewService = new ReviewService();
 										int reviewCount= reviewService.countReviewByOrderNo(order.getO_no());
 									%>
 									<tr>
-										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
+										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><a href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1><%=order.getO_desc()%></a></td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(order.getO_date())%></td>
 										<td width=136 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(order.getO_price())%> 원</td>
