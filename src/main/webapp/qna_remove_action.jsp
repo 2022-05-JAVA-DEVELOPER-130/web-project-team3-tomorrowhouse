@@ -1,4 +1,3 @@
-<%@page import="com.itwill.shop.dto.qna.QnaException"%>
 <%@page import="com.itwill.shop.service.QnaService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
