@@ -40,7 +40,7 @@ reviewService.selectAllByProductNo(new Review(0,null,null,null,0,null,0,null,
 																)));
 if(reviewList.size()==0){
 	out.println("<script>");
-	out.println("alert('아차차 아직 작성된 후기가 없네요♡. 얼리어답터가 되보시겠어요?');");
+	out.println("alert('아직 작성된후기가없어요! ㅜㅠ');");
 	out.println("location.href='product_detail.jsp?p_no="+p_noStr+"';");
 	out.println("</script>");
 }

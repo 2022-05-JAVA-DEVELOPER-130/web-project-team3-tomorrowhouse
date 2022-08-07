@@ -63,6 +63,13 @@ select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=1;
 --(상품detail-리뷰detail) 
 select * from review where r_no=26;
 
+--(order_detail)작성된 리뷰가 있다면, 구매확정
+--      >> 첫번째 리뷰작성시, check하는 경우
+select count(*) from review r
+join orderitem oi on r.oi_no=oi.oi_no
+join orders o on oi.o_no=o.o_no
+where o.o_no=7;
+
 
 /* ----- review update ----*/
 --(3) u_id와 oi_no가 모두 필요한가?

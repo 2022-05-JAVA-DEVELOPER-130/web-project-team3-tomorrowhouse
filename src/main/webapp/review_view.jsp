@@ -6,10 +6,12 @@
     pageEncoding="UTF-8"%>
 <!-- 비회원 유저도 접근가능 -> login check(X) -->
 <%
+	/*
 	if(request.getMethod().equalsIgnoreCase("GET")){
 	    response.sendRedirect("review_list.jsp");		  
 		 return;
 	}
+	*/
 
 	//접근 경로 저장
 	String review_access_route=

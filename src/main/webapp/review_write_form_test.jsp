@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="com.itwill.shop.dto.OrderItem"%>
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@page import="com.itwill.shop.service.ReviewService"%>
@@ -10,36 +10,36 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>    
 <%
-String oi_noStr = request.getParameter("oi_no");
-String o_noStr = request.getParameter("o_no");
-String indexStr = request.getParameter("index");
-int index = Integer.parseInt(indexStr);
+	String oi_noStr = request.getParameter("oi_no");
+	String o_noStr = request.getParameter("o_no");
 
-UserInfoService userInfoService = new UserInfoService();
-UserInfo userInfo = 
-userInfoService.findUser(sUserId);
-
-OrderService orderService = new OrderService();
-
-//ArrayList<Order> orderList =
-Order order=
-orderService.oneOfOrderProductdetailByUserId(new Order(Integer.parseInt(o_noStr), null, null, 0, sUserId, null));
-//Order order= orderList.get(Integer.parseInt(indexStr));
-//orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
-
-ReviewService reviewService = new ReviewService();
-/*	private int oi_no;
-	private int oi_qty;
-	private int o_no;
+	//sUserId로 고객정보 find
+	UserInfoService userInfoService = new UserInfoService();
+	UserInfo userInfo = userInfoService.findUser(sUserId);
 	
-	private Product product;
+	//oi_no로 해당 주문건 find
+	OrderService orderService = new OrderService();
+	Order order=new Order(Integer.parseInt(o_noStr), null, null, 0, sUserId, null);
+	order=orderService.oneOfOrderProductdetailByUserId(order);
+	Product product= orderService.findProductByOrderItemNo(Integer.parseInt(oi_noStr));
+	
+	ReviewService reviewService = new ReviewService();
+	if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0, null, new OrderItem(Integer.parseInt(oi_noStr),0,0,null)))!=null){
+		out.println("<script>");
+		out.println("alert('이미 작성된 리뷰입니다♡');");
+		out.println("location.href='review_list.jsp';");
+		out.println("</script>");
+	}
+	/*
+	if(reviewService.countReviewByOrderNo(Integer.parseInt(o_noStr))==0){
+		orderService.confirmOrder(order);
+		
+		out.println("<script>");
+		out.println("alert('해당주문의 리뷰를 작성하시면, 구매확정 됩니다♡');");
+		out.println("location.href='review_write_form.jsp';");
+		out.println("</script>");
+	}
 	*/
-if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0, null, new OrderItem(Integer.parseInt(oi_noStr),0,0,null)))!=null){
-	out.println("<script>");
-	out.println("alert('이미 작성된 리뷰입니다♡');");
-	out.println("location.href='review_list.jsp';");
-	out.println("</script>");
-}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,7 +50,7 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 <link rel=stylesheet href="css/board.css" type="text/css">
  
 <script type="text/javascript">
-	function boardCreate() {
+	function reviewCreate() {
 		if (f.r_title.value == "") {
 			alert("제목을 입력하십시요.");
 			f.title.focus();
@@ -67,7 +67,7 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 		f.submit();
 	}
 
-	function boardList() {
+	function reviewList() {
 		f.action = "review_list.jsp";
 		f.submit();
 	}
@@ -110,17 +110,17 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 										<input type="hidden" name="oi_no" value='<%=oi_noStr %>'>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">글쓴이</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=order.getU_id()%></td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=userInfo.getU_id()%></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품명</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=order.getOrderItemList().get(index).getProduct().getP_name() %>'></td>
+										<input type="placeholder"  style="width: 150px" name="p_no" value='<%=product.getP_name() %>'></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">상품이미지</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<img width="60px" height="58px" src="image/product/<%=order.getOrderItemList().get(index).getProduct().getP_image()%>" border="0">
+										<img width="60px" height="58px" src="image/product/<%=product.getP_image()%>" border="0">
 									</tr>
 
 									<tr>
@@ -147,8 +147,8 @@ if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0,
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="리뷰 쓰기" onClick="boardCreate()"> &nbsp;
-									<input type="button" value="<%=userInfo.getU_name() %>님의 리뷰 목록" onClick="boardList()"></td>
+									<td align=center><input type="button" value="리뷰 쓰기" onClick="reviewCreate()"> &nbsp;
+									<input type="button" value="<%=userInfo.getU_name() %>님의 리뷰 목록" onClick="reviewList()"></td>
 								</tr>
 							</table></td>
 					</tr>

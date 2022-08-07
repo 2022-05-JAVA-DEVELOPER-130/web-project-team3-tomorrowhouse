@@ -20,6 +20,11 @@ String o_noStr=request.getParameter("o_no");
 	Order order = orderService.oneOfOrderProductdetailByUserId(newOrder);
 	
 	ReviewService reviewService = new ReviewService();
+	//해당 주문건으로 작성된 후기가 있는지 확인
+	int reviewCount= reviewService.countReviewByOrderNo(Integer.parseInt(o_noStr));
+	
+	//review보기 후, '리스트'선택시, 돌아갈경로(해당고객의 리뷰게시판)으로 지정
+	session.setAttribute("review_access_route", "review_list");
 	
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,6 +43,29 @@ form > table tr td{
 */
 </style>
 <script type="text/javascript">
+	function review_write() {
+		/*
+		if(f.r_count==0){
+			alert("해당주문의 리뷰를 작성하시면, 구매확정 됩니다♡");
+		}
+		*/
+		f.action = "review_write_form.jsp";
+		f.method = "POST";
+		f.submit();
+	}
+	
+	function review_view() {
+		f.action = "review_view.jsp";
+		f.method = "POST";
+		f.submit();
+	}
+	
+	function review_cancel() {
+		f.action = "order_cancel_action.jsp";
+		f.method = "POST";
+		f.submit();
+	}
+	
 	
 </script>
 </head>
@@ -75,9 +103,12 @@ form > table tr td{
 								</tr>
 							</table>
 							
-							<!--form-->
-							<form name="f" method="post" action="order_cancel_action.jsp">
+							<!--form start-->
+							<!-- <form name="f" method="post" action="order_cancel_action.jsp"> -->
+							<form name="f" >
 								<input type="hidden" name="cancel_order_no" value="<%=order.getO_no()%>">
+								<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
+								<input type="hidden" name="r_count" value="<%=reviewCount%>">
 								<table align="center" width="80%"  border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문상세정보</caption>
 									<tr>
@@ -97,7 +128,8 @@ form > table tr td{
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
 										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
-												<input type="submit" value="취소">
+												<input type="button" value="취소" onClick="review_cancel()">
+												<!-- <input type="submit" value="취소"> -->
 										<% } %>
 										</td>
 									</tr>
@@ -111,34 +143,45 @@ form > table tr td{
 										<td width=166 height=25  align=center bgcolor="E6ECDE" class=t1>가 격</td>
 										<td width=50 height=25  align=center bgcolor="E6ECDE" class=t1>리 뷰</td>
 									</tr>
-									<!-- orer item start -->
+									<!-- order item start -->
 									<%
 									int tot_price=0;
-											for(OrderItem orderItem:order.getOrderItemList()) {
-												Review review=
-												reviewService.selectByOrderitemNo(new Review(10, null, null, null, 0, null, 0, null, orderItem));
+											//for(OrderItem orderItem:order.getOrderItemList()) {
+											for(int i=0 ; i<order.getOrderItemList().size();i++) {
+												OrderItem orderItem = order.getOrderItemList().get(i);
 												tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+												//해당 주문아이템의 작성된 reivew 존재여부 check
+												Review review = reviewService.selectByOrderitemNo(new Review(orderItem.getOi_no(), null, null, null, 0, null, 0, null, orderItem));
 									%>
 									<tr>
 										<td width=290 height=26 align=center  bgcolor="ffffff" class=t1>
 										<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>'>
-										<%=orderItem.getProduct().getP_name()%></a>
+												<%=orderItem.getProduct().getP_name()%></a>
 										</td>
 										<td width=112 height=26 align=center  bgcolor="ffffff" class=t1>
-										<%=orderItem.getOi_qty()%>
+												<%=orderItem.getOi_qty()%>
 										</td>
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
-										<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
+												<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%>
 										</td>
 										<td width=50 height=26 align=center class=t1 bgcolor="ffffff">
-										<!-- '리뷰작성완료'or'주문취소'했을 경우, 표기 변경 -->
-										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
-											<a href='review_write_form.jsp?oi_no=<%=orderItem.getOi_no() %>' > 리뷰작성 </a>&nbsp;&nbsp;
-										<% } %>
+										<!-- '주문취소' or '리뷰작성완료'했을 경우, 표기 변경 -->
+												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { 
+											//oi_no로 작성된 리뷰가 없다면
+														if(review==null){%>
+											<input type='hidden' name='oi_no' value='<%=orderItem.getOi_no()%>'>
+											<input type='hidden' name='index' value='<%=i%>'>
+											<input type="button" value="작성하기" onClick="review_write()">
+														<%} else if (review!=null){%>
+											<!-- oi_no로 작성된 리뷰가 있다면 -->
+											<input type='hidden' name='r_no' value='<%=review.getR_no()%>'>
+											<input type="button" value="리뷰보기" onClick="review_view()">
+														<% }
+													} %>
 										</td>
 									</tr>
 									<%}%>
-									<!-- cart item end -->
+									<!-- order item end -->
 									<tr>
 										<td width=640 colspan=4 height=26  bgcolor="ffffff" class=t1>
 											<!-- '주문취소'했을 경우, 금액 표기및 색상 변경 -->
@@ -146,6 +189,7 @@ form > table tr td{
 												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
 												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
 												<% }else { %>
+												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
 												<font color=red>총 환불 금액 : -<%=new DecimalFormat("#,###0").format(tot_price)%> 원</font>
 												<% } %>
 											</p>
@@ -153,14 +197,12 @@ form > table tr td{
 									</tr>
 								</table>
 							</form> <br />
+							<!-- form end -->
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center> 
-										&nbsp;&nbsp;<a href=order_list.jsp
-										class=m1>주문목록</a>
-										&nbsp;&nbsp;<a href=product_list.jsp
-										class=m1>계속 쇼핑하기</a>
-
+										&nbsp;&nbsp;<a href=order_list.jsp class=m1>주문목록</a>
+										&nbsp;&nbsp;<a href=product_list.jsp class=m1>계속 쇼핑하기</a>
 									</td>
 								</tr>
 							</table></td>
