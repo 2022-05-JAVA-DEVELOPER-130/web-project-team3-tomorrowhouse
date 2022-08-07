@@ -89,7 +89,7 @@ ReviewService reviewService = new ReviewService();
 										int reviewCount= reviewService.countReviewByOrderNo(order.getO_no());
 									%>
 									<tr>
-										<% if(!order.getO_desc().substring(0, 7).equals("[주문내역삭제")) {%>
+										<% if(!order.getO_desc().substring(0, 6).equals("[주문내역삭")) {%>
 										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><a href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1><%=order.getO_desc()%></a></td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(order.getO_date())%></td>
