@@ -1,15 +1,15 @@
 ﻿package com.itwill.shop.dto.qna;
 
 // 리스트 페이지 관련 사용자 설정을 위한 DTO(VO)
-public class PageInputDto{
+public class PageInput{
 	
 	private int rowCountPerPage;   // 한페이지에표시할 게시물수 (한페이지에표시할 게시물수 )
 	private int pageCountPerPage;  // 한페이지에 보여지는 페이지 수(한화면에보여줄 페이지번호갯수)
 	private String selectPage;     // 선택한 현재 페이지 번호
 	private String searchType;     // 사용자 선택 검색타입
 	private String searchContent;  // 사용자 입력 검색내용
-	public PageInputDto() {}
-	public PageInputDto(	int rowCountPerPage, 
+	public PageInput() {}
+	public PageInput(	int rowCountPerPage, 
 								int pageCountPerPage,
 								String selectPage,
 								String searchType,
