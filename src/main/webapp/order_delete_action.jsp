@@ -4,6 +4,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>       
 <%
+/*****************/
+sUserId = "test3";
+
+/*****************/
        	if(request.getMethod().equalsIgnoreCase("GET")){
        		response.sendRedirect("order_list.jsp");
        		return;

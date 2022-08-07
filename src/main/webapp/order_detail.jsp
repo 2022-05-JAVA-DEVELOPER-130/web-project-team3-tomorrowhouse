@@ -131,25 +131,28 @@ form > table tr td{
 								<table align="center" width="80%"  border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문상세정보</caption>
 									<tr>
-										<td width=290 height=25 bgcolor="E6ECDE" align=center class=t1>
-										<font>주문번호</font></td>
-										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1>
-										<font>주문일자</font></td>
-										<td width=166 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>주문 번호</font></td>
+										<td width=200 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>주문 요약</font></td>
+										<td width=100 height=25 bgcolor="E6ECDE" align=center class=t1>
+										<font>주문 일자</font></td>
+										<td width=150 height=25 bgcolor="E6ECDE" align=center class=t1>
 										<font>주문자</font></td>
 										<td width=50 height=25 bgcolor="E6ECDE" align=center class=t1>
-										<font>주문상태</font></td>
+										<font>주문 상태</font></td>
 									</tr>
 									
 									<tr>
-										<td width=290 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
-										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_date()%></td>
-										<td width=166 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
+										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
+										<td width=200 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_desc()%></td>
+										<td width=100 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_date()%></td>
+										<td width=150 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
 										<% if(reviewCount==0) {%>
-										<% //if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
 											 <input type="hidden" name="o_no" value="<%=order.getO_no()%>">
-											<a href="javascript:order_cancel();"><font color=red>주문취소</font></a> 
+											 배송 준비중<br/>
+											<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
 										<% } else if(order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
 											<font color=blue>구매확정</font>
 										<% } else {%>
@@ -157,6 +160,19 @@ form > table tr td{
 										<% } %>
 										</td>
 									</tr>
+										</td>
+									</tr>
+								</table>
+								<table border="0" cellpadding="0" cellspacing="1" width="590">
+								<tr>
+									<td align=center>
+										<br/>
+										<% if(reviewCount!=0) {%>
+										[주문취소]는 배송 준비중에만 가능합니다
+										<!-- &nbsp;&nbsp;<a href=order_list.jsp class=m1>주문목록</a> -->
+										<% } %>
+									</td>
+								</tr>
 								</table>
 								</form>
 								
@@ -165,9 +181,10 @@ form > table tr td{
 								<table align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB" >
 									<caption style="text-align: left;">주문제품목록</caption>
 									<tr style="border: 0.1px solid">
-										<td width=290 height=25 align=center bgcolor="E6ECDE" class=t1>상품 이름</td>
-										<td width=112 height=25 align=center bgcolor="E6ECDE" class=t1>수 량</td>
-										<td width=166 height=25  align=center bgcolor="E6ECDE" class=t1>가 격</td>
+										<td width=80 height=25 align=center bgcolor="E6ECDE" class=t1>상품</td>
+										<td width=200 height=25 align=center bgcolor="E6ECDE" class=t1>상품 이름</td>
+										<td width=100height=25 align=center bgcolor="E6ECDE" class=t1>수 량</td>
+										<td width=150 height=25  align=center bgcolor="E6ECDE" class=t1>가 격</td>
 										<td width=50 height=25  align=center bgcolor="E6ECDE" class=t1>리 뷰</td>
 									</tr>
 									<!-- order item start -->
@@ -181,15 +198,20 @@ form > table tr td{
 												Review review = reviewService.selectByOrderitemNo(new Review(orderItem.getOi_no(), null, null, null, 0, null, 0, null, orderItem));
 									%>
 									<tr>
-										<td width=290 height=26 align=center  bgcolor="ffffff" class=t1>
+										<td width=80 bgcolor="ffffff" style="padding-top: 10px" align="center">
+											<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>'>
+											<img width="60px" height="58px" src="image/product/<%=orderItem.getProduct().getP_image()%>" border="0">
+											</a>
+										</td>
+										<td width=200 height=26 align=center  bgcolor="ffffff" class=t1>
 										<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>'>
 												<%=orderItem.getProduct().getP_name()%></a>
 										</td>
-										<td width=112 height=26 align=center  bgcolor="ffffff" class=t1>
+										<td width=100 height=26 align=center  bgcolor="ffffff" class=t1>
 												<%=orderItem.getOi_qty()%>
 										</td>
 										
-										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
+										<td width=150 height=26 align=center bgcolor="ffffff" class=t1>
 												<%=new DecimalFormat("#,###").format(orderItem.getOi_qty()*orderItem.getProduct().getP_price())%> 원
 										</td>
 										
@@ -218,13 +240,13 @@ form > table tr td{
 									<%}%>
 									<!-- order item end -->
 									<tr>
-										<td width=640 colspan=4 height=26  bgcolor="ffffff" class=t1>
+										<td width=640 colspan=5 height=26  bgcolor="ffffff" class=t1>
 											<!-- '주문취소'했을 경우, 금액 표기및 색상 변경 -->
 											<p align=right style="padding-top: 10px">
 												<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) { %>
 												<font color=blue>총 주문 금액 : <%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
 												<% }else { %>
-												<font color=blue>총 주문 금액 :  <%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
+												<font color=blue>총 주문 금액 : &nbsp;<%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
 												<br/>
 												<font color=red>총 환불 금액 : -<%=new DecimalFormat("#,##0").format(tot_price)%> 원</font>
 												<% } %>
@@ -242,7 +264,8 @@ form > table tr td{
 										&nbsp;&nbsp;<a href=product_list.jsp class=m1>쇼핑하러가기</a>
 									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 				</table>
 			</div>

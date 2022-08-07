@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.service.ReviewService"%>
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -13,6 +14,10 @@ OrderService orderService = new OrderService();
 
 Order newOrder = new Order(0,null,null,0,sUserId,null);
 ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
+
+ReviewService reviewService = new ReviewService();
+//해당 주문건으로 작성된 후기가 있는지 확인
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,24 +76,36 @@ ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문번호</font></td>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문이름</font></td>
-										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문날짜</font></td>
-										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문가격</font></td>
-										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1> <font>비&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고</font></td>
+										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 번호</font></td>
+										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 요약</font></td>
+										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 날짜</font></td>
+										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문 가격</font></td>
+										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1> <font>주문 상태</font></td>
 									</tr>
 
 									<!-- order start -->
 									<%
 									for (Order order : orderList) {
+										int reviewCount= reviewService.countReviewByOrderNo(order.getO_no());
 									%>
 									<tr>
 										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_no()%></td>
-										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_desc()%></td>
+										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><a href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1><%=order.getO_desc()%></a></td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(order.getO_date())%></td>
 										<td width=136 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(order.getO_price())%> 원</td>
-										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><a
-											href="order_detail.jsp?o_no=<%=order.getO_no()%>" class=m1>주문상세</a></td>
+										<td width=80 height=26 style="padding-top: 5px;padding-bottom: 5px;" align=center bgcolor="ffffff" class=t1>
+										
+										
+										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")&&reviewCount==0){%>
+											 <input type="hidden" name="o_no" value="<%=order.getO_no()%>">배송 준비중<br/>
+											<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
+										<% } else if(order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
+											주문취소
+										<% } else if(reviewCount>0) {%>
+											<font color=blue>구매확정</font>
+										<% } %>
+										
+										
 									</tr>
 									<%
 									}
@@ -100,7 +117,7 @@ ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp;
-									<a href=product_list.jsp class=m1>계속 구경하기</a>
+									<a href=product_list.jsp class=m1>쇼핑하러가기</a>
 									</td>
 								</tr>
 							</table></td>
