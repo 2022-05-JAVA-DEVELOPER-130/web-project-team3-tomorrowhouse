@@ -23,7 +23,7 @@ if (request.getParameter("pageno") != null) {
 }
 //3. qna_view.jsp로 이동
 response.sendRedirect(
-	String.format("qna_view.jsp?q_no=%d&pageno=%d",
+	String.format("qna_view.jsp?q_no=%d&pageno=%s",
 	qna.getQ_no(), pageno));
 %>
     
