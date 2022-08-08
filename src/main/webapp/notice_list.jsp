@@ -159,7 +159,6 @@
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<%}else if(sUserId.equals("admin")){%>
 									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
-									
 									<%}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<% } %> 
