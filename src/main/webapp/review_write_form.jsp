@@ -26,19 +26,11 @@
 
     OrderService orderService = new OrderService();
 
-    //ArrayList<Order> orderList =
     Order order=
     orderService.oneOfOrderProductdetailByOrderNo(new Order(Integer.parseInt(o_noStr), null, null, 0, sUserId, null));
-    //Order order= orderList.get(Integer.parseInt(indexStr));
-    //orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
 
     ReviewService reviewService = new ReviewService();
-    /*	private int oi_no;
-    	private int oi_qty;
-    	private int o_no;
-    	
-    	private Product product;
-    	*/
+
     if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0, null, new OrderItem(Integer.parseInt(oi_noStr),0,0,null)))!=null){
     	out.println("<script>");
     	out.println("alert('이미 작성된 리뷰입니다♡');");
@@ -58,13 +50,21 @@
 	function reviewCreate() {
 		if (f.r_title.value == "") {
 			alert("제목을 입력하십시요.");
-			f.title.focus();
+			f.r_title.focus();
 			return false;
 		}
 		if (f.r_content.value == "") {
 			alert("내용을 입력하십시요.");
-			f.content.focus();
+			f.r_content.focus();
 			return false;
+		}
+		if (f.r_rating.value > 5) {
+			alert("☆0 ~ 5 사이의 숫자로 별점을 주세요☆");
+			f.r_rating.focus();
+			return false;
+		}
+		if (f.r_rating.value == "" ) {
+			f.r_rating.value = 0
 		}
 
 		f.method="POST";
