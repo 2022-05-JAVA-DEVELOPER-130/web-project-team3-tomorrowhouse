@@ -107,7 +107,12 @@ public class ProductService {
 	public int updateProduct(Product product) throws Exception {
 		return productDao.updateProduct(product);
 	}
-
+	
+	// 상품수정하기(상품번호,상품카테고리 번호)
+	public int updateProductBynoByCgNo(Product product) throws Exception {
+		return productDao.updateProduct(product);
+	}
+	
 	// 상품삭제하기
 	public int deleteProduct(Product product) throws Exception {
 		return productDao.deleteProduct(product);
