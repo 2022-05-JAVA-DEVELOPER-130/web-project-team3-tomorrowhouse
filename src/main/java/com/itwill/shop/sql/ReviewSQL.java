@@ -20,10 +20,24 @@ public class ReviewSQL {
 	
 	/* ------ review insert------ */
 	//8.리뷰 작성
-	//insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '리뷰1', '리뷰1 내용', 'test1', 1);
-	
+	//insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no)
+	//values(REVIEW_R_NO_SEQ.nextval, '좋아요'||REVIEW_R_NO_SEQ.currval, '추천해요! 너무너무 만족스러운 구매였어요! 후회하지 않으실꺼에요! 절대로! 꼭사세요!'||REVIEW_R_NO_SEQ.currval, sysdate-7, 5, null, 3, 'test1', 1);
+	/*
+		 이름            널? 유형             
+		------------- -- -------------- 
+		R_NO             NUMBER(10)     
+		R_TITLE          VARCHAR2(100)  
+		R_CONTENT        VARCHAR2(1000) 
+		R_DATE           DATE           
+		R_RATING         NUMBER(10)     
+		R_IMAGE          VARCHAR2(50)   
+		R_CLICK_COUNT    NUMBER(10)     
+		U_ID             VARCHAR2(50)   
+		OI_NO            NUMBER(10)   
+	 */
 	public static final String CREATE_REVIEW =
-			"insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, ?, ?, ?, ?)";
+			"insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no)\n"
+			+ "values(REVIEW_R_NO_SEQ.nextval, ?, ?, sysdate, ?, ?, 0, ?, ?)";
 	
 	//9.리뷰 작성시, 기존에 작성된 리뷰가 있는지 orderItem_no로 체크
 	 //-> u_id & p_no조합은, 고객이 상품을 여러번 샀을 수도있다.

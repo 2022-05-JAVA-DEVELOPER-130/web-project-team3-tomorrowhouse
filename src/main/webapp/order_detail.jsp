@@ -234,12 +234,12 @@ form > table tr td{
 									%>
 									<tr>
 										<td width=80 bgcolor="ffffff" style="padding-top: 10px" align="center">
-											<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>'>
+											<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>&cg_no=<%=orderItem.getProduct().getCategory().getCg_no()%>'>
 											<img width="60px" height="58px" src="image/product/<%=orderItem.getProduct().getP_image()%>" border="0">
 											</a>
 										</td>
 										<td width=200 height=26 align=center  bgcolor="ffffff" class=t1>
-										<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>'>
+										<a href='product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>&cg_no=<%=orderItem.getProduct().getCategory().getCg_no()%>'>
 												<%=orderItem.getProduct().getP_name()%></a>
 										</td>
 										<td width=100 height=26 align=center  bgcolor="ffffff" class=t1>

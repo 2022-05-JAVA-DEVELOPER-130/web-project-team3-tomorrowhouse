@@ -227,7 +227,7 @@ if (detailProduct == null) {
 								<tr>
 									<td align=center>
 									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
-									<input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; <input
+									<input type="button" value="주문하기" onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();">
 									<input type="button" value="상품평(리뷰)" onClick="reviewList();"></td>
 								</tr>
@@ -243,7 +243,7 @@ if (detailProduct == null) {
 								<tr>
 									<td align=center>
 									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
-									<input type="button" value="주문하기[주문폼]test" onClick="order_direct_create_form();"> &nbsp; 
+									<input type="button" value="주문하기" onClick="order_direct_create_form();"> &nbsp; 
 									<input type="button" value="상품리스트" onClick="productList();">
 									<input type="button" value="상품평(리뷰)" onClick="reviewList();">
 									</td>
