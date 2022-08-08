@@ -65,7 +65,9 @@ public class ReviewDao {
 			}
 		} finally {
 			if (con != null) {
-				con.close();
+				 rs.close();
+				 pstmt.close();
+				 con.close();
 			}
 		}
 		return reviewList;
@@ -101,7 +103,9 @@ public class ReviewDao {
 			}
 		} finally {
 			if (con != null) {
-				con.close();
+				 rs.close();
+				 pstmt.close();
+				 con.close();
 			}
 		}
 		return reviewList;
@@ -143,6 +147,8 @@ public class ReviewDao {
 												new OrderItem(rs.getInt("oi_no"), 0, 0, null)
 									);
 		}
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return findReview;
 	}
@@ -178,6 +184,8 @@ public class ReviewDao {
 							)
 				);
 			}
+			 rs.close();
+			 pstmt.close();
 			 con.close();
 		return reviewList;
 	}
@@ -210,6 +218,8 @@ public class ReviewDao {
 								)
 					);
 				}
+				 rs.close();
+				 pstmt.close();
 				 con.close();
 			return reviewList;
 		}
@@ -250,6 +260,8 @@ public class ReviewDao {
 							new OrderItem(rs.getInt("oi_no"), 0, 0, null)
 				);
 		}
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return findReview;
 		
@@ -279,6 +291,8 @@ public class ReviewDao {
 		if(rs.next()) {
 			reviewCount=rs.getInt(1);
 		}
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return reviewCount;
 	}
@@ -307,6 +321,8 @@ public class ReviewDao {
 		pstmt.setString(4, review.getR_image());
 		pstmt.setInt(5, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return rowCount;
 	}
@@ -326,7 +342,9 @@ public class ReviewDao {
 		pstmt=con.prepareStatement(ReviewSQL.UPDATE_CLICK_COUNT_BY_REVIEW_NO);
 		pstmt.setInt(1, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
-		con.close();
+		 rs.close();
+		 pstmt.close();
+		 con.close();
 		return rowCount;
 	}
 	/* ----- review delete ----*/
@@ -345,6 +363,8 @@ public class ReviewDao {
 		 */
 		pstmt.setString(1, review.getU_id());
 		int rowCount = pstmt.executeUpdate();
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return rowCount;
 	}
@@ -364,6 +384,8 @@ public class ReviewDao {
 		 */
 		pstmt.setInt(1, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return rowCount;
 	}
@@ -411,6 +433,8 @@ public class ReviewDao {
 		pstmt.setString(5, review.getU_id());
 		pstmt.setInt(6, review.getOrderItem().getOi_no());
 		int rowCount = pstmt.executeUpdate();
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return rowCount;
 	}
@@ -430,6 +454,8 @@ public class ReviewDao {
 		 if(rs.next()) {
 			 review_count = rs.getInt(1);
 		 }
+		 rs.close();
+		 pstmt.close();
 		 con.close();
 		return review_count;
 	}
