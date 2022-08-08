@@ -140,7 +140,7 @@
 										   }
 										  }%>
 										  
-										   <%if(noticeListPage.pageMaker.getNextGroupStartPage()< noticeListPage.pageMaker.getTotPage()){%>
+										   <%if(noticeListPage.pageMaker.getNextGroupStartPage()<noticeListPage.pageMaker.getTotPage()){%>
 										  <a href="./notice_list.jsp?pageno=<%=noticeListPage.pageMaker.getNextPage()%>">▶&nbsp;</a>
 										  <%}%>
 										 <%if(noticeListPage.pageMaker.getNextGroupStartPage()< noticeListPage.pageMaker.getTotPage()){%>
@@ -148,22 +148,27 @@
 										  <%}%>
 									</td>
 								</tr> 
-							</table> <!-- button -->
+							</table>
+							 <!-- button -->
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="right">
 									<!--관리자만 작성가능. 기능추가필요-->
 									
-									<% if(sUserId.equals("admin")) {%>	 						
+									<% if(sUserId==null){%>	 						
+									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
+									<%}else if(sUserId.equals("admin")){%>
 									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
+									
 									<%}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<% } %> 
 								</tr>
-							</table></td>
+							</table>
+							</td>
 							</tr>
 							</table>
-					
+							
 				
 			</div>
 			<!-- include_content.jsp end-->

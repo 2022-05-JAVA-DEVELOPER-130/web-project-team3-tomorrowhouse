@@ -183,9 +183,9 @@ function cart_item_all_select(e){
 							<div id='f'>
 							<table  align=center  width=80% border="0" cellpadding="0" cellspacing="1"  bgcolor="BBBBBB">
 									<tr>
-										<td width=60 height=25 align="center" bgcolor="E6ECDE"
+										<td width=30 height=25 align="center" bgcolor="E6ECDE"
 											class=t1><input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();"></td>
-										<td width=40 height=25 align="center" bgcolor="E6ECDE" class=t1><font
+										<td width=70 height=25 align="center" bgcolor="E6ECDE" class=t1><font
 											 >상품 이미지</font></td>
 										<td width=210 height=25 align="center" bgcolor="E6ECDE" class=t1><font
 											 >상품 명</font></td>
@@ -303,7 +303,7 @@ function cart_item_all_select(e){
 								<tr>
 									<td align=center>&nbsp;&nbsp;
 									
-									<a href="product_list.jsp" class=m1>계속 구경하기</a>&nbsp;&nbsp;
+									<a href="product_list.jsp" class=m1>상품 구경하기</a>&nbsp;&nbsp;
 									<%if(cartList.size()>=1){ %>
 									<a href="javascript:cart_view_form_select_submit();" class=m1>
 										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]

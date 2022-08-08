@@ -18,6 +18,10 @@ String o_noStr=request.getParameter("o_no");
 	OrderService orderService=new OrderService();
 	Order order = orderService.oneOfOrderProductdetailByOrderNo(newOrder);
 	
+	if(order.getO_desc().substring(0, 6).equals("[주문내역삭")){
+		
+	}
+	
 	ReviewService reviewService = new ReviewService();
 	//해당 주문건으로 작성된 후기가 있는지 확인
 	int reviewCount= reviewService.countReviewByOrderNo(Integer.parseInt(o_noStr));
@@ -176,14 +180,15 @@ form > table tr td{
 										<td width=100 height=26 align=center bgcolor="ffffff" class=t1><%=order.getO_date()%></td>
 										<td width=150 height=26 align=center bgcolor="ffffff" class=t1><%=order.getU_id()%></td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1>
-										<% if(reviewCount==0) {%>
-											 배송 준비중<br/>
-											<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
-										<% } else if(!order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
-											<font color=blue>구매확정</font>
-										<% } else {%>
-											<font color=blue>구매확정</font>
-										<% } %>
+										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) {
+												if(reviewCount==0){
+											%>
+																	 배송 준비중<br/>
+																	<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
+												<% } else {%>
+															<font color=blue>구매확정</font>
+												<% } 
+											}%>
 										</td>
 									</tr>
 										</td>
