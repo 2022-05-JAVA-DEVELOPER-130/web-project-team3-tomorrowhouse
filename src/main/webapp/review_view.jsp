@@ -16,7 +16,8 @@
 	//접근 경로 저장
 	String review_access_route=
 	(String)session.getAttribute("review_access_route");
-	//session.setAttribute("sUserId", "review_list");
+	//세션아이디 저장
+	//session.Attribute("sUserId", );
 	
 	String r_noStr=
 	request.getParameter("r_no");
@@ -116,6 +117,7 @@
 							 -->
 							<form name="f" method="post">
 								<input type="hidden" name="r_no" value="<%=review.getR_no()%>">
+								<input type="hidden" name="u_id" value="<%=review.getU_id()%>">
 								<input type="hidden" name="p_no" value="<%=order.getOrderItemList().get(0).getProduct().getP_no()%>">
 								
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
