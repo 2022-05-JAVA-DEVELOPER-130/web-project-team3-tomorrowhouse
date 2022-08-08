@@ -28,7 +28,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>아이디 중복 체크</title>
+<title>내일의집</title>
 
 <style type="text/css">
 #wrap {
@@ -55,7 +55,7 @@
 	function idCheck() {
 		var userId=document.getElementById("u_id").value;
 		if(u_id==null|| u_id==''){
-			alert('검색할아이디를 입력하시고 중복체크를 하세요.');
+			alert('아이디를 입력해주세요.');
 			return;
 		}
 		document.getElementById('checkForm').action='user_id_check_form.jsp';

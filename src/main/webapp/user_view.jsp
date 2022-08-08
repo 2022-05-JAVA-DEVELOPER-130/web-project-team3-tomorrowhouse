@@ -54,35 +54,35 @@ UserInfo findUser = userInfoService.findUser(sUserId);
 								</tr>
 							</table> <!-- view Form  -->
 							<form name="f" method="post">
-								<table border="0" cellpadding="0" cellspacing="1" width="590"
+								<table border="0" cellpadding="0" cellspacing="1" width="300"
 									bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">아이디</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+										<td width=30 align=center bgcolor="E6ECDE" height="22">아이디</td>
+										<td width=100 bgcolor="ffffff" style="padding-left: 10">
 											<%=findUser.getU_id() %>
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+										<td width=30 align=center bgcolor="E6ECDE" height="22">이름</td>
+										<td width=100 bgcolor="ffffff" style="padding-left: 10">
 											<%=findUser.getU_name() %>
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+										<td width=30 align=center bgcolor="E6ECDE" height="22">이메일</td>
+										<td width=100 bgcolor="ffffff" style="padding-left: 10">
 											<%=findUser.getU_email() %>
 										</td>
 									</tr>
 										<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">주소</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+										<td width=30 align=center bgcolor="E6ECDE" height="22">주소</td>
+										<td width=100 bgcolor="ffffff" style="padding-left: 10">
 											<%=findUser.getU_address() %>
 										</td>
 									</tr>
 										<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">전화번호</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10">
+										<td width=30 align=center bgcolor="E6ECDE" height="22">전화번호</td>
+										<td width=100 bgcolor="ffffff" style="padding-left: 10">
 											<%=findUser.getU_phone()%>
 										</td>
 									</tr>

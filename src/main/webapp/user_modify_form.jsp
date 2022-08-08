@@ -19,38 +19,38 @@
 <script type="text/javascript">
 	function userModify() {
 		if (document.f.u_pw.value == "") {
-			alert("비밀번호를 입력하십시요.");
+			alert("비밀번호를 입력하세요.");
 			document.f.u_pw.focus();
 			return false;
 		}
 		if (document.f.u_pw2.value == "") {
-			alert("비밀번호확인을 입력하십시요.");
+			alert("비밀번호 확인을 입력하세요.");
 			document.f.u_pw2.focus();
 			return false;
 		}
 		if (document.f.u_name.value == "") {
-			alert("이름을 입력하십시요.");
+			alert("이름을 입력하세요.");
 			document.f.u_name.focus();
 			return false;
 		}
 		if (document.f.u_email.value == "") {
-			alert("이메일 주소를 입력하십시요.");
+			alert("이메일 주소를 입력하세요.");
 			document.f.u_email.focus();
 			return false;
 		}
 		if (document.f.u_pw.value != f.u_pw2.value) {
-			alert("비밀번호와 비밀번호확인은 일치하여야합니다.");
+			alert("비밀번호가 일치하지 않습니다.");
 			document.f.u_pw.focus();
 			document.f.u_pw.select();
 			return false;
 		}
 		if (document.f.u_address.value == "") {
-			alert("주소를 입력하십시요.");
+			alert("주소를 입력해주세요.");
 			document.f.u_address.focus();
 			return false;
 		}
 		if (document.f.u_phone.value == "") {
-			alert("전화번호를 입력하십시오.");
+			alert("전화번호를 입력해주세요.");
 			document.f.u_phone.focus();
 			return false;
 		}

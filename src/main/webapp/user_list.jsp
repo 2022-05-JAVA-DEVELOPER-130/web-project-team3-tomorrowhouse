@@ -67,7 +67,7 @@ function mainForm() {
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>전체 회원 정보</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 전체 회원 정보</b></td>
 								</tr>
 								<tr bgcolor="#FFFFFF">
 									<td height="20" class="t1" align="right" valign="bottom">♠

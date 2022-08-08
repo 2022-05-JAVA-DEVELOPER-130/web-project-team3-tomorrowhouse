@@ -40,7 +40,7 @@ Product product = productService.productSelectByNo_Cg_No(new Product(Integer.par
 <script type="text/javascript">
 		/*상품 변경<관리자>  */
 		function product_modify_action() {
-			alert("상품의 내용변경을 완료했습니다.");
+			alert("상품의 내용 변경을 완료했습니다.");
 			f.action = "product_modify_action.jsp";
 			f.method = "POST";
 			f.submit();
@@ -48,8 +48,8 @@ Product product = productService.productSelectByNo_Cg_No(new Product(Integer.par
 		
 		/*상품 삭제<관리자>  */
 		function product_delete_action() {
-			alert('상품삭제 하시겠습니까?');
-			alert("상품의 내용변경을 완료했습니다.");
+			alert('상품을 삭제 하시겠습니까?');
+			alert("상품의 내용 변경을 완료했습니다.");
 			f.action = "product_delete_action.jsp";
 			f.method = "POST";
 			f.submit();
@@ -57,8 +57,8 @@ Product product = productService.productSelectByNo_Cg_No(new Product(Integer.par
 		
 		/*이전화면 이동<관리자>*/
 		function product_list() {
-			alert('이전상품으로 이동 하시겠습니까?');
-			alert("이전상품으로 이동 완료했습니다.");
+			alert('이전 상품으로 이동 하시겠습니까?');
+			alert("이전 상품으로 이동 완료 했습니다.");
 			f.action = "product_detail.jsp?p_no="+<%=product.getP_no()%>+"&cg_no="+<%=product.getCategory().getCg_no()%>;
 			f.method = "POST";
 			f.submit();
@@ -97,7 +97,7 @@ Product product = productService.productSelectByNo_Cg_No(new Product(Integer.par
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0 >
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>관리자 전용 - 상품 수정</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 상품 수정</b></td>
 								</tr>
 							</table> 
 							<!-- write Form  -->

@@ -54,7 +54,7 @@
 	}
 	
 	function reviewRemove() {
-		if (confirm("정말 삭제하시겠습니까?")) {
+		if (confirm("정말 삭제 하시겠습니까?")) {
 			document.f.action = "review_remove_action.jsp";
 			document.f.method='POST';
 			document.f.submit();
@@ -122,7 +122,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b> 리뷰 내용보기 </b>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp; <b> 내일의집 - 리뷰 내용 보기 </b>
 									</td>
 								</tr>
 							</table> <br> <!-- view Form  -->

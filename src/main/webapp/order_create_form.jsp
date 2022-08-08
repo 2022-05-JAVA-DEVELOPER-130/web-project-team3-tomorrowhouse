@@ -57,7 +57,7 @@ if (buyType.equals("cart")) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>쇼핑몰 관리</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/shop.css" type="text/css">
@@ -137,14 +137,13 @@ form > table tr td{
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 -
-											주문/결제폼</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 주문/결제</b></td>
 								</tr>
 							</table>
 							<!--form start-->
 							<form name="user_info">
 								<table align=center width=80% border="0" cellpadding="0" cellspacing="1" bgcolor="BBBBBB">
-									<caption style="text-align: left;">구매자정보</caption>
+									<caption style="text-align: left;">구매자 정보</caption>
 									<tr>
 										<td width=100 height=25 align=center bgcolor="E6ECDE" class=t1>아이디</td>
 										<td width=100 height=25 align=center bgcolor="E6ECDE" class=t1>이름</td>

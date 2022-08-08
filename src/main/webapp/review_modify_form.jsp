@@ -35,7 +35,7 @@
 	//비회원과 작성자가 아닌사람은 접근불가
 	if(sUserId==null|| sUserId.equals("") || !review.getU_id().equals(sUserId) ){
 		out.println("<script>");
-		out.println("alert('작성자만 수정가능합니다');");
+		out.println("alert('작성자만 수정 가능합니다');");
 		out.println("location.href='review_view.jsp?r_no="+r_noStr+"';");
 		out.println("</script>");
 		return;
@@ -49,19 +49,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>게시판</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script type="text/javascript">
 	function boardUpdate() {
 		if (f.r_title.value == "") {
-			alert("제목을 입력하십시요.");
+			alert("제목을 입력해주세요.");
 			f.title.focus();
 			return false;
 		}
 		if (f.r_content.value == "") {
-			alert("내용을 입력하십시요.");
+			alert("내용을 입력해주세요.");
 			f.content.focus();
 			return false;
 		}

@@ -40,7 +40,7 @@ noticeDetail = noticeService.selectByNoNotice(Integer.parseInt(noStr));
 		f.submit();
 	}
 	function noticeDelete(){
-		if(confirm("정말삭제하시겠습니까?")){
+		if(confirm("정말 삭제 하시겠습니까?")){
 		f.action="notice_delete_action.jsp"
 		}
 		f.submit();
