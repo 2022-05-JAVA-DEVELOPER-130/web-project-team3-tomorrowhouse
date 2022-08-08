@@ -37,6 +37,7 @@
 	 }else if(result==0){//아이디없음
 		 //response.sendRedirect("user_login_form.jsp");
 
+
 			out.println("<script>");
 			out.println("alert('"+u_id+" 는 존재하지않는 아이디입니다');");
 			out.println("location.href='user_login_form.jsp';");

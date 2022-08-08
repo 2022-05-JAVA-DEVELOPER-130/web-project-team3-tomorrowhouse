@@ -6,27 +6,27 @@ public class OrderSQL {
 	//select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = 'test2' and o.o_no=4
 	public final static String SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_ORDERNO
 	//	= "select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?";
-		= "select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where  o.o_no=?";
+		= "select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.o_no=? order by o.o_no desc";
 	 
 	//2.고객1명(test2)의 주문 전체 목록 -> [order_list.jsp]
 	//select * from orders where u_id = 'test2';
 	public final static String SELECT_ORDER_LIST_BY_USERID
-	= "select * from orders where u_id = ?";
+	= "select * from orders where u_id = ? order by o_no desc";
 
 	//3. test3 고객 주문 & 주문 상세 전체 목록 -> [어디에 필요하지?]
 	//select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id='test3';
 	public final static String SELECT_ORDER_ORDERITEM_PRODUCT_LIST_BY_USERID
-		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id=?";
+		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id=? order by o.o_no desc";
 	
 	
 	
 	public static final String ORDER_O_NO_LIST
-	="select o_no from orders where u_id=?";
+	="select o_no from orders where u_id=? order by o_no desc";
 	
    public static final String ORDER_LIST_BY_ORDER_NO_USERID
 		       ="select * from orders o join orderitem oi on o.o_no=oi.o_no"
 		       		+ "join  product p on oi.p_no=p.p_no"
-		       		+ "where o.u_id=? and o.o_no = ?";
+		       		+ "where o.u_id=? and o.o_no = ? order by o.o_no desc";
 	
 	
 	
@@ -37,17 +37,17 @@ public class OrderSQL {
 	//4.멤버1명(로그인상태)의 주문번호 4번의 주문 정보 -> [order_list.jsp]
 	//select * from orders where o_no = 4;
 	public final static String SELECT_ORDER_BY_ORDER_NO
-		="select * from orders where o_no = ?";
+		="select * from orders where o_no = ? order by o_no desc";
 	
 	//5.멤버1명의 주문번호 3번의 모든 상세 정보(여러개) -> [order_detail.jsp]
 	//select * from orderitem where o_no = 4;
 	public final static String SELECT_ORDERITEM_BY_ORDER_NO
-		="select * from orderitem where o_no = ?";
+		="select * from orderitem where o_no = ? order by o_no desc";
 
 	//6.주문 & 주문 상세 전체 목록 (관리자)
 	//select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no;
 	public final static String SELECT_ALL_ORDER_ORDERITEM_PRODUCT
-		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no";
+		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no order by o.o_no desc";
 	
 	
 	/*
