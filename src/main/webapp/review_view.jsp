@@ -28,10 +28,11 @@
 	}
 	
 	ReviewService reviewService = new ReviewService();
-	Review review = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
-	reviewService.updateClickCountByReviewNo(review);
+	Review findReview = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
 
-	review =reviewService.selectByReviewNo(review);
+	Review review = reviewService.selectByReviewNo(findReview);
+	
+	reviewService.updateClickCountByReviewNo(review);
 	
 	OrderService orderService = new OrderService();
 	Order order=

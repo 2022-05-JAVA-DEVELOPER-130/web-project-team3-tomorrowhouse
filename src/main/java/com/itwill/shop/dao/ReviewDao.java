@@ -342,7 +342,6 @@ public class ReviewDao {
 		pstmt=con.prepareStatement(ReviewSQL.UPDATE_CLICK_COUNT_BY_REVIEW_NO);
 		pstmt.setInt(1, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
-		 rs.close();
 		 pstmt.close();
 		 con.close();
 		return rowCount;
