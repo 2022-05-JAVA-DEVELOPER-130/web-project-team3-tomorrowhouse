@@ -36,22 +36,21 @@
 		 response.sendRedirect("shop_main.jsp");
 	 }else if(result==0){//아이디없음
 		 //response.sendRedirect("user_login_form.jsp");
-			/*	 	
 	 		out.println("<script>");
 		 	out.println("var left = Math.ceil(( window.screen.width)/3);");
 			out.println("var top = Math.ceil(( window.screen.height)/3);");
 			out.println("console.log(left);");
 			out.println("console.log(top);");
-			out.println("window.open('login_action_popup.html','팝업 테스트','width=420,height=200,top='+top+',left='+left+',location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no');");
+			//out.println("window.open('login_action_popup.html','팝업 테스트','width=420,height=200,top='+top+',left='+left+',location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no');");
+			out.println("window.open(\"login_action_popup.html\",\"팝업 테스트\",\"width=420,height=200,top=\"+top+\",left=\"+left+\",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no\");");
 			out.println("</script>");
-			*/
 
-				
+			/*	
 			out.println("<script>");
 			out.println("alert('"+u_id+" 는 존재하지않는 아이디입니다');");
 			out.println("location.href='user_login_form.jsp';");
 			out.println("</script>");
-			
+			*/
 	 }else if(result==2){//패스워드 불일치
 		 //response.sendRedirect("user_login_form.jsp");
 		  out.println("<script>");
