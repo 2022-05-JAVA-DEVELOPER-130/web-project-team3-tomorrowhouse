@@ -31,7 +31,7 @@ String o_noStr=request.getParameter("o_no");
 	int reviewCount= reviewService.countReviewByOrderNo(Integer.parseInt(o_noStr));
 	
 	//review보기 후, '리스트'선택시, 돌아갈경로(해당고객의 리뷰게시판)으로 지정
-	session.setAttribute("review_access_route", "review_list");
+	session.setAttribute("review_access_route", "order_list");
 	
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
