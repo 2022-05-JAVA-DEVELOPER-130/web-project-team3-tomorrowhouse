@@ -22,4 +22,5 @@ public class UserInfoSQL {
 	//ID로 중복 체크 <USER_SELECT_BY_ID_COUNT>
 	public final static String USER_SELECT_BY_ID_COUNT=
 	"select count(*) cnt from userinfo where u_id=?";
+	 
 }
