@@ -19,6 +19,6 @@ ProductService productService = new ProductService();
 Product updateProduct = new Product(Integer.parseInt(noStr),nameStr,Integer.parseInt(priceStr),imageStr,descStr,0,new Category(Integer.parseInt(categoryStr),null)); 
 productService.updateProduct(updateProduct);
 
-response.sendRedirect("product_detail.jsp?p_no="+noStr);
+response.sendRedirect("product_detail.jsp?p_no="+noStr+"&cg_no="+categoryStr);
  
 %>

@@ -121,12 +121,12 @@
 										<%=order.getO_date() %>
 										</td>
 										<td width=80 bgcolor="ffffff" style="padding-left: 10px; padding-top: 10px" align="left">
-											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
+											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>&cg_no=<%=product.getCategory().getCg_no()%>'>
 											<img width="60px" height="58px" src="image/product/<%=product.getP_image()%>" border="0">
 											</a>
 										</td>
 										<td width=100 bgcolor="ffffff" style="padding-left: 10px" align="left">
-											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>'>
+											<a href='product_detail.jsp?p_no=<%=product.getP_no()%>&cg_no=<%=product.getCategory().getCg_no()%>'>
 											<%=product.getP_name()%>
 											</a>
 										</td>

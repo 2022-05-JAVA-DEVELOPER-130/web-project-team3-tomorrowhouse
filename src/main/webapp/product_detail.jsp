@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.Category"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@page import="com.itwill.shop.dto.Product"%>
@@ -12,18 +13,21 @@ Product detailProduct = new Product();
 
 /* 상품번호로 1개 출력 */
 String noStr = request.getParameter("p_no");
+String no_CgStr = request.getParameter("cg_no");
 
 if (noStr == null || noStr .equals("")) {
 	response.sendRedirect("product_list.jsp");
 	return;
 }
+
+
 boolean isLogin = false;
 String sUserId=(String)session.getAttribute("sUserId");
 if (session.getAttribute("sUserId") != null) {
 	isLogin = true;
 }
 
-detailProduct = productService.productSelectByNo(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
+detailProduct = productService.productSelectByNo_Cg_No(new Product(Integer.parseInt(noStr),null,0,null,null,0,new Category(Integer.parseInt(no_CgStr),null)));
 if (detailProduct == null) {
 	out.println("<script>");
 	out.println("alert('매진된상품입니다.');");
@@ -72,7 +76,10 @@ if (detailProduct == null) {
 		}
 	}
 	function productList() {
-		location.href = 'product_list.jsp';
+		document.product_detail_form.method = 'POST';
+		document.product_detail_form.action = 'category_list.jsp?cg_no='+<%=Integer.parseInt(no_CgStr)%>;
+		document.product_detail_form.submit();
+	
 	}
 	
 	function product_modify_form(){

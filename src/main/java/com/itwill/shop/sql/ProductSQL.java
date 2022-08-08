@@ -40,6 +40,9 @@ public class ProductSQL {
  //product 상품번호(p_no)로 1개 보기
  public final static String PRODUCT_SELECT_BY_NO 
  				= "select * from product where p_no = ? ";
+//product 상품번호(p_no)로 1개 보기
+public final static String PRODUCT_SELECT_BY_NO_BY_CG_NO 
+				= "select * from product where p_no =? and cg_no = ? ";
  
  //product 상품이름(p_name)로 1개 보기
  public final static String PRODUCT_SELECT_BY_NAME

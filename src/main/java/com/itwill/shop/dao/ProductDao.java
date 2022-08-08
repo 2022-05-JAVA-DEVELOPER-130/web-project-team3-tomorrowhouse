@@ -151,6 +151,28 @@ public class ProductDao {
 		return findProductNo;
 	}
 
+	// 상품번호와카테고리 번호로 1개 출력 
+	public Product productSelectByno_ByCg_no(Product product) throws Exception{
+		Product findP_noCg_no =null;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NO_BY_CG_NO);
+		pstmt.setInt(1, product.getP_no());
+		pstmt.setInt(2, product.getCategory().getCg_no());
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			findP_noCg_no =new Product(rs.getInt("p_no"),
+									   rs.getString("p_name"),
+									   rs.getInt("p_price"),
+									   rs.getString("p_image"),
+									   rs.getString("p_desc"),
+									   rs.getInt("p_click_count"),
+									   new Category(rs.getInt("cg_no"), 
+											   		null));
+		}
+		con.close();
+		return findP_noCg_no;
+	}
+	
 	// 상품이름(p_name)로 1개 출력
 	public Product productSelectByName(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
