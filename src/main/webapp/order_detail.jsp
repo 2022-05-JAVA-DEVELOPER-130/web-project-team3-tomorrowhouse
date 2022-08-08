@@ -18,8 +18,12 @@ String o_noStr=request.getParameter("o_no");
 	OrderService orderService=new OrderService();
 	Order order = orderService.oneOfOrderProductdetailByOrderNo(newOrder);
 	
+	//주문내역이 삭제된 리뷰에서 order_detail접근시
 	if(order.getO_desc().substring(0, 6).equals("[주문내역삭")){
-		
+		out.println("<script>");
+    	out.println("alert('삭제된 주문내역입니다');");
+    	out.println("location.href='review_list.jsp';");//일단이동
+    	out.println("</script>");
 	}
 	
 	ReviewService reviewService = new ReviewService();
@@ -28,6 +32,7 @@ String o_noStr=request.getParameter("o_no");
 	
 	//review보기 후, '리스트'선택시, 돌아갈경로(해당고객의 리뷰게시판)으로 지정
 	session.setAttribute("review_access_route", "review_list");
+	
 %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
