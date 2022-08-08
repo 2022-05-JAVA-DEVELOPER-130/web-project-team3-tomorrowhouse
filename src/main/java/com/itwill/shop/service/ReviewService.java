@@ -46,6 +46,11 @@ public class ReviewService {
 	public ArrayList<Review> selectAllByProductNo(Review review)throws Exception{
 		return reviewDao.selectAllByProductNo(review);
 	}
+	//3.(상품detail-리뷰list) 상품목록에서 리뷰를 보여주려면, p_no,cg_no로 접근
+		//select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=1;
+		public ArrayList<Review> selectAllByProductNoCgNo(Review review)throws Exception{
+			return reviewDao.selectAllByProductNoCgNo(review);
+		}
 	
 	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
 	//select * from review where r_no=26;

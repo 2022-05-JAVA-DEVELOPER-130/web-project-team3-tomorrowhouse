@@ -182,6 +182,38 @@ public class ReviewDao {
 		return reviewList;
 	}
 	
+	//3-1.(상품detail-리뷰list) 상품목록에서 리뷰를 보여주려면, p_no,cg_no로 접근
+		//select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=1;
+		public ArrayList<Review> selectAllByProductNoCgNo(Review review)throws Exception{
+					
+			ArrayList<Review> reviewList = new ArrayList<Review>();
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(ReviewSQL.SELECT_BY_PRODUCT_NO_CGNO);
+				pstmt.setInt(1, review.getOrderItem().getProduct().getP_no());
+				pstmt.setInt(2, review.getOrderItem().getProduct().getCategory().getCg_no());
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+						reviewList.add(new Review(rs.getInt("r_no"),
+								rs.getString("r_title"),
+								rs.getString("r_content"),
+								rs.getDate("r_date"),
+								rs.getInt("r_rating"),
+								rs.getString("r_image"),
+								rs.getInt("r_click_count"),
+								rs.getString("u_id"), 
+								new OrderItem(rs.getInt("oi_no"), 0, 0, null)
+								)
+					);
+				}
+				 con.close();
+			return reviewList;
+		}
+	
 	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
 		//select * from review where r_no=26;
 	public Review selectByReviewNo(Review review)throws Exception{
