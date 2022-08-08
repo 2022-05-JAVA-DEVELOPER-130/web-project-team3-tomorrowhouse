@@ -148,7 +148,8 @@
 										  <%}%>
 									</td>
 								</tr> 
-							</table> <!-- button -->
+							</table>
+							 <!-- button -->
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="right">
@@ -160,10 +161,11 @@
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<% } %> 
 								</tr>
-							</table></td>
+							</table>
+							</td>
 							</tr>
 							</table>
-					
+							
 				
 			</div>
 			<!-- include_content.jsp end-->

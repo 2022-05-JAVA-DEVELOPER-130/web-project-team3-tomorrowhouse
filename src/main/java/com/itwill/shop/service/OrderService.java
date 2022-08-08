@@ -67,7 +67,7 @@ public class OrderService {
 		List<OrderItem> newOrderItemList = new ArrayList<OrderItem>();
 		newOrderItemList.add(new OrderItem(0, oi_qty, 0, product));
 
-		Order newOrder = new Order(0, newOrderItemList.get(0).getProduct().getP_name() + "외 " + (oi_qty - 1) + "종",
+		Order newOrder = new Order(0, newOrderItemList.get(0).getProduct().getP_name() + "외 " + (oi_qty - 1) + "개",
 				null, product.getP_price() * oi_qty, u_id, newOrderItemList);
 		return orderDao.create(newOrder);
 	}
