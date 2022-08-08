@@ -77,6 +77,19 @@
 		document.f.method='POST';
 		document.f.submit();
 	}
+		
+	function order_detail() {
+		document.f.action = "order_detail.jsp";
+		document.f.method='POST';
+		document.f.submit();
+	}
+	
+	function product_detail() {
+		document.f.action = "product_detail.jsp";
+		document.f.method='POST';
+		document.f.submit();
+	}
+	
 	
 </script>
 </head>
@@ -119,6 +132,8 @@
 								<input type="hidden" name="r_no" value="<%=review.getR_no()%>">
 								<input type="hidden" name="u_id" value="<%=review.getU_id()%>">
 								<input type="hidden" name="p_no" value="<%=order.getOrderItemList().get(0).getProduct().getP_no()%>">
+								<input type="hidden" name="cg_no" value="<%=order.getOrderItemList().get(0).getProduct().getCategory().getCg_no()%>">
+								<input type="hidden" name="o_no" value="<%=order.getO_no()%>">
 								
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
@@ -158,13 +173,20 @@
 										<input type="button" value="수정" onClick="reviewUpdate()"> &nbsp; 
 										<input type="button" value="삭제" onClick="reviewRemove()"> &nbsp; 
 										<%if(review_access_route.equals("review_list")) {%>
-										<input type="button" value="리스트" onClick="reviewList()">
+										<input type="button" value="나의 리뷰 리스트" onClick="reviewList()"> &nbsp;
+										<input type="button" value="주문상세보기" onClick="order_detail()">
 										
 										<%} else if(review_access_route.equals("review_product_list")) {%>
-										<input type="button" value="리스트" onClick="review_product_List()">
+										<input type="button" value="리뷰리스트 돌아기기" onClick="review_product_List()"> &nbsp; 
+										<input type="button" value="상품으로 돌아가기" onClick="product_detail()">
 										
 										<%} else if(review_access_route.equals("review_admin_list")) {%>
-										<input type="button" value="리스트" onClick="review_admin_List()">
+										<input type="button" value="리뷰 리스트" onClick="review_admin_List()">
+
+										<%} else if(review_access_route.equals("order_list")) {%>
+										<input type="button" value="나의 리뷰 리스트" onClick="reviewList()"> &nbsp; 
+										<input type="button" value="주문상세보기" onClick="order_detail()">
+
 										<%} %>
 									</td>
 								</tr>

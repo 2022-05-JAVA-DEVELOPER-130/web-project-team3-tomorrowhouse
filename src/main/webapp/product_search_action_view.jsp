@@ -112,7 +112,7 @@ ProductListPageMakerDto searchList = productService.productSelectAllSearch(Integ
 									<tr>
 									<%} %>
 										<td align="center" width="25%"  bgcolor="ffffff"><a
-											href="product_detail.jsp?p_no=<%=product.getP_no()%>"><img width="100px" height="90px"
+											href="product_detail.jsp?p_no=<%=product.getP_no()%>&cg_no=<%=product.getCategory().getCg_no()%>"><img width="100px" height="90px"
 												src="image/product/<%=product.getP_image()%>" border="0"></a><br />
 											<br /> <b>상품명 : <%=product.getP_name()%></b><br> <font
 											color="#FF0000">가격 : <%=new DecimalFormat("#,##0").format(product.getP_price())%>원
