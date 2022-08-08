@@ -140,7 +140,7 @@
 										   }
 										  }%>
 										  
-										   <%if(noticeListPage.pageMaker.getNextGroupStartPage()< noticeListPage.pageMaker.getTotPage()){%>
+										   <%if(noticeListPage.pageMaker.getNextGroupStartPage()<noticeListPage.pageMaker.getTotPage()){%>
 										  <a href="./notice_list.jsp?pageno=<%=noticeListPage.pageMaker.getNextPage()%>">▶&nbsp;</a>
 										  <%}%>
 										 <%if(noticeListPage.pageMaker.getNextGroupStartPage()< noticeListPage.pageMaker.getTotPage()){%>
