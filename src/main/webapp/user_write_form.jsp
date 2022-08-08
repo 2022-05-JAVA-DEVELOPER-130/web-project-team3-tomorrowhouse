@@ -73,7 +73,9 @@
 	아이디중복체크
 	*/
 	function openIdCheck(){
-		window.open('user_id_check_form.jsp','checkForm','width=500,height=300,resizable = no,scrollbar = no');
+		var left = Math.ceil(( window.screen.width)/3);
+		var top = Math.ceil(( window.screen.height)/3); 
+		window.open('user_id_check_form.jsp','checkForm','width=500,height=300,top='+top+',left='+left+',resizable = no,scrollbar = no');
 	}
 	
 	

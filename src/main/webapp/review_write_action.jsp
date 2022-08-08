@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.dto.Order"%>
+<%@page import="com.itwill.shop.service.OrderService"%>
 <%@page import="com.itwill.shop.dto.OrderItem"%>
 <%@page import="com.itwill.shop.dto.review.Review"%>
 <%@page import="com.itwill.shop.service.ReviewService"%>
@@ -20,22 +22,18 @@ String r_content=
 request.getParameter("r_content");
 String r_ratingStr=
 request.getParameter("r_rating");
-/*
-String r_imageStr=
-request.getParameter("r_image");
-*/
-/********************/
 
-
-/********************/
-/*
-	public static final String CREATE_REVIEW =
-			"insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no)\n"
-			+ "values(REVIEW_R_NO_SEQ.nextval, ?, ?, sysdate, ?, ?, 0, ?, ?);";
-*/
 Review review = new Review(0, r_title, r_content, null, Integer.parseInt(r_ratingStr), null, 0, sUserId, new OrderItem(Integer.parseInt(oi_noStr), 0, 0, null));
 ReviewService reviewService = new ReviewService();
 reviewService.createReview(review);
+
+OrderService orderService = new OrderService();
+Order order=
+orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
+
+if(order.getO_desc().substring(0, 7).equals("[주문내역삭제")){ 
+	response.sendRedirect("review_list.jsp");	//일단이동
+}
 
 response.sendRedirect("review_list.jsp");
 
