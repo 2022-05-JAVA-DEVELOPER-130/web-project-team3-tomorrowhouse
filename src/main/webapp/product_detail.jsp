@@ -90,20 +90,37 @@ if (detailProduct == null) {
 	}
 	
 	function reviewList() {
-		document.product_detail_form.action = "review_product_list.jsp";
 		document.product_detail_form.method = 'POST';
+		document.product_detail_form.action = "review_product_list.jsp";
 		document.product_detail_form.submit();
 	}
 	
-	
-	
+	function order_direct_create_form() {
+		if (confirm("바로 주문하시겠습니까?")) {
+			//location.href = 'product_list.jsp';
+			//return;
+			var product_detail_form = document.getElementById('order_direct_form');
+			document.product_detail_form.innerHTML="";
+			document.product_detail_form.innerHTML+="<input type='hidden' name='buyType' value='direct'>";
+			
+			var value_str = document.getElementById('product_qty');
+			document.product_detail_form.innerHTML += "<input type='hidden' name='p_qty' value='"+ value_str.options[value_str.selectedIndex].value + "'>";
+			
+			var p_noStr = document.getElementById('p_no').value;
+			document.product_detail_form.innerHTML += "<input type='hidden' name='p_no' value='"+ p_noStr + "'>";
+			
+			document.product_detail_form.method = 'POST';
+			document.product_detail_form.action = 'order_create_form.jsp';
+			document.product_detail_form.submit();
+		}
+	}
 	
 </script>
 
 </head>
 <body  bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
-	<form name="product_detail_form">
+	<form name="product_detail_form" id="order_direct_form">
 		<input type="hidden" name="p_no" value="<%=detailProduct.getP_no()%>">
 		<input type="hidden" name="p_qty" value="1"> 
 		<input type="hidden" name="buyType" value="direct">
@@ -163,7 +180,7 @@ if (detailProduct == null) {
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<select name="cart_qty" >
+											<select name="cart_qty" id="product_qty">
 												<option value="1">1
 												<option value="2">2
 												<option value="3">3
@@ -178,7 +195,7 @@ if (detailProduct == null) {
 												<!--  <input type=submit value="장바구니에담기[장바구니보여주기]" /> -->
 												<br><br> 
 												
-												<input type="hidden" name=p_no value="<%=detailProduct.getP_no()%>">
+												<input type="hidden" name=p_no id=p_no value="<%=detailProduct.getP_no()%>">
 										</form>
 									</td>
 								</tr>
@@ -212,7 +229,7 @@ if (detailProduct == null) {
 								<tr>
 									<td align=center>
 									<input type="button" onclick="add_cart_popup_window();" value="장바구니에담기" >
-									<input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; 
+									<input type="button" value="주문하기[주문폼]test" onClick="order_direct_create_form();"> &nbsp; 
 									<input type="button" value="상품리스트" onClick="productList();">
 									<input type="button" value="상품평(리뷰)" onClick="reviewList();">
 									</td>

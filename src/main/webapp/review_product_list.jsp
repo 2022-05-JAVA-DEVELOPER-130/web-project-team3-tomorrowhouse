@@ -123,11 +123,13 @@ session.setAttribute("review_access_route", "review_product_list");
 										<td width=70 bgcolor="ffffff"  align="center">
 										<%=order.getU_id().replace(order.getU_id().substring(2, 4), "**") %>
 										</td>
+										<!-- r_rating start -->
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<%for(int j=0;j<review.getR_rating();j++) {%>
 											<img width="10px" height="10x" src="image/ui/star_rating.png" border="0">
 											<%} %>
 										</td>
+										<!-- r_rating end -->
 										<td width=100 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
 											<%=review.getR_title()%>
@@ -146,37 +148,18 @@ session.setAttribute("review_access_route", "review_product_list");
 										<td width=70 align=center bgcolor="ffffff" align="center"><%=review.getR_click_count()%>
 										</td>
 									</tr>
-											<!-- 
-											<tr>
-												<td width=280 bgcolor="ffffff" style="padding-left: 10"><a
-													href='board_view.jsp?boardno=532&pageno=6'>게시판타이틀514</a></td>
-												<td width=120 align=center bgcolor="ffffff">김경호514</td>
-												<td width=120 bgcolor="ffffff" style="padding-left: 10">2014-12-23
-												</td>
-												<td width=70 align=center bgcolor="ffffff">0</td>
-											</tr>
-											 -->
 									<%
 										}
 									%>
 								</table>
 								<!-- /list -->
 							</form> <br>
-							
+							<!-- 
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="center">
 									
-									
 									</td>
-								</tr>
-							</table>
-							<!-- button -->
-							<!-- 
-							<table border="0" cellpadding="0" cellspacing="1" width="590">
-								<tr>
-									<td align="right"><input type="button" value="게시물 생성"
-										onclick="boardCreate();" /></td>
 								</tr>
 							</table>
 							 -->

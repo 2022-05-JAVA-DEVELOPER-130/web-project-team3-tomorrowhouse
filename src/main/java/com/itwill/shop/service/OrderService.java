@@ -27,8 +27,8 @@ public class OrderService {
 	/*
 	 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
-	public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
-		return orderDao.oneOfOrderProductdetailByUserId(order);
+	public Order oneOfOrderProductdetailByOrderNo(Order order) throws Exception {
+		return orderDao.oneOfOrderProductdetailByOrderNo(order);
 	}
 
 	/*

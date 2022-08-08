@@ -4,8 +4,9 @@ public class OrderSQL {
 	
 	//1.고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기 -> [order_detail.jsp]
 	//select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = 'test2' and o.o_no=4
-	public final static String SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_USERID_ORDERNO
-		= "select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?";
+	public final static String SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_ORDERNO
+	//	= "select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?";
+		= "select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no where  o.o_no=?";
 	 
 	//2.고객1명(test2)의 주문 전체 목록 -> [order_list.jsp]
 	//select * from orders where u_id = 'test2';

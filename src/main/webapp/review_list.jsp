@@ -88,16 +88,20 @@
 							<form name="f" method="post" action="">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
+										<td width=30 align=center bgcolor="E6ECDE">No.</td>
 										<td width=70 align=center bgcolor="E6ECDE">주문번호</td>
 										<td width=70 align=center bgcolor="E6ECDE">주문일</td>
 										<td width=80 align=center bgcolor="E6ECDE">상품</td>
 										<td width=100 align=center bgcolor="E6ECDE">상품명</td>
 										<td width=170 align=center bgcolor="E6ECDE">제목</td>
+										<td width=70 align=center bgcolor="E6ECDE">별점</td>
 										<td width=100 align=center bgcolor="E6ECDE">작성일</td>
 										<td width=70 align=center bgcolor="E6ECDE">조회수</td>
 									</tr>
 									<%
+										int i=0;
 										for (Review review:reviewList) {
+											i++;
 											Order order = 
 													orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
 											Product product=order.getOrderItemList().get(0).getProduct(); 
@@ -105,8 +109,13 @@
 									%>
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
+										<td width=30 bgcolor="ffffff"  align="center">
+										<%=i %>
+										</td>
 										<td width=70 bgcolor="ffffff" align="center">
+										<a href='order_detail.jsp?o_no=<%=order.getO_no()%>'>
 										<%=order.getO_no() %>
+										</a>
 										</td>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										<%=order.getO_date() %>
@@ -126,6 +135,13 @@
 											<%=review.getR_title()%>
 											</a>
 										</td>
+										<!-- r_rating start -->
+										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<%for(int j=0;j<review.getR_rating();j++) {%>
+											<img width="10px" height="10x" src="image/ui/star_rating.png" border="0">
+											<%} %>
+										</td>
+										<!-- r_rating end -->
 										<td width=100 bgcolor="ffffff" align="center"><%=review.getR_date()%>
 										</td>
 										<td width=70  bgcolor="ffffff" align="center"><%=review.getR_click_count()%>
