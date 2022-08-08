@@ -7,7 +7,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//String sUserId = (String)session.getAttribute("sUserId");
+	String sUserId = (String)session.getAttribute("sUserId");
 	
 %>	
 <%
@@ -154,11 +154,11 @@
 									<td align="right">
 									<!--관리자만 작성가능. 기능추가필요-->
 									
-									<!--  <% //if(sUserId.equals("admin")) {%>	--> 						
+									<% if(sUserId.equals("admin")) {%>	 						
 									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
-									<!-- <%//}else{%>
+									<%}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
-									<%//} %> -->
+									<% } %> 
 								</tr>
 							</table></td>
 							</tr>
