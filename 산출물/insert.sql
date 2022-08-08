@@ -148,7 +148,8 @@ insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.next
 insert into notice(n_no, n_title, n_content, n_date) values(notice_n_no_seq.nextval, '공지6', '공지6 내용', sysdate);
 
 ------리뷰 데이터------
-insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '좋아요'||REVIEW_R_NO_SEQ.currval, '추천해요! 너무너무 만족스러운 구매였어요! 후회하지 않으실꺼에요! 절대로! 꼭사세요!'||REVIEW_R_NO_SEQ.currval, sysdate-7, 5, null, 3, 'test1', 1);
+insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no)
+values(REVIEW_R_NO_SEQ.nextval, '좋아요'||REVIEW_R_NO_SEQ.currval, '추천해요! 너무너무 만족스러운 구매였어요! 후회하지 않으실꺼에요! 절대로! 꼭사세요!'||REVIEW_R_NO_SEQ.currval, sysdate-7, 5, null, 3, 'test1', 1);
 insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '아주 좋아요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-6, 4, null,2, 'test1', 2);
 insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '만족해요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-5, 4, null, 1,'test1', 3);
 insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, '보통이에요'||REVIEW_R_NO_SEQ.currval, '좋아요'||REVIEW_R_NO_SEQ.currval, sysdate-4, 4, null,1,'test1', 4);
