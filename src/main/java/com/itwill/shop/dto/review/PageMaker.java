@@ -2,9 +2,9 @@ package com.itwill.shop.dto.review;
 public class PageMaker {
  
     // 페이지당 게시물 수
-    public static int PAGE_SCALE = 10;
+    public static int PAGE_SCALE = 12;
     // 화면당 페이지 수
-    public static int BLOCK_SCALE = 10;
+    public static int BLOCK_SCALE = 5;
      
     private int curPage;    // 현재 페이지
     
