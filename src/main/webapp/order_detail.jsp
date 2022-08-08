@@ -199,14 +199,18 @@ form > table tr td{
 								<tr>
 									<td align=center>
 										<br/>
-										<% if(reviewCount!=0) {%>
-										<font style='font-style:italic' color=gray>[주문취소]는 배송 준비중에만 가능합니다</font>
-										<!-- &nbsp;&nbsp;<a href=order_list.jsp class=m1>주문목록</a> -->
-										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")) {%>
-										<br/>
-										<a href="javascript:delete_order();"><font >[주문내역 삭제]</font></a>
-										<% } %>
-										<% } %>
+										<!-- 리뷰X -> 주문취소 -> 주문내역삭제-->
+										<% if(order.getO_desc().substring(0, 6).equals("[주문취소]")) {%>	
+												<font style='font-style:italic' color=gray>[주문취소]는 배송 준비중에만 가능합니다</font>
+												<br/>
+												<a href="javascript:delete_order();"><font >[주문내역 삭제]</font></a>
+										<%} else if(order.getO_desc().substring(0, 7).equals("[주문내역삭제")){ %>
+												<br/>
+											<% }	else {%>
+												<font style='font-style:italic' color=gray>[주문취소]는 배송 준비중에만 가능합니다</font>
+													<br/>
+												<a href="javascript:delete_order();"><font >[주문내역 삭제]</font></a>
+											<% } %>
 									</td>
 								</tr>
 								</table>
