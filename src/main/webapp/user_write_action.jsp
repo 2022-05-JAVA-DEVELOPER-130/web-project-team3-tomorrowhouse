@@ -22,7 +22,7 @@
 	
 	if(result==-1){
 		/*##################아이디 중복#################*/
-		String msg=u_id+ "는 이미존재하는 아이디입니다.";
+		String msg=u_id+ "는 이미 존재하는 아이디입니다.";
 		request.setAttribute("msg", msg);
 		request.setAttribute("fuser", newUser);
 		

@@ -23,6 +23,10 @@ request.getParameter("r_content");
 String r_ratingStr=
 request.getParameter("r_rating");
 
+if(r_ratingStr==""){
+	r_ratingStr="0";
+}
+
 Review review = new Review(0, r_title, r_content, null, Integer.parseInt(r_ratingStr), null, 0, sUserId, new OrderItem(Integer.parseInt(oi_noStr), 0, 0, null));
 ReviewService reviewService = new ReviewService();
 reviewService.createReview(review);
@@ -31,7 +35,7 @@ OrderService orderService = new OrderService();
 Order order=
 orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
 
-if(order.getO_desc().substring(0, 7).equals("[주문내역삭제")){ 
+if(order.getO_desc().substring(0, 7).equals("[주문내역삭제]")){ 
 	response.sendRedirect("review_list.jsp");	//일단이동
 }
 

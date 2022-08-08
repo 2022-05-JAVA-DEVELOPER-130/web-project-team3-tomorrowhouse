@@ -17,12 +17,12 @@
 <script type="text/javascript">
 	function qnaCreate() {
 		if (f.q_title.value == "") {
-			alert("제목을 입력하십시요.");
+			alert("제목을 입력해주세요.");
 			f.q_title.focus();
 			return false;
 		}
 		if (f.q_content.value == "") {
-			alert("내용을 입력하십시요.");
+			alert("내용을 입력해주세요.");
 			f.q_content.focus();
 			return false;
 		}
@@ -82,7 +82,7 @@
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" style="width: 150" readonly="readonly" name="u_id" value="<%=sUserId%>"></td>
+										<input type="hidden" style="width: 150" readonly="readonly" name="u_id" value="<%=sUserId%>"><%=sUserId%></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">문의 내용</td>

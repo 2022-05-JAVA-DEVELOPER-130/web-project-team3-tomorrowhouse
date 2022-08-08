@@ -35,7 +35,7 @@
 	//비회원과 작성자가 아닌사람은 접근불가
 	if(sUserId==null|| sUserId.equals("") || !review.getU_id().equals(sUserId) ){
 		out.println("<script>");
-		out.println("alert('작성자만 수정가능합니다');");
+		out.println("alert('작성자만 수정 가능합니다');");
 		out.println("location.href='review_view.jsp?r_no="+r_noStr+"';");
 		out.println("</script>");
 		return;
@@ -49,29 +49,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>게시판</title>
+<title>내일의집</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script type="text/javascript">
-	function boardUpdate() {
+	
+	function reviewUpdate() {
 		if (f.r_title.value == "") {
-			alert("제목을 입력하십시요.");
-			f.title.focus();
+			alert("제목을 입력해주세요.");
+			f.r_title.focus();
 			return false;
 		}
 		if (f.r_content.value == "") {
-			alert("내용을 입력하십시요.");
-			f.content.focus();
+			alert("내용을 입력해주세요.");
+			f.r_content.focus();
 			return false;
 		}
+		if (f.r_rating.value > 5) {
+			alert("☆0 ~ 5 사이의 숫자로 별점을 주세요☆");
+			f.r_rating.focus();
+			return false;
+		}
+		if (f.r_rating.value == "" ) {
+			f.r_rating.value = 0
+		}
 
-		f.action = "review_modify_action.jsp";
 		f.method="POST";
+		f.action = "review_modify_action.jsp";
 		f.submit();
 	}
 
-	function boardList() {
+	function reviewList() {
 		f.action = "review_list.jsp";
 		f.submit();
 	}
@@ -158,8 +167,8 @@
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="리뷰 수정" onClick="boardUpdate()"> &nbsp;
-									<input type="button" value="리뷰 목록" onClick="boardList()"></td>
+									<td align=center><input type="button" value="리뷰 수정" onClick="reviewUpdate()"> &nbsp;
+									<input type="button" value="리뷰 목록" onClick="reviewList()"></td>
 								</tr>
 							</table></td>
 					</tr>

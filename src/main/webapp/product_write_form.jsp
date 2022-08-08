@@ -15,28 +15,28 @@
 <script type="text/javascript">
 	function productCreate(){
 		if (document.f.p_name.value == "") {
-			alert("상품명을 입력하세요.");
+			alert("상품명을 입력해주세요.");
 			f.p_name.focus();
 			return false;
 		}
 		if (f.p_price.value == "") {
-			alert("상품가격을 입력하세요.");
+			alert("상품 가격을 입력해주세요.");
 			f.p_price.focus();
 			return false;
 		}
 
 		if (f.p_image.value == "") {
-			alert("상품이미지를 입력하세요.");
+			alert("상품 이미지를 입력해주세요.");
 			f.p_image.focus();
 			return false;
 		}
 		if (f.p_desc.value == "") {
-			alert("상품설명을 입력하세요.");
+			alert("상품 설명을 입력해주세요.");
 			f.p_desc.focus();
 			return false;
 		}
 		if (f.category.value == "") {
-			alert("상품카테고리를 입력하세요.");
+			alert("상품 카테고리를 입력해주세요.");
 			f.category.focus();
 			return false;
 		}
@@ -84,7 +84,7 @@
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0 >
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>관리자 전용 - 상품 등록</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 상품 등록</b></td>
 								</tr>
 							</table> 
 							<!-- write Form  -->

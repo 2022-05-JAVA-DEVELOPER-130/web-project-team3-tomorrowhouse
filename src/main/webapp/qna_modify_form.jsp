@@ -33,17 +33,17 @@
 <script type="text/javascript">
 	function qnaUpdate() {
 		if (f.q_title.value == "") {
-			alert("제목을 입력하십시요.");
+			alert("제목을 입력해주세요.");
 			f.q_title.focus();
 			return false;
 		}
 		if (f.u_id.value == "") {
-			alert("작성자를 입력하십시요.");
+			alert("작성자를 입력해주세요.");
 			f.u_id.focus();
 			return false;
 		}
 		if (f.q_content.value == "") {
-			alert("내용을 입력하십시요.");
+			alert("내용을 입력해주세요.");
 			f.q_content.focus();
 			return false;
 		}
