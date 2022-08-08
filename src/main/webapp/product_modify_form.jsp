@@ -12,9 +12,9 @@ if(!sUserId.equals("admin")){
 request.setCharacterEncoding("UTF-8");
 
 String noStr = request.getParameter("p_no");
-
+String noCgStr= request.getParameter("cg_no");
 if(noStr == null || noStr.equals("")) {
-	 response.sendRedirect("product_detail.jsp?p_no="+noStr);
+	 response.sendRedirect("product_detail.jsp?p_no="+noStr+"&cg_no="+noCgStr);
 	 return;
 }
 

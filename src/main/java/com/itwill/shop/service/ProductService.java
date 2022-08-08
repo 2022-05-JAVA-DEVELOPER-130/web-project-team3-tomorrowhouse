@@ -79,7 +79,12 @@ public class ProductService {
 	public Product productSelectByNo(Product product) throws Exception {
 		return productDao.productSelectByNo(product);
 	}
-
+	
+	// 상품번호,카테고리번호로 1개 출력 
+	public Product productSelectByNo_Cg_No(Product product) throws Exception{
+		return productDao.productSelectByno_ByCg_no(product);
+	}
+	
 	// 상품이름으로 1개 출력
 	public Product productSelectByName(Product product) throws Exception {
 		return productDao.productSelectByName(product);
