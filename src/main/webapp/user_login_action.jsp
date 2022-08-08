@@ -39,14 +39,14 @@
 
 
 			out.println("<script>");
-			out.println("alert('"+u_id+" 는 존재하지않는 아이디입니다');");
+			out.println("alert('"+u_id+"를 확인 해 주세요.');");
 			out.println("location.href='user_login_form.jsp';");
 			out.println("</script>");
 			
 	 }else if(result==2){//패스워드 불일치
 		 //response.sendRedirect("user_login_form.jsp");
 		  out.println("<script>");
-			out.println("alert('패쓰워드가 일치하지않습니다.');");
+			out.println("alert('비밀번호가 일치하지 않습니다.');");
 			out.println("location.href='user_login_form.jsp';");
 			out.println("</script>");
 	 }

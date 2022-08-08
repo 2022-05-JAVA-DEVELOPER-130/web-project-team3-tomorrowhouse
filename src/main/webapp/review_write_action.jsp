@@ -31,7 +31,7 @@ OrderService orderService = new OrderService();
 Order order=
 orderService.findOrderDetailByOrderItemNo(review.getOrderItem().getOi_no());
 
-if(order.getO_desc().substring(0, 7).equals("[주문내역삭제")){ 
+if(order.getO_desc().substring(0, 7).equals("[주문내역삭제]")){ 
 	response.sendRedirect("review_list.jsp");	//일단이동
 }
 

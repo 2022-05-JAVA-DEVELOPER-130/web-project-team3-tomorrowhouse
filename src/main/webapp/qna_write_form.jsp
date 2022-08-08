@@ -17,12 +17,12 @@
 <script type="text/javascript">
 	function qnaCreate() {
 		if (f.q_title.value == "") {
-			alert("제목을 입력하십시요.");
+			alert("제목을 입력해주세요.");
 			f.q_title.focus();
 			return false;
 		}
 		if (f.q_content.value == "") {
-			alert("내용을 입력하십시요.");
+			alert("내용을 입력해주세요.");
 			f.q_content.focus();
 			return false;
 		}

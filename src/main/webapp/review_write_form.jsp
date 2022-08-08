@@ -57,12 +57,12 @@
 <script type="text/javascript">
 	function reviewCreate() {
 		if (f.r_title.value == "") {
-			alert("제목을 입력하십시요.");
+			alert("제목을 입력해주세요.");
 			f.title.focus();
 			return false;
 		}
 		if (f.r_content.value == "") {
-			alert("내용을 입력하십시요.");
+			alert("내용을 입력해주세요.");
 			f.content.focus();
 			return false;
 		}

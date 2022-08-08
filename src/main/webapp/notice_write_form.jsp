@@ -20,12 +20,12 @@
 <script type="text/javascript">
 	function noticeCreate() {
 		if (f.n_title.value == "") {
-			alert("제목을 입력하십시요.");
+			alert("제목을 입력해주세요.");
 			f.n_title.focus();
 			return false;
 		}
 		if (f.n_content.value == "") {
-			alert("내용을 입력하십시요.");
+			alert("내용을 입력해주세요.");
 			f.n_content.focus();
 			return false;
 		}

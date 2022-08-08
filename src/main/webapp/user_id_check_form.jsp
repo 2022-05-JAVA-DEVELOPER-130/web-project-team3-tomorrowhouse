@@ -55,7 +55,7 @@
 	function idCheck() {
 		var userId=document.getElementById("u_id").value;
 		if(u_id==null|| u_id==''){
-			alert('검색할아이디를 입력하시고 중복체크를 하세요.');
+			alert('아이디를 입력해주세요.');
 			return;
 		}
 		document.getElementById('checkForm').action='user_id_check_form.jsp';

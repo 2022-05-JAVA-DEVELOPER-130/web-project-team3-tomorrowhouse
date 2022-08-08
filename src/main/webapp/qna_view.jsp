@@ -43,7 +43,7 @@ QnaService.getInstance().updateHitCount(q_no);
 		f.submit();
 	}
 	function qnaDelete(){
-		if(confirm("정말삭제하시겠습니까?")){
+		if(confirm("정말 삭제 하시겠습니까?")){
 		f.action="qna_remove_action.jsp"
 		}
 		f.submit();

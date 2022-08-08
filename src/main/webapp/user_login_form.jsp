@@ -26,12 +26,12 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 	}
 	function login() {
 		if (document.f.u_id.value == "") {
-			alert("사용자 아이디를 입력하십시오.");
+			alert("아이디를 입력해주세요.");
 			document.f.u_id.focus();
 			return;
 		}
 		if (document.f.u_pw.value == "") {
-			alert("비밀번호를 입력하십시오.");
+			alert("비밀번호를 입력해주세요.");
 			f.u_pw.focus();
 			return;
 		}

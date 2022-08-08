@@ -54,7 +54,7 @@
 	}
 	
 	function reviewRemove() {
-		if (confirm("정말 삭제하시겠습니까?")) {
+		if (confirm("정말 삭제 하시겠습니까?")) {
 			document.f.action = "review_remove_action.jsp";
 			document.f.method='POST';
 			document.f.submit();

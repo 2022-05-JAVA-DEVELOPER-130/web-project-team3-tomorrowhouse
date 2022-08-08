@@ -19,7 +19,7 @@ String o_noStr=request.getParameter("o_no");
 	Order order = orderService.oneOfOrderProductdetailByOrderNo(newOrder);
 	
 	//주문내역이 삭제된 리뷰에서 order_detail접근시
-	if(order.getO_desc().substring(0, 6).equals("[주문내역삭")){
+	if(order.getO_desc().substring(0, 6).equals("[주문내역삭제]")){
 		out.println("<script>");
     	out.println("alert('삭제된 주문내역입니다');");
     	out.println("location.href='review_list.jsp';");//일단이동
@@ -60,7 +60,7 @@ form > table tr td{
 		}
 	}
 	function review_select_first_write_action(formId) {
-			if(window.confirm('첫번째리뷰를 작성완료하면 구매확정됩니다.\n리뷰를 작성하시겠습니까?')){
+			if(window.confirm('첫번째 리뷰를 작성하면 구매 확정됩니다.\n리뷰를 작성하시겠습니까?')){
 				var form = document.getElementById(formId);
 				form.method = 'POST';
 				form.action = 'review_write_form.jsp';
@@ -116,7 +116,7 @@ form > table tr td{
 	}
 	
 	function delete_order(){
-		if(window.confirm('주문내역을 삭제하시겠습니까?\n해당 주문과 연괸된 리뷰는 유지집니다.')){
+		if(window.confirm('주문내역을 삭제하시겠습니까?\n해당 주문과 연괸된 리뷰는 유지됩니다.')){
 			document.f.method = 'POST';
 			document.f.action = "order_delete_action.jsp";
 			document.f.submit();

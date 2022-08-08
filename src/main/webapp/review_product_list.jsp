@@ -43,7 +43,7 @@ reviewService.selectAllByProductNoCgNo(new Review(0,null,null,null,0,null,0,null
 																)));
 if(reviewList.size()==0){
 	out.println("<script>");
-	out.println("alert('아직 작성된후기가없어요! ㅜㅠ');");
+	out.println("alert('아직 작성 된 후기가 없어요! ㅜㅠ');");
 	out.println("location.href='product_detail.jsp?p_no="+p_noStr+"&cg_no="+cg_noStr+"';");
 	out.println("</script>");
 }

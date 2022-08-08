@@ -30,7 +30,7 @@ if (session.getAttribute("sUserId") != null) {
 detailProduct = productService.productSelectByNo_Cg_No(new Product(Integer.parseInt(noStr),null,0,null,null,0,new Category(Integer.parseInt(no_CgStr),null)));
 if (detailProduct == null) {
 	out.println("<script>");
-	out.println("alert('매진된상품입니다.');");
+	out.println("alert('매진 된 상품입니다.');");
 	out.println("location.href='product_list.jsp';");
 	out.println("</script>");
 	return;
