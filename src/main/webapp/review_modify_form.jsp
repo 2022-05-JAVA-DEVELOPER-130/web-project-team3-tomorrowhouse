@@ -54,24 +54,33 @@
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/board.css" type="text/css">
 <script type="text/javascript">
-	function boardUpdate() {
+	
+	function reviewUpdate() {
 		if (f.r_title.value == "") {
 			alert("제목을 입력해주세요.");
-			f.title.focus();
+			f.r_title.focus();
 			return false;
 		}
 		if (f.r_content.value == "") {
 			alert("내용을 입력해주세요.");
-			f.content.focus();
+			f.r_content.focus();
 			return false;
 		}
+		if (f.r_rating.value > 5) {
+			alert("☆0 ~ 5 사이의 숫자로 별점을 주세요☆");
+			f.r_rating.focus();
+			return false;
+		}
+		if (f.r_rating.value == "" ) {
+			f.r_rating.value = 0
+		}
 
-		f.action = "review_modify_action.jsp";
 		f.method="POST";
+		f.action = "review_modify_action.jsp";
 		f.submit();
 	}
 
-	function boardList() {
+	function reviewList() {
 		f.action = "review_list.jsp";
 		f.submit();
 	}
@@ -158,8 +167,8 @@
 							</form> <br>
 							<table width=590 border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td align=center><input type="button" value="리뷰 수정" onClick="boardUpdate()"> &nbsp;
-									<input type="button" value="리뷰 목록" onClick="boardList()"></td>
+									<td align=center><input type="button" value="리뷰 수정" onClick="reviewUpdate()"> &nbsp;
+									<input type="button" value="리뷰 목록" onClick="reviewList()"></td>
 								</tr>
 							</table></td>
 					</tr>

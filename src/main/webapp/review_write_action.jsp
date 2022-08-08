@@ -23,6 +23,10 @@ request.getParameter("r_content");
 String r_ratingStr=
 request.getParameter("r_rating");
 
+if(r_ratingStr==""){
+	r_ratingStr="0";
+}
+
 Review review = new Review(0, r_title, r_content, null, Integer.parseInt(r_ratingStr), null, 0, sUserId, new OrderItem(Integer.parseInt(oi_noStr), 0, 0, null));
 ReviewService reviewService = new ReviewService();
 reviewService.createReview(review);

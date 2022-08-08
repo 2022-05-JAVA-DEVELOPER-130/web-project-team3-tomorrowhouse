@@ -58,7 +58,7 @@ select * from review r join orderitem oi on r.oi_no = oi.oi_no where r.u_id = 't
 
 
 --(상품detail-리뷰list) 상품목록에서 리뷰를 보여주려면, p_no로 접근
-select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=1;
+select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=1 order by o_no desc;
 
 --(상품detail-리뷰detail) 
 select * from review where r_no=26;
