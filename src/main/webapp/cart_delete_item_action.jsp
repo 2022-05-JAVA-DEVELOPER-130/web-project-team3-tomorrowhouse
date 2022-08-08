@@ -15,6 +15,7 @@ CartService cartService = new CartService();
 cartService.deleteCartOne(Integer.parseInt(noStr));
 
 response.sendRedirect("cart_view.jsp");
+
 %>
 
 

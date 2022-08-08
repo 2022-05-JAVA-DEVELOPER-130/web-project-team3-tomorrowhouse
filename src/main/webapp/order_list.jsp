@@ -41,17 +41,20 @@ if(!newOrder.getU_id().equals(sUserId)){
 <style type="text/css" media="screen">
 </style>
 <script type="text/javascript">
+	/*
 	function order_delete_all_action(){
 		document.order_delete_all_form.action='order_delete_all_action.jsp';
 		document.order_delete_all_form.method='POST';
 		document.order_delete_all_form.submit();
 	}
+	*/
+	
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
-<form name="order_delete_all_form" style="margin: 0">
-</form>	
+	<form name="order_list_form" id="order_cancel_form">
+	</form>	
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
@@ -109,8 +112,8 @@ if(!newOrder.getU_id().equals(sUserId)){
 										
 										
 										<% if(!order.getO_desc().substring(0, 6).equals("[주문취소]")&&reviewCount==0){%>
-											 <input type="hidden" name="o_no" value="<%=order.getO_no()%>">배송 준비중<br/>
-											<a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> 
+											 <input type="hidden" name="o_no" id="o_no" value="<%=order.getO_no()%>">배송 준비중<br/>
+											<!-- <a href="javascript:order_cancel();"><font color=red>[주문취소]</font></a> --> 
 										<% } else if(order.getO_desc().substring(0, 6).equals("[주문취소]")){%>
 											주문취소
 										
