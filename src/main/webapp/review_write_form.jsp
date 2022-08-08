@@ -10,43 +10,42 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %>    
 <%
+    if(request.getMethod().equalsIgnoreCase("GET")){
+        response.sendRedirect("review_list.jsp");		  
+    	 return;
+    }
 
-if(request.getMethod().equalsIgnoreCase("GET")){
-    response.sendRedirect("review_list.jsp");		  
-	 return;
-}
+    String oi_noStr = request.getParameter("oi_no");
+    String o_noStr = request.getParameter("o_no");
+    String indexStr = request.getParameter("index");
+    int index = Integer.parseInt(indexStr);
 
-String oi_noStr = request.getParameter("oi_no");
-String o_noStr = request.getParameter("o_no");
-String indexStr = request.getParameter("index");
-int index = Integer.parseInt(indexStr);
+    UserInfoService userInfoService = new UserInfoService();
+    UserInfo userInfo = 
+    userInfoService.findUser(sUserId);
 
-UserInfoService userInfoService = new UserInfoService();
-UserInfo userInfo = 
-userInfoService.findUser(sUserId);
+    OrderService orderService = new OrderService();
 
-OrderService orderService = new OrderService();
+    //ArrayList<Order> orderList =
+    Order order=
+    orderService.oneOfOrderProductdetailByOrderNo(new Order(Integer.parseInt(o_noStr), null, null, 0, sUserId, null));
+    //Order order= orderList.get(Integer.parseInt(indexStr));
+    //orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
 
-//ArrayList<Order> orderList =
-Order order=
-orderService.oneOfOrderProductdetailByUserId(new Order(Integer.parseInt(o_noStr), null, null, 0, sUserId, null));
-//Order order= orderList.get(Integer.parseInt(indexStr));
-//orderService.findOrderDetailByOrderItemNo(Integer.parseInt(oi_noStr));
-
-ReviewService reviewService = new ReviewService();
-/*	private int oi_no;
-	private int oi_qty;
-	private int o_no;
-	
-	private Product product;
-	*/
-if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0, null, new OrderItem(Integer.parseInt(oi_noStr),0,0,null)))!=null){
-	out.println("<script>");
-	out.println("alert('이미 작성된 리뷰입니다♡');");
-	out.println("location.href='review_list.jsp';");
-	out.println("</script>");
-}
-%>
+    ReviewService reviewService = new ReviewService();
+    /*	private int oi_no;
+    	private int oi_qty;
+    	private int o_no;
+    	
+    	private Product product;
+    	*/
+    if(reviewService.selectByOrderitemNo(new Review(0, null, null, null, 0, null, 0, null, new OrderItem(Integer.parseInt(oi_noStr),0,0,null)))!=null){
+    	out.println("<script>");
+    	out.println("alert('이미 작성된 리뷰입니다♡');");
+    	out.println("location.href='review_list.jsp';");
+    	out.println("</script>");
+    }
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

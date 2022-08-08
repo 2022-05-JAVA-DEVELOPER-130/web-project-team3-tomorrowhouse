@@ -41,7 +41,7 @@ public class OrderDao {
 	/*
 	 * 1-1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 	 */
-	public Order oneOfOrderProductdetailByUserId(Order order) throws Exception {
+	public Order oneOfOrderProductdetailByOrderNo(Order order) throws Exception {
 		/*
 		 * select * from orders o join orderitem oi on o.o_no = oi.o_no join product p
 		 * on oi.p_no = p.p_no where o.u_id = ? and o.o_no=?
@@ -52,9 +52,10 @@ public class OrderDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		con = dataSource.getConnection();
-		pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_USERID_ORDERNO);
-		pstmt.setString(1, order.getU_id());
-		pstmt.setInt(2, order.getO_no());
+		pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_ORDERNO);
+		//pstmt.setString(1, order.getU_id());
+		//pstmt.setInt(2, order.getO_no());
+		pstmt.setInt(1, order.getO_no());
 		rs = pstmt.executeQuery();
 
 		if (rs.next()) {

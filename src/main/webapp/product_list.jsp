@@ -8,6 +8,9 @@
 
 <%
 String pagenoStr=request.getParameter("pageno");
+
+//session.setAttribute("pageno", pagenoStr);
+
 if(pagenoStr==null)pagenoStr="1";
 
 ProductService productService = new ProductService();

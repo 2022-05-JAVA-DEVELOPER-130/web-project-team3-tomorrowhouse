@@ -23,7 +23,7 @@ public class OrderDaoTestMain {
 		/*
 		 * 1. 고객1명의 주문 1개 & 주문상세, 상품 정보 모두 보기
 		 */
-		Order findOrder = orderDao.oneOfOrderProductdetailByUserId(new Order(6, null, null, 0, "test2", null));
+		Order findOrder = orderDao.oneOfOrderProductdetailByOrderNo(new Order(6, null, null, 0, "test2", null));
 		System.out.println(findOrder);
 		for (OrderItem orderItem : findOrder.getOrderItemList()) {
 			System.out.println(orderItem);

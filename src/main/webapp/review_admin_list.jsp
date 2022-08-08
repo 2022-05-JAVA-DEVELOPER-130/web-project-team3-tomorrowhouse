@@ -94,6 +94,8 @@
 										<td width=80 align=center bgcolor="E6ECDE">상품</td>
 										<td width=100 align=center bgcolor="E6ECDE">상품명</td>
 										<td width=170 align=center bgcolor="E6ECDE">제목</td>
+										<td width=70 align=center bgcolor="E6ECDE">별점</td>
+										<td width=70 align=center bgcolor="E6ECDE">작성자</td>
 										<td width=100 align=center bgcolor="E6ECDE">작성일</td>
 										<td width=70 align=center bgcolor="E6ECDE">조회수</td>
 									</tr>
@@ -107,7 +109,9 @@
 									<tr>
 										<input type="hidden" name="r_no" value='<%=review.getR_no() %>'>
 										<td width=70 bgcolor="ffffff" align="center">
+										<a href='order_detail.jsp?o_no=<%=order.getO_no()%>'>
 										<%=order.getO_no() %>
+										</a>
 										</td>
 										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
 										<%=order.getO_date() %>
@@ -125,6 +129,18 @@
 										<td width=170 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
 											<%=review.getR_title()%></a>
+										</td>
+										<!-- r_rating start -->
+										<td width=70 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<%for(int j=0;j<review.getR_rating();j++) {%>
+											<img width="10px" height="10x" src="image/ui/star_rating.png" border="0">
+											<%} %>
+										</td>
+										<!-- r_rating end -->
+										<td width=70 bgcolor="ffffff"  align="center">
+											<a href='user_list.jsp'> <!-- 현재:전체리스트로 이동 -> (수정필요) 해당 고객이있는 page로-->
+											<%=order.getU_id() %>
+											</a>
 										</td>
 										<td width=100 bgcolor="ffffff" align="center"><%=review.getR_date()%>
 										</td>
