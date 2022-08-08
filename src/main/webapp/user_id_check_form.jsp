@@ -28,7 +28,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>아이디 중복 체크</title>
+<title>내일의집</title>
 
 <style type="text/css">
 #wrap {

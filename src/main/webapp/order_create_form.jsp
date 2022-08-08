@@ -137,14 +137,13 @@ form > table tr td{
 							<table style="padding-left: 10px" border=0 cellpadding=0
 								cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>쇼핑몰 -
-											주문/결제폼</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내일의집 - 주문/결제</b></td>
 								</tr>
 							</table>
 							<!--form start-->
 							<form name="user_info">
 								<table align=center width=80% border="0" cellpadding="0" cellspacing="1" bgcolor="BBBBBB">
-									<caption style="text-align: left;">구매자정보</caption>
+									<caption style="text-align: left;">구매자 정보</caption>
 									<tr>
 										<td width=100 height=25 align=center bgcolor="E6ECDE" class=t1>아이디</td>
 										<td width=100 height=25 align=center bgcolor="E6ECDE" class=t1>이름</td>
