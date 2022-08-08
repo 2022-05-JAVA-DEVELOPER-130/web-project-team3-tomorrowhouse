@@ -50,33 +50,33 @@ public class ReviewSQL {
 	//0.(관리자페이지-리뷰list)
 	//select * from review where u_id = 'test6';
 	public static final String SELECT_ALL_REVIEW =
-			"select * from review r join orderitem oi on r.oi_no = oi.oi_no";
+			"select * from review r join orderitem oi on r.oi_no = oi.oi_no order by oi.o_no desc";
 	
 	
 	//1.(마이페이지-리뷰list) 로그인한 회원이 마이페이지?에서 리뷰를 모아서 볼 수 있음 -> u_id로 review 선택
 	//select * from review where u_id = 'test6';
 	public static final String SELECT_ALL_BY_USER_ID =
-			"select * from review where u_id = ?";
+			"select * from review where u_id = ? order by oi_no desc";
 	
 	
 	//2.(마이페이지-리뷰detail)로그인한 회원이 주문아이템번호로 리뷰 선택
 	//select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.oi_no=22;
 	
 	public static final String SELECT_BY_ORDER_ITEM_NO =
-			"select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.oi_no=?";
+			"select * from review r join orderitem oi on r.oi_no = oi.oi_no where oi.oi_no=? order by oi.o_no desc";
 	
 	
 	//3.(상품detail-리뷰list) 상품목록에서 리뷰를 보여주려면, p_no로 접근
 	//select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=1;
 	
 	public static final String SELECT_BY_PRODUCT_NO =
-			"select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=?";
+			"select * from review r join orderitem oi on r.oi_no = oi.oi_no where p_no=? order by oi.o_no desc";
 	
 	//4.(상품detail-리뷰detail) 리뷰list에서 r_no로 접근
 	//select * from review where r_no=26;
 	
 	public static final String SELECT_BY_REVIEW_NO =
-			"select * from review where r_no=?";
+			"select * from review where r_no=? order by oi_no desc";
 	
 	/*
 	 11-2. 구매확정(리뷰삭제불가)를 위한 count_select

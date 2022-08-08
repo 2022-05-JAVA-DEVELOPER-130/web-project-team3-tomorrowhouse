@@ -49,13 +49,8 @@ if (detailProduct == null) {
 <script type="text/javascript">
 	function add_cart_popup_window(){
 		if (<%=!isLogin%>) {
-			var left = Math.ceil(( window.screen.width)/3);
-			var top = Math.ceil(( window.screen.height)/3); 
-			console.log(left);
-			console.log(top);
-			window.open("login_action_popup.html","팝업 테스트","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
-			//alert('로그인 하세요');
-			//location.href = 'user_login_form.jsp';
+			alert('로그인 하세요');
+			location.href = 'user_login_form.jsp';
 			
 			
 		} else {
