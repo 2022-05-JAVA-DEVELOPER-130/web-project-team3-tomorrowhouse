@@ -7,7 +7,7 @@ public class ProductSQL {
  //product 전체보기 (페이징)
  public final static String PRODUCT_SELECT_ALL
  				= "SELECT * FROM ( SELECT rownum idx, s.*  FROM "
- 						+ "				( SELECT * from  product) s"
+ 						+ "				( select * from product order by p_no desc ) s"
  						+ "		 )"
  						+ "WHERE idx >= ? AND idx <= ?";
  
@@ -20,7 +20,7 @@ public class ProductSQL {
  
  //product 전체보기(카테고리별)(페이징)
  public final static String PRODUCT_SELECT_ALL_BY_CATEGORY
-  = "SELECT * FROM ( SELECT rownum idx, s.*  FROM ( SELECT * from product where cg_no= ? ) s) WHERE idx >= ? AND idx <= ? ";
+  = "SELECT * FROM ( SELECT rownum idx, s.*  FROM ( SELECT * from product where cg_no= ? order by p_no desc ) s) WHERE idx >= ? AND idx <= ? ";
    
   //product 카테고리별 상품 카운트
  public final static String PRODUCT_SELECT_COUNT_CATEGORY
