@@ -105,7 +105,7 @@ if (detailProduct == null) {
 	
 	function reviewList() {
 		document.product_detail_form.method = 'POST';
-		document.product_detail_form.action = "review_product_list.jsp";
+		document.product_detail_form.action = "review_product_list.jsp?p_no="+<%=Integer.parseInt(noStr)%>+"&cg_no="+<%=Integer.parseInt(no_CgStr)%>;
 		document.product_detail_form.submit();
 	}
 	

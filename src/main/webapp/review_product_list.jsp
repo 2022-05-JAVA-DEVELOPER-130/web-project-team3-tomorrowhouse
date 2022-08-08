@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.Category"%>
 <%@page import="com.itwill.shop.dto.OrderItem"%>
 <%@page import="com.itwill.shop.dto.Order"%>
 <%@page import="com.itwill.shop.service.UserInfoService"%>
@@ -21,25 +22,29 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 }
 
 String p_noStr= request.getParameter("p_no");
-
+String cg_noStr= request.getParameter("cg_no");
+if(cg_noStr==null ||cg_noStr.equals("")){
+	 response.sendRedirect("product_list.jsp");		  
+	 return;
+}
 //게시물조회
 ReviewService reviewService = new ReviewService();
 OrderService orderService =new OrderService();
 ProductService productService = new ProductService();
 
-Product product = new Product(Integer.parseInt(p_noStr),null,0,null,null,0,null);
+Product product = new Product(Integer.parseInt(p_noStr),null,0,null,null,0,new Category(Integer.parseInt(cg_noStr),null));
 product=
-productService.productSelectByNo(product);
+productService.productSelectByNo_Cg_No(product);
 
 ArrayList<Review> reviewList=
-reviewService.selectAllByProductNo(new Review(0,null,null,null,0,null,0,null,
+reviewService.selectAllByProductNoCgNo(new Review(0,null,null,null,0,null,0,null,
 													new OrderItem(0,0,0,
 																	product
 																)));
 if(reviewList.size()==0){
 	out.println("<script>");
 	out.println("alert('아직 작성된후기가없어요! ㅜㅠ');");
-	out.println("location.href='product_detail.jsp?p_no="+p_noStr+"';");
+	out.println("location.href='product_detail.jsp?p_no="+p_noStr+"&cg_no="+cg_noStr+"';");
 	out.println("</script>");
 }
 //review 접근경로
