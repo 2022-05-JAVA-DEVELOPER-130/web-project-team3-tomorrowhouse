@@ -39,7 +39,7 @@
 
 
 			out.println("<script>");
-			out.println("alert('"+u_id+"를 확인 해 주세요.');");
+			out.println("alert('아이디를 확인 해 주세요.');");
 			out.println("location.href='user_login_form.jsp';");
 			out.println("</script>");
 			
