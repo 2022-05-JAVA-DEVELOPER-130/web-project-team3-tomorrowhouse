@@ -240,6 +240,22 @@ public class ProductDao {
 		con.close();
 		return rowCount;
 	}
+	
+	// UpdateProduct - 상품번호,상품카테고리번호로 수정(관리자 전용)
+		public int updateProductByNoByCgNo(Product product) throws Exception {
+			Connection con = dataSource.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_UPDATE_BY_NOBY_CG_NO);
+			pstmt.setString(1, product.getP_name());
+			pstmt.setInt(2, product.getP_price());
+			pstmt.setString(3, product.getP_image());
+			pstmt.setString(4, product.getP_desc());
+			pstmt.setInt(5, product.getCategory().getCg_no());
+			pstmt.setInt(6, product.getP_no());
+			pstmt.setInt(7, product.getCategory().getCg_no());
+			int rowCount = pstmt.executeUpdate();
+			con.close();
+			return rowCount;
+		}
 
 	// DeleteProduct - 상품번호로 삭제(관리자 전용)
 	public int deleteProduct(Product product) throws Exception {

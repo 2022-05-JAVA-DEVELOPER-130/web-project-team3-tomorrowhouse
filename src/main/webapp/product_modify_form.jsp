@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.dto.Category"%>
 <%@page import="com.itwill.shop.dto.Product"%>
 <%@page import="com.itwill.shop.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,9 +18,12 @@ if(noStr == null || noStr.equals("")) {
 	 response.sendRedirect("product_detail.jsp?p_no="+noStr+"&cg_no="+noCgStr);
 	 return;
 }
-
+if(noCgStr == null || noCgStr.equals("")) {
+	 response.sendRedirect("product_detail.jsp?p_no="+noStr+"&cg_no="+noCgStr);
+	 return;
+}
 ProductService productService = new ProductService();
-Product product = productService.productSelectByNo(new Product(Integer.parseInt(noStr),null,0,null,null,0,null));
+Product product = productService.productSelectByNo_Cg_No(new Product(Integer.parseInt(noStr),null,0,null,null,0,new Category(Integer.parseInt(noCgStr),null)));
  %>    
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -53,7 +57,9 @@ Product product = productService.productSelectByNo(new Product(Integer.parseInt(
 		
 		/*이전화면 이동<관리자>*/
 		function product_list() {
-			f.action = "product_detail.jsp?p_no="+noStr;
+			alert('이전상품으로 이동 하시겠습니까?');
+			alert("이전상품으로 이동 완료했습니다.");
+			f.action = "product_detail.jsp?p_no="+<%=product.getP_no()%>+"&cg_no="+<%=product.getCategory().getCg_no()%>;
 			f.method = "POST";
 			f.submit();
 		}

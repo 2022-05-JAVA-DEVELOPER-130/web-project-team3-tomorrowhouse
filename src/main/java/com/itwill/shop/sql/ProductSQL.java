@@ -43,6 +43,7 @@ public class ProductSQL {
 //product 상품번호(p_no)로 1개 보기
 public final static String PRODUCT_SELECT_BY_NO_BY_CG_NO 
 				= "select * from product where p_no =? and cg_no = ? ";
+
  
  //product 상품이름(p_name)로 1개 보기
  public final static String PRODUCT_SELECT_BY_NAME
@@ -65,6 +66,12 @@ public final static String PRODUCT_SELECT_BY_NO_BY_CG_NO
  //product 상품번호(p_no)로 수정 -(이름(p_no),가격(p_price),이미지(p_image),상품설명(p_desc),카테고리(cg_no)
  public final static String PRODUCT_UPDATE_BY_NO
  	= "update product set p_name=?, p_price=?, p_image=?, p_desc=?, cg_no=?  where p_no=?";
+ 
+//product 상품번호(p_no)로 수정 -(이름(p_no),가격(p_price),이미지(p_image),상품설명(p_desc),카테고리(cg_no)
+public final static String PRODUCT_UPDATE_BY_NOBY_CG_NO
+	= "update product set p_name=?, p_price=?, p_image=?, p_desc=?, cg_no=?  where p_no=? and cg_no=?";
+ 
+ 
  //product 상품번호(p_no)로 클릭수(p_click_count) 증가
  public final static String PRODUCT_CLICK_COUNT
  	= "update product set p_click_count=p_click_count+? where p_no =?";

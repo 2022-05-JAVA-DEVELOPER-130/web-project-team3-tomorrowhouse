@@ -86,7 +86,7 @@ if (detailProduct == null) {
 		
 		alert('상품수정 하시겠습니까?');
 		document.product_detail_form.method = 'POST';
-		document.product_detail_form.action = 'product_modify_form.jsp';
+		document.product_detail_form.action = 'product_modify_form.jsp?p_no='+<%=Integer.parseInt(noStr)%>+'&cg_no='+<%=Integer.parseInt(no_CgStr)%>;
 		document.product_detail_form.submit();
 	}
 	function productdelite(){
