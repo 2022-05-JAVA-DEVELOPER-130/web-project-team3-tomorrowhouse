@@ -143,7 +143,7 @@ public class ReviewDao {
 												new OrderItem(rs.getInt("oi_no"), 0, 0, null)
 									);
 		}
-		
+		 con.close();
 		return findReview;
 	}
 	
@@ -178,7 +178,7 @@ public class ReviewDao {
 							)
 				);
 			}
-		
+			 con.close();
 		return reviewList;
 	}
 	
@@ -218,7 +218,7 @@ public class ReviewDao {
 							new OrderItem(rs.getInt("oi_no"), 0, 0, null)
 				);
 		}
-		
+		 con.close();
 		return findReview;
 		
 	}
@@ -247,6 +247,7 @@ public class ReviewDao {
 		if(rs.next()) {
 			reviewCount=rs.getInt(1);
 		}
+		 con.close();
 		return reviewCount;
 	}
 	
@@ -274,7 +275,7 @@ public class ReviewDao {
 		pstmt.setString(4, review.getR_image());
 		pstmt.setInt(5, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
-		
+		 con.close();
 		return rowCount;
 	}
 	
@@ -312,7 +313,7 @@ public class ReviewDao {
 		 */
 		pstmt.setString(1, review.getU_id());
 		int rowCount = pstmt.executeUpdate();
-		
+		 con.close();
 		return rowCount;
 	}
 	
@@ -331,7 +332,7 @@ public class ReviewDao {
 		 */
 		pstmt.setInt(1, review.getR_no());
 		int rowCount = pstmt.executeUpdate();
-		
+		 con.close();
 		return rowCount;
 	}
 	//8.o_no로 연관후기들 삭제
@@ -366,16 +367,19 @@ public class ReviewDao {
 		con = dataSource.getConnection();
 		pstmt = con.prepareStatement(ReviewSQL.CREATE_REVIEW);
 		/*
-			public static final String CREATE_REVIEW =
-			"insert into review(r_no, r_title, r_content, u_id, oi_no) values(REVIEW_R_NO_SEQ.nextval, ?, ?, ?, ?)";
+		public static final String CREATE_REVIEW =
+				"insert into review(r_no, r_title, r_content, r_date, r_rating, r_image, r_click_count, u_id, oi_no)\n"
+				+ "values(REVIEW_R_NO_SEQ.nextval, ?, ?, sysdate, ?, ?, 0, ?, ?);";
 		 */
 		
 		pstmt.setString(1, review.getR_title());
 		pstmt.setString(2, review.getR_content());
-		pstmt.setString(3, review.getU_id());
-		pstmt.setInt(4, review.getOrderItem().getOi_no());
+		pstmt.setInt(3, review.getR_rating());
+		pstmt.setString(4, review.getR_image());
+		pstmt.setString(5, review.getU_id());
+		pstmt.setInt(6, review.getOrderItem().getOi_no());
 		int rowCount = pstmt.executeUpdate();
-		
+		 con.close();
 		return rowCount;
 	}
 	
