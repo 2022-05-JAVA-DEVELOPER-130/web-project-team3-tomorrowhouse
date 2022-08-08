@@ -141,8 +141,8 @@ session.setAttribute("review_access_route", "review_product_list");
 										</td>
 										<td width=250 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<a href='review_view.jsp?r_no=<%=review.getR_no()%>'>
-											<% if(review.getR_content().length()>10){%>
-												<%= review.getR_content().replace(review.getR_content().substring(20,review.getR_content().length()), "...") %>
+											<% if(review.getR_content().length()>15){%>
+												<%= review.getR_content().replace(review.getR_content().substring(15,review.getR_content().length()), "...") %>
 											<%} else{ %>
 												<%= review.getR_content()%>
 											<%} %>
