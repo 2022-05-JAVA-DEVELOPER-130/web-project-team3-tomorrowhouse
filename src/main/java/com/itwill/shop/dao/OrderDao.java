@@ -261,9 +261,31 @@ public class OrderDao {
 	/* <<미완성>>
 	 * 6.주문 & 주문 상세 전체 목록 (관리자)
 	//select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no;
-	public final static String SELECT_ALL_ORDER_ORDERITEM_PRODUCT
+		public final static String SELECT_ALL_ORDER_ORDERITEM_PRODUCT
 		="select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no";
 	 */
+	public ArrayList<Order> selectAllOrderDetail() throws Exception {
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		//Order findOrder = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		con = dataSource.getConnection();
+		pstmt = con.prepareStatement(OrderSQL.SELECT_ONE_OF_ORDER_PRODUCT_DETAIL_BY_ORDERNO);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			orderList.add(new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"), rs.getInt("o_price"),
+					rs.getString("u_id"), new ArrayList<OrderItem>()));
+			} 
+		con.close();
+		return orderList;
+	}
+	
+	
+	
 
 	/* ------ order insert------ */
 	// 카트 -> 주문으로 옮겨올때에 관해서는 service에서 작성한다.
