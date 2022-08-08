@@ -33,7 +33,7 @@
 	 if(result==1){//성공
 		 session.setAttribute("sUserId", u_id);
 
-		 response.sendRedirect("product_list.jsp");
+		 response.sendRedirect("shop_main.jsp");
 	 }else if(result==0){//아이디없음
 		 //response.sendRedirect("user_login_form.jsp");
 			out.println("<script>");
