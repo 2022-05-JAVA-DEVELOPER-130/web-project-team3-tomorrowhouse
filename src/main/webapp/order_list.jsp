@@ -8,7 +8,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf"%>
 <%
-
+/* top_menu...
+if (request.getMethod().equalsIgnoreCase("GET")) {
+	response.sendRedirect("shop_main.jsp");
+	return;
+}
+*/
 
 OrderService orderService = new OrderService();
 
@@ -17,6 +22,12 @@ ArrayList<Order> orderList = orderService.orderListByUserId(newOrder);
 
 ReviewService reviewService = new ReviewService();
 //해당 주문건으로 작성된 후기가 있는지 확인
+
+if(!newOrder.getU_id().equals(sUserId)){
+	response.sendRedirect("shop_main.jsp");
+	return;
+}
+
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
