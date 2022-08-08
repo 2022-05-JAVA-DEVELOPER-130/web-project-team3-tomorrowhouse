@@ -122,7 +122,7 @@
 									bgcolor="BBBBBB">
 										<input type="hidden" name="o_no" value='<%=order.getO_no() %>'>
 										<input type="hidden" name="oi_no" value='<%=oi_noStr %>'>
-									<tr>
+									<tr height=22>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">글쓴이</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left"><%=order.getU_id()%></td>
 									</tr>
@@ -146,7 +146,7 @@
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" style="width: 150px" name="r_title"></td>
+										<input type="text" style="width: 350px" name="r_title"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">내용</td>
@@ -156,7 +156,7 @@
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE">별점</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
-										<input type="text" style="width: 150px" name="r_rating"></td>
+										<input type="text" style="width: 350px" name="r_rating" placeholder="☆0 ~ 5 사이의 숫자로 별점을 주세요☆"></td>
 									</tr>
 								</table>
 							</form> <br>
