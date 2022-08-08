@@ -2,11 +2,13 @@
 <%@page import="com.itwill.shop.service.QnaService"%>
 <%@page import="com.itwill.shop.dto.qna.QnaListPageMaker"%>
 <%@page import="com.itwill.shop.dto.qna.PageInput"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%!public String getTitleString(Qna qna) {
+<%
+	String sUserId= (String)session.getAttribute("sUserId");
+%>
+<%!
+	public String getTitleString(Qna qna) {
 	StringBuilder title = new StringBuilder(128);
 	String t = qna.getQ_title();
 	if (t.length() > 30) {
@@ -166,16 +168,21 @@
 								</tr> 
 							</table> <!-- button -->
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
+									 <%if(sUserId == null) {%>						
 								<tr>
 									<td align="right">
 									<!--관리자만 작성가능. 기능추가필요-->
 									
-									<!--  <% //if(sUserId.equals("admin")) {%>	--> 						
-									<input type="button" value="게시물 생성" onclick="qnaCreate();" /></td>
-									<!-- <%//}else{%>
-									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
-									<%//} %> -->
+									<input type="hidden" value="게시물 생성" onclick="qnaCreate();" /></td>
 								</tr>
+								<%}else {%>
+								<tr>
+									<td align="right">
+									<!--관리자만 작성가능. 기능추가필요-->
+									
+									<input type="button" value="게시물 생성" onclick="qnaCreate();" /></td>
+								</tr>
+								<%} %>
 							</table></td>
 							</tr>
 							</table>
