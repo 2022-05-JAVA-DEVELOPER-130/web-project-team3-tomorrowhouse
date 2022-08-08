@@ -155,8 +155,11 @@
 									<td align="right">
 									<!--관리자만 작성가능. 기능추가필요-->
 									
-									<% if(sUserId.equals("admin")) {%>	 						
+									<% if(sUserId==null){%>	 						
+									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
+									<%}else if(sUserId.equals("admin")){%>
 									<input type="button" value="게시물 생성" onclick="noticeCreate();" /></td>
+									
 									<%}else{%>
 									<input type="hidden" value="게시물 생성" onclick="noticeCreate();" /></td>
 									<% } %> 
