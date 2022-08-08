@@ -111,6 +111,16 @@ insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.next
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 11);
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 28);
 
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '밥솥 외 2개', sysdate-10, 450000, 'test5');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 25);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 1);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 35);
+
+insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '조명전구 외 6개', sysdate-10, 450000, 'test5');
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 30);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 2, orders_o_no_seq.currval, 2);
+insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 3, orders_o_no_seq.currval, 12);
+
 ------카트 데이터------
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 1, 'test1', 1);
 insert into cart(c_no, c_qty, u_id, p_no) values(cart_c_no_seq.nextval, 2, 'test1', 2);
