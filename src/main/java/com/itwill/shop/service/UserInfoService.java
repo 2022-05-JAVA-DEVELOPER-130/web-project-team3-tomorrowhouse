@@ -87,6 +87,9 @@ public class UserInfoService {
 	public UserInfo findUser(String u_id) throws Exception {
 		return userInfoDao.findUser(u_id);
 	}
+	public UserInfo findUserByEmail(String u_email)throws Exception{
+		return userInfoDao.findUserByEmail(u_email);
+	}
 
 	/*
 	 * 회원 정보 수정
