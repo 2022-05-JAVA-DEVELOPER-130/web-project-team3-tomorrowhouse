@@ -28,11 +28,18 @@
 	}
 	
 	ReviewService reviewService = new ReviewService();
-	Review findReview = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
-
-	Review review = reviewService.selectByReviewNo(findReview);
 	
-	reviewService.updateClickCountByReviewNo(review);
+	Review findReview = new Review(Integer.parseInt(r_noStr),null,null,null,0,null,0,null,null);
+	
+	Review review = reviewService.selectByReviewNo(findReview);
+
+	// 놓친부분
+	if(review==null){
+	    response.sendRedirect("product_detail.jsp?p_no=200&cg_no=2");		  
+		 return;
+	}
+	
+	//reviewService.updateClickCountByReviewNo(review);
 	
 	OrderService orderService = new OrderService();
 	Order order=

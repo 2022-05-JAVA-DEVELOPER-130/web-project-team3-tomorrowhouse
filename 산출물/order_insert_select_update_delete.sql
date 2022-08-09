@@ -3,8 +3,21 @@ desc orderitem;
 
 /**************** orders_orderitem (쪼금 수정) ***************/
 -- 7.주문 생성
+
+
+
+
 insert into orders(o_no, o_desc, o_date, o_price, u_id) values(orders_o_no_seq.nextval, '책상 외 2종', sysdate, 200000, 'test1');
+
+
 insert into orderitem(oi_no, oi_qty, o_no, p_no) values(orderitem_oi_no_seq.nextval, 1, orders_o_no_seq.currval, 1);
+
+
+
+
+
+
+
 
 -- 6.주문 & 주문 상세 전체 목록 (관리자)
 select * from orders o join orderitem oi on  o.o_no = oi.o_no join product p on oi.p_no = p.p_no;
