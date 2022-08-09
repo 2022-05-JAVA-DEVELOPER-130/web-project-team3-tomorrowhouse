@@ -251,7 +251,39 @@ public class UserInfoDao {
 		}
 		return isExist;
 	}
+	
+	public UserInfo findUserByEmail(String u_email) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UserInfo findUserByEmail = null;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(UserInfoSQL.USER_SELECT_BY_EMAIL);
+			pstmt.setString(1, u_email);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				findUserByEmail = new UserInfo(rs.getString("u_id"), 
+										rs.getString("u_pw"), 
+										rs.getString("u_name"),
+										rs.getString("u_email"),
+										rs.getString("u_address"),
+										rs.getString("u_phone"));
 
+			}
+		} finally {
+			/*
+			 * 예외발생과 관계없이 반드시 실행되는 코드
+			 */
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return findUserByEmail;
+	}
 	
 	
 	

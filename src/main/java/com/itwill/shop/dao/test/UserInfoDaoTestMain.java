@@ -25,6 +25,7 @@ public class UserInfoDaoTestMain {
 		System.out.println("6.existedUserInfo:"+userInfoDao.existedUserInfo("test1"));
 		System.out.println("6.existedUserInfo:"+userInfoDao.existedUserInfo("test2"));
 		System.out.println("6.existedUserInfo:"+userInfoDao.existedUserInfo("test3"));
+		System.out.println("7. find user info by email"+userInfoDao.findUserByEmail("kim1@tmrw_house.com"));
 		
 		
 	}

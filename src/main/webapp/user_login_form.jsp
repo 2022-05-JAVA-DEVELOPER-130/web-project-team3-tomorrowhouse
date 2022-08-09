@@ -39,6 +39,18 @@ if(fuser==null)fuser=new UserInfo("","","","","","");
 		document.f.method='POST';
 		document.f.submit();
 	}
+	function userFindForm(){
+		var left = Math.ceil(( window.screen.width)/3);
+		var top = Math.ceil(( window.screen.height)/3); 
+		console.log(left);
+		console.log(top);
+		var cartWin = window.open("about:blank","cartForm","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+		document.add_cart_form.action = 'user_find_action_popup_window.jsp';
+		document.add_cart_form.method = 'POST';
+		document.add_cart_form.submit();
+	}
+}
+	}
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
